@@ -1,0 +1,96 @@
+import Image from "next/image";
+import Link from "next/link";
+import { Suspense } from "react";
+import { allProducts, categories } from "../../data/products";
+
+export default async function ProductsPage({ searchParams }: { searchParams: Promise<{ category?: string }> }) {
+    const params = await searchParams;
+    const currentCategory = params.category;
+
+    const filteredProducts = currentCategory
+        ? allProducts.filter(p => p.collectionId === currentCategory) // Changed to match the collectionId slug
+        : allProducts;
+
+    return (
+        <div className="min-h-screen bg-zinc-50 dark:bg-black pt-32 pb-24">
+            <div className="max-w-7xl mx-auto px-6">
+                {/* Header */}
+                <div className="mb-16">
+                    <h1 className="text-4xl md:text-6xl font-playfair mb-6">Discover Our Collections</h1>
+                    <p className="text-zinc-500 dark:text-white/60 max-w-2xl text-lg font-light">
+                        Browse our carefully curated selection of the finest surfaces for timeless architectural projects.
+                    </p>
+                </div>
+
+                <div className="flex flex-col md:flex-row gap-12">
+                    {/* Sidebar / Filters */}
+                    <aside className="w-full md:w-64 shrink-0">
+                        <div className="sticky top-32 max-h-[calc(100vh-8rem)] overflow-y-auto pr-2 pb-8" style={{ scrollbarWidth: 'thin' }}>
+                            <h2 className="text-lg font-semibold mb-6 uppercase tracking-wider">Categories</h2>
+                            <ul className="space-y-4 text-zinc-600 dark:text-white/60 font-medium">
+                                <li>
+                                    <Link href="/products" className={`hover:text-amber-500 transition-colors block ${!currentCategory ? 'text-amber-500 font-bold' : ''}`}>
+                                        All Collections
+                                    </Link>
+                                </li>
+                                {categories.map(cat => (
+                                    <li key={cat.slug}>
+                                        <Link
+                                            href={`/products?category=${cat.slug}`}
+                                            className={`hover:text-amber-500 transition-colors block ${currentCategory === cat.slug ? 'text-amber-500 font-bold' : ''}`}
+                                        >
+                                            {cat.name}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </aside>
+
+                    {/* Product Grid */}
+                    <main className="flex-1">
+                        <Suspense fallback={<div className="text-center py-20 text-white/50">Loading collection...</div>}>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                                {filteredProducts.map((product) => (
+                                    <Link key={product.id} href={`/products/${product.id}`} className="group block">
+                                        <div className="relative aspect-[4/5] overflow-hidden mb-5 bg-zinc-900 border border-white/5 rounded-xl">
+                                            <Image
+                                                src={product.image}
+                                                alt={product.name}
+                                                fill
+                                                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                            />
+                                            {product.isNew && (
+                                                <div className="absolute top-4 left-4 bg-white text-black text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg">
+                                                    New
+                                                </div>
+                                            )}
+                                        </div>
+                                        <div className="flex justify-between items-start">
+                                            <div>
+                                                <h3 className="text-xl font-medium text-white mb-2 font-playfair">{product.name}</h3>
+                                                <p className="text-white/50 text-xs tracking-wide uppercase mb-1">{product.category}</p>
+                                                <p className="text-white/40 text-xs mt-1 truncate max-w-[200px]">
+                                                    {product.colors.length} Colors • {product.sizes.length} Sizes
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
+
+                            {filteredProducts.length === 0 && (
+                                <div className="text-center py-32 border border-dashed border-zinc-300 dark:border-white/20">
+                                    <p className="text-xl text-zinc-500 dark:text-white/60 font-light">No products found for this category.</p>
+                                    <Link href="/products" className="mt-6 inline-block text-sm border-b border-black dark:border-white pb-1 font-semibold tracking-widest uppercase">
+                                        Clear Filters
+                                    </Link>
+                                </div>
+                            )}
+                        </Suspense>
+                    </main >
+                </div >
+            </div >
+        </div >
+    );
+}
