@@ -3,13 +3,17 @@
 import { useState, use, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { db } from "@/lib/db";
+import { getClients } from "@/app/actions/clientActions";
+import { getProducts } from "@/app/actions/productActions";
+import { getOrderById, updateOrder } from "@/app/actions/orderActions";
 import { Client, CRMProduct } from "@/lib/types";
 
 export default function EditOrderPage({ params }: { params: Promise<{ id: string }> }) {
     const router = useRouter();
     const { id } = use(params);
-    const existingOrder = db.getOrderById(id);
+    const [clients, setClients] = useState<any[]>([]);
+    const [products, setProducts] = useState<any[]>([]);
+    const [existingOrder, setExistingOrder] = useState<any>(null);
 
     // State
     const [selectedClientId, setSelectedClientId] = useState<string>("");
@@ -24,9 +28,14 @@ export default function EditOrderPage({ params }: { params: Promise<{ id: string
     const [shippingAddress, setShippingAddress] = useState<string>("");
     const [billingAddress, setBillingAddress] = useState<string>("");
 
-    // Lookups
-    const clients = db.getClients();
-    const products = db.getProducts();
+    // Fetch lookups
+    useEffect(() => {
+        Promise.all([getClients(), getProducts(), getOrderById(id)]).then(([c, p, o]) => {
+            setClients(c);
+            setProducts(p);
+            setExistingOrder(o);
+        });
+    }, [id]);
 
     // Populate existing order data
     useEffect(() => {
@@ -98,7 +107,7 @@ export default function EditOrderPage({ params }: { params: Promise<{ id: string
     const tax = discountedSubtotal * 0.07; // 7% mock tax
     const total = discountedSubtotal + tax + parsedFreight;
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         if (!selectedClientId) return alert("Please select a client.");
@@ -114,25 +123,24 @@ export default function EditOrderPage({ params }: { params: Promise<{ id: string
             const netTotalPrice = Math.max(0, lineGross - lineDiscount);
 
             return {
-                id: `new_item_${idx}`,
+                id: undefined, // let prisma generate id on update recreation
                 productId: p.id,
                 productName: p.name,
-                colorName: p.colors[0] || 'Base', // Support arrays
-                size: p.sizes[0] || 'Standard',  // Support arrays
+                colorName: p.colors?.[0] || 'Base', // Support arrays
+                size: p.sizes?.[0] || 'Standard',  // Support arrays
                 quantitySqft: q,
                 unitPrice: p.sellingPricePerSqft || 0,
                 totalPrice: netTotalPrice
-                // Note: Optional feature - 'discount' could theoretically be added to OrderItem in types.ts too
             };
         });
 
         // Update the Mock DB
-        db.updateOrder(id, {
+        await updateOrder(id, {
             clientId: selectedClientId,
             items: mappedItems,
             subtotal,
-            discount: parsedDiscount > 0 ? parsedDiscount : undefined,
-            freight: parsedFreight > 0 ? parsedFreight : undefined,
+            discount: parsedDiscount > 0 ? parsedDiscount : 0,
+            freight: parsedFreight > 0 ? parsedFreight : 0,
             tax,
             total,
             shippingAddress,

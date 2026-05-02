@@ -3,7 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { db } from "@/lib/db";
+import { getClients, createClient } from "@/app/actions/clientActions";
+import { getProducts } from "@/app/actions/productActions";
+import { createOrder, updateOrderStatus } from "@/app/actions/orderActions";
 import { CRMProduct, OrderStatus } from "@/lib/types";
 import QuotePrintTemplate from "../QuotePrintTemplate";
 
@@ -40,19 +42,26 @@ export default function CreateOrderPage() {
     const [sendToEmail, setSendToEmail] = useState("");
     const [sendSuccess, setSendSuccess] = useState(false);
 
-    // Lookups — clientListVersion triggers re-read when a new client is created
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    const clients = db.getClients();
-    void clientListVersion; // keeps linter happy
-    const products = db.getProducts();
+    const [clients, setClients] = useState<any[]>([]);
+    const [products, setProducts] = useState<any[]>([]);
 
-    const handleCreateClient = () => {
+    // Fetch lookups
+    import { useEffect } from "react";
+    useEffect(() => {
+        Promise.all([getClients(), getProducts()]).then(([c, p]) => {
+            setClients(c);
+            setProducts(p);
+        });
+    }, [clientListVersion]);
+
+    const handleCreateClient = async () => {
         const fullName = `${newClientFirstName} ${newClientLastName}`.trim() || 'New Client';
-        const created = db.createClient({
+        const created = await createClient({
             name: fullName,
             company: newClientCompany || undefined,
             email: newClientEmail || undefined,
             phone: newClientPhone || undefined,
+            type: "Homeowner", // Default
             address: newClientDelivery || undefined,
             billingAddress: newClientBilling || undefined,
         });
@@ -129,14 +138,14 @@ export default function CreateOrderPage() {
     const eTax = Math.max(0, eSubtotal - eDiscountAmt) * 0.07;
     const eTotal = Math.max(0, eSubtotal - eDiscountAmt) + eTax + eFreight;
 
-    const handleSave = (action: 'pipeline' | 'print') => {
+    const handleSave = async (action: 'pipeline' | 'print') => {
         if (!selectedClientId) return alert("Please select a client.");
         if (editableItems.length === 0) return alert("Please add at least one line item.");
 
-        const createdOrder = db.createOrder({
+        const createdOrder = await createOrder({
             clientId: selectedClientId,
             items: editableItems.map(i => ({
-                id: i.id,
+                id: undefined, // Let prisma generate
                 productId: i.productId,
                 productName: i.productName,
                 colorName: i.colorName,
@@ -145,6 +154,7 @@ export default function CreateOrderPage() {
                 unitPrice: i.unitPrice,
                 totalPrice: i.totalPrice,
             })),
+            status: orderStatus,
             subtotal: eSubtotal,
             discount: eDiscountAmt,
             freight: eFreight,
@@ -153,10 +163,6 @@ export default function CreateOrderPage() {
             shippingAddress: editableShipping,
             billingAddress: editableBilling
         });
-        // Apply the selected status (createOrder always defaults to 'Quote')
-        if (orderStatus !== 'Quote') {
-            db.updateOrderStatus(createdOrder.id, orderStatus);
-        }
 
         if (action === 'print') {
             window.open(`/admin/orders/${createdOrder.id}`, '_blank');

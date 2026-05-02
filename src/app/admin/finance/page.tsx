@@ -1,20 +1,29 @@
 "use client";
 import { useState, useEffect } from "react";
-import { db } from "@/lib/db";
+import { getFinanceSummary } from "@/app/actions/financeActions";
+import { getOrders } from "@/app/actions/orderActions";
 import { FinanceSummary, Order } from "@/lib/types";
 
 export default function FinanceDashboard() {
     const [finance, setFinance] = useState<FinanceSummary | null>(null);
-    const [invoices, setInvoices] = useState<Order[]>([]);
+    const [invoices, setInvoices] = useState<any[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        setFinance(db.getFinanceSummary());
-        // Get all orders that have had an invoice attached (Invoice Sent, Paid, Unfulfilled, Delivered)
-        const all = db.getOrders();
-        setInvoices(all.filter(o => o.status !== "Quote").sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()));
+        Promise.all([
+            getFinanceSummary(),
+            getOrders()
+        ]).then(([financeData, ordersData]) => {
+            setFinance(financeData as any);
+            const allInvoices = ordersData.filter(o => o.status !== "Quote").sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+            setInvoices(allInvoices);
+            setIsLoading(false);
+        });
     }, []);
 
-    if (!finance) return null;
+    if (isLoading || !finance) {
+        return <div className="text-zinc-500 font-medium">Loading financial data...</div>;
+    }
 
     return (
         <div className="max-w-5xl mx-auto space-y-8">
@@ -59,7 +68,7 @@ export default function FinanceDashboard() {
                         </thead>
                         <tbody className="divide-y divide-zinc-100">
                             {invoices.map(inv => {
-                                const client = db.getClientById(inv.clientId);
+                                const client = inv.client;
                                 return (
                                     <tr key={inv.id} className="hover:bg-zinc-50/50 transition-colors">
                                         <td className="px-6 py-4 font-medium text-zinc-900">INV-{inv.id.split('_')[1]}</td>

@@ -1,7 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { db } from "@/lib/db";
+import { getClients } from "@/app/actions/clientActions";
+import { getProducts } from "@/app/actions/productActions";
+import { getOrders, updateOrderStatus, updateOrder } from "@/app/actions/orderActions";
 import { Order, Client, OrderStatus, CRMProduct } from "@/lib/types";
 import QuotePrintTemplate from "./QuotePrintTemplate";
 
@@ -26,28 +28,37 @@ export default function OrdersTablePipeline() {
     const [isClientDropdownOpen, setIsClientDropdownOpen] = useState(false);
     const [isDirty, setIsDirty] = useState(false);
     const [skuSearchMap, setSkuSearchMap] = useState<Record<string, { query: string; open: boolean }>>({});
-    const products = db.getProducts();
-    const allClients = db.getClients();
+    const [products, setProducts] = useState<any[]>([]);
+    const [allClients, setAllClients] = useState<any[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    const loadData = async () => {
+        setIsLoading(true);
+        const [c, p, o] = await Promise.all([getClients(), getProducts(), getOrders()]);
+        setAllClients(c);
+        setProducts(p);
+        
+        // getOrders already includes the client in our Prisma schema, but let's map it for compatibility just in case
+        const extendedOrders = o.map((order: any) => ({
+            ...order,
+            client: order.client || c.find((cl: any) => cl.id === order.clientId)
+        }));
+        setOrders(extendedOrders);
+        setIsLoading(false);
+    };
 
     useEffect(() => {
-        const rawOrders = db.getOrders();
-        const extendedOrders = rawOrders.map(o => ({
-            ...o,
-            client: db.getClientById(o.clientId)
-        }));
-        setOrders(extendedOrders);
+        loadData();
     }, []);
 
-    const handleStatusChange = (orderId: string, newStatus: OrderStatus) => {
-        db.updateOrderStatus(orderId, newStatus);
-        const rawOrders = db.getOrders();
-        const extendedOrders = rawOrders.map(o => ({
-            ...o,
-            client: db.getClientById(o.clientId)
-        }));
-        setOrders(extendedOrders);
+    const handleStatusChange = async (orderId: string, newStatus: OrderStatus) => {
+        await updateOrderStatus(orderId, newStatus);
+        
+        // Optically update the UI
+        const updatedOrders = orders.map(o => o.id === orderId ? { ...o, status: newStatus } : o);
+        setOrders(updatedOrders);
         if (selectedOrder && selectedOrder.id === orderId) {
-            setSelectedOrder(extendedOrders.find(o => o.id === orderId) || null);
+            setSelectedOrder({ ...selectedOrder, status: newStatus });
         }
     };
 
@@ -143,13 +154,13 @@ export default function OrdersTablePipeline() {
     const eTax = Math.max(0, eSubtotal - eDiscountAmt) * 0.07;
     const eTotal = Math.max(0, eSubtotal - eDiscountAmt) + eTax + eFreight;
 
-    const handleSaveOrder = () => {
+    const handleSaveOrder = async () => {
         if (!selectedOrder) return;
 
-        db.updateOrder(selectedOrder.id, {
+        await updateOrder(selectedOrder.id, {
             clientId: editableClientId,
             items: editableItems.map(i => ({
-                id: i.id,
+                id: i.id.startsWith('new_') ? undefined : i.id, // Let prisma generate ID for new items
                 productId: i.productId,
                 productName: i.productName,
                 colorName: i.colorName,
@@ -167,12 +178,7 @@ export default function OrdersTablePipeline() {
             billingAddress: editableBilling,
         });
 
-        const rawOrders2 = db.getOrders();
-        const extendedOrders2 = rawOrders2.map(o => ({ ...o, client: db.getClientById(o.clientId) }));
-        setOrders(extendedOrders2);
-        const updated = extendedOrders2.find(o => o.id === selectedOrder.id) || null;
-        setSelectedOrder(updated);
-        if (updated) handleSelectOrder(updated);
+        await loadData();
         setIsDirty(false);
     };
 

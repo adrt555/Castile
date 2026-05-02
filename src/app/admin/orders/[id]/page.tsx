@@ -1,25 +1,29 @@
 "use client";
 
-import { use, useEffect } from "react";
+import { use, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { db } from "@/lib/db";
+import { getOrderById } from "@/app/actions/orderActions";
 import QuotePrintTemplate from "../QuotePrintTemplate";
 
 export default function OrderPrintPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = use(params);
     const router = useRouter();
-    const order = db.getOrderById(id);
-    const client = order ? db.getClientById(order.clientId) : null;
+    const [order, setOrder] = useState<any>(null);
+    const [client, setClient] = useState<any>(null);
 
     useEffect(() => {
-        // Automatically trigger the native print dialog popup as requested
-        if (order) {
-            setTimeout(() => {
-                window.print();
-            }, 500);
-        }
-    }, [order]);
+        getOrderById(id).then(data => {
+            if (data) {
+                setOrder(data);
+                setClient(data.client);
+                // Automatically trigger the native print dialog popup as requested
+                setTimeout(() => {
+                    window.print();
+                }, 500);
+            }
+        });
+    }, [id]);
 
     if (!order || !client) {
         return (

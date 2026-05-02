@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { db } from "@/lib/db";
+import { getProducts } from "@/app/actions/productActions";
 import { CRMProduct } from "@/lib/types";
 
 export default function CatalogManager() {
@@ -9,7 +9,7 @@ export default function CatalogManager() {
     const [collectionFilter, setCollectionFilter] = useState("ALL");
 
     useEffect(() => {
-        setProducts(db.getProducts());
+        getProducts().then(data => setProducts(data as any));
     }, []);
 
     const collections = ["ALL", ...Array.from(new Set(products.map(p => p.collection))).sort()];

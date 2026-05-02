@@ -1,10 +1,12 @@
-import { db } from "@/lib/db";
+import { getClients } from "@/app/actions/clientActions";
+import { getOrders } from "@/app/actions/orderActions";
+import { getFinanceSummary } from "@/app/actions/financeActions";
 import Link from "next/link";
 
-export default function AdminDashboard() {
-    const finance = db.getFinanceSummary();
-    const clients = db.getClients();
-    const orders = db.getOrders();
+export default async function AdminDashboard() {
+    const finance = await getFinanceSummary();
+    const clients = await getClients();
+    const orders = await getOrders();
 
     const pendingQuotes = orders.filter(o => o.status === 'Quote' || o.status === 'Invoice Sent').length;
     const unfulfilledOrders = orders.filter(o => o.status === 'Paid' || o.status === 'Unfulfilled').length;
@@ -53,7 +55,7 @@ export default function AdminDashboard() {
                     </div>
                     <div className="divide-y divide-zinc-100">
                         {orders.filter(o => o.status !== 'Delivered').map(order => {
-                            const client = db.getClientById(order.clientId);
+                            const client = (order as any).client;
                             return (
                                 <div key={order.id} className="p-6 flex items-center justify-between hover:bg-zinc-50 transition-colors">
                                     <div>

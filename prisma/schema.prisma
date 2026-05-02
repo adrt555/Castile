@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+}
+
+model Client {
+  id             String   @id @default(uuid())
+  name           String
+  company        String
+  email          String   @unique
+  phone          String
+  type           String   // 'Architect' | 'Designer' | 'Contractor' | 'Homeowner'
+  totalSpent     Float    @default(0.0)
+  createdAt      DateTime @default(now())
+  address        String?
+  billingAddress String?
+  orders         Order[]
+}
+
+model Order {
+  id              String      @id @default(uuid())
+  clientId        String
+  client          Client      @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  status          String      // 'Quote' | 'Invoice Sent' | 'Paid' | 'Unfulfilled' | 'Delivered'
+  subtotal        Float
+  discount        Float?      @default(0.0)
+  freight         Float?      @default(0.0)
+  tax             Float
+  total           Float
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  shippingAddress String?
+  billingAddress  String?
+  items           OrderItem[]
+}
+
+model OrderItem {
+  id           String @id @default(uuid())
+  orderId      String
+  order        Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId    String
+  productName  String
+  colorName    String
+  size         String
+  quantitySqft Float
+  unitPrice    Float
+  totalPrice   Float
+}

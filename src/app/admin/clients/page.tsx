@@ -1,14 +1,22 @@
 "use client";
 import { useState, useEffect } from "react";
-import { db } from "@/lib/db";
+import { getClients } from "@/app/actions/clientActions";
 import { Client } from "@/lib/types";
 
 export default function ClientDirectory() {
     const [clients, setClients] = useState<Client[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        setClients(db.getClients());
+        getClients().then(data => {
+            setClients(data as any);
+            setIsLoading(false);
+        });
     }, []);
+
+    if (isLoading) {
+        return <div className="text-zinc-500 font-medium">Loading clients...</div>;
+    }
 
     return (
         <div className="max-w-6xl mx-auto space-y-8">

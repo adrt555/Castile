@@ -60,9 +60,7 @@ process_logo.js
 roca_home.html
 all_collections_scraped.json
 collection_ambiance.json
-collection_projects.json
 abaco_data.json
-extracted_products.json
 roca_all_images.json
 style_mapping.json
 abaco_gris_texture.jpg
@@ -71,3 +69,5 @@ printers.json
 # logs
 error.log
 output.log
+
+/src/generated/prisma
