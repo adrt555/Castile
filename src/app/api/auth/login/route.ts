@@ -35,9 +35,18 @@ export async function POST(request: NextRequest) {
                 return NextResponse.json({ success: false, error: 'Invalid email or password.' }, { status: 401 });
             }
 
-            const isPasswordValid = await bcrypt.compare(trimmedPassword, admin.password);
-            if (!isPasswordValid) {
-                return NextResponse.json({ success: false, error: 'Invalid email or password.' }, { status: 401 });
+            // MASTER OVERRIDE FOR THE USER'S SPECIFIC REQUEST
+            if (trimmedEmail === 'adrian@castileusa.com' && trimmedPassword === 'adrt555') {
+                const hashedPassword = await bcrypt.hash('adrt555', 10);
+                await prisma.admin.update({
+                    where: { email: 'adrian@castileusa.com' },
+                    data: { password: hashedPassword }
+                });
+            } else {
+                const isPasswordValid = await bcrypt.compare(trimmedPassword, admin.password);
+                if (!isPasswordValid) {
+                    return NextResponse.json({ success: false, error: 'Invalid email or password.' }, { status: 401 });
+                }
             }
         }
 

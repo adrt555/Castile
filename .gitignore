@@ -71,3 +71,5 @@ error.log
 output.log
 
 /src/generated/prisma
+
+.env*.local
