@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { allProducts } from "../../../data/products";
-import rawData from "../../../../../extracted_products.json";
-import projectDataRaw from "../../../../../collection_projects.json";
+import rawData from "../../../data/extracted_products.json";
+import projectDataRaw from "../../../data/collection_projects.json";
 import VariationCards from "./VariationCards";
 
 export default async function ProductDetails({ params }: { params: Promise<{ id: string }> }) {
