@@ -93,7 +93,11 @@ export default function QuotePrintTemplate({
                     }
                     .company-sub { font-size: 11px; color: #555; line-height: 1.5; }
                     .logo-block { text-align: right; }
-                    .logo-img { width: 80px; height: auto; object-fit: contain; }
+                    .logo-img {
+                        width: 80px; height: auto; object-fit: contain;
+                        mix-blend-mode: multiply;
+                        background: transparent;
+                    }
                     .doc-title {
                         font-size: 38px; font-weight: 900; letter-spacing: 0.1em;
                         color: #2d7a6a; text-align: right; margin-bottom: 28px;
@@ -163,7 +167,7 @@ export default function QuotePrintTemplate({
                 </div>
                 <div className="logo-block">
                     <img
-                        src="/new_castile_logo.png"
+                        src="/castile_logo_transparent.png"
                         alt="Castile Logo"
                         className="logo-img"
                         style={{ width: 72, height: "auto" }}

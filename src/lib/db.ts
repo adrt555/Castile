@@ -97,6 +97,22 @@ export const db = {
     // Clients
     getClients: () => [..._clients],
     getClientById: (id: string) => _clients.find(c => c.id === id),
+    createClient: (input: { name: string; company?: string; email?: string; phone?: string; address?: string; billingAddress?: string; }) => {
+        const newClient: Client = {
+            id: `cl_${Date.now()}`,
+            name: input.name || 'New Client',
+            company: input.company || '',
+            email: input.email || '',
+            phone: input.phone || '',
+            type: 'Homeowner',
+            totalSpent: 0,
+            createdAt: new Date().toISOString(),
+            address: input.address,
+            billingAddress: input.billingAddress,
+        };
+        _clients.push(newClient);
+        return newClient;
+    },
 
     // Orders/Quotes
     getOrders: () => [..._orders],

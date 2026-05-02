@@ -241,13 +241,6 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                             </div>
                         </div>
 
-                        {/* Price (products only) */}
-                        {item.price && (
-                            <span className="text-white/50 text-sm font-medium flex-shrink-0 hidden sm:block">
-                                {item.price}
-                            </span>
-                        )}
-
                         {/* Type badge */}
                         <span
                             className={`px-2.5 py-1 rounded-full text-[0.65rem] font-semibold uppercase tracking-wider flex-shrink-0 ${item.type === "product"

@@ -39,3 +39,35 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# scraping scripts & temp data (dev-only tools)
+scrape_*.js
+dymo_*.js
+download_texture.js
+categorize_styles.js
+fix_images.js
+generate_crm_products.js
+map_ai_images.js
+move_ai_images.js
+parse_pricebook.js
+parse_roca.js
+patch_abaco_images.js
+reconcile_catalog.js
+tmp_page.js
+process_logo.js
+
+# scraped data files
+roca_home.html
+all_collections_scraped.json
+collection_ambiance.json
+collection_projects.json
+abaco_data.json
+extracted_products.json
+roca_all_images.json
+style_mapping.json
+abaco_gris_texture.jpg
+printers.json
+
+# logs
+error.log
+output.log

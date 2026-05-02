@@ -4,7 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { db } from "@/lib/db";
-import { Client, CRMProduct } from "@/lib/types";
+import { CRMProduct, OrderStatus } from "@/lib/types";
+import QuotePrintTemplate from "../QuotePrintTemplate";
 
 export default function CreateOrderPage() {
     const router = useRouter();
@@ -13,138 +14,238 @@ export default function CreateOrderPage() {
     const [selectedClientId, setSelectedClientId] = useState<string>("");
     const [clientSearch, setClientSearch] = useState("");
     const [isClientDropdownOpen, setIsClientDropdownOpen] = useState(false);
-    const [orderItems, setOrderItems] = useState<Array<{ productIdx: number, quantity: string, discount: string, discountType: '$' | '%' }>>([
-        { productIdx: -1, quantity: "", discount: "0", discountType: '$' }
-    ]);
-    const [discount, setDiscount] = useState<string>("0");
+    const [orderStatus, setOrderStatus] = useState<OrderStatus>('Quote');
+    const [editableItems, setEditableItems] = useState<Array<{ id: string, productId: string, sku: string, productName: string, colorName: string, size: string, sqftPerBox: number, boxesPerPallet: number, quantitySqft: number, unitPrice: number, totalPrice: number, discount: string, discountType: '$' | '%' }>>([]);
+    const [editableDiscount, setEditableDiscount] = useState<string>("0");
     const [globalDiscountType, setGlobalDiscountType] = useState<'$' | '%'>('$');
-    const [freight, setFreight] = useState<string>("0");
-    const [shippingAddress, setShippingAddress] = useState<string>("");
-    const [billingAddress, setBillingAddress] = useState<string>("");
+    const [editableFreight, setEditableFreight] = useState<string>("0");
+    const [editableShipping, setEditableShipping] = useState<string>("");
+    const [editableBilling, setEditableBilling] = useState<string>("");
+    const [skuSearchMap, setSkuSearchMap] = useState<Record<string, { query: string; open: boolean }>>({});
 
-    // Lookups
+    // Create Client Modal State
+    const [showCreateClient, setShowCreateClient] = useState(false);
+    const [newClientFirstName, setNewClientFirstName] = useState("");
+    const [newClientLastName, setNewClientLastName] = useState("");
+    const [newClientPhone, setNewClientPhone] = useState("");
+    const [newClientCompany, setNewClientCompany] = useState("");
+    const [newClientEmail, setNewClientEmail] = useState("");
+    const [newClientDelivery, setNewClientDelivery] = useState("");
+    const [newClientBilling, setNewClientBilling] = useState("");
+    const [clientListVersion, setClientListVersion] = useState(0);
+
+    // Send Order Modal State
+    const [showSendModal, setShowSendModal] = useState(false);
+    const [sendFromEmail, setSendFromEmail] = useState("sales@castile.com");
+    const [sendToEmail, setSendToEmail] = useState("");
+    const [sendSuccess, setSendSuccess] = useState(false);
+
+    // Lookups — clientListVersion triggers re-read when a new client is created
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const clients = db.getClients();
+    void clientListVersion; // keeps linter happy
     const products = db.getProducts();
 
-    const handleAddItem = () => {
-        setOrderItems([...orderItems, { productIdx: -1, quantity: "", discount: "0", discountType: '$' }]);
+    const handleCreateClient = () => {
+        const fullName = `${newClientFirstName} ${newClientLastName}`.trim() || 'New Client';
+        const created = db.createClient({
+            name: fullName,
+            company: newClientCompany || undefined,
+            email: newClientEmail || undefined,
+            phone: newClientPhone || undefined,
+            address: newClientDelivery || undefined,
+            billingAddress: newClientBilling || undefined,
+        });
+        setSelectedClientId(created.id);
+        setClientSearch(`${created.name}${created.company ? ` — ${created.company}` : ''}`);
+        setEditableShipping(created.address || '');
+        setEditableBilling(created.billingAddress || created.address || '');
+        // Reset modal
+        setShowCreateClient(false);
+        setNewClientFirstName('');
+        setNewClientLastName('');
+        setNewClientPhone('');
+        setNewClientCompany('');
+        setNewClientEmail('');
+        setNewClientDelivery('');
+        setNewClientBilling('');
+        setClientListVersion(v => v + 1);
     };
 
-    const handleRemoveItem = (index: number) => {
-        setOrderItems(orderItems.filter((_, i) => i !== index));
+    const handleAddEItem = () => {
+        const firstP = products[0] as any;
+        const newId = `new_${Date.now()}`;
+        setEditableItems(prev => [...prev, {
+            id: newId,
+            productId: firstP?.id || '',
+            sku: firstP?.sku || '',
+            productName: firstP?.name || '',
+            colorName: '',
+            size: firstP?.size || '',
+            sqftPerBox: firstP?.sqftPerBox || 0,
+            boxesPerPallet: firstP?.boxesPerPallet || 0,
+            quantitySqft: 0,
+            unitPrice: firstP?.sellingPricePerSqft || 0,
+            totalPrice: 0,
+            discount: "0",
+            discountType: '$',
+        }]);
+        setSkuSearchMap(prev => ({ ...prev, [newId]: { query: '', open: false } }));
     };
 
-    const handleItemChange = (index: number, field: 'productIdx' | 'quantity' | 'discount' | 'discountType', value: string) => {
-        const newItems = [...orderItems];
-        if (field === 'productIdx') {
-            newItems[index].productIdx = parseInt(value);
-        } else if (field === 'quantity') {
-            newItems[index].quantity = value;
-        } else if (field === 'discount') {
-            newItems[index].discount = value;
-        } else if (field === 'discountType') {
-            newItems[index].discountType = value as '$' | '%';
-        }
-        setOrderItems(newItems);
+    const handleRemoveEItem = (itemId: string) => {
+        setEditableItems(prev => prev.filter(i => i.id !== itemId));
     };
 
-    // Calculate Totals
-    let subtotal = 0;
-    const validItems = orderItems.filter(item => item.productIdx >= 0 && parseFloat(item.quantity) > 0);
+    const handleEItemChange = (itemId: string, field: string, value: any) => {
+        setEditableItems(prev => prev.map(item => {
+            if (item.id !== itemId) return item;
+            const updated: any = { ...item, [field]: value };
 
-    validItems.forEach(item => {
-        const product = products[item.productIdx] as unknown as CRMProduct;
-        const qty = parseFloat(item.quantity);
-        const lineGross = (product.sellingPricePerSqft || 0) * qty;
-        const lineDiscountInput = parseFloat(item.discount) || 0;
-        const lineDiscount = item.discountType === '%' ? lineGross * (lineDiscountInput / 100) : lineDiscountInput;
-        subtotal += Math.max(0, lineGross - lineDiscount); // Add the net line total to the subtotal
-    });
+            if (field === 'productId') {
+                const p = products.find(p => p.id === value);
+                if (p) {
+                    updated.sku = (p as any).sku || '';
+                    updated.productName = p.name;
+                    updated.colorName = '';
+                    updated.size = (p as any).size || '';
+                    updated.sqftPerBox = (p as any).sqftPerBox || 0;
+                    updated.boxesPerPallet = (p as any).boxesPerPallet || 0;
+                    updated.unitPrice = (p as any).sellingPricePerSqft || 0;
+                }
+            }
 
-    const parsedDiscountInput = parseFloat(discount) || 0;
-    const parsedDiscount = globalDiscountType === '%' ? subtotal * (parsedDiscountInput / 100) : parsedDiscountInput;
-    const parsedFreight = parseFloat(freight) || 0;
-    const discountedSubtotal = Math.max(0, subtotal - parsedDiscount);
-    const tax = discountedSubtotal * 0.07; // 7% mock tax
-    const total = discountedSubtotal + tax + parsedFreight;
+            const gross = (updated.quantitySqft || 0) * (updated.unitPrice || 0);
+            const discAmt = updated.discountType === '%' ? gross * ((parseFloat(updated.discount) || 0) / 100) : (parseFloat(updated.discount) || 0);
+            updated.totalPrice = Math.max(0, gross - discAmt);
+            return updated;
+        }));
+    };
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
+    // Live totals
+    const eSubtotal = editableItems.reduce((s, i) => s + i.totalPrice, 0);
+    const eDiscountAmt = globalDiscountType === '%' ? eSubtotal * ((parseFloat(editableDiscount) || 0) / 100) : (parseFloat(editableDiscount) || 0);
+    const eFreight = parseFloat(editableFreight) || 0;
+    const eTax = Math.max(0, eSubtotal - eDiscountAmt) * 0.07;
+    const eTotal = Math.max(0, eSubtotal - eDiscountAmt) + eTax + eFreight;
 
+    const handleSave = (action: 'pipeline' | 'print') => {
         if (!selectedClientId) return alert("Please select a client.");
-        if (validItems.length === 0) return alert("Please add at least one valid product.");
+        if (editableItems.length === 0) return alert("Please add at least one line item.");
 
-        // Map items to the DB schema
-        const mappedItems = validItems.map((item, idx) => {
-            const p = products[item.productIdx] as unknown as CRMProduct;
-            const q = parseFloat(item.quantity);
-            const lineGross = (p.sellingPricePerSqft || 0) * q;
-            const lineDiscountInput = parseFloat(item.discount) || 0;
-            const lineDiscount = item.discountType === '%' ? lineGross * (lineDiscountInput / 100) : lineDiscountInput;
-            const netTotalPrice = Math.max(0, lineGross - lineDiscount);
-
-            return {
-                id: `new_item_${idx}`,
-                productId: p.id,
-                productName: p.name,
-                colorName: p.colors[0] || 'Base', // Support arrays
-                size: p.sizes[0] || 'Standard',  // Support arrays
-                quantitySqft: q,
-                unitPrice: p.sellingPricePerSqft || 0,
-                totalPrice: netTotalPrice
-                // Note: Optional feature - 'discount' could theoretically be added to OrderItem in types.ts too
-            };
-        });
-
-        // Add to Mock DB
-        db.createOrder({
+        const createdOrder = db.createOrder({
             clientId: selectedClientId,
-            items: mappedItems,
-            subtotal,
-            discount: parsedDiscount > 0 ? parsedDiscount : undefined,
-            freight: parsedFreight > 0 ? parsedFreight : undefined,
-            tax,
-            total,
-            shippingAddress,
-            billingAddress
+            items: editableItems.map(i => ({
+                id: i.id,
+                productId: i.productId,
+                productName: i.productName,
+                colorName: i.colorName,
+                size: i.size,
+                quantitySqft: i.quantitySqft,
+                unitPrice: i.unitPrice,
+                totalPrice: i.totalPrice,
+            })),
+            subtotal: eSubtotal,
+            discount: eDiscountAmt,
+            freight: eFreight,
+            tax: eTax,
+            total: eTotal,
+            shippingAddress: editableShipping,
+            billingAddress: editableBilling
         });
+        // Apply the selected status (createOrder always defaults to 'Quote')
+        if (orderStatus !== 'Quote') {
+            db.updateOrderStatus(createdOrder.id, orderStatus);
+        }
 
-        // Navigate back to pipeline
-        router.push("/admin/orders");
+        if (action === 'print') {
+            window.open(`/admin/orders/${createdOrder.id}`, '_blank');
+            router.push("/admin/orders");
+        } else {
+            router.push("/admin/orders");
+        }
     };
 
     return (
-        <div className="max-w-4xl mx-auto pb-20">
-            <div className="mb-8 flex items-center gap-4">
-                <Link href="/admin/orders" className="p-2 rounded-full hover:bg-zinc-100 transition-colors text-zinc-500">
-                    &larr;
-                </Link>
-                <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-zinc-900">Create New Quote</h1>
-                    <p className="text-zinc-500 mt-1">Generate a quote, assign a client, and apply discounts.</p>
+        <div className="max-w-7xl mx-auto pb-20">
+            <div className="mb-8 flex justify-between items-center">
+                <div className="flex items-center gap-4">
+                    <Link href="/admin/orders" className="text-sm font-semibold text-zinc-500 hover:text-zinc-900 transition-colors flex items-center gap-2">
+                        &larr; Back to Pipeline
+                    </Link>
+                    <div>
+                        <h1 className="text-3xl font-bold tracking-tight text-zinc-900">Create New Quote</h1>
+                        <p className="text-zinc-500 mt-1">Generate a quote, assign a client, and apply discounts.</p>
+                    </div>
+                </div>
+                <div className="flex gap-3 items-center">
+                    <button
+                        type="button"
+                        onClick={() => {
+                            if (!selectedClientId) return alert('Please select a client first.');
+                            if (editableItems.length === 0) return alert('Please add at least one line item.');
+                            // Pre-fill client email
+                            const cl = clients.find(c => c.id === selectedClientId);
+                            setSendToEmail(cl?.email || '');
+                            setSendSuccess(false);
+                            setShowSendModal(true);
+                        }}
+                        className="px-4 py-2 border border-blue-200 bg-blue-50 rounded-lg text-sm font-semibold text-blue-700 hover:bg-blue-100 transition-colors shadow-sm cursor-pointer flex items-center gap-1.5"
+                    >
+                        ✉️ Send Order
+                    </button>
+                    <button
+                        type="button"
+                        onClick={() => {
+                            if (!selectedClientId) return alert('Please select a client first.');
+                            if (editableItems.length === 0) return alert('Please add at least one line item.');
+                            window.print();
+                        }}
+                        className="px-4 py-2 border border-zinc-200 bg-white rounded-lg text-sm font-semibold text-zinc-700 hover:bg-zinc-50 transition-colors shadow-sm cursor-pointer flex items-center gap-1.5"
+                    >
+                        🖨️ Print
+                    </button>
+                    <select
+                        value={orderStatus}
+                        onChange={(e) => setOrderStatus(e.target.value as OrderStatus)}
+                        className="bg-zinc-900 text-white border border-transparent text-sm rounded-lg focus:ring-amber-500 block px-4 py-2 outline-none font-semibold shadow-sm appearance-none cursor-pointer"
+                    >
+                        <option value="Quote">Status: Quote Draft</option>
+                        <option value="Invoice Sent">Status: Invoice Sent</option>
+                        <option value="Paid">Status: Paid / Unful.</option>
+                        <option value="Delivered">Status: Delivered</option>
+                    </select>
                 </div>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-8">
-
+            <div className="space-y-8">
                 {/* 1. Client Details Section */}
                 <div className="bg-white border border-zinc-200 rounded-xl shadow-sm overflow-hidden">
                     <div className="bg-zinc-50 px-6 py-4 border-b border-zinc-200">
-                        <h2 className="text-lg font-bold text-zinc-900">1. Client Details</h2>
+                        <h2 className="text-lg font-bold text-zinc-900 text-zinc-400 text-xs tracking-widest uppercase mb-0">1. Client DETAILS</h2>
                     </div>
                     <div className="p-6 space-y-6">
                         <div className="relative">
-                            <label className="block text-sm font-semibold text-zinc-700 mb-2">Search Client</label>
+                            <div className="flex justify-between items-center mb-2">
+                                <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500">Select Client</label>
+                                <button
+                                    type="button"
+                                    onClick={() => setShowCreateClient(true)}
+                                    className="text-xs font-bold text-amber-600 hover:text-amber-700 flex items-center gap-1"
+                                >
+                                    + Create New Client
+                                </button>
+                            </div>
                             <input
                                 type="text"
                                 value={clientSearch}
                                 onChange={(e) => {
                                     setClientSearch(e.target.value);
                                     setIsClientDropdownOpen(true);
-                                    if (selectedClientId) setSelectedClientId(""); // Reset if they alter the name
+                                    if (selectedClientId) setSelectedClientId("");
                                 }}
                                 onFocus={() => setIsClientDropdownOpen(true)}
-                                onBlur={() => setTimeout(() => setIsClientDropdownOpen(false), 200)} // Delay to allow click
+                                onBlur={() => setTimeout(() => setIsClientDropdownOpen(false), 200)}
                                 placeholder="Search by name, company, or email..."
                                 className="w-full bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-3 outline-none"
                                 required={!selectedClientId}
@@ -165,10 +266,10 @@ export default function CreateOrderPage() {
                                                 key={client.id}
                                                 onClick={() => {
                                                     setSelectedClientId(client.id);
-                                                    setClientSearch(`${client.name} - ${client.company}`);
+                                                    setClientSearch(`${client.name} — ${client.company}`);
                                                     setIsClientDropdownOpen(false);
-                                                    setShippingAddress(client.address || "");
-                                                    setBillingAddress(client.billingAddress || client.address || "");
+                                                    setEditableShipping(client.address || "");
+                                                    setEditableBilling(client.billingAddress || client.address || "");
                                                 }}
                                                 className="px-4 py-3 hover:bg-zinc-50 cursor-pointer transition-colors"
                                             >
@@ -185,20 +286,20 @@ export default function CreateOrderPage() {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label className="block text-sm font-semibold text-zinc-700 mb-2">Shipping Address</label>
+                                <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-2">Shipping Address</label>
                                 <textarea
-                                    value={shippingAddress}
-                                    onChange={(e) => setShippingAddress(e.target.value)}
-                                    className="w-full bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-3 outline-none min-h-[100px]"
+                                    value={editableShipping}
+                                    onChange={(e) => setEditableShipping(e.target.value)}
+                                    className="w-full bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-3 outline-none min-h-[80px]"
                                     placeholder="Enter shipping address or 'Will Call'..."
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-semibold text-zinc-700 mb-2">Billing Address</label>
+                                <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-2">Billing Address</label>
                                 <textarea
-                                    value={billingAddress}
-                                    onChange={(e) => setBillingAddress(e.target.value)}
-                                    className="w-full bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-3 outline-none min-h-[100px]"
+                                    value={editableBilling}
+                                    onChange={(e) => setEditableBilling(e.target.value)}
+                                    className="w-full bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-3 outline-none min-h-[80px]"
                                     placeholder="Enter billing address..."
                                 />
                             </div>
@@ -206,90 +307,192 @@ export default function CreateOrderPage() {
                     </div>
                 </div>
 
-                {/* 2. Line Items Section */}
-                <div className="bg-white border border-zinc-200 rounded-xl shadow-sm overflow-hidden">
-                    <div className="bg-zinc-50 px-6 py-4 border-b border-zinc-200 flex justify-between items-center">
-                        <h2 className="text-lg font-bold text-zinc-900">2. Products & Quantities</h2>
+                {/* 2. Line Items */}
+                <div className="bg-white border border-zinc-200 rounded-xl shadow-sm">
+                    <div className="bg-zinc-50 px-6 py-4 border-b border-zinc-200 flex justify-between items-center rounded-t-xl">
+                        <h2 className="text-lg font-bold text-zinc-900 text-zinc-400 text-xs tracking-widest uppercase mb-0">2. Products & Quantities</h2>
                         <button
                             type="button"
-                            onClick={handleAddItem}
+                            onClick={handleAddEItem}
                             className="text-sm font-bold text-amber-600 hover:text-amber-700"
                         >
                             + Add Line Item
                         </button>
                     </div>
-                    <div className="p-6">
-                        {orderItems.map((item, index) => (
-                            <div key={index} className="flex gap-4 items-end mb-6 pb-6 border-b border-zinc-100 last:border-0 last:mb-0 last:pb-0">
-                                <div className="flex-1">
-                                    <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-2">Product</label>
-                                    <select
-                                        value={item.productIdx}
-                                        onChange={(e) => handleItemChange(index, 'productIdx', e.target.value)}
-                                        className="w-full bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-3 outline-none"
-                                        required
-                                    >
-                                        <option value="-1">-- Select a Product --</option>
-                                        {products.map((p: any, idx) => (
-                                            <option key={p.id} value={idx}>
-                                                {p.name} - {p.colors?.[0] || 'Base'} - {p.sizes?.[0] || 'Standard'} (${p.sellingPricePerSqft?.toFixed(2)}/sqft)
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
-                                <div className="w-24">
-                                    <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-2">Quantity</label>
-                                    <input
-                                        type="number"
-                                        min="1"
-                                        value={item.quantity}
-                                        onChange={(e) => handleItemChange(index, 'quantity', e.target.value)}
-                                        className="w-full bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-3 outline-none"
-                                        placeholder="0"
-                                        required
-                                    />
+                    
+                    <div className="p-6 space-y-4">
+                        {editableItems.map((item) => (
+                            <div key={item.id} className="bg-zinc-50 border border-zinc-200 rounded-xl p-4 flex flex-nowrap gap-3 items-start">
+                                {/* Product selector — split SKU / Description */}
+                                <div className="flex-1 min-w-[320px]">
+                                    <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">SKU / Description</label>
+                                    {/* Searchable SKU combobox */}
+                                    <div className="relative">
+                                        <input
+                                            type="text"
+                                            placeholder="Search SKU or product name…"
+                                            value={skuSearchMap[item.id]?.query ?? item.sku}
+                                            onChange={(e) => setSkuSearchMap(prev => ({
+                                                ...prev,
+                                                [item.id]: { query: e.target.value, open: true }
+                                            }))}
+                                            onFocus={() => setSkuSearchMap(prev => ({
+                                                ...prev,
+                                                [item.id]: { query: prev[item.id]?.query ?? '', open: true }
+                                            }))}
+                                            className="w-full bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-2.5 outline-none font-mono"
+                                        />
+                                        {skuSearchMap[item.id]?.open && skuSearchMap[item.id]?.query.length > 0 && (() => {
+                                            const q = skuSearchMap[item.id].query.toLowerCase();
+                                            const matches = (products as any[]).filter(p =>
+                                                p.sku?.toLowerCase().includes(q) ||
+                                                p.name?.toLowerCase().includes(q)
+                                            ).slice(0, 25);
+                                            if (matches.length === 0) return null;
+                                            return (
+                                                <div className="absolute z-50 top-full left-0 right-0 mt-1 bg-white border border-zinc-200 rounded-xl shadow-2xl overflow-hidden max-h-72 overflow-y-auto">
+                                                    {matches.map((p: any) => (
+                                                        <button
+                                                            key={p.id}
+                                                            type="button"
+                                                            onMouseDown={(e) => {
+                                                                e.preventDefault();
+                                                                handleEItemChange(item.id, 'productId', p.id);
+                                                                setSkuSearchMap(prev => ({
+                                                                    ...prev,
+                                                                    [item.id]: { query: p.sku, open: false }
+                                                                }));
+                                                            }}
+                                                            className="w-full text-left px-3 py-2.5 hover:bg-amber-50 border-b border-zinc-100 last:border-0 transition-colors"
+                                                        >
+                                                            <div className="font-mono text-xs font-bold text-zinc-700">{p.sku}</div>
+                                                            <div className="text-sm text-zinc-800 leading-tight mt-0.5">{p.name}</div>
+                                                            <div className="text-xs text-zinc-400 mt-0.5 flex gap-2">
+                                                                <span>{p.size}</span>
+                                                                {p.sqftPerBox > 0 && <span>· {p.sqftPerBox} sqft/box</span>}
+                                                                <span className="text-amber-600 font-semibold">· ${p.sellingPricePerSqft?.toFixed(2)}/sqft</span>
+                                                            </div>
+                                                        </button>
+                                                    ))}
+                                                </div>
+                                            );
+                                        })()}
+                                    </div>
+                                    {/* Selected product details */}
+                                    {item.productName && (
+                                        <div className="mt-2 flex flex-wrap items-center gap-2">
+                                            <span className="text-sm font-semibold text-zinc-800 leading-tight">
+                                                {item.productName}
+                                            </span>
+                                            {item.size && (
+                                                <span className="text-xs bg-amber-50 text-amber-700 font-bold px-2 py-0.5 rounded border border-amber-100">
+                                                    {item.size}
+                                                </span>
+                                            )}
+                                            {item.sqftPerBox > 0 && (
+                                                <span className="text-xs text-zinc-400 font-medium">
+                                                    {item.sqftPerBox} sqft/box
+                                                </span>
+                                            )}
+                                        </div>
+                                    )}
                                 </div>
                                 <div className="w-32">
-                                    <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-2">Discount</label>
+                                    <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">Qty (sqft)</label>
+                                    <input
+                                        type="number" min="0" step="0.01"
+                                        value={item.quantitySqft}
+                                        onChange={(e) => handleEItemChange(item.id, 'quantitySqft', parseFloat(e.target.value) || 0)}
+                                        className="w-full bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-2.5 outline-none"
+                                    />
+                                    {item.sqftPerBox > 0 && item.quantitySqft > 0 && (() => {
+                                        const boxes = Math.ceil(item.quantitySqft / item.sqftPerBox);
+                                        const rounded = parseFloat((boxes * item.sqftPerBox).toFixed(4));
+                                        return (
+                                            <button
+                                                type="button"
+                                                onClick={() => handleEItemChange(item.id, 'quantitySqft', rounded)}
+                                                className="mt-1.5 w-full text-xs font-bold text-white bg-amber-500 hover:bg-amber-600 active:bg-amber-700 rounded-lg py-1.5 px-2 transition-colors"
+                                                title={`${boxes} boxes × ${item.sqftPerBox} sqft`}
+                                            >
+                                                🧮 Calculate! → {rounded} sqft
+                                            </button>
+                                        );
+                                    })()}
+                                </div>
+                                <div className="w-28">
+                                    <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">Unit Price ($)</label>
+                                    <input
+                                        type="number" min="0" step="0.01"
+                                        value={item.unitPrice}
+                                        onChange={(e) => handleEItemChange(item.id, 'unitPrice', parseFloat(e.target.value) || 0)}
+                                        className="w-full bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-2.5 outline-none"
+                                    />
+                                </div>
+                                <div className="w-36">
+                                    <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">Discount</label>
                                     <div className="relative flex items-center">
                                         <div className="absolute inset-y-0 left-0 flex items-center">
                                             <select
                                                 value={item.discountType}
-                                                onChange={(e) => handleItemChange(index, 'discountType', e.target.value)}
-                                                className="h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-zinc-500 sm:text-sm rounded-l-lg focus:ring-amber-500 focus:border-amber-500"
+                                                onChange={(e) => handleEItemChange(item.id, 'discountType', e.target.value)}
+                                                className="h-full py-0 pl-2 pr-6 border-transparent bg-transparent text-zinc-500 text-sm rounded-l-lg"
                                             >
                                                 <option value="$">$</option>
                                                 <option value="%">%</option>
                                             </select>
                                         </div>
                                         <input
-                                            type="number"
-                                            min="0"
-                                            step="0.01"
+                                            type="number" min="0" step="0.01"
                                             value={item.discount}
-                                            onChange={(e) => handleItemChange(index, 'discount', e.target.value)}
-                                            className="w-full bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-3 pl-14 outline-none"
+                                            onChange={(e) => handleEItemChange(item.id, 'discount', e.target.value)}
+                                            className="w-full bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-2.5 pl-16 outline-none"
                                             placeholder="0.00"
                                         />
                                     </div>
+                                    {/* Effective price/sqft after discount */}
+                                    {(() => {
+                                        const discVal = parseFloat(item.discount) || 0;
+                                        if (discVal <= 0 || item.quantitySqft <= 0) return null;
+                                        const effectivePricePerSqft = item.totalPrice / item.quantitySqft;
+                                        return (
+                                            <div className="mt-1.5 text-xs font-bold text-emerald-600">
+                                                ≈ ${effectivePricePerSqft.toFixed(2)}/sqft after disc.
+                                            </div>
+                                        );
+                                    })()}
                                 </div>
-                                <div className="w-32">
-                                    <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-2">Line Total</label>
-                                    <div className="p-3 bg-zinc-50 border border-transparent text-sm font-bold text-zinc-900 rounded-lg whitespace-nowrap overflow-hidden text-ellipsis">
-                                        ${item.productIdx >= 0 && item.quantity
-                                            ? Math.max(0, (((products[item.productIdx] as unknown as CRMProduct)?.sellingPricePerSqft || 0) * parseFloat(item.quantity)) - (item.discountType === '%' ? (((products[item.productIdx] as unknown as CRMProduct)?.sellingPricePerSqft || 0) * parseFloat(item.quantity)) * (parseFloat(item.discount) / 100 || 0) : (parseFloat(item.discount) || 0))).toFixed(2)
-                                            : "0.00"}
+                                <div className="w-28 text-right">
+                                    <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">Line Total</label>
+                                    <div className="p-2.5 bg-white border border-zinc-200 rounded-lg text-sm font-bold text-zinc-900">
+                                        ${item.totalPrice.toLocaleString(undefined, { minimumFractionDigits: 2 })}
                                     </div>
+                                    {item.sqftPerBox > 0 && item.quantitySqft > 0 && (() => {
+                                        const boxes = Math.ceil(item.quantitySqft / item.sqftPerBox);
+                                        const pallets = item.boxesPerPallet > 0 ? Math.ceil(boxes / item.boxesPerPallet) : null;
+                                        return (
+                                            <>
+                                                <div className="mt-1.5 text-xs font-bold text-blue-600 flex justify-end gap-1 items-center">
+                                                    📦 {boxes} boxes
+                                                </div>
+                                                {pallets !== null && (
+                                                    <div className="mt-0.5 text-xs font-bold text-amber-600 flex justify-end gap-1 items-center">
+                                                        🏗️ {pallets} pallet{pallets !== 1 ? 's' : ''}
+                                                    </div>
+                                                )}
+                                            </>
+                                        );
+                                    })()}
                                 </div>
-                                {orderItems.length > 1 && (
-                                    <button
-                                        type="button"
-                                        onClick={() => handleRemoveItem(index)}
-                                        className="mb-1 p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
-                                    >
-                                        ✕
-                                    </button>
-                                )}
+                                {
+                                    editableItems.length > 1 && (
+                                        <button
+                                            type="button"
+                                            onClick={() => handleRemoveEItem(item.id)}
+                                            className="p-2 text-red-400 hover:bg-red-50 rounded-lg transition-colors self-end"
+                                        >✕</button>
+                                    )
+                                }
                             </div>
                         ))}
                     </div>
@@ -297,8 +500,8 @@ export default function CreateOrderPage() {
 
                 {/* 3. Financials Section */}
                 <div className="bg-white border border-zinc-200 rounded-xl shadow-sm overflow-hidden flex flex-col md:flex-row">
-                    <div className="p-6 flex-1 border-b md:border-b-0 md:border-r border-zinc-200 bg-zinc-50/50 space-y-6">
-                        <h2 className="text-lg font-bold text-zinc-900">3. Final Adjustments</h2>
+                    <div className="p-6 flex-1 border-b md:border-b-0 md:border-r border-zinc-200 bg-zinc-50/50 space-y-6 flex flex-col justify-center">
+                        <h2 className="text-lg font-bold text-zinc-900 text-zinc-400 text-xs tracking-widest uppercase mb-0">3. Final Adjustments</h2>
 
                         <div>
                             <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-2">Global Discount</label>
@@ -318,8 +521,8 @@ export default function CreateOrderPage() {
                                     type="number"
                                     min="0"
                                     step="0.01"
-                                    value={discount}
-                                    onChange={(e) => setDiscount(e.target.value)}
+                                    value={editableDiscount}
+                                    onChange={(e) => setEditableDiscount(e.target.value)}
                                     className="w-full pl-16 bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-3 outline-none"
                                 />
                             </div>
@@ -335,52 +538,306 @@ export default function CreateOrderPage() {
                                     type="number"
                                     min="0"
                                     step="0.01"
-                                    value={freight}
-                                    onChange={(e) => setFreight(e.target.value)}
+                                    value={editableFreight}
+                                    onChange={(e) => setEditableFreight(e.target.value)}
                                     className="w-full pl-8 bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-3 outline-none"
                                 />
                             </div>
                         </div>
                     </div>
 
-                    <div className="p-8 md:w-80 bg-zinc-900 text-white flex flex-col justify-end">
+                    <div className="p-8 md:w-80 bg-zinc-50 text-zinc-900 flex flex-col justify-end">
                         <div className="space-y-3 text-sm">
-                            <div className="flex justify-between text-zinc-400">
+                            <div className="flex justify-between text-zinc-500">
                                 <span>Subtotal</span>
-                                <span>${subtotal.toFixed(2)}</span>
+                                <span>${eSubtotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                             </div>
-                            {parsedDiscount > 0 && (
-                                <div className="flex justify-between text-emerald-400 font-medium">
-                                    <span>Discount</span>
-                                    <span>-${parsedDiscount.toFixed(2)}</span>
+                            {eDiscountAmt > 0 && (
+                                <div className="flex justify-between text-emerald-600 font-medium font-bold">
+                                    <span>Discount ({globalDiscountType === '%' ? `${editableDiscount}%` : `$${eDiscountAmt.toFixed(2)}`})</span>
+                                    <span>-${eDiscountAmt.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                                 </div>
                             )}
-                            {parsedFreight > 0 && (
-                                <div className="flex justify-between text-amber-200">
+                            {eFreight > 0 && (
+                                <div className="flex justify-between text-zinc-500">
                                     <span>Freight</span>
-                                    <span>${parsedFreight.toFixed(2)}</span>
+                                    <span>${eFreight.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                                 </div>
                             )}
-                            <div className="flex justify-between text-zinc-400 pb-4 border-b border-zinc-800">
+                            <div className="flex justify-between text-zinc-500 pb-4 border-b border-zinc-200">
                                 <span>Est. Tax (7%)</span>
-                                <span>${tax.toFixed(2)}</span>
+                                <span>${eTax.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                             </div>
-                            <div className="flex justify-between text-2xl font-black pt-2">
+                            <div className="flex justify-between text-2xl font-black pt-2 text-zinc-900">
                                 <span>Total</span>
-                                <span>${total.toFixed(2)}</span>
+                                <span>${eTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                             </div>
                         </div>
 
-                        <button
-                            type="submit"
-                            className="w-full mt-8 bg-amber-500 text-amber-950 px-4 py-3 rounded-lg font-bold hover:bg-amber-400 transition-colors shadow-[0_0_15px_rgba(245,158,11,0.3)] hover:shadow-[0_0_20px_rgba(245,158,11,0.5)]"
-                        >
-                            Generate Quote
-                        </button>
+                        <div className="mt-8 space-y-3">
+                            <button
+                                type="button"
+                                onClick={() => handleSave('pipeline')}
+                                className="w-full bg-white border border-zinc-300 text-zinc-700 px-4 py-3 rounded-lg font-bold hover:bg-zinc-50 transition-colors shadow-sm"
+                            >
+                                Save to Pipeline
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => handleSave('print')}
+                                className="w-full bg-amber-500 text-amber-950 px-4 py-3 rounded-lg font-bold hover:bg-amber-400 transition-colors shadow-[0_0_15px_rgba(245,158,11,0.3)] hover:shadow-[0_0_20px_rgba(245,158,11,0.5)] flex items-center justify-center gap-2"
+                            >
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                                Save & Print Document
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-            </form>
+            </div>
+
+            {/* Print Template — hidden on screen, visible on print */}
+            <QuotePrintTemplate
+                orderId="DRAFT"
+                status={orderStatus}
+                createdAt={new Date().toISOString()}
+                clientName={clients.find(c => c.id === selectedClientId)?.name || ''}
+                clientCompany={clients.find(c => c.id === selectedClientId)?.company}
+                clientEmail={clients.find(c => c.id === selectedClientId)?.email}
+                clientPhone={clients.find(c => c.id === selectedClientId)?.phone}
+                shippingAddress={editableShipping}
+                billingAddress={editableBilling}
+                items={editableItems}
+                subtotal={eSubtotal}
+                discount={eDiscountAmt}
+                freight={eFreight}
+                tax={eTax}
+                total={eTotal}
+            />
+
+            {/* Create New Client Modal */}
+            {showCreateClient && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+                    onClick={(e) => { if (e.target === e.currentTarget) setShowCreateClient(false); }}
+                >
+                    <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4 overflow-hidden">
+                        {/* Modal Header */}
+                        <div className="bg-zinc-900 px-8 py-5 flex justify-between items-center">
+                            <div>
+                                <h2 className="text-white font-bold text-lg tracking-tight">Create New Client</h2>
+                                <p className="text-zinc-400 text-xs mt-0.5">All fields are optional</p>
+                            </div>
+                            <button
+                                type="button"
+                                onClick={() => setShowCreateClient(false)}
+                                className="text-zinc-400 hover:text-white transition-colors text-xl leading-none"
+                            >✕</button>
+                        </div>
+
+                        {/* Modal Body */}
+                        <div className="p-8 space-y-5">
+                            <div className="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">First Name</label>
+                                    <input
+                                        type="text"
+                                        value={newClientFirstName}
+                                        onChange={(e) => setNewClientFirstName(e.target.value)}
+                                        placeholder="John"
+                                        className="w-full bg-zinc-50 border border-zinc-200 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-3 outline-none"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">Last Name</label>
+                                    <input
+                                        type="text"
+                                        value={newClientLastName}
+                                        onChange={(e) => setNewClientLastName(e.target.value)}
+                                        placeholder="Smith"
+                                        className="w-full bg-zinc-50 border border-zinc-200 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-3 outline-none"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">Phone Number</label>
+                                    <input
+                                        type="tel"
+                                        value={newClientPhone}
+                                        onChange={(e) => setNewClientPhone(e.target.value)}
+                                        placeholder="305-555-0100"
+                                        className="w-full bg-zinc-50 border border-zinc-200 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-3 outline-none"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">Company Name</label>
+                                    <input
+                                        type="text"
+                                        value={newClientCompany}
+                                        onChange={(e) => setNewClientCompany(e.target.value)}
+                                        placeholder="Acme Corp"
+                                        className="w-full bg-zinc-50 border border-zinc-200 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-3 outline-none"
+                                    />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">Email Address</label>
+                                <input
+                                    type="email"
+                                    value={newClientEmail}
+                                    onChange={(e) => setNewClientEmail(e.target.value)}
+                                    placeholder="john@example.com"
+                                    className="w-full bg-zinc-50 border border-zinc-200 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-3 outline-none"
+                                />
+                            </div>
+
+                            <div>
+                                <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">Delivery Address</label>
+                                <textarea
+                                    value={newClientDelivery}
+                                    onChange={(e) => setNewClientDelivery(e.target.value)}
+                                    placeholder="123 Main St, Miami FL 33101"
+                                    rows={2}
+                                    className="w-full bg-zinc-50 border border-zinc-200 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-3 outline-none resize-none"
+                                />
+                            </div>
+
+                            <div>
+                                <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">Billing Address <span className="text-zinc-400 normal-case font-normal">(leave blank to use delivery)</span></label>
+                                <textarea
+                                    value={newClientBilling}
+                                    onChange={(e) => setNewClientBilling(e.target.value)}
+                                    placeholder="Same as delivery address..."
+                                    rows={2}
+                                    className="w-full bg-zinc-50 border border-zinc-200 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-3 outline-none resize-none"
+                                />
+                            </div>
+                        </div>
+
+                        {/* Modal Footer */}
+                        <div className="px-8 py-5 bg-zinc-50 border-t border-zinc-100 flex justify-end gap-3">
+                            <button
+                                type="button"
+                                onClick={() => setShowCreateClient(false)}
+                                className="px-5 py-2.5 border border-zinc-200 text-zinc-700 bg-white rounded-lg text-sm font-semibold hover:bg-zinc-50 transition-colors"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                type="button"
+                                onClick={handleCreateClient}
+                                className="px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-amber-950 rounded-lg text-sm font-bold transition-colors shadow-sm"
+                            >
+                                ✓ Create &amp; Select Client
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Send Order Modal */}
+            {showSendModal && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+                    onClick={(e) => { if (e.target === e.currentTarget) setShowSendModal(false); }}
+                >
+                    <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4 overflow-hidden">
+                        {/* Modal Header */}
+                        <div className="bg-blue-700 px-8 py-5 flex justify-between items-center">
+                            <div>
+                                <h2 className="text-white font-bold text-lg tracking-tight flex items-center gap-2">
+                                    ✉️ Send Order to Client
+                                </h2>
+                                <p className="text-blue-200 text-xs mt-0.5">Confirm the addresses before sending</p>
+                            </div>
+                            <button
+                                type="button"
+                                onClick={() => { setShowSendModal(false); setSendSuccess(false); }}
+                                className="text-blue-200 hover:text-white transition-colors text-xl leading-none"
+                            >✕</button>
+                        </div>
+
+                        {/* Success Banner */}
+                        {sendSuccess && (
+                            <div className="bg-emerald-50 border-b border-emerald-200 px-8 py-4 flex items-center gap-3">
+                                <span className="text-2xl">✅</span>
+                                <div>
+                                    <div className="font-bold text-emerald-800 text-sm">Order sent successfully!</div>
+                                    <div className="text-emerald-600 text-xs mt-0.5">A copy was sent to <strong>{sendToEmail}</strong></div>
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Modal Body */}
+                        {!sendSuccess && (
+                            <div className="p-8 space-y-5">
+                                <div>
+                                    <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">
+                                        From (Your Email)
+                                    </label>
+                                    <input
+                                        type="email"
+                                        value={sendFromEmail}
+                                        onChange={(e) => setSendFromEmail(e.target.value)}
+                                        className="w-full bg-zinc-50 border border-zinc-200 text-zinc-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-3 outline-none"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">
+                                        Send To (Client Email)
+                                    </label>
+                                    <input
+                                        type="email"
+                                        value={sendToEmail}
+                                        onChange={(e) => setSendToEmail(e.target.value)}
+                                        placeholder="client@example.com"
+                                        className="w-full bg-zinc-50 border border-zinc-200 text-zinc-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-3 outline-none"
+                                    />
+                                    {!sendToEmail && (
+                                        <p className="mt-1.5 text-xs text-amber-600 font-medium">⚠ No email on record for this client. Please enter one above.</p>
+                                    )}
+                                </div>
+
+                                <div className="bg-zinc-50 border border-zinc-100 rounded-xl p-4 text-xs text-zinc-500 space-y-1">
+                                    <div className="font-bold text-zinc-700 text-sm mb-2">📋 Order Summary</div>
+                                    <div className="flex justify-between"><span>Client</span><span className="font-semibold text-zinc-800">{clients.find(c => c.id === selectedClientId)?.name}</span></div>
+                                    <div className="flex justify-between"><span>Items</span><span className="font-semibold text-zinc-800">{editableItems.length} line item{editableItems.length !== 1 ? 's' : ''}</span></div>
+                                    <div className="flex justify-between border-t border-zinc-200 pt-2 mt-2"><span className="font-bold text-zinc-700">Total</span><span className="font-black text-zinc-900">${eTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span></div>
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Modal Footer */}
+                        <div className="px-8 py-5 bg-zinc-50 border-t border-zinc-100 flex justify-end gap-3">
+                            <button
+                                type="button"
+                                onClick={() => { setShowSendModal(false); setSendSuccess(false); }}
+                                className="px-5 py-2.5 border border-zinc-200 text-zinc-700 bg-white rounded-lg text-sm font-semibold hover:bg-zinc-50 transition-colors"
+                            >
+                                {sendSuccess ? 'Close' : 'Cancel'}
+                            </button>
+                            {!sendSuccess && (
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        if (!sendToEmail) return alert('Please enter a recipient email address.');
+                                        // In a real app: POST to /api/send-order with the order details
+                                        // For now, simulate success
+                                        setSendSuccess(true);
+                                    }}
+                                    className="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-sm font-bold transition-colors shadow-sm flex items-center gap-2"
+                                >
+                                    ✉️ Send Order
+                                </button>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

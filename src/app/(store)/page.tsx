@@ -14,7 +14,7 @@ export default function Home() {
       <section className="relative w-full h-screen flex items-end justify-start overflow-hidden pt-20">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://rocatileusa.com/uploads/2021/09/amb-01-CALACATTA-GOLD-1-400x400.jpg"
+            src="https://rocatileusa.com/uploads/2021/09/amb-01-CALACATTA-GOLD-1.jpg"
             alt="Calacata Gold Surface"
             fill
             className="object-cover animate-[kenburns_30s_ease-out_forwards]"
@@ -121,7 +121,7 @@ export default function Home() {
       <section className="relative py-32 md:py-48 px-8 bg-zinc-900 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://rocatileusa.com/uploads/2021/07/ROCA_Downtown-living-min-400x400.jpg"
+            src="https://rocatileusa.com/uploads/2021/07/ROCA_Downtown-living-min.jpg"
             alt="Downtown Collection"
             fill
             className="object-cover opacity-50"

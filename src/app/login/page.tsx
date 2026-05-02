@@ -1,25 +1,44 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export default function AdminLogin() {
+function LoginForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
     const [isForgotPassword, setIsForgotPassword] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
+    const searchParams = useSearchParams();
+    const redirect = searchParams.get('redirect') || '/admin';
 
-    const handleLogin = (e: React.FormEvent) => {
+    const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         setError("");
         setSuccessMessage("");
+        setIsLoading(true);
 
-        if (email.toLowerCase() === "adrian@castileusa.com" && (password === "admin" || password === "castile2026")) {
-            localStorage.setItem("crm_auth", "true");
-            router.push("/admin");
-        } else {
-            setError("Incorrect email or password.");
+        try {
+            const res = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password }),
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                router.push(redirect);
+                router.refresh();
+            } else {
+                setError(data.error || "Incorrect email or password.");
+            }
+        } catch {
+            setError("Something went wrong. Please try again.");
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -32,9 +51,7 @@ export default function AdminLogin() {
             return;
         }
 
-        // Output to console to show we'd be sending an email here
         console.log(`Mock: Sending password reset email to ${email}`);
-
         setSuccessMessage(`If an account exists for ${email}, a password reset link has been sent.`);
         setIsForgotPassword(false);
         setPassword("");
@@ -135,9 +152,10 @@ export default function AdminLogin() {
 
                         <button
                             type="submit"
-                            className="w-full bg-zinc-900 text-white font-semibold py-3.5 rounded-lg hover:bg-zinc-800 transition-colors shadow-sm"
+                            disabled={isLoading}
+                            className="w-full bg-zinc-900 text-white font-semibold py-3.5 rounded-lg hover:bg-zinc-800 transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                            Sign In &rarr;
+                            {isLoading ? "Signing in..." : "Sign In →"}
                         </button>
                     </form>
                 )}
@@ -149,5 +167,17 @@ export default function AdminLogin() {
                 )}
             </div>
         </div>
+    );
+}
+
+export default function AdminLogin() {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen flex items-center justify-center bg-zinc-50">
+                <div className="text-zinc-400">Loading...</div>
+            </div>
+        }>
+            <LoginForm />
+        </Suspense>
     );
 }

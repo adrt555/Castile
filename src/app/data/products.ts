@@ -108,13 +108,18 @@ const rocaImages: Record<string, string> = {
 };
 
 // Map real collections to the required UI format, adding official images when available
-export const categories: Collection[] = collectionsList.map((c, i) => ({
-    name: c.name,
-    slug: c.slug,
-    count: Math.floor(Math.random() * 15) + 3,
-    image: rocaImages[c.slug] || `https://picsum.photos/seed/castile_col_${i}/1000/1000`,
-    description: `Premium ${c.materials?.[0] || 'surfaces'} from the ${c.name} collection.`
-}));
+export const categories: Collection[] = collectionsList.map((c, i) => {
+    let img = rocaImages[c.slug];
+    if (img) img = img.replace(/-\d+x\d+/g, '').replace(/-web-thumbnail\.jpg|-thumbnail\.jpg|\.webp/g, '');
+
+    return {
+        name: c.name,
+        slug: c.slug,
+        count: Math.floor(Math.random() * 15) + 3,
+        image: img || `https://picsum.photos/seed/castile_col_${i}/1000/1000`,
+        description: `Premium ${c.materials?.[0] || 'surfaces'} from the ${c.name} collection.`
+    };
+});
 
 const rawProductsData = [
     { id: "1", col: "ABACO", colors: ["Arena", "Gris", "Grafito"], sizes: ["12X24", "24X48"] },
@@ -174,7 +179,14 @@ export const allProducts: Product[] = [];
 // Generate fully structured products for the UI
 rawProductsData.forEach((raw, idx) => {
     const collectionInfo = collectionsList.find(c => c.name === raw.col) || collectionsList[0];
-    const baseImage = rocaImages[collectionInfo.slug] || `https://picsum.photos/seed/castile_prod_${raw.id}/1000/1000`;
+
+    // Strip thumbnail sizes (-400x400, -768x543) from Roca URLs so we pull the 4K original image
+    let baseImage = rocaImages[collectionInfo.slug];
+    if (baseImage) {
+        baseImage = baseImage.replace(/-\d+x\d+/g, '').replace(/-web-thumbnail\.jpg|-thumbnail\.jpg|\.webp/g, '');
+    } else {
+        baseImage = `https://picsum.photos/seed/castile_prod_${raw.id}/1000/1000`;
+    }
 
     const variations = raw.colors.map((c, i) => ({
         color: c,

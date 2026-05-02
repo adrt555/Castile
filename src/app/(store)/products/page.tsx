@@ -53,7 +53,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                                 {filteredProducts.map((product) => (
                                     <Link key={product.id} href={`/products/${product.id}`} className="group block">
-                                        <div className="relative aspect-[4/5] overflow-hidden mb-5 bg-zinc-900 border border-white/5 rounded-xl">
+                                        <div className="relative aspect-square overflow-hidden mb-5 bg-zinc-900 border border-white/5 rounded-xl">
                                             <Image
                                                 src={product.image}
                                                 alt={product.name}
@@ -66,14 +66,12 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
                                                 </div>
                                             )}
                                         </div>
-                                        <div className="flex justify-between items-start">
-                                            <div>
-                                                <h3 className="text-xl font-medium text-white mb-2 font-playfair">{product.name}</h3>
-                                                <p className="text-white/50 text-xs tracking-wide uppercase mb-1">{product.category}</p>
-                                                <p className="text-white/40 text-xs mt-1 truncate max-w-[200px]">
-                                                    {product.colors.length} Colors • {product.sizes.length} Sizes
-                                                </p>
-                                            </div>
+                                        <div className="flex flex-col items-center text-center">
+                                            <h3 className="text-xl font-medium text-black dark:text-white mb-2 font-playfair">{product.name}</h3>
+                                            <p className="text-zinc-500 dark:text-white/50 text-xs tracking-wide uppercase mb-1">{product.category}</p>
+                                            <p className="text-zinc-400 dark:text-white/40 text-xs mt-1 truncate max-w-[200px]">
+                                                {product.colors.length} Colors • {product.sizes.length} Sizes
+                                            </p>
                                         </div>
                                     </Link>
                                 ))}

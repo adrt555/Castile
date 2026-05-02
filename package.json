@@ -1,6 +1,6 @@
 {
-  "name": "zonal-perseverance",
-  "version": "0.1.0",
+  "name": "castile-web",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,12 +10,8 @@
   },
   "dependencies": {
     "next": "16.1.6",
-    "puppeteer": "^24.37.5",
-    "puppeteer-extra": "^3.3.6",
-    "puppeteer-extra-plugin-stealth": "^2.11.2",
     "react": "19.2.3",
-    "react-dom": "19.2.3",
-    "sharp": "^0.34.5"
+    "react-dom": "19.2.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -24,6 +20,10 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
+    "puppeteer": "^24.37.5",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4",
     "typescript": "^5",
     "xlsx": "^0.18.5"
