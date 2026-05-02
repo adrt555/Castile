@@ -42,7 +42,7 @@ function LoginForm() {
         }
     };
 
-    const handleForgotPassword = (e: React.FormEvent) => {
+    const handleForgotPassword = async (e: React.FormEvent) => {
         e.preventDefault();
         setError("");
 
@@ -51,10 +51,28 @@ function LoginForm() {
             return;
         }
 
-        console.log(`Mock: Sending password reset email to ${email}`);
-        setSuccessMessage(`If an account exists for ${email}, a password reset link has been sent.`);
-        setIsForgotPassword(false);
-        setPassword("");
+        setIsLoading(true);
+        try {
+            const res = await fetch('/api/auth/forgot-password', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email }),
+            });
+
+            const data = await res.json();
+            
+            if (data.success) {
+                setSuccessMessage(`If an account exists for ${email}, a password reset link has been sent.`);
+                setIsForgotPassword(false);
+                setPassword("");
+            } else {
+                setError(data.error || "Failed to send reset email.");
+            }
+        } catch {
+            setError("Something went wrong. Please try again.");
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (

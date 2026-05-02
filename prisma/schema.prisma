@@ -49,3 +49,13 @@ model OrderItem {
   unitPrice    Float
   totalPrice   Float
 }
+
+model Admin {
+  id               String    @id @default(uuid())
+  email            String    @unique
+  password         String
+  resetToken       String?
+  resetTokenExpiry DateTime?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+}
