@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { getClients, createClient } from "@/app/actions/clientActions";
@@ -46,7 +46,7 @@ export default function CreateOrderPage() {
     const [products, setProducts] = useState<any[]>([]);
 
     // Fetch lookups
-    import { useEffect } from "react";
+    // Fetch lookups
     useEffect(() => {
         Promise.all([getClients(), getProducts()]).then(([c, p]) => {
             setClients(c);
@@ -58,9 +58,9 @@ export default function CreateOrderPage() {
         const fullName = `${newClientFirstName} ${newClientLastName}`.trim() || 'New Client';
         const created = await createClient({
             name: fullName,
-            company: newClientCompany || undefined,
-            email: newClientEmail || undefined,
-            phone: newClientPhone || undefined,
+            company: newClientCompany || "",
+            email: newClientEmail || "",
+            phone: newClientPhone || "",
             type: "Homeowner", // Default
             address: newClientDelivery || undefined,
             billingAddress: newClientBilling || undefined,

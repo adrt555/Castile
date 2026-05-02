@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import prisma from '@/lib/prisma';
-import { sendPasswordResetEmail } from '@/lib/mailer';
-import crypto from 'crypto';
+import { createClient } from '@/lib/supabase-server';
 
 export async function POST(request: NextRequest) {
     try {
@@ -12,41 +10,28 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ success: false, error: 'Email is required.' }, { status: 400 });
         }
 
-        const admin = await prisma.admin.findUnique({
-            where: { email: trimmedEmail }
-        });
-
-        // Always return success even if email not found to prevent email enumeration
-        if (!admin) {
-            return NextResponse.json({ success: true });
-        }
-
-        // Generate a secure random token
-        const resetToken = crypto.randomBytes(32).toString('hex');
+        const supabase = await createClient();
         
-        // Token expires in 1 hour
-        const resetTokenExpiry = new Date(Date.now() + 3600000); 
-
-        await prisma.admin.update({
-            where: { id: admin.id },
-            data: {
-                resetToken,
-                resetTokenExpiry
-            }
+        // Let's use the current request URL to build the redirect URL
+        // In local development this will be http://localhost:3000, in production the Vercel URL
+        const origin = request.headers.get('origin') || process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+        
+        const { error } = await supabase.auth.resetPasswordForEmail(trimmedEmail, {
+            redirectTo: `${origin}/api/auth/callback?next=/reset-password`,
         });
 
-        const emailResult = await sendPasswordResetEmail(trimmedEmail, resetToken);
-
-        if (!emailResult.success) {
-            return NextResponse.json({ success: false, error: 'Failed to send email. Check SMTP configuration.' }, { status: 500 });
+        if (error) {
+            console.error("Supabase reset password error:", error);
+            // We still return success to avoid email enumeration
+            return NextResponse.json({ success: true });
         }
 
         return NextResponse.json({ success: true });
 
-    } catch (error) {
+    } catch (error: any) {
         console.error("Forgot password error:", error);
         return NextResponse.json(
-            { success: false, error: 'Invalid request or database error.' },
+            { success: false, error: error.message || 'Invalid request or database error.' },
             { status: 500 }
         );
     }

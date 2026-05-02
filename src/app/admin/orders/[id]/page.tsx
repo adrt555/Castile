@@ -38,7 +38,7 @@ export default function OrderPrintPage({ params }: { params: Promise<{ id: strin
     }
 
     // Adapt db items to the PrintItem interface
-    const printItems = order.items.map(item => ({
+    const printItems = order.items.map((item: any) => ({
         productName: item.productName,
         colorName: item.colorName,
         size: item.size,

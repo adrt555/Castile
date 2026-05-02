@@ -3,6 +3,8 @@ import { getOrders } from "@/app/actions/orderActions";
 import { getFinanceSummary } from "@/app/actions/financeActions";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminDashboard() {
     const finance = await getFinanceSummary();
     const clients = await getClients();

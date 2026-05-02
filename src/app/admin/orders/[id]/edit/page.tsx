@@ -51,7 +51,7 @@ export default function EditOrderPage({ params }: { params: Promise<{ id: string
             setBillingAddress(existingOrder.billingAddress || "");
 
             if (existingOrder.items && existingOrder.items.length > 0) {
-                const mappedItems = existingOrder.items.map(item => {
+                const mappedItems = existingOrder.items.map((item: any) => {
                     const pIdx = products.findIndex(p => p.id === item.productId);
                     return {
                         productIdx: pIdx,

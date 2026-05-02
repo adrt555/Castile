@@ -10,21 +10,6 @@ function ResetPasswordForm() {
     const [successMessage, setSuccessMessage] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
-    const searchParams = useSearchParams();
-    const token = searchParams.get('token');
-
-    if (!token) {
-        return (
-            <div className="text-center">
-                <h1 className="text-xl font-bold text-zinc-900 mb-2">Invalid Link</h1>
-                <p className="text-zinc-500 mb-6">This password reset link is invalid or missing the token.</p>
-                <Link href="/login" className="text-amber-600 hover:text-amber-700 font-semibold underline">
-                    Return to Login
-                </Link>
-            </div>
-        );
-    }
-
     const handleReset = async (e: React.FormEvent) => {
         e.preventDefault();
         setError("");
@@ -45,7 +30,7 @@ function ResetPasswordForm() {
             const res = await fetch('/api/auth/reset-password', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ token, password }),
+                body: JSON.stringify({ password }),
             });
 
             const data = await res.json();
