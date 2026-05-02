@@ -5,12 +5,12 @@ export async function POST(request: NextRequest) {
         const { email, password } = await request.json();
 
         // Validate against environment variables (with fallback defaults for dev)
-        const validEmail = process.env.ADMIN_EMAIL || 'adrian@castileusa.com';
-        const validPassword = process.env.ADMIN_PASSWORD || 'castile2026';
+        const validEmail = (process.env.ADMIN_EMAIL || 'adrian@castileusa.com').trim();
+        const validPassword = (process.env.ADMIN_PASSWORD || 'castile2026').trim();
 
         if (
-            email?.toLowerCase() === validEmail.toLowerCase() &&
-            password === validPassword
+            email?.trim().toLowerCase() === validEmail.toLowerCase() &&
+            password?.trim() === validPassword
         ) {
             // Create a simple auth token (timestamp + secret hash)
             const authSecret = process.env.AUTH_SECRET || 'castile-default-secret-key';
