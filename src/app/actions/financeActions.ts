@@ -20,18 +20,20 @@ export async function getFinanceSummary() {
     let totalCosts = 0;
     let pendingInvoicesTotal = 0;
 
-    closedOrders.forEach(order => {
-        totalRevenue += order.subtotal;
-        order.items.forEach(item => {
-            const catItem = crmProducts.find(p => p.name.includes(item.productName) || p.id === item.productId);
-            const costBasis = catItem ? catItem.costPricePerSqft : 2.00;
-            totalCosts += (costBasis * item.quantitySqft);
-        });
+    closedOrders.forEach((order: any) => {
+        totalRevenue += order.subtotal || 0;
+        if (order.items) {
+            order.items.forEach((item: any) => {
+                const catItem = crmProducts.find(p => p.name.includes(item.productName) || p.id === item.productId);
+                const costBasis = catItem ? catItem.costPricePerSqft : 2.00;
+                totalCosts += (costBasis * (item.quantitySqft || 0));
+            });
+        }
     });
 
-    quotes.forEach(quote => {
+    quotes.forEach((quote: any) => {
         if (quote.status === 'Invoice Sent') {
-            pendingInvoicesTotal += quote.total;
+            pendingInvoicesTotal += quote.total || 0;
         }
     });
 
