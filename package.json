@@ -13,6 +13,7 @@
     "@supabase/ssr": "^0.10.2",
     "@supabase/supabase-js": "^2.105.1",
     "bcryptjs": "^3.0.3",
+    "jose": "^6.2.3",
     "next": "16.1.6",
     "nodemailer": "^8.0.7",
     "react": "19.2.3",

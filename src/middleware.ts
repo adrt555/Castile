@@ -1,59 +1,49 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { createServerClient } from '@supabase/ssr'
+import { jwtVerify } from 'jose';
+
+const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET || 'castile-crm-secret-key-2026');
 
 export async function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
-    
-    // Disable authentication check for now
-    // We only protect /admin and redirect /login
-    // if (!pathname.startsWith('/admin') && pathname !== '/login') {
-    //     return NextResponse.next();
-    // }
 
-    // let supabaseResponse = NextResponse.next({
-    //     request,
-    // })
+    // Only protect /admin routes
+    if (pathname.startsWith('/admin')) {
+        const token = request.cookies.get('crm_session')?.value;
 
-    // const supabase = createServerClient(
-    //     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    //     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    //     {
-    //         cookies: {
-    //             getAll() {
-    //                 return request.cookies.getAll()
-    //             },
-    //             setAll(cookiesToSet) {
-    //                 cookiesToSet.forEach(({ name, value, options }) => request.cookies.set(name, value))
-    //                 supabaseResponse = NextResponse.next({
-    //                     request,
-    //                 })
-    //                 cookiesToSet.forEach(({ name, value, options }) =>
-    //                     supabaseResponse.cookies.set(name, value, options)
-    //                 )
-    //             },
-    //         },
-    //     }
-    // )
+        if (!token) {
+            const loginUrl = new URL('/login', request.url);
+            loginUrl.searchParams.set('redirect', pathname);
+            return NextResponse.redirect(loginUrl);
+        }
 
-    // const {
-    //     data: { user },
-    // } = await supabase.auth.getUser()
+        try {
+            await jwtVerify(token, JWT_SECRET);
+            return NextResponse.next();
+        } catch {
+            // Token expired or invalid — redirect to login
+            const loginUrl = new URL('/login', request.url);
+            loginUrl.searchParams.set('redirect', pathname);
+            const response = NextResponse.redirect(loginUrl);
+            // Clear the bad cookie
+            response.cookies.set('crm_session', '', { maxAge: 0, path: '/' });
+            return response;
+        }
+    }
 
-    // if (pathname.startsWith('/admin')) {
-    //     if (!user) {
-    //         const loginUrl = new URL('/login', request.url);
-    //         loginUrl.searchParams.set('redirect', pathname);
-    //         return NextResponse.redirect(loginUrl);
-    //     }
-    // }
+    // If user is already logged in and visits /login, redirect to admin
+    if (pathname === '/login') {
+        const token = request.cookies.get('crm_session')?.value;
+        if (token) {
+            try {
+                await jwtVerify(token, JWT_SECRET);
+                return NextResponse.redirect(new URL('/admin/orders', request.url));
+            } catch {
+                // Token invalid, let them see login
+            }
+        }
+    }
 
-    // if (pathname === '/login' && user) {
-    //     return NextResponse.redirect(new URL('/admin', request.url));
-    // }
-
-    // return supabaseResponse;
-    
     return NextResponse.next();
 }
 
