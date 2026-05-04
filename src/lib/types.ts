@@ -69,3 +69,29 @@ export interface FinanceSummary {
     netProfit: number;
     pendingInvoicesTotal: number;
 }
+
+export type POStatus = "Pending" | "Confirmed" | "In Production" | "Shipped" | "Received";
+
+export interface PurchaseOrderItem {
+    sku: string;
+    description: string;
+    boxes: number;
+    sqftPerBox: number;
+    unitCost: number;
+    totalLineCost: number;
+}
+
+export interface PurchaseOrder {
+    id: string;
+    poNumber: string;
+    manufacturer: string;
+    status: POStatus;
+    createdAt: string;
+    expectedDate: string;
+    items: PurchaseOrderItem[];
+    notes: string;
+    subtotal: number;
+    freight: number;
+    tax: number;
+    total: number;
+}

@@ -24,6 +24,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     const navLinks = [
         { href: "/admin", label: "Dashboard" },
         { href: "/admin/orders", label: "Sales Pipeline" },
+        { href: "/admin/purchase-orders", label: "Purchase Orders" },
         { href: "/admin/clients", label: "Clients" },
         { href: "/admin/products", label: "Product Catalog" },
         { href: "/admin/finance", label: "Accounting" },

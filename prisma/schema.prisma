@@ -61,3 +61,31 @@ model Admin {
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @updatedAt
 }
+
+model PurchaseOrder {
+  id           String              @id @default(uuid())
+  poNumber     String              @unique
+  manufacturer String
+  status       String              // 'Pending' | 'Confirmed' | 'In Production' | 'Shipped' | 'Received'
+  expectedDate String?
+  notes        String?
+  subtotal     Float
+  freight      Float               @default(0.0)
+  tax          Float               @default(0.0)
+  total        Float
+  createdAt    DateTime            @default(now())
+  updatedAt    DateTime            @updatedAt
+  items        PurchaseOrderItem[]
+}
+
+model PurchaseOrderItem {
+  id            String        @id @default(uuid())
+  purchaseOrderId String
+  purchaseOrder   PurchaseOrder @relation(fields: [purchaseOrderId], references: [id], onDelete: Cascade)
+  sku           String
+  description   String
+  boxes         Int
+  sqftPerBox    Float
+  unitCost      Float
+  totalLineCost Float
+}
