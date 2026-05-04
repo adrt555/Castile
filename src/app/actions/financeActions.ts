@@ -4,9 +4,14 @@ import prisma from "@/lib/prisma";
 import { crmProducts } from "@/lib/crmProducts";
 
 export async function getFinanceSummary() {
-    const orders = await prisma.order.findMany({
-        include: { items: true }
-    });
+    let orders: any[] = [];
+    try {
+        orders = await prisma.order.findMany({
+            include: { items: true }
+        });
+    } catch (e) {
+        console.error("DB Error in getFinanceSummary:", e);
+    }
 
     const closedOrders = orders.filter(o => o.status === 'Paid' || o.status === 'Delivered' || o.status === 'Unfulfilled');
     const quotes = orders.filter(o => o.status === 'Quote' || o.status === 'Invoice Sent');

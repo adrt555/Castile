@@ -4,15 +4,25 @@ import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 
 export async function getClients() {
-    return await prisma.client.findMany({
-        orderBy: { createdAt: 'desc' }
-    });
+    try {
+        return await prisma.client.findMany({
+            orderBy: { createdAt: 'desc' }
+        });
+    } catch (e) {
+        console.error("DB Error in getClients:", e);
+        return [];
+    }
 }
 
 export async function getClientById(id: string) {
-    return await prisma.client.findUnique({
-        where: { id }
-    });
+    try {
+        return await prisma.client.findUnique({
+            where: { id }
+        });
+    } catch (e) {
+        console.error("DB Error in getClientById:", e);
+        return null;
+    }
 }
 
 export async function createClient(data: {

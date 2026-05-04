@@ -4,23 +4,33 @@ import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 
 export async function getOrders() {
-    return await prisma.order.findMany({
-        include: {
-            client: true,
-            items: true
-        },
-        orderBy: { createdAt: 'desc' }
-    });
+    try {
+        return await prisma.order.findMany({
+            include: {
+                client: true,
+                items: true
+            },
+            orderBy: { createdAt: 'desc' }
+        });
+    } catch (e) {
+        console.error("DB Error in getOrders:", e);
+        return [];
+    }
 }
 
 export async function getOrderById(id: string) {
-    return await prisma.order.findUnique({
-        where: { id },
-        include: {
-            client: true,
-            items: true
-        }
-    });
+    try {
+        return await prisma.order.findUnique({
+            where: { id },
+            include: {
+                client: true,
+                items: true
+            }
+        });
+    } catch (e) {
+        console.error("DB Error in getOrderById:", e);
+        return null;
+    }
 }
 
 export async function createOrder(data: any) {
