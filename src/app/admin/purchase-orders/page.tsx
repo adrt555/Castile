@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { getPurchaseOrders } from "@/app/actions/purchaseOrderActions";
 import { POStatus } from "@/lib/types";
@@ -111,16 +111,55 @@ export default function PurchaseOrdersPage() {
                                 const sqft = poTotalSqft(po);
                                 const isOpen = expandedId === po.id;
                                 return (
-                                    <tr key={po.id} className="hover:bg-zinc-50/70 transition-colors cursor-pointer" onClick={() => setExpandedId(isOpen ? null : po.id)}>
-                                        <td className="px-5 py-3 font-mono font-bold text-zinc-800 whitespace-nowrap">{po.poNumber}</td>
-                                        <td className="px-5 py-3 font-medium text-zinc-800">{po.manufacturer}</td>
-                                        <td className="px-5 py-3"><StatusBadge status={po.status as POStatus} /></td>
-                                        <td className="px-5 py-3 whitespace-nowrap">{new Date(po.createdAt).toLocaleDateString()}</td>
-                                        <td className="px-5 py-3 whitespace-nowrap">{po.expectedDate || 'TBD'}</td>
-                                        <td className="px-5 py-3 font-semibold text-zinc-700 whitespace-nowrap">{sqft.toLocaleString(undefined,{maximumFractionDigits:1})} sf</td>
-                                        <td className="px-5 py-3 font-bold text-zinc-900 whitespace-nowrap">${(po.total||0).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}</td>
-                                        <td className="px-5 py-3 text-zinc-400 text-xs font-bold">{isOpen ? "▲" : "▼"}</td>
-                                    </tr>
+                                    <React.Fragment key={po.id}>
+                                        <tr className="hover:bg-zinc-50/70 transition-colors cursor-pointer" onClick={() => setExpandedId(isOpen ? null : po.id)}>
+                                            <td className="px-5 py-3 font-mono font-bold text-zinc-800 whitespace-nowrap">{po.poNumber}</td>
+                                            <td className="px-5 py-3 font-medium text-zinc-800">{po.manufacturer}</td>
+                                            <td className="px-5 py-3"><StatusBadge status={po.status as POStatus} /></td>
+                                            <td className="px-5 py-3 whitespace-nowrap">{new Date(po.createdAt).toLocaleDateString()}</td>
+                                            <td className="px-5 py-3 whitespace-nowrap">{po.expectedDate || 'TBD'}</td>
+                                            <td className="px-5 py-3 font-semibold text-zinc-700 whitespace-nowrap">{sqft.toLocaleString(undefined,{maximumFractionDigits:1})} sf</td>
+                                            <td className="px-5 py-3 font-bold text-zinc-900 whitespace-nowrap">${(po.total||0).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}</td>
+                                            <td className="px-5 py-3 text-zinc-400 text-xs font-bold">{isOpen ? "▲" : "▼"}</td>
+                                        </tr>
+                                        {isOpen && (
+                                            <tr>
+                                                <td colSpan={8} className="bg-zinc-50 px-5 py-4 border-b border-zinc-200">
+                                                    <div className="space-y-3">
+                                                        {po.notes && (
+                                                            <p className="text-sm text-zinc-500 italic">📝 {po.notes}</p>
+                                                        )}
+                                                        <table className="w-full text-xs text-left">
+                                                            <thead>
+                                                                <tr className="text-zinc-400 uppercase tracking-wide border-b border-zinc-200">
+                                                                    <th className="pb-2 font-semibold">SKU</th>
+                                                                    <th className="pb-2 font-semibold">Description</th>
+                                                                    <th className="pb-2 font-semibold text-right">Boxes</th>
+                                                                    <th className="pb-2 font-semibold text-right">Sqft/Box</th>
+                                                                    <th className="pb-2 font-semibold text-right">Total Sqft</th>
+                                                                    <th className="pb-2 font-semibold text-right">Unit Cost</th>
+                                                                    <th className="pb-2 font-semibold text-right">Line Total</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody className="divide-y divide-zinc-100">
+                                                                {po.items.map((item: any, idx: number) => (
+                                                                    <tr key={idx} className="py-1">
+                                                                        <td className="py-2 font-mono font-bold text-zinc-700">{item.sku}</td>
+                                                                        <td className="py-2 text-zinc-700">{item.description}</td>
+                                                                        <td className="py-2 text-right font-semibold text-blue-600">📦 {item.boxes}</td>
+                                                                        <td className="py-2 text-right text-zinc-500">{item.sqftPerBox} sf</td>
+                                                                        <td className="py-2 text-right font-semibold">{(item.boxes * item.sqftPerBox).toFixed(2)} sf</td>
+                                                                        <td className="py-2 text-right text-red-600 font-medium">${item.unitCost.toFixed(2)}</td>
+                                                                        <td className="py-2 text-right font-bold text-zinc-900">${(item.boxes * item.sqftPerBox * item.unitCost).toFixed(2)}</td>
+                                                                    </tr>
+                                                                ))}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        )}
+                                    </React.Fragment>
                                 );
                             })}
                         </tbody>

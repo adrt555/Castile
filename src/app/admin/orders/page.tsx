@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { getClients } from "@/app/actions/clientActions";
+import { getClients, createClient, updateClient } from "@/app/actions/clientActions";
 import { getProducts } from "@/app/actions/productActions";
 import { getOrders, updateOrderStatus, updateOrder } from "@/app/actions/orderActions";
 import { Order, Client, OrderStatus, CRMProduct } from "@/lib/types";
@@ -31,6 +31,10 @@ export default function OrdersTablePipeline() {
     const [products, setProducts] = useState<any[]>([]);
     const [allClients, setAllClients] = useState<any[]>([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [showCreateClient, setShowCreateClient] = useState(false);
+    const [newClientDraft, setNewClientDraft] = useState({ name: '', company: '', email: '', phone: '', type: 'Contractor' as string, address: '', billingAddress: '' });
+    const [showEditClient, setShowEditClient] = useState(false);
+    const [editClientDraft, setEditClientDraft] = useState<{ name: string; company: string; email: string; phone: string; type: string; address: string; billingAddress: string } | null>(null);
 
     const loadData = async () => {
         setIsLoading(true);
@@ -273,54 +277,192 @@ export default function OrdersTablePipeline() {
                         {/* 1. Client Section */}
                         <div>
                             <h3 className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-4 pb-2 border-b border-zinc-100">1. Client</h3>
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                <div className="relative">
-                                    <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-2">Select Client</label>
-                                    <input
-                                        type="text"
-                                        value={clientSearch}
-                                        onChange={(e) => { setClientSearch(e.target.value); setIsClientDropdownOpen(true); setIsDirty(true); }}
-                                        onFocus={() => setIsClientDropdownOpen(true)}
-                                        placeholder="Search by name, company, email..."
-                                        className="w-full bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-3 outline-none"
-                                    />
-                                    {isClientDropdownOpen && filteredClients.length > 0 && (
-                                        <div className="absolute z-20 mt-1 w-full bg-white border border-zinc-200 rounded-xl shadow-xl max-h-52 overflow-y-auto">
-                                            {filteredClients.map(c => (
-                                                <button
-                                                    key={c.id}
-                                                    type="button"
-                                                    className="w-full text-left px-4 py-3 hover:bg-amber-50 transition-colors border-b border-zinc-50 last:border-0"
-                                                    onClick={() => {
-                                                        setEditableClientId(c.id);
-                                                        setClientSearch(`${c.name} — ${c.company}`);
-                                                        setEditableShipping((c as any).address || '');
-                                                        setEditableBilling((c as any).billingAddress || (c as any).address || '');
-                                                        setIsClientDropdownOpen(false);
-                                                        setIsDirty(true);
-                                                    }}
-                                                >
-                                                    <div className="font-semibold text-zinc-900 text-sm">{c.name}</div>
-                                                    <div className="text-xs text-zinc-500">{c.company} · {c.email}</div>
-                                                </button>
-                                            ))}
+
+                            {/* Search + dropdown */}
+                            <div className="relative mb-4">
+                                <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-2">Select Client</label>
+                                <input
+                                    type="text"
+                                    value={clientSearch}
+                                    onChange={(e) => { setClientSearch(e.target.value); setIsClientDropdownOpen(true); setIsDirty(true); }}
+                                    onFocus={() => setIsClientDropdownOpen(true)}
+                                    onBlur={() => setTimeout(() => setIsClientDropdownOpen(false), 250)}
+                                    placeholder="Search by name, company, email…"
+                                    className="w-full bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-3 outline-none"
+                                />
+                                {isClientDropdownOpen && (
+                                    <div className="absolute z-30 mt-1 w-full bg-white border border-zinc-200 rounded-xl shadow-xl overflow-hidden">
+                                        {filteredClients.length > 0 && (
+                                            <ul className="max-h-52 overflow-y-auto divide-y divide-zinc-100">
+                                                {filteredClients.map(c => (
+                                                    <li key={c.id}>
+                                                        <button type="button"
+                                                            onMouseDown={() => {
+                                                                setEditableClientId(c.id);
+                                                                setClientSearch(`${c.name} — ${c.company}`);
+                                                                setEditableShipping((c as any).address || '');
+                                                                setEditableBilling((c as any).billingAddress || (c as any).address || '');
+                                                                setIsClientDropdownOpen(false);
+                                                                setShowCreateClient(false);
+                                                                setShowEditClient(false);
+                                                                setIsDirty(true);
+                                                            }}
+                                                            className="w-full text-left px-4 py-3 hover:bg-amber-50 transition-colors">
+                                                            <div className="font-semibold text-zinc-900 text-sm">{c.name}</div>
+                                                            <div className="text-xs text-zinc-500">{c.company} · {c.email}</div>
+                                                        </button>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        )}
+                                        {filteredClients.length === 0 && clientSearch && (
+                                            <div className="px-4 py-3 text-sm text-zinc-400">No clients found for &ldquo;{clientSearch}&rdquo;</div>
+                                        )}
+                                        <div className="border-t border-zinc-100">
+                                            <button type="button"
+                                                onMouseDown={() => { setShowCreateClient(c => !c); setShowEditClient(false); }}
+                                                className="w-full flex items-center gap-2 px-4 py-3 text-sm font-bold text-amber-600 hover:bg-amber-50 transition-colors">
+                                                <span className="text-lg leading-none">＋</span> Create New Client
+                                            </button>
                                         </div>
-                                    )}
-                                </div>
-                                {selectedClient && (
-                                    <>
-                                        <div className="text-sm text-zinc-600 space-y-1 pt-6">
-                                            <div className="font-bold text-zinc-900 text-base">{selectedClient.name}</div>
-                                            <div className="text-amber-600 font-medium">{selectedClient.company}</div>
-                                            <div className="flex items-center gap-1.5 text-zinc-500">📧 {selectedClient.email}</div>
-                                            <div className="flex items-center gap-1.5 text-zinc-500">📞 {selectedClient.phone}</div>
-                                        </div>
-                                        <div />
-                                    </>
+                                    </div>
                                 )}
                             </div>
+
+                            {/* Selected client info card */}
+                            {selectedClient && !showEditClient && !showCreateClient && (
+                                <div className="flex items-start justify-between bg-zinc-50 border border-zinc-200 rounded-xl p-4 mb-4">
+                                    <div className="text-sm text-zinc-600 space-y-0.5">
+                                        <div className="font-bold text-zinc-900 text-base">{selectedClient.name}</div>
+                                        <div className="text-amber-600 font-medium">{selectedClient.company}</div>
+                                        <div className="text-zinc-500">📧 {selectedClient.email}</div>
+                                        <div className="text-zinc-500">📞 {selectedClient.phone}</div>
+                                        {(selectedClient as any).type && <div className="text-xs text-zinc-400 font-semibold uppercase tracking-wide mt-1">{(selectedClient as any).type}</div>}
+                                    </div>
+                                    <button type="button"
+                                        onClick={() => {
+                                            setEditClientDraft({
+                                                name:           selectedClient.name,
+                                                company:        selectedClient.company,
+                                                email:          selectedClient.email,
+                                                phone:          selectedClient.phone,
+                                                type:           (selectedClient as any).type || 'Contractor',
+                                                address:        (selectedClient as any).address || '',
+                                                billingAddress: (selectedClient as any).billingAddress || '',
+                                            });
+                                            setShowEditClient(true);
+                                        }}
+                                        className="text-xs font-bold text-zinc-500 hover:text-amber-600 border border-zinc-200 hover:border-amber-300 px-3 py-1.5 rounded-lg transition-colors">
+                                        ✏️ Edit Client
+                                    </button>
+                                </div>
+                            )}
+
+                            {/* Inline Create Client form */}
+                            {showCreateClient && (
+                                <div className="border border-amber-200 bg-amber-50/50 rounded-xl p-5 space-y-4 mb-4">
+                                    <div className="flex items-center justify-between">
+                                        <h4 className="text-sm font-bold text-amber-700 uppercase tracking-wide">New Client</h4>
+                                        <button type="button" onClick={() => setShowCreateClient(false)} className="text-zinc-400 hover:text-zinc-700 text-xs font-bold">✕ Cancel</button>
+                                    </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                        {([
+                                            { label: 'Full Name *',  key: 'name',    type: 'text',  ph: 'Jane Smith' },
+                                            { label: 'Company',      key: 'company', type: 'text',  ph: 'Acme Construction' },
+                                            { label: 'Email *',      key: 'email',   type: 'email', ph: 'jane@company.com' },
+                                            { label: 'Phone',        key: 'phone',   type: 'tel',   ph: '305-555-0100' },
+                                            { label: 'Address',      key: 'address', type: 'text',  ph: '123 Main St, Miami FL' },
+                                        ] as const).map(({ label, key, type, ph }) => (
+                                            <div key={key}>
+                                                <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1">{label}</label>
+                                                <input type={type} value={(newClientDraft as any)[key]}
+                                                    onChange={e => setNewClientDraft(p => ({ ...p, [key]: e.target.value }))}
+                                                    className="w-full bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 p-2.5 outline-none"
+                                                    placeholder={ph} />
+                                            </div>
+                                        ))}
+                                        <div>
+                                            <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1">Type</label>
+                                            <select value={newClientDraft.type} onChange={e => setNewClientDraft(p => ({ ...p, type: e.target.value }))}
+                                                className="w-full bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 p-2.5 outline-none">
+                                                {['Architect','Designer','Contractor','Homeowner'].map(t => <option key={t} value={t}>{t}</option>)}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div className="flex justify-end">
+                                        <button type="button" onClick={async () => {
+                                            if (!newClientDraft.name.trim() || !newClientDraft.email.trim()) return alert('Name and email are required.');
+                                            const created = await createClient({ ...newClientDraft, address: newClientDraft.address || undefined, billingAddress: newClientDraft.billingAddress || undefined });
+                                            const refreshedClients = await getClients();
+                                            setAllClients(refreshedClients as any);
+                                            setEditableClientId(created.id);
+                                            setClientSearch(`${created.name} — ${created.company}`);
+                                            setEditableShipping((created as any).address || '');
+                                            setEditableBilling((created as any).billingAddress || (created as any).address || '');
+                                            setShowCreateClient(false);
+                                            setNewClientDraft({ name: '', company: '', email: '', phone: '', type: 'Contractor', address: '', billingAddress: '' });
+                                            setIsDirty(true);
+                                        }}
+                                            className="px-5 py-2.5 bg-amber-500 hover:bg-amber-600 text-white text-sm font-bold rounded-xl transition-colors shadow-sm">
+                                            ✓ Save &amp; Select Client
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* Inline Edit Client form */}
+                            {showEditClient && editClientDraft && selectedClient && (
+                                <div className="border border-blue-200 bg-blue-50/40 rounded-xl p-5 space-y-4 mb-4">
+                                    <div className="flex items-center justify-between">
+                                        <h4 className="text-sm font-bold text-blue-700 uppercase tracking-wide">Edit: {selectedClient.name}</h4>
+                                        <button type="button" onClick={() => setShowEditClient(false)} className="text-zinc-400 hover:text-zinc-700 text-xs font-bold">✕ Cancel</button>
+                                    </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                        {([
+                                            { label: 'Full Name *',  key: 'name',    type: 'text',  ph: 'Jane Smith' },
+                                            { label: 'Company',      key: 'company', type: 'text',  ph: 'Acme Construction' },
+                                            { label: 'Email *',      key: 'email',   type: 'email', ph: 'jane@company.com' },
+                                            { label: 'Phone',        key: 'phone',   type: 'tel',   ph: '305-555-0100' },
+                                            { label: 'Address',      key: 'address', type: 'text',  ph: '123 Main St, Miami FL' },
+                                            { label: 'Billing Addr', key: 'billingAddress', type: 'text', ph: 'PO Box / billing…' },
+                                        ] as const).map(({ label, key, type, ph }) => (
+                                            <div key={key}>
+                                                <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1">{label}</label>
+                                                <input type={type} value={(editClientDraft as any)[key]}
+                                                    onChange={e => setEditClientDraft(p => p ? { ...p, [key]: e.target.value } : p)}
+                                                    className="w-full bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-blue-400 focus:border-blue-400 p-2.5 outline-none"
+                                                    placeholder={ph} />
+                                            </div>
+                                        ))}
+                                        <div>
+                                            <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1">Type</label>
+                                            <select value={editClientDraft.type} onChange={e => setEditClientDraft(p => p ? { ...p, type: e.target.value } : p)}
+                                                className="w-full bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-blue-400 focus:border-blue-400 p-2.5 outline-none">
+                                                {['Architect','Designer','Contractor','Homeowner'].map(t => <option key={t} value={t}>{t}</option>)}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div className="flex justify-end gap-3">
+                                        <button type="button" onClick={() => setShowEditClient(false)}
+                                            className="px-4 py-2 text-sm font-semibold text-zinc-600 hover:text-zinc-900 border border-zinc-200 rounded-xl transition-colors">Cancel</button>
+                                        <button type="button" onClick={async () => {
+                                            if (!editClientDraft.name.trim() || !editClientDraft.email.trim()) return alert('Name and email are required.');
+                                            await updateClient(selectedClient.id, { ...editClientDraft, address: editClientDraft.address || undefined, billingAddress: editClientDraft.billingAddress || undefined });
+                                            const refreshedClients = await getClients();
+                                            setAllClients(refreshedClients as any);
+                                            setClientSearch(`${editClientDraft.name} — ${editClientDraft.company}`);
+                                            setShowEditClient(false);
+                                            setIsDirty(true);
+                                        }}
+                                            className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl transition-colors shadow-sm">
+                                            ✓ Save Changes
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
+
                             {/* Addresses */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
                                 <div>
                                     <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-2">Shipping Address</label>
                                     <textarea

@@ -22,12 +22,12 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     };
 
     const navLinks = [
-        { href: "/admin", label: "Dashboard" },
-        { href: "/admin/orders", label: "Sales Pipeline" },
-        { href: "/admin/purchase-orders", label: "Purchase Orders" },
-        { href: "/admin/clients", label: "Clients" },
-        { href: "/admin/products", label: "Product Catalog" },
-        { href: "/admin/finance", label: "Accounting" },
+        { href: "/admin",               icon: "📊", label: "Dashboard" },
+        { href: "/admin/orders",         icon: "📋", label: "Sales Pipeline" },
+        { href: "/admin/clients",        icon: "👥", label: "Clients" },
+        { href: "/admin/products",       icon: "🗂️",  label: "Product Catalog" },
+        { href: "/admin/finance",        icon: "💰", label: "Accounting" },
+        { href: "/admin/purchase-orders",icon: "🏭", label: "Purchase Orders", indent: true },
     ];
 
     return (
@@ -40,19 +40,25 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
                 </div>
 
                 <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
-                    {navLinks.map(link => (
-                        <Link
-                            key={link.href}
-                            href={link.href}
-                            className={`block px-3 py-2.5 rounded-md text-sm font-medium transition-colors ${
-                                pathname === link.href
-                                    ? "bg-amber-50 text-amber-800 font-semibold"
-                                    : "text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900"
-                            }`}
-                        >
-                            {link.label}
-                        </Link>
-                    ))}
+                    {navLinks.map(({ href, icon, label, indent }) => {
+                        const isActive = pathname === href;
+                        return (
+                            <Link
+                                key={href}
+                                href={href}
+                                className={`flex items-center gap-2.5 ${indent ? "pl-7 pr-3" : "px-3"} py-2.5 rounded-md text-sm font-medium transition-colors ${
+                                    isActive
+                                        ? "bg-amber-50 text-amber-700"
+                                        : indent
+                                            ? "text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900"
+                                            : "text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900"
+                                }`}
+                            >
+                                <span className="text-base leading-none">{icon}</span>
+                                {label}
+                            </Link>
+                        );
+                    })}
                 </nav>
 
                 <div className="p-4 border-t border-zinc-200">
