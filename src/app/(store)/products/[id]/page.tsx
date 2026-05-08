@@ -50,64 +50,68 @@ export default async function ProductDetails({ params }: { params: Promise<{ id:
     }
 
     return (
-        <div className="min-h-screen bg-zinc-50 dark:bg-black pt-32 pb-24">
-            <div className="max-w-7xl mx-auto px-6">
+        <div className="min-h-screen bg-white dark:bg-[#0a0a0a] pt-24 sm:pt-32 pb-20 sm:pb-24">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
                 {/* Breadcrumbs */}
-                <nav className="flex text-sm text-zinc-500 dark:text-white/50 mb-12 uppercase tracking-widest font-semibold flex-wrap gap-y-2">
+                <nav className="flex text-[10px] sm:text-xs text-zinc-400 dark:text-white/40 mb-8 sm:mb-12 uppercase tracking-widest font-bold flex-wrap gap-y-2 px-1">
                     <Link href="/" className="hover:text-amber-500 transition-colors">Home</Link>
-                    <span className="mx-3">/</span>
+                    <span className="mx-2 sm:mx-3 opacity-30">/</span>
                     <Link href="/products" className="hover:text-amber-500 transition-colors">Collections</Link>
-                    <span className="mx-3">/</span>
-                    <Link href={`/products?category=${product.collectionId}`} className="hover:text-amber-500 transition-colors">{product.category}</Link>
-                    <span className="mx-3">/</span>
-                    <span className="text-white">{product.name}</span>
+                    <span className="mx-2 sm:mx-3 opacity-30">/</span>
+                    <Link href={`/products?category=${product.collectionId}`} className="hover:text-amber-500 transition-colors truncate max-w-[100px] sm:max-w-none">{product.category}</Link>
+                    <span className="mx-2 sm:mx-3 opacity-30">/</span>
+                    <span className="text-zinc-900 dark:text-white truncate max-w-[120px] sm:max-w-none">{product.name}</span>
                 </nav>
 
                 {/* Product Layout */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 mb-32">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 mb-20 sm:mb-32">
                     {/* Images */}
-                    <div className="space-y-6">
-                        <div className="relative aspect-[4/5] md:aspect-square w-full bg-zinc-200 dark:bg-zinc-900 overflow-hidden">
+                    <div className="space-y-4 sm:space-y-6">
+                        <div className="relative aspect-[4/5] sm:aspect-square w-full bg-zinc-50 dark:bg-zinc-900 overflow-hidden rounded-sm">
                             <Image
                                 src={galleryImages[0]}
                                 alt={product.name}
                                 fill
-                                className="object-cover"
+                                className="object-cover animate-[fadeIn_0.8s_ease-out]"
                                 priority
                             />
                         </div>
-                        <div className="grid grid-cols-2 gap-6">
-                            <div className="relative aspect-square bg-zinc-200 dark:bg-zinc-900 overflow-hidden">
+                        <div className="grid grid-cols-2 gap-4 sm:gap-6">
+                            <div className="relative aspect-square bg-zinc-50 dark:bg-zinc-900 overflow-hidden rounded-sm">
                                 <Image src={galleryImages[1]} alt={product.name} fill className="object-cover scale-150 origin-top-left" />
                             </div>
-                            <div className="relative aspect-square bg-zinc-200 dark:bg-zinc-900 overflow-hidden">
+                            <div className="relative aspect-square bg-zinc-50 dark:bg-zinc-900 overflow-hidden rounded-sm">
                                 <Image src={galleryImages[2]} alt={product.name} fill className="object-cover scale-125 origin-bottom-right" />
                             </div>
                         </div>
                     </div>
 
                     {/* Details */}
-                    <div className="flex flex-col">
-                        <div className="mb-8">
-                            <p className="text-zinc-500 dark:text-white/50 uppercase tracking-widest font-semibold text-sm mb-4">{product.category}</p>
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-playfair mb-6 text-zinc-900 dark:text-white">{product.name}</h1>
+                    <div className="flex flex-col px-1">
+                        <div className="mb-6 sm:mb-8">
+                            <p className="text-zinc-400 dark:text-white/40 uppercase tracking-[0.2em] font-bold text-[10px] sm:text-xs mb-3 sm:mb-4">
+                                {product.category} • Premium Surface
+                            </p>
+                            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-playfair mb-4 sm:mb-6 text-zinc-900 dark:text-white leading-[1.1]">
+                                {product.name}
+                            </h1>
                         </div>
 
-                        <div className="prose prose-zinc dark:prose-invert max-w-none text-zinc-600 dark:text-white/70 font-light text-lg leading-relaxed mb-12">
+                        <div className="prose prose-zinc dark:prose-invert max-w-none text-zinc-500 dark:text-white/60 font-light text-base sm:text-lg leading-relaxed mb-10 sm:mb-12">
                             <p>{product.description}</p>
                         </div>
 
                         {/* Available Options */}
-                        <div className="space-y-8 mb-12 focus:outline-none">
+                        <div className="space-y-8 sm:space-y-12 mb-12">
                             <VariationCards variants={uniqueVariants} product={product} />
 
                             {/* Sizes */}
-                            <div className="pb-8 border-b border-zinc-200 dark:border-white/10">
-                                <h3 className="text-sm uppercase tracking-widest font-semibold text-zinc-900 dark:text-white mb-4">Available Formats ({product.sizes.length})</h3>
-                                <div className="flex flex-wrap gap-3">
+                            <div className="pb-8 border-b border-zinc-100 dark:border-white/10">
+                                <h3 className="text-[10px] sm:text-xs uppercase tracking-[0.2em] font-bold text-zinc-900 dark:text-white mb-6">Available Formats ({product.sizes.length})</h3>
+                                <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-3">
                                     {product.sizes.map(size => (
-                                        <div key={size} className="px-5 py-2.5 bg-zinc-100 dark:bg-zinc-900 border border-zinc-300 dark:border-white/10 rounded-lg text-sm text-zinc-900 dark:text-white/90 font-medium tracking-wider shrink-0 cursor-pointer hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors shadow-sm">
+                                        <div key={size} className="px-4 py-3 sm:px-5 sm:py-2.5 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-white/10 rounded-sm text-[10px] sm:text-xs text-zinc-900 dark:text-white/90 font-bold tracking-widest text-center hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all cursor-pointer">
                                             {size}
                                         </div>
                                     ))}
@@ -115,25 +119,25 @@ export default async function ProductDetails({ params }: { params: Promise<{ id:
                             </div>
 
                             {/* Technical Specs Table */}
-                            <div className="pb-12 pt-6">
-                                <h3 className="text-[1.1rem] uppercase tracking-widest font-black text-zinc-900 dark:text-white mb-6 border-b-2 border-zinc-900 dark:border-white pb-1 inline-block">Technical Specifications</h3>
-                                <div className="overflow-x-auto w-full mb-12">
-                                    <table className="w-full text-sm text-left border-collapse border border-zinc-200 dark:border-zinc-800">
-                                        <thead className="bg-[#f0f0f0] dark:bg-zinc-900/80 text-zinc-600 dark:text-zinc-400 font-medium">
+                            <div className="pt-4">
+                                <h3 className="text-[10px] sm:text-xs uppercase tracking-[0.2em] font-bold text-zinc-900 dark:text-white mb-6 border-b-2 border-zinc-900 dark:border-white pb-2 inline-block">Technical Specifications</h3>
+                                <div className="overflow-x-auto w-full no-scrollbar mb-8">
+                                    <table className="w-full text-[10px] sm:text-xs text-left border-collapse min-w-[500px]">
+                                        <thead className="bg-zinc-50 dark:bg-zinc-900/50 text-zinc-400 font-bold uppercase tracking-widest">
                                             <tr>
-                                                <th className="px-5 py-4 border border-zinc-300 dark:border-zinc-800 font-medium w-1/3">Title</th>
-                                                <th className="px-5 py-4 border border-zinc-300 dark:border-zinc-800 font-medium">DCOF</th>
-                                                <th className="px-5 py-4 border border-zinc-300 dark:border-zinc-800 font-medium">Tile Thickness</th>
-                                                <th className="px-5 py-4 border border-zinc-300 dark:border-zinc-800 font-medium w-32">Download</th>
+                                                <th className="px-5 py-4 border border-zinc-100 dark:border-zinc-800 w-1/3">Series</th>
+                                                <th className="px-5 py-4 border border-zinc-100 dark:border-zinc-800">DCOF</th>
+                                                <th className="px-5 py-4 border border-zinc-100 dark:border-zinc-800">Thickness</th>
+                                                <th className="px-5 py-4 border border-zinc-100 dark:border-zinc-800 text-center">Docs</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr className="bg-white dark:bg-transparent text-zinc-900 dark:text-white/90">
-                                                <td className="px-5 py-5 border border-zinc-300 dark:border-zinc-800 capitalize">{product.name.toLowerCase()}</td>
-                                                <td className="px-5 py-5 border border-zinc-300 dark:border-zinc-800">&gt;=0.42</td>
-                                                <td className="px-5 py-5 border border-zinc-300 dark:border-zinc-800">9 mm</td>
-                                                <td className="px-5 py-5 border border-zinc-300 dark:border-zinc-800 text-left">
-                                                    <svg className="w-5 h-5 inline-block text-zinc-800 hover:text-amber-600 dark:text-zinc-400 dark:hover:text-white cursor-pointer transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 11v6m-3-3h6"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 14l3 3 3-3"></path></svg>
+                                            <tr className="bg-white dark:bg-transparent text-zinc-900 dark:text-white font-medium">
+                                                <td className="px-5 py-5 border border-zinc-100 dark:border-zinc-800 capitalize font-bold">{product.name.toLowerCase()}</td>
+                                                <td className="px-5 py-5 border border-zinc-100 dark:border-zinc-800">&gt;=0.42</td>
+                                                <td className="px-5 py-5 border border-zinc-100 dark:border-zinc-800">9 mm</td>
+                                                <td className="px-5 py-5 border border-zinc-100 dark:border-zinc-800 text-center">
+                                                    <svg className="w-5 h-5 mx-auto text-zinc-400 hover:text-amber-500 cursor-pointer transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 11v6m-3-3h6"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 14l3 3 3-3"></path></svg>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -141,15 +145,19 @@ export default async function ProductDetails({ params }: { params: Promise<{ id:
                                 </div>
 
                                 {/* Brochures */}
-                                <div className="mt-8">
-                                    <h3 className="text-3xl font-sans lg:text-4xl text-zinc-900 dark:text-white mb-8 tracking-wide capitalize">{product.name.toLowerCase()} Brochures</h3>
-                                    <ul className="space-y-4 text-[13px] font-bold text-zinc-900 dark:text-white/90 tracking-wide">
-                                        <li className="flex items-center gap-3 cursor-pointer hover:text-amber-600 dark:hover:text-amber-500 transition-colors">
-                                            <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                                <div className="mt-8 pt-8 border-t border-zinc-100 dark:border-white/10">
+                                    <h3 className="text-2xl sm:text-3xl font-playfair text-zinc-900 dark:text-white mb-6">Documentation</h3>
+                                    <ul className="space-y-4 text-[10px] sm:text-xs font-bold text-zinc-500 dark:text-white/60 tracking-[0.1em] uppercase">
+                                        <li className="flex items-center gap-4 cursor-pointer hover:text-amber-600 transition-colors group">
+                                            <div className="w-8 h-8 rounded-full bg-zinc-50 dark:bg-zinc-900 flex items-center justify-center group-hover:bg-amber-50 transition-colors">
+                                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                                            </div>
                                             Download {product.name.split(' ')[0] || product.name} Sell Sheet
                                         </li>
-                                        <li className="flex items-center gap-3 cursor-pointer hover:text-amber-600 dark:hover:text-amber-500 transition-colors">
-                                            <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                                        <li className="flex items-center gap-4 cursor-pointer hover:text-amber-600 transition-colors group">
+                                            <div className="w-8 h-8 rounded-full bg-zinc-50 dark:bg-zinc-900 flex items-center justify-center group-hover:bg-amber-50 transition-colors">
+                                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                                            </div>
                                             Download {product.name.split(' ')[0] || product.name} Faces Graphic
                                         </li>
                                     </ul>
@@ -157,36 +165,39 @@ export default async function ProductDetails({ params }: { params: Promise<{ id:
                             </div>
                         </div>
 
-                        <div className="mt-auto flex flex-col sm:flex-row gap-4">
-                            <button className="flex-1 bg-black dark:bg-white text-white dark:text-black py-5 px-8 text-sm font-semibold uppercase tracking-widest hover:bg-black/90 dark:hover:bg-white/90 transition-all duration-300">
-                                Order Sample
+                        <div className="mt-auto pt-8">
+                            <button className="w-full bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 py-5 px-8 text-[10px] sm:text-xs font-bold uppercase tracking-[0.3em] hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-all shadow-2xl active:scale-[0.98]">
+                                Order Sample Kit
                             </button>
                         </div>
                     </div>
                 </div>
 
                 {/* Related Products */}
-                <div className="border-t border-white/10 pt-24">
-                    <div className="flex justify-between items-end mb-12">
-                        <h2 className="text-3xl font-playfair">Complete the Look</h2>
-                        <Link href="/products" className="text-sm font-semibold tracking-widest uppercase border-b border-white pb-1 hover:text-amber-500 hover:border-amber-500 transition-colors">
+                <div className="border-t border-zinc-100 dark:border-white/10 pt-16 sm:pt-24 px-1">
+                    <div className="flex justify-between items-end mb-10 sm:mb-12">
+                        <div>
+                            <span className="text-zinc-400 tracking-[0.2em] text-[10px] font-bold uppercase block mb-2 sm:mb-3">Recommendation</span>
+                            <h2 className="text-3xl sm:text-4xl font-playfair">Complete the Look</h2>
+                        </div>
+                        <Link href="/products" className="text-[10px] font-bold tracking-[0.2em] uppercase border-b border-zinc-200 pb-1 hover:border-zinc-900 transition-colors">
                             View All
                         </Link>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
                         {relatedProducts.map((related) => (
                             <Link key={related.id} href={`/products/${related.id}`} className="group block">
-                                <div className="relative aspect-square overflow-hidden mb-5 bg-zinc-900 rounded-xl">
+                                <div className="relative aspect-square overflow-hidden mb-5 bg-zinc-50 dark:bg-zinc-900 rounded-sm">
                                     <Image
                                         src={related.image}
                                         alt={related.name}
                                         fill
-                                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                        className="object-cover transition-transform duration-1000 group-hover:scale-105"
                                     />
                                 </div>
-                                <div>
-                                    <h3 className="text-lg font-medium text-white mb-1 font-playfair">{related.name}</h3>
-                                    <p className="text-white/50 text-sm tracking-wide uppercase">{related.category}</p>
+                                <div className="text-center sm:text-left">
+                                    <h3 className="text-xl font-medium text-zinc-900 dark:text-white mb-1 font-playfair">{related.name}</h3>
+                                    <p className="text-zinc-400 dark:text-white/40 text-[10px] tracking-widest uppercase font-bold">{related.category}</p>
                                 </div>
                             </Link>
                         ))}

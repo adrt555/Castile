@@ -145,11 +145,11 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
 
     return (
         <div
-            className="fixed inset-0 z-[9999] flex flex-col items-center pt-[12vh] md:pt-[14vh]"
+            className="fixed inset-0 z-[9999] flex flex-col items-center pt-[10vh] sm:pt-[14vh]"
             style={{
-                background: "rgba(0, 0, 0, 0.85)",
-                backdropFilter: "blur(24px)",
-                WebkitBackdropFilter: "blur(24px)",
+                background: "rgba(0, 0, 0, 0.9)",
+                backdropFilter: "blur(16px)",
+                WebkitBackdropFilter: "blur(16px)",
             }}
             onClick={(e) => {
                 if (e.target === e.currentTarget) onClose();
@@ -221,7 +221,7 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                             }`}
                     >
                         {/* Thumbnail */}
-                        <div className="relative w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 bg-zinc-800 shadow-lg">
+                        <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-lg overflow-hidden flex-shrink-0 bg-zinc-800 shadow-lg">
                             <Image
                                 src={item.image}
                                 alt={item.name}
@@ -254,18 +254,18 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                 ))}
             </div>
 
-            {/* Keyboard hints */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 text-white/20 text-xs tracking-wide">
+            {/* Keyboard hints - Hidden on Mobile */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden sm:flex items-center gap-4 text-white/20 text-[10px] tracking-wide uppercase">
                 <span className="flex items-center gap-1.5">
-                    <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-white/30 font-mono text-[10px]">↑↓</kbd>
+                    <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-white/40 font-sans">↑↓</kbd>
                     navigate
                 </span>
                 <span className="flex items-center gap-1.5">
-                    <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-white/30 font-mono text-[10px]">Enter</kbd>
+                    <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-white/40 font-sans">Enter</kbd>
                     select
                 </span>
                 <span className="flex items-center gap-1.5">
-                    <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-white/30 font-mono text-[10px]">Esc</kbd>
+                    <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-white/40 font-sans">Esc</kbd>
                     close
                 </span>
             </div>

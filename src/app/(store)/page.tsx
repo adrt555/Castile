@@ -11,27 +11,26 @@ export default function Home() {
     <div className="flex flex-col w-full min-h-screen bg-white text-zinc-900">
 
       {/* Hero Section */}
-      <section className="relative w-full h-screen flex items-end justify-start overflow-hidden pt-20">
+      <section className="relative w-full h-[85vh] sm:h-screen flex items-end justify-start overflow-hidden pt-20">
         <div className="absolute inset-0 z-0">
           <Image
             src="https://rocatileusa.com/uploads/2021/09/amb-01-CALACATTA-GOLD-1.jpg"
             alt="Calacata Gold Surface"
             fill
-            className="object-cover animate-[kenburns_30s_ease-out_forwards]"
+            className="object-cover animate-[kenburns_40s_ease-out_forwards]"
             priority
           />
-          {/* Subtle gradient so text is readable if placed over the image */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
         </div>
 
-        <div className="relative z-10 px-8 md:px-16 pb-20 max-w-7xl mx-auto w-full flex flex-col items-start">
-          <span className="text-white tracking-[0.2em] text-xs font-semibold uppercase mb-4 opacity-90">Featured Collection</span>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-playfair text-white mb-8 tracking-tight leading-tight max-w-3xl drop-shadow-lg">
+        <div className="relative z-10 px-6 sm:px-16 pb-12 sm:pb-20 max-w-7xl mx-auto w-full flex flex-col items-start animate-[fadeIn_1s_ease-out]">
+          <span className="text-white tracking-[0.3em] text-[10px] sm:text-xs font-bold uppercase mb-3 sm:mb-4 opacity-90">Featured Collection</span>
+          <h1 className="text-4xl sm:text-7xl lg:text-8xl font-playfair text-white mb-6 sm:mb-8 tracking-tight leading-[1.1] max-w-3xl drop-shadow-2xl">
             Calacata Gold
           </h1>
           <Link
             href="/products?category=calacata-gold"
-            className="px-10 py-4 bg-white text-zinc-900 text-xs font-bold uppercase tracking-[0.15em] hover:bg-zinc-100 transition-colors duration-300"
+            className="w-full sm:w-auto text-center px-10 py-4 bg-white text-zinc-900 text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] hover:bg-zinc-100 transition-all duration-300 shadow-xl active:scale-95"
           >
             Discover More
           </Link>
@@ -39,11 +38,11 @@ export default function Home() {
       </section>
 
       {/* Intro / Philosophy */}
-      <section className="py-24 md:py-32 px-8 max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-playfair mb-8 leading-snug text-zinc-800">
-          Crafting spaces that endure.<br />Premium surfaces for architectural excellence.
+      <section className="py-20 sm:py-32 px-6 sm:px-8 max-w-4xl mx-auto text-center">
+        <h2 className="text-2xl sm:text-4xl font-playfair mb-6 sm:mb-8 leading-snug text-zinc-800">
+          Crafting spaces that endure.<br className="hidden sm:block" />Premium surfaces for architectural excellence.
         </h2>
-        <p className="text-lg text-zinc-500 font-light leading-relaxed max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg text-zinc-500 font-light leading-relaxed max-w-2xl mx-auto">
           Castile brings you the finest selection of porcelain, ceramic, and natural stone looks.
           Inspired by global trends and manufactured with cutting-edge technology, our collections
           provide the perfect foundation for residential and commercial projects alike.
@@ -51,22 +50,22 @@ export default function Home() {
       </section>
 
       {/* Featured Collections Gallery */}
-      <section className="py-20 px-4 md:px-8 bg-zinc-50 border-t border-zinc-200">
+      <section className="py-16 sm:py-24 px-4 sm:px-8 bg-zinc-50 border-t border-zinc-100">
         <div className="max-w-[1400px] mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 px-4">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 sm:mb-16 gap-4 sm:gap-6 px-2">
             <div>
-              <span className="text-zinc-400 tracking-[0.2em] text-xs font-bold uppercase block mb-3">Curated</span>
-              <h2 className="text-3xl md:text-5xl font-playfair text-zinc-900">Explore Collections</h2>
+              <span className="text-zinc-400 tracking-[0.2em] text-[10px] sm:text-xs font-bold uppercase block mb-2 sm:mb-3">Curated</span>
+              <h2 className="text-3xl sm:text-5xl font-playfair text-zinc-900">Explore Collections</h2>
             </div>
-            <Link href="/products" className="text-xs font-bold tracking-[0.15em] uppercase border-b border-zinc-300 pb-1 hover:border-zinc-900 transition-colors self-start md:self-end">
+            <Link href="/products" className="text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase border-b border-zinc-200 pb-1 hover:border-zinc-900 transition-colors">
               View All Collections
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12 sm:gap-y-16">
             {featuredCategories.map((category) => (
-              <Link key={category.slug} href={`/products?category=${category.slug}`} className="group block">
-                <div className="relative aspect-[4/5] w-full overflow-hidden bg-zinc-200 mb-6">
+              <Link key={category.slug} href={`/products?category=${category.slug}`} className="group block px-2 sm:px-0">
+                <div className="relative aspect-[4/5] w-full overflow-hidden bg-zinc-200 mb-4 sm:mb-6 rounded-sm">
                   <Image
                     src={category.image}
                     alt={category.name}
@@ -75,8 +74,8 @@ export default function Home() {
                   />
                 </div>
                 <div className="text-center px-4">
-                  <h3 className="text-xl font-playfair text-zinc-900 mb-2">{category.name}</h3>
-                  <span className="text-zinc-500 text-xs font-medium tracking-widest uppercase">{category.materials?.[0]} • {category.count} Products</span>
+                  <h3 className="text-xl font-playfair text-zinc-900 mb-1 sm:mb-2">{category.name}</h3>
+                  <span className="text-zinc-400 text-[10px] font-bold tracking-widest uppercase">{category.materials?.[0]} • {category.count} Products</span>
                 </div>
               </Link>
             ))}
@@ -84,17 +83,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured / New Arrivals (Minimalist Grid) */}
-      <section className="py-32 px-8 max-w-[1400px] mx-auto">
-        <div className="text-center mb-20">
-          <span className="text-zinc-400 tracking-[0.2em] text-xs font-bold uppercase block mb-3">Trending</span>
-          <h2 className="text-3xl md:text-5xl font-playfair text-zinc-900">New Arrivals</h2>
+      {/* Featured / New Arrivals */}
+      <section className="py-20 sm:py-32 px-6 sm:px-8 max-w-[1400px] mx-auto">
+        <div className="text-center mb-12 sm:mb-20">
+          <span className="text-zinc-400 tracking-[0.2em] text-[10px] sm:text-xs font-bold uppercase block mb-2 sm:mb-3">Trending</span>
+          <h2 className="text-3xl sm:text-5xl font-playfair text-zinc-900">New Arrivals</h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
           {newArrivals.map((product) => (
             <Link key={product.id} href={`/products/${product.id}`} className="group block">
-              <div className="relative aspect-square overflow-hidden mb-5 bg-zinc-100 border border-zinc-200">
+              <div className="relative aspect-square overflow-hidden mb-4 sm:mb-5 bg-zinc-100 border border-zinc-100 rounded-sm">
                 <Image
                   src={product.image}
                   alt={product.name}
@@ -103,34 +102,34 @@ export default function Home() {
                 />
               </div>
               <div className="flex flex-col items-center text-center">
-                <h3 className="text-sm font-semibold tracking-wider uppercase text-zinc-900 mb-1">{product.name}</h3>
-                <p className="text-zinc-500 text-xs">{product.colors?.[0]} Variation</p>
+                <h3 className="text-[10px] sm:text-xs font-bold tracking-widest uppercase text-zinc-900 mb-1">{product.name}</h3>
+                <p className="text-zinc-400 text-[10px] uppercase font-bold tracking-tight">{product.colors?.[0]} Variation</p>
               </div>
             </Link>
           ))}
         </div>
 
-        <div className="mt-16 text-center">
-          <Link href="/products" className="inline-block px-10 py-4 bg-zinc-900 text-white text-xs font-bold uppercase tracking-[0.15em] hover:bg-zinc-800 transition-colors duration-300">
+        <div className="mt-12 sm:mt-16 text-center">
+          <Link href="/products" className="inline-block w-full sm:w-auto px-12 py-4 bg-zinc-900 text-white text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] hover:bg-zinc-800 transition-all duration-300 shadow-xl active:scale-95">
             Shop The Look
           </Link>
         </div>
       </section>
 
       {/* Banner Section */}
-      <section className="relative py-32 md:py-48 px-8 bg-zinc-900 overflow-hidden">
+      <section className="relative py-24 sm:py-48 px-6 sm:px-8 bg-zinc-900 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src="https://rocatileusa.com/uploads/2021/07/ROCA_Downtown-living-min.jpg"
             alt="Downtown Collection"
             fill
-            className="object-cover opacity-50"
+            className="object-cover opacity-40"
           />
         </div>
         <div className="relative z-10 max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl md:text-6xl font-playfair text-white mb-6">Redefining Urban Spaces</h2>
-          <p className="text-lg text-zinc-300 font-light mb-10">Discover the DOWNTOWN collection, designed for the modern metropolis.</p>
-          <Link href="/products?category=downtown" className="px-10 py-4 bg-white text-zinc-900 text-xs font-bold uppercase tracking-[0.15em] hover:bg-zinc-100 transition-colors duration-300">
+          <h2 className="text-3xl sm:text-6xl font-playfair text-white mb-4 sm:mb-6 leading-tight">Redefining Urban Spaces</h2>
+          <p className="text-base sm:text-lg text-zinc-300 font-light mb-8 sm:mb-10 leading-relaxed">Discover the DOWNTOWN collection, designed for the modern metropolis.</p>
+          <Link href="/products?category=downtown" className="inline-block w-full sm:w-auto px-12 py-4 bg-white text-zinc-900 text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] hover:bg-zinc-100 transition-all duration-300 shadow-xl active:scale-95">
             Explore Downtown
           </Link>
         </div>

@@ -36,18 +36,18 @@ export default function CatalogManager() {
 
     return (
         <div className="max-w-7xl mx-auto space-y-6">
-            <div className="flex justify-between items-end">
+            <div className="flex flex-col gap-2 sm:flex-row sm:justify-between sm:items-end px-1 sm:px-0">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-zinc-900">Product Catalog</h1>
-                    <p className="text-zinc-500 mt-1 text-sm">
+                    <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900">Product Catalog</h1>
+                    <p className="text-zinc-500 mt-1 text-xs sm:text-sm">
                         {products.length.toLocaleString()} SKUs from the ROCA 2026 Price Book
                     </p>
                 </div>
             </div>
 
             {/* Filters */}
-            <div className="bg-white border border-zinc-200 rounded-xl shadow-sm">
-                <div className="p-4 border-b border-zinc-100 flex flex-wrap items-center gap-4">
+            <div className="bg-white border border-zinc-200 rounded-xl shadow-sm mx-1 sm:mx-0">
+                <div className="p-4 border-b border-zinc-100 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                     <div className="relative flex-1 min-w-[240px] max-w-sm">
                         <input
                             type="text"
@@ -75,7 +75,7 @@ export default function CatalogManager() {
                             <option key={c} value={c}>{c}</option>
                         ))}
                     </select>
-                    <span className="text-sm font-medium text-zinc-500 ml-auto">
+                    <span className="text-sm font-medium text-zinc-500 sm:ml-auto">
                         {filtered.length.toLocaleString()} results
                         {searchTerm && <span className="text-amber-600 ml-1">(all collections)</span>}
                     </span>

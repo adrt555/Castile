@@ -49,17 +49,17 @@ export default function ClientDirectory() {
 
     return (
         <div className="max-w-6xl mx-auto space-y-8">
-            <div className="flex justify-between items-end">
+            <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-end px-1 sm:px-0">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-zinc-900">Client Directory</h1>
-                    <p className="text-zinc-500 mt-2">Manage relationships with designers, contractors, and consumers.</p>
+                    <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900">Client Directory</h1>
+                    <p className="text-zinc-500 mt-1 text-xs sm:text-sm">Manage relationships with designers, contractors, and consumers.</p>
                 </div>
-                <button onClick={() => setShowCreateClient(true)} className="bg-zinc-900 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-zinc-800 transition-colors shadow-sm">
+                <button onClick={() => setShowCreateClient(true)} className="w-full sm:w-auto bg-zinc-900 text-white px-6 py-3 sm:py-2 rounded-xl text-sm font-bold hover:bg-zinc-800 transition-all shadow-lg active:scale-95">
                     + Add Client
                 </button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-1 sm:px-0">
                 {clients.map(client => (
                     <div key={client.id} className="bg-white border border-zinc-200 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow relative group">
                         <div className="flex justify-between items-start mb-4">

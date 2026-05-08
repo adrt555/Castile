@@ -16,8 +16,8 @@ export default async function AdminDashboard() {
     return (
         <div className="max-w-6xl mx-auto space-y-8">
             <div>
-                <h1 className="text-3xl font-bold tracking-tight text-zinc-900">Dashboard</h1>
-                <p className="text-zinc-500 mt-2">Overview of your Castile business operations.</p>
+                <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900">Dashboard</h1>
+                <p className="text-zinc-500 mt-1 sm:mt-2 text-sm sm:text-base">Overview of your Castile business operations.</p>
             </div>
 
             {/* KPI Cards */}
@@ -59,7 +59,7 @@ export default async function AdminDashboard() {
                         {orders.filter(o => o.status !== 'Delivered').map(order => {
                             const client = (order as any).client;
                             return (
-                                <div key={order.id} className="p-6 flex items-center justify-between hover:bg-zinc-50 transition-colors">
+                                <div key={order.id} className="p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-0 hover:bg-zinc-50 transition-colors">
                                     <div>
                                         <div className="font-medium text-zinc-900">{client?.name} ({client?.company})</div>
                                         <div className="text-sm text-zinc-500 mt-1">Order {order.id} &bull; {order.items.length} items</div>

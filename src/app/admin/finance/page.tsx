@@ -27,15 +27,15 @@ export default function FinanceDashboard() {
 
     return (
         <div className="max-w-5xl mx-auto space-y-8">
-            <div>
-                <h1 className="text-3xl font-bold tracking-tight text-zinc-900">Accounting & Finance</h1>
-                <p className="text-zinc-500 mt-2">Track your margins, revenue, and generate exportable invoices.</p>
+            <div className="px-1 sm:px-0">
+                <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900">Accounting & Finance</h1>
+                <p className="text-zinc-500 mt-1 text-xs sm:text-sm">Track your margins, revenue, and generate exportable invoices.</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 px-1 sm:px-0">
                 <div className="bg-zinc-900 rounded-xl p-6 text-white shadow-md">
-                    <div className="text-sm font-medium text-zinc-400 mb-1">Total Sales Revenue</div>
-                    <div className="text-4xl font-bold">${finance.totalRevenue.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
+                    <div className="text-xs sm:text-sm font-medium text-zinc-400 mb-1">Total Sales Revenue</div>
+                    <div className="text-3xl sm:text-4xl font-bold">${finance.totalRevenue.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
                 </div>
                 <div className="bg-white border border-zinc-200 rounded-xl p-6 shadow-sm">
                     <div className="text-sm font-medium text-zinc-500 mb-1">Total Cost of Goods (COGS)</div>

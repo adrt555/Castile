@@ -52,39 +52,39 @@ export default function PurchaseOrdersPage() {
 
     return (
         <div className="max-w-7xl mx-auto space-y-6">
-            <div className="flex items-end justify-between">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between px-1 sm:px-0">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-zinc-900">Purchase Orders</h1>
-                    <p className="text-zinc-500 mt-1 text-sm">Orders placed with manufacturers</p>
+                    <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900">Purchase Orders</h1>
+                    <p className="text-zinc-500 mt-1 text-xs sm:text-sm">Orders placed with manufacturers</p>
                 </div>
-                <Link href="/admin/purchase-orders/new" className="flex items-center gap-2 px-4 py-2.5 bg-amber-500 hover:bg-amber-600 text-white text-sm font-bold rounded-xl transition-colors shadow-sm">
-                    <span className="text-base">＋</span> New Purchase Order
+                <Link href="/admin/purchase-orders/new" className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 sm:py-2.5 bg-amber-500 hover:bg-amber-600 text-white text-sm font-bold rounded-xl transition-all shadow-lg active:scale-95">
+                    <span className="text-lg leading-none">＋</span> New Purchase Order
                 </Link>
             </div>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 px-1 sm:px-0">
                 {[
                     { label: "Total POs", value: pos.length.toString(), color: "text-zinc-900" },
                     { label: "In Production", value: inProd.toString(), color: "text-amber-600" },
                     { label: "Shipped", value: shipped.toString(), color: "text-purple-600" },
-                    { label: "Total Value", value: `$${totalValue.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}`, color: "text-emerald-600" },
+                    { label: "Total Value", value: `$${totalValue.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:0})}`, color: "text-emerald-600" },
                 ].map(card => (
-                    <div key={card.label} className="bg-white border border-zinc-200 rounded-xl p-4 shadow-sm">
-                        <p className="text-xs font-semibold uppercase tracking-wide text-zinc-400">{card.label}</p>
-                        <p className={`text-2xl font-bold mt-1 ${card.color}`}>{card.value}</p>
+                    <div key={card.label} className="bg-white border border-zinc-200 rounded-xl p-3 sm:p-4 shadow-sm">
+                        <p className="text-[10px] font-bold uppercase tracking-wide text-zinc-400">{card.label}</p>
+                        <p className={`text-lg sm:text-2xl font-black mt-1 ${card.color}`}>{card.value}</p>
                     </div>
                 ))}
             </div>
-            <div className="bg-white border border-zinc-200 rounded-xl shadow-sm">
-                <div className="p-4 border-b border-zinc-100 flex flex-wrap items-center gap-4">
+            <div className="bg-white border border-zinc-200 rounded-xl shadow-sm mx-1 sm:mx-0">
+                <div className="p-4 border-b border-zinc-100 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                     <div className="relative flex-1 min-w-[220px] max-w-sm">
-                        <input type="text" placeholder="Search PO #, manufacturer, SKU…" value={search} onChange={e => setSearch(e.target.value)} className="w-full pl-4 pr-8 py-2 text-sm border border-zinc-300 rounded-lg outline-none focus:ring-2 focus:ring-amber-500 text-zinc-900" />
+                        <input type="text" placeholder="Search PO #, manufacturer, SKU…" value={search} onChange={e => setSearch(e.target.value)} className="w-full pl-4 pr-8 py-2.5 text-sm border border-zinc-300 rounded-xl outline-none focus:ring-2 focus:ring-amber-500 text-zinc-900" />
                         {search && <button onClick={() => setSearch("")} className="absolute right-2 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-700 font-bold text-sm">✕</button>}
                     </div>
-                    <select value={statusFilter} onChange={e => setStatusFilter(e.target.value as any)} className="px-3 py-2 text-sm border border-zinc-300 rounded-lg outline-none focus:ring-2 focus:ring-amber-500 text-zinc-900 bg-white">
+                    <select value={statusFilter} onChange={e => setStatusFilter(e.target.value as any)} className="px-3 py-2.5 text-sm border border-zinc-300 rounded-xl outline-none focus:ring-2 focus:ring-amber-500 text-zinc-900 bg-white">
                         <option value="ALL">All Statuses</option>
                         {(Object.keys(STATUS_CONFIG) as POStatus[]).map(s => <option key={s} value={s}>{s}</option>)}
                     </select>
-                    <span className="text-sm text-zinc-400 font-medium ml-auto">{filtered.length} of {pos.length} POs</span>
+                    <span className="text-xs font-bold text-zinc-400 sm:ml-auto">{filtered.length} POs</span>
                 </div>
                 <div className="overflow-x-auto">
                     <table className="w-full text-sm text-left text-zinc-600">
