@@ -484,14 +484,7 @@ export default function OrdersTablePipeline() {
                                      />
                                  </div>
                              </div>
-                                        className="w-full text-sm text-zinc-700 bg-zinc-50 border border-zinc-200 rounded-lg p-3 resize-none focus:outline-none focus:ring-1 focus:ring-amber-400 leading-relaxed"
-                                        rows={3}
-                                        placeholder="Same as shipping"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
+                          </div>
                         {/* 2. Line Items */}
                         <div>
                             <div className="flex justify-between items-center mb-4 pb-2 border-b border-zinc-100">
