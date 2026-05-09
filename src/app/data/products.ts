@@ -16,7 +16,7 @@ export interface Product {
     image: string;
     isNew?: boolean;
     description?: string;
-    brand: 'roca-tiles' | 'roca-bathrooms' | 'dune';
+    brand: 'roca-tiles' | 'dune';
     finish?: string[];
     usage?: string[];
     look?: string;
@@ -32,7 +32,7 @@ export interface Collection {
     brand: 'roca-tiles' | 'dune';
 }
 
-export const collectionsList = [
+export const collectionsList: { name: string; slug: string; materials?: string[]; brand: 'roca-tiles' | 'dune' }[] = [
     { name: "ABACO", slug: "abaco", materials: ["Glazed Porcelain"], brand: "roca-tiles" },
     { name: "ABBEY", slug: "abbey", materials: ["Glazed Porcelain", "Ceramic Wall"], brand: "roca-tiles" },
     { name: "ALASKA", slug: "alaska", materials: ["Polished Porcelain"], brand: "roca-tiles" },
