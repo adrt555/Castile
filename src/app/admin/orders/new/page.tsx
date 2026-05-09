@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { getClients, createClient } from "@/app/actions/clientActions";
-import { getProducts } from "@/app/actions/productActions";
+import { getProducts, checkRocaStock } from "@/app/actions/productActions";
+
 import { createOrder, updateOrderStatus } from "@/app/actions/orderActions";
 import { CRMProduct, OrderStatus } from "@/lib/types";
 import QuotePrintTemplate from "../QuotePrintTemplate";
@@ -24,6 +25,15 @@ export default function CreateOrderPage() {
     const [editableShipping, setEditableShipping] = useState<string>("");
     const [editableBilling, setEditableBilling] = useState<string>("");
     const [skuSearchMap, setSkuSearchMap] = useState<Record<string, { query: string; open: boolean }>>({});
+    const [itemStocks, setItemStocks] = useState<Record<string, { value: number | null, loading: boolean }>>({});
+
+    const handleCheckItemStock = async (itemId: string, sku: string) => {
+        if (!sku) return;
+        setItemStocks(prev => ({ ...prev, [itemId]: { value: null, loading: true } }));
+        const val = await checkRocaStock(sku);
+        setItemStocks(prev => ({ ...prev, [itemId]: { value: val, loading: false } }));
+    };
+
 
     // Create Client Modal State
     const [showCreateClient, setShowCreateClient] = useState(false);
@@ -400,8 +410,37 @@ export default function CreateOrderPage() {
                                                     {item.sqftPerBox} sqft/box
                                                 </span>
                                             )}
+                                            {/* Stock Button */}
+                                            <div className="ml-auto">
+                                                {itemStocks[item.id]?.loading ? (
+                                                    <span className="text-[10px] text-zinc-400 animate-pulse">Checking…</span>
+                                                ) : itemStocks[item.id]?.value !== undefined && itemStocks[item.id]?.value !== null ? (
+                                                    <button 
+                                                        type="button"
+                                                        onClick={() => handleCheckItemStock(item.id, item.sku)}
+                                                        className={`text-[10px] font-bold px-3 py-1.5 rounded-lg border shadow-sm transition-all hover:brightness-95 active:scale-95 ${itemStocks[item.id]!.value! > 0 ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-red-50 text-red-700 border-red-200'}`}
+                                                    >
+                                                        MIA: {itemStocks[item.id]!.value!.toLocaleString(undefined, { minimumFractionDigits: 2 })} SQFT
+                                                    </button>
+
+                                                ) : (
+                                                    <button 
+                                                        type="button"
+                                                        onClick={() => handleCheckItemStock(item.id, item.sku)}
+                                                        className="text-[10px] font-bold text-blue-700 hover:text-blue-900 bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-200 uppercase tracking-tighter shadow-sm transition-all hover:bg-blue-100 active:scale-95"
+                                                    >
+                                                        🔍 MIAMI STOCK
+                                                    </button>
+                                                )}
+
+
+
+
+                                            </div>
                                         </div>
                                     )}
+
+
                                 </div>
                                 <div className="w-32">
                                     <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">Qty (sqft)</label>

@@ -4,7 +4,7 @@ import { allProducts, categories } from "../data/products";
 
 export default function Home() {
   // Select some premium categories for the homepage
-  const featuredCategories = categories.filter(c => ["calacata-gold", "abaco", "artesano", "avenue", "june", "zellige"].includes(c.slug));
+  const featuredCategories = categories.filter(c => ["calacata-gold", "abaco", "artesano", "agatha", "zellige", "avenue"].includes(c.slug));
   const newArrivals = allProducts.filter(p => p.isNew).slice(0, 4);
 
   return (
@@ -15,7 +15,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           <Image
             src="https://rocatileusa.com/uploads/2021/09/amb-01-CALACATTA-GOLD-1.jpg"
-            alt="Calacata Gold Surface"
+            alt="Premium Surface"
             fill
             className="object-cover animate-[kenburns_40s_ease-out_forwards]"
             priority
@@ -24,29 +24,59 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 px-6 sm:px-16 pb-12 sm:pb-20 max-w-7xl mx-auto w-full flex flex-col items-start animate-[fadeIn_1s_ease-out]">
-          <span className="text-white tracking-[0.3em] text-[10px] sm:text-xs font-bold uppercase mb-3 sm:mb-4 opacity-90">Featured Collection</span>
-          <h1 className="text-4xl sm:text-7xl lg:text-8xl font-playfair text-white mb-6 sm:mb-8 tracking-tight leading-[1.1] max-w-3xl drop-shadow-2xl">
-            Calacata Gold
+          <span className="text-white tracking-[0.3em] text-[10px] sm:text-xs font-bold uppercase mb-3 sm:mb-4 opacity-90">Premium Surfaces</span>
+          <h1 className="text-4xl sm:text-7xl lg:text-8xl font-playfair text-white mb-6 sm:mb-8 tracking-tight leading-[1.1] max-w-4xl drop-shadow-2xl">
+            Architectural <br />Excellence
           </h1>
           <Link
-            href="/products?category=calacata-gold"
+            href="/products?brand=roca-tiles"
             className="w-full sm:w-auto text-center px-10 py-4 bg-white text-zinc-900 text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] hover:bg-zinc-100 transition-all duration-300 shadow-xl active:scale-95"
           >
-            Discover More
+            Explore Roca
           </Link>
         </div>
       </section>
 
-      {/* Intro / Philosophy */}
-      <section className="py-20 sm:py-32 px-6 sm:px-8 max-w-4xl mx-auto text-center">
-        <h2 className="text-2xl sm:text-4xl font-playfair mb-6 sm:mb-8 leading-snug text-zinc-800">
-          Crafting spaces that endure.<br className="hidden sm:block" />Premium surfaces for architectural excellence.
-        </h2>
-        <p className="text-base sm:text-lg text-zinc-500 font-light leading-relaxed max-w-2xl mx-auto">
-          Castile brings you the finest selection of porcelain, ceramic, and natural stone looks.
-          Inspired by global trends and manufactured with cutting-edge technology, our collections
-          provide the perfect foundation for residential and commercial projects alike.
-        </p>
+      {/* Brand Selection Section */}
+      <section className="py-20 sm:py-32 px-6 sm:px-8 max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <span className="text-zinc-400 tracking-[0.3em] text-[10px] sm:text-xs font-bold uppercase block mb-4">Our Partners</span>
+          <h2 className="text-3xl sm:text-5xl font-playfair text-zinc-900">Premium Brands</h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
+          {/* Roca Tiles */}
+          <Link href="/products?brand=roca-tiles" className="group flex flex-col items-center">
+            <div className="relative w-full aspect-[4/5] bg-zinc-100 rounded-xl overflow-hidden flex items-center justify-center transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2 border border-zinc-200">
+              <Image
+                src="https://rocatileusa.com/wp-content/uploads/2023/07/Roca-Tile-Collections-Header.jpg"
+                alt="Roca Tiles"
+                fill
+                className="object-cover transition-transform duration-1000 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <span className="text-white text-[10px] font-bold uppercase tracking-[0.3em] border border-white/50 px-6 py-3 backdrop-blur-sm">Roca Tiles</span>
+              </div>
+            </div>
+            <h3 className="mt-6 text-sm font-bold tracking-[0.2em] uppercase text-zinc-500 group-hover:text-zinc-900 transition-colors">Roca Tiles</h3>
+          </Link>
+
+          {/* Dune */}
+          <Link href="/products?brand=dune" className="group flex flex-col items-center">
+            <div className="relative w-full aspect-[4/5] bg-zinc-100 rounded-xl overflow-hidden flex items-center justify-center transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2 border border-zinc-200">
+              <Image
+                src="https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/azulejos-rosas-para-banos-1777290132PY6P3.jpg"
+                alt="Dune"
+                fill
+                className="object-cover transition-transform duration-1000 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <span className="text-white text-[10px] font-bold uppercase tracking-[0.3em] border border-white/50 px-6 py-3 backdrop-blur-sm">Dune Ceramics</span>
+              </div>
+            </div>
+            <h3 className="mt-6 text-sm font-bold tracking-[0.2em] uppercase text-zinc-500 group-hover:text-zinc-900 transition-colors">Dune</h3>
+          </Link>
+        </div>
       </section>
 
       {/* Featured Collections Gallery */}

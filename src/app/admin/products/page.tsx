@@ -1,12 +1,32 @@
 "use client";
 import { useState, useEffect } from "react";
-import { getProducts } from "@/app/actions/productActions";
+import { getProducts, checkRocaStock } from "@/app/actions/productActions";
 import { CRMProduct } from "@/lib/types";
+
 
 export default function CatalogManager() {
     const [products, setProducts] = useState<CRMProduct[]>([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [collectionFilter, setCollectionFilter] = useState("ALL");
+    const [stocks, setStocks] = useState<Record<string, { value: number | null, loading: boolean }>>({});
+
+    const handleCheckStock = async (sku: string) => {
+        if (!sku) return;
+        setStocks(prev => ({ ...prev, [sku]: { value: null, loading: true } }));
+        const val = await checkRocaStock(sku);
+        setStocks(prev => ({ ...prev, [sku]: { value: val, loading: false } }));
+    };
+
+    const handleCheckAllStock = async () => {
+        const toCheck = filtered.filter(p => p.sku && (!stocks[p.sku] || stocks[p.sku].value === null));
+        for (const p of toCheck) {
+            handleCheckStock(p.sku);
+            // Small delay to avoid hammering the API
+            await new Promise(r => setTimeout(r, 100));
+        }
+    };
+
+
 
     useEffect(() => {
         getProducts().then(data => setProducts(data as any));
@@ -75,10 +95,19 @@ export default function CatalogManager() {
                             <option key={c} value={c}>{c}</option>
                         ))}
                     </select>
-                    <span className="text-sm font-medium text-zinc-500 sm:ml-auto">
-                        {filtered.length.toLocaleString()} results
-                        {searchTerm && <span className="text-amber-600 ml-1">(all collections)</span>}
-                    </span>
+                    <div className="flex items-center gap-3 sm:ml-auto">
+                        <button 
+                            onClick={handleCheckAllStock}
+                            className="text-xs font-bold bg-amber-500 hover:bg-amber-600 text-white px-3 py-2 rounded-lg shadow-sm transition-all active:scale-95 flex items-center gap-2"
+                        >
+                            🔄 Check All Stock
+                        </button>
+                        <span className="text-sm font-medium text-zinc-500">
+                            {filtered.length.toLocaleString()} results
+                            {searchTerm && <span className="text-amber-600 ml-1">(all collections)</span>}
+                        </span>
+                    </div>
+
                 </div>
 
                 <div className="overflow-x-auto max-h-[70vh] overflow-y-auto">
@@ -87,7 +116,9 @@ export default function CatalogManager() {
                             <tr>
                                 <th className="px-5 py-3 font-semibold">SKU</th>
                                 <th className="px-5 py-3 font-semibold">Description</th>
+                                <th className="px-5 py-3 font-semibold whitespace-nowrap">Miami Stock</th>
                                 <th className="px-5 py-3 font-semibold">Collection</th>
+
                                 <th className="px-5 py-3 font-semibold">Size</th>
                                 <th className="px-5 py-3 font-semibold whitespace-nowrap">Sqft / Box</th>
                                 <th className="px-5 py-3 font-semibold whitespace-nowrap">Cost / Sqft</th>
@@ -111,6 +142,31 @@ export default function CatalogManager() {
                                             {product.name || "—"}
                                         </td>
                                         <td className="px-5 py-3 whitespace-nowrap">
+                                            {stocks[product.sku]?.loading ? (
+                                                <span className="text-xs text-zinc-400 animate-pulse">Checking…</span>
+                                            ) : stocks[product.sku]?.value !== undefined && stocks[product.sku]?.value !== null ? (
+                                                <button 
+                                                    onClick={() => handleCheckStock(product.sku)}
+                                                    className={`text-xs font-bold px-3 py-1.5 rounded-lg border shadow-sm inline-block min-w-[120px] text-center transition-all hover:brightness-95 active:scale-95 ${stocks[product.sku]!.value! > 0 ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-red-50 text-red-700 border-red-200'}`}
+                                                    title="Click to refresh stock"
+                                                >
+                                                    MIA: {stocks[product.sku]!.value!.toLocaleString(undefined, { minimumFractionDigits: 2 })} SQFT
+                                                </button>
+
+
+
+                                            ) : (
+                                                <button 
+                                                    onClick={() => handleCheckStock(product.sku)}
+                                                    className="text-[10px] font-bold text-blue-700 hover:text-blue-900 bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-200 uppercase tracking-tighter shadow-sm transition-all hover:bg-blue-100 active:scale-95"
+                                                >
+                                                    🔍 MIAMI STOCK
+                                                </button>
+
+                                            )}
+                                        </td>
+                                        <td className="px-5 py-3 whitespace-nowrap">
+
                                             {product.collection ? (
                                                 <span className="text-xs font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-100">
                                                     {product.collection}

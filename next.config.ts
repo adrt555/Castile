@@ -15,6 +15,26 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'rocatileusa.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.us.roca.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'us.roca.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'website-duneceramics.s3.eu-central-1.amazonaws.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'duneceramics.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.duneceramics.com',
+      },
     ],
   },
 };

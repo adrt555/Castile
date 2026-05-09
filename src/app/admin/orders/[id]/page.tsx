@@ -58,8 +58,9 @@ export default function OrderPrintPage({ params }: { params: Promise<{ id: strin
                     </button>
                     <div>
                         <h1 className="text-2xl font-bold tracking-tight text-zinc-900">
-                            {order.status === "Quote" ? "Quote" : "Order"} {order.id}
+                            {order.status === "Quote" ? "Quote" : "Order"} : {order.orderNumber?.toString().padStart(4, '0') || order.id.slice(0, 8)}
                         </h1>
+
                         <p className="text-sm font-semibold mt-1">
                             Status: <span className={`uppercase tracking-widest ${order.status === 'Quote' ? 'text-amber-600' : 'text-emerald-600'}`}>{order.status}</span>
                         </p>
@@ -88,7 +89,8 @@ export default function OrderPrintPage({ params }: { params: Promise<{ id: strin
                 
                 {/* The Ghost Template: completely invisible until window.print() */}
                 <QuotePrintTemplate 
-                    orderId={order.id}
+                    orderId={order.orderNumber?.toString().padStart(4, '0') || order.id}
+
                     status={order.status}
                     createdAt={order.createdAt}
                     clientName={client.name}

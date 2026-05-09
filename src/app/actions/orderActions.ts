@@ -100,3 +100,18 @@ export async function updateOrder(id: string, data: any) {
     revalidatePath("/admin/finance");
     return order;
 }
+
+export async function deleteOrder(id: string) {
+    try {
+        await prisma.order.delete({
+            where: { id }
+        });
+        revalidatePath("/admin/orders");
+        revalidatePath("/admin/finance");
+        return { success: true };
+    } catch (e) {
+        console.error("DB Error in deleteOrder:", e);
+        return { success: false, error: "Could not delete order" };
+    }
+}
+

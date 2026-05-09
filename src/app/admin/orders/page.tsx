@@ -2,8 +2,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { getClients, createClient, updateClient } from "@/app/actions/clientActions";
-import { getProducts } from "@/app/actions/productActions";
-import { getOrders, updateOrderStatus, updateOrder } from "@/app/actions/orderActions";
+import { getProducts, checkRocaStock } from "@/app/actions/productActions";
+import { getOrders, updateOrderStatus, updateOrder, deleteOrder } from "@/app/actions/orderActions";
+
 import { Order, Client, OrderStatus, CRMProduct } from "@/lib/types";
 import QuotePrintTemplate from "./QuotePrintTemplate";
 
@@ -27,6 +28,15 @@ export default function OrdersTablePipeline() {
     const [clientSearch, setClientSearch] = useState<string>("");
     const [isClientDropdownOpen, setIsClientDropdownOpen] = useState(false);
     const [isDirty, setIsDirty] = useState(false);
+    const [itemStocks, setItemStocks] = useState<Record<string, { value: number | null, loading: boolean }>>({});
+
+    const handleCheckItemStock = async (itemId: string, sku: string) => {
+        if (!sku) return;
+        setItemStocks(prev => ({ ...prev, [itemId]: { value: null, loading: true } }));
+        const val = await checkRocaStock(sku);
+        setItemStocks(prev => ({ ...prev, [itemId]: { value: val, loading: false } }));
+    };
+
     const [skuSearchMap, setSkuSearchMap] = useState<Record<string, { query: string; open: boolean }>>({});
     const [products, setProducts] = useState<any[]>([]);
     const [allClients, setAllClients] = useState<any[]>([]);
@@ -186,7 +196,21 @@ export default function OrdersTablePipeline() {
         setIsDirty(false);
     };
 
+    const handleDeleteOrder = async () => {
+        if (!selectedOrder) return;
+        if (!confirm(`Are you sure you want to delete Order ${selectedOrder.orderNumber?.toString().padStart(4, '0') || selectedOrder.id}? This action cannot be undone.`)) return;
+        
+        const res = await deleteOrder(selectedOrder.id);
+        if (res.success) {
+            setSelectedOrder(null);
+            await loadData();
+        } else {
+            alert(res.error || "Failed to delete order");
+        }
+    };
+
     // Filtered clients for searchable dropdown
+
     const filteredClients = allClients.filter(c =>
         `${c.name} ${c.company} ${c.email}`.toLowerCase().includes(clientSearch.toLowerCase())
     );
@@ -194,14 +218,17 @@ export default function OrdersTablePipeline() {
     // Global Search Logic
     const filteredOrders = orders.filter(order => {
         const query = searchQuery.toLowerCase();
+        const fmtNum = order.orderNumber?.toString().padStart(4, '0') || "";
         return (
             order.id.toLowerCase().includes(query) ||
+            fmtNum.includes(query) ||
             order.client?.name.toLowerCase().includes(query) ||
             order.client?.phone.includes(query) ||
             (order.shippingAddress && order.shippingAddress.toLowerCase().includes(query)) ||
             (order.billingAddress && order.billingAddress.toLowerCase().includes(query))
         );
     }).sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+
 
     // Render the Details View instead of the Table if an order is selected
     if (selectedOrder) {
@@ -251,8 +278,9 @@ export default function OrdersTablePipeline() {
                         <div>
                             <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
                                 <h1 className="text-xl sm:text-2xl font-bold text-zinc-900 uppercase tracking-widest">
-                                    <span className="text-amber-500">#</span>{selectedOrder.id}
+                                    Order : {selectedOrder.orderNumber?.toString().padStart(4, '0') || selectedOrder.id.slice(0,8)}
                                 </h1>
+
                                 <span className={`w-fit px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider border
                                     ${selectedOrder.status === 'Quote' ? 'bg-zinc-100 text-zinc-700 border-zinc-200' : ''}
                                     ${selectedOrder.status === 'Invoice Sent' ? 'bg-blue-50 text-blue-700 border-blue-200' : ''}
@@ -636,8 +664,34 @@ export default function OrdersTablePipeline() {
                                                     onFocus={() => setSkuSearchMap(prev => ({ ...prev, [item.id]: { query: prev[item.id]?.query ?? '', open: true } }))}
                                                     className="w-full bg-zinc-50 border border-zinc-200 text-zinc-900 text-xs rounded-lg focus:ring-amber-500 focus:border-amber-500 p-2 outline-none font-mono" />
                                                 {item.productName && (
-                                                    <div className="text-[10px] text-zinc-500 truncate mt-0.5 pl-0.5">{item.productName}{item.size && <span className="ml-1 text-amber-600 font-bold">{item.size}</span>}</div>
+                                                    <div className="flex items-center gap-2 mt-0.5 min-w-0">
+                                                        <div className="text-[10px] text-zinc-500 truncate pl-0.5 flex-1">{item.productName}{item.size && <span className="ml-1 text-amber-600 font-bold">{item.size}</span>}</div>
+                                                        <div className="flex-shrink-0">
+                                                            {itemStocks[item.id]?.loading ? (
+                                                                <span className="text-[9px] text-zinc-400 animate-pulse">Checking…</span>
+                                                            ) : itemStocks[item.id]?.value !== undefined && itemStocks[item.id]?.value !== null ? (
+                                                                <button 
+                                                                    type="button"
+                                                                    onClick={() => handleCheckItemStock(item.id, item.sku)}
+                                                                    className={`text-[9px] font-bold px-2 py-1 rounded-lg border shadow-sm whitespace-nowrap min-w-[85px] text-center transition-all hover:brightness-95 active:scale-95 ${itemStocks[item.id]!.value! > 0 ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-red-50 text-red-700 border-red-200'}`}
+                                                                >
+                                                                    MIA: {itemStocks[item.id]!.value!.toLocaleString(undefined, { minimumFractionDigits: 2 })} SQFT
+                                                                </button>
+
+                                                            ) : (
+                                                                <button 
+                                                                    type="button"
+                                                                    onClick={() => handleCheckItemStock(item.id, item.sku)}
+                                                                    className="text-[9px] font-bold text-blue-700 hover:text-blue-900 bg-blue-50 px-2 py-1 rounded-lg border border-blue-200 uppercase tracking-tighter shadow-sm transition-all hover:bg-blue-100"
+                                                                >
+                                                                    MIAMI STOCK
+                                                                </button>
+                                                            )}
+
+                                                        </div>
+                                                    </div>
                                                 )}
+
                                                 {skuDropdown}
                                             </div>
                                             <input type="number" min="0" step="0.01" value={item.quantitySqft}
@@ -758,7 +812,13 @@ export default function OrdersTablePipeline() {
 
                         {/* 4. Actions */}
                         <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-zinc-100">
-                            <button className="w-full sm:w-auto px-6 py-2.5 border border-red-200 text-red-600 bg-red-50 hover:bg-red-100 rounded-xl text-sm font-bold transition-colors">
+                            <button 
+                                onClick={handleDeleteOrder}
+                                className="w-full sm:w-auto px-6 py-2.5 border border-red-200 text-red-600 bg-red-50 hover:bg-red-100 rounded-xl text-sm font-bold transition-colors"
+                            >
+                                Delete Order
+                            </button>
+                            <button className="w-full sm:w-auto px-6 py-2.5 border border-zinc-300 text-zinc-700 bg-white hover:bg-zinc-50 rounded-xl text-sm font-bold transition-colors shadow-sm">
                                 Issue Refund
                             </button>
                             <button className="w-full sm:w-auto px-6 py-2.5 border border-zinc-300 text-zinc-700 bg-white hover:bg-zinc-50 rounded-xl text-sm font-bold transition-colors shadow-sm">
@@ -766,12 +826,14 @@ export default function OrdersTablePipeline() {
                             </button>
                         </div>
 
+
                     </div>
                 </div>
 
                 {/* Print Template - hidden on screen, visible on print */}
                 <QuotePrintTemplate
-                    orderId={selectedOrder.id}
+                    orderId={selectedOrder.orderNumber?.toString().padStart(4, '0') || selectedOrder.id}
+
                     status={selectedOrder.status}
                     createdAt={selectedOrder.createdAt}
                     clientName={selectedClient?.name || selectedOrder.client?.name || ""}
@@ -846,8 +908,9 @@ export default function OrdersTablePipeline() {
                                     className="hover:bg-amber-50/50 transition-colors cursor-pointer group"
                                 >
                                     <td className="px-6 py-5 font-bold text-zinc-900 uppercase tracking-wide">
-                                        <span className="text-amber-500 mr-0.5">#</span>{order.id}
+                                        Order : {order.orderNumber?.toString().padStart(4, '0') || order.id.slice(0, 8)}
                                     </td>
+
                                     <td className="px-6 py-5 whitespace-nowrap text-zinc-500 font-medium">
                                         {new Date(order.createdAt).toLocaleDateString()}
                                     </td>

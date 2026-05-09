@@ -28,6 +28,8 @@ export interface OrderItem {
 
 export interface Order {
     id: string;
+    orderNumber: number;
+
     clientId: string;
     status: OrderStatus;
     items: OrderItem[];

@@ -16,6 +16,10 @@ export interface Product {
     image: string;
     isNew?: boolean;
     description?: string;
+    brand: 'roca-tiles' | 'roca-bathrooms' | 'dune';
+    finish?: string[];
+    usage?: string[];
+    look?: string;
 }
 
 export interface Collection {
@@ -25,66 +29,79 @@ export interface Collection {
     image: string;
     description?: string;
     materials?: string[];
+    brand: 'roca-tiles' | 'dune';
 }
 
 export const collectionsList = [
-    { name: "ABACO", slug: "abaco", materials: ["Glazed Porcelain"] },
-    { name: "ABBEY", slug: "abbey", materials: ["Glazed Porcelain", "Ceramic Wall"] },
-    { name: "ALASKA", slug: "alaska", materials: ["Polished Porcelain"] },
-    { name: "ARTESANO", slug: "artesano", materials: ["Ceramic Wall"] },
-    { name: "ATLAS", slug: "atlas", materials: ["Porcelain"] },
-    { name: "AURA", slug: "aura", materials: ["Ceramic"] },
-    { name: "AVALON", slug: "avalon", materials: ["Porcelain"] },
-    { name: "AVENUE", slug: "avenue", materials: ["Porcelain"] },
-    { name: "BALTIC", slug: "baltic", materials: ["Porcelain"] },
-    { name: "BAR TILE", slug: "bar-tile", materials: ["Ceramic Wall"] },
-    { name: "BIANCO VENATINO", slug: "bianco-venatino", materials: ["Marble Look Porcelain"] },
-    { name: "BLOCK", slug: "block", materials: ["Ceramic Wall"] },
-    { name: "BOHEME", slug: "boheme", materials: ["Wood Look Porcelain"] },
-    { name: "BRICKELL", slug: "brickell", materials: ["Ceramic Wall"] },
-    { name: "CALACATA GOLD", slug: "calacata-gold", materials: ["Marble Look Porcelain"] },
-    { name: "CALYPSO", slug: "calypso", materials: ["Ceramic Wall"] },
-    { name: "CARVE", slug: "carve", materials: ["Porcelain"] },
-    { name: "CASABLANCA", slug: "casablanca", materials: ["Patterned Porcelain"] },
-    { name: "CC COSMOS", slug: "cc-cosmos", materials: ["Ceramic Wall", "Mosaics"] },
-    { name: "FRAMES", slug: "frames", materials: ["Ceramic Wall", "Mosaics"] },
-    { name: "MOSAICS", slug: "mosaics", materials: ["Ceramic Wall", "Mosaics"] },
-    { name: "COLOR COLLECTION", slug: "color-collection", materials: ["Ceramic Wall"] },
-    { name: "CRYSTAL", slug: "crystal", materials: ["Polished Porcelain"] },
-    { name: "DERBY", slug: "derby", materials: ["Porcelain"] },
-    { name: "DOWNTOWN", slug: "downtown", materials: ["Porcelain"] },
-    { name: "ESSENCE", slug: "essence", materials: ["Porcelain"] },
-    { name: "EVERGLADE", slug: "everglade", materials: ["Wood Look Porcelain"] },
-    { name: "FLOW", slug: "flow", materials: ["Ceramic Wall"] },
-    { name: "JOY", slug: "joy", materials: ["Ceramic Wall"] },
-    { name: "HAVANA", slug: "havana", materials: ["Patterned Porcelain"] },
-    { name: "JEWELS", slug: "jewels", materials: ["Marble Look Porcelain"] },
-    { name: "JUNE", slug: "june", materials: ["Stone Look Porcelain"] },
-    { name: "LAGOM", slug: "lagom", materials: ["Stone Look Porcelain"] },
-    { name: "LASSA", slug: "lassa", materials: ["White Marble Looks"] },
-    { name: "NORDICO", slug: "nordico", materials: ["White Marble Looks"] },
-    { name: "ONYX", slug: "onyx", materials: ["White Marble Looks"] },
-    { name: "STATUARY", slug: "statuary", materials: ["White Marble Looks"] },
-    { name: "LITHOLOGY EDITION", slug: "lithology-edition", materials: ["Stone Look"] },
-    { name: "LIVERPOOL", slug: "liverpool", materials: ["Stone Look"] },
-    { name: "MAIOLICA", slug: "maiolica", materials: ["Ceramic Wall"] },
-    { name: "NOLITA", slug: "nolita", materials: ["Porcelain"] },
-    { name: "PAVERS", slug: "pavers", materials: ["Outdoor Pavers"] },
-    { name: "20MM", slug: "20mm", materials: ["Outdoor Pavers"] },
-    { name: "PRO", slug: "pro", materials: ["Concrete Look Porcelain"] },
-    { name: "PRO MAX", slug: "pro-max", materials: ["Concrete Look Porcelain"] },
-    { name: "SLABS", slug: "slabs", materials: ["Large Format Porcelain"] },
-    { name: "XL SLABS", slug: "xl-slabs", materials: ["Large Format Porcelain"] },
-    { name: "ZELLIGE", slug: "zellige", materials: ["Ceramic Wall"] },
-    { name: "ZEN", slug: "zen", materials: ["Porcelain"] },
-    { name: "ZEN STONE", slug: "zen-stone", materials: ["Porcelain"] }
+    { name: "ABACO", slug: "abaco", materials: ["Glazed Porcelain"], brand: "roca-tiles" },
+    { name: "ABBEY", slug: "abbey", materials: ["Glazed Porcelain", "Ceramic Wall"], brand: "roca-tiles" },
+    { name: "ALASKA", slug: "alaska", materials: ["Polished Porcelain"], brand: "roca-tiles" },
+    { name: "ARTESANO", slug: "artesano", materials: ["Ceramic Wall"], brand: "roca-tiles" },
+    { name: "ATLAS", slug: "atlas", materials: ["Porcelain"], brand: "roca-tiles" },
+    { name: "AURA", slug: "aura", materials: ["Ceramic"], brand: "roca-tiles" },
+    { name: "AVALON", slug: "avalon", materials: ["Porcelain"], brand: "roca-tiles" },
+    { name: "AVENUE", slug: "avenue", materials: ["Porcelain"], brand: "roca-tiles" },
+    { name: "BALTIC", slug: "baltic", materials: ["Porcelain"], brand: "roca-tiles" },
+    { name: "BAR TILE", slug: "bar-tile", materials: ["Ceramic Wall"], brand: "roca-tiles" },
+    { name: "BIANCO VENATINO", slug: "bianco-venatino", materials: ["Marble Look Porcelain"], brand: "roca-tiles" },
+    { name: "BLOCK", slug: "block", materials: ["Ceramic Wall"], brand: "roca-tiles" },
+    { name: "BOHEME", slug: "boheme", materials: ["Wood Look Porcelain"], brand: "roca-tiles" },
+    { name: "BRICKELL", slug: "brickell", materials: ["Ceramic Wall"], brand: "roca-tiles" },
+    { name: "CALACATA GOLD", slug: "calacata-gold", materials: ["Marble Look Porcelain"], brand: "roca-tiles" },
+    { name: "CALYPSO", slug: "calypso", materials: ["Ceramic Wall"], brand: "roca-tiles" },
+    { name: "CARVE", slug: "carve", materials: ["Porcelain"], brand: "roca-tiles" },
+    { name: "CASABLANCA", slug: "casablanca", materials: ["Patterned Porcelain"], brand: "roca-tiles" },
+    { name: "CC COSMOS", slug: "cc-cosmos", materials: ["Ceramic Wall", "Mosaics"], brand: "roca-tiles" },
+    { name: "FRAMES", slug: "frames", materials: ["Ceramic Wall", "Mosaics"], brand: "roca-tiles" },
+    { name: "MOSAICS", slug: "mosaics", materials: ["Ceramic Wall", "Mosaics"], brand: "roca-tiles" },
+    { name: "COLOR COLLECTION", slug: "color-collection", materials: ["Ceramic Wall"], brand: "roca-tiles" },
+    { name: "CRYSTAL", slug: "crystal", materials: ["Polished Porcelain"], brand: "roca-tiles" },
+    { name: "DERBY", slug: "derby", materials: ["Porcelain"], brand: "roca-tiles" },
+    { name: "DOWNTOWN", slug: "downtown", materials: ["Porcelain"], brand: "roca-tiles" },
+    { name: "ESSENCE", slug: "essence", materials: ["Porcelain"], brand: "roca-tiles" },
+    { name: "EVERGLADE", slug: "everglade", materials: ["Wood Look Porcelain"], brand: "roca-tiles" },
+    { name: "FLOW", slug: "flow", materials: ["Ceramic Wall"], brand: "roca-tiles" },
+    { name: "JOY", slug: "joy", materials: ["Ceramic Wall"], brand: "roca-tiles" },
+    { name: "HAVANA", slug: "havana", materials: ["Patterned Porcelain"], brand: "roca-tiles" },
+    { name: "JEWELS", slug: "jewels", materials: ["Marble Look Porcelain"], brand: "roca-tiles" },
+    { name: "JUNE", slug: "june", materials: ["Stone Look Porcelain"], brand: "roca-tiles" },
+    { name: "LAGOM", slug: "lagom", materials: ["Stone Look Porcelain"], brand: "roca-tiles" },
+    { name: "LASSA", slug: "lassa", materials: ["White Marble Looks"], brand: "roca-tiles" },
+    { name: "NORDICO", slug: "nordico", materials: ["White Marble Looks"], brand: "roca-tiles" },
+    { name: "ONYX", slug: "onyx", materials: ["White Marble Looks"], brand: "roca-tiles" },
+    { name: "STATUARY", slug: "statuary", materials: ["White Marble Looks"], brand: "roca-tiles" },
+    { name: "LITHOLOGY EDITION", slug: "lithology-edition", materials: ["Stone Look"], brand: "roca-tiles" },
+    { name: "LIVERPOOL", slug: "liverpool", materials: ["Stone Look"], brand: "roca-tiles" },
+    { name: "MAIOLICA", slug: "maiolica", materials: ["Ceramic Wall"], brand: "roca-tiles" },
+    { name: "NOLITA", slug: "nolita", materials: ["Porcelain"], brand: "roca-tiles" },
+    { name: "PAVERS", slug: "pavers", materials: ["Outdoor Pavers"], brand: "roca-tiles" },
+    { name: "20MM", slug: "20mm", materials: ["Outdoor Pavers"], brand: "roca-tiles" },
+    { name: "PRO", slug: "pro", materials: ["Concrete Look Porcelain"], brand: "roca-tiles" },
+    { name: "PRO MAX", slug: "pro-max", materials: ["Concrete Look Porcelain"], brand: "roca-tiles" },
+    { name: "SLABS", slug: "slabs", materials: ["Large Format Porcelain"], brand: "roca-tiles" },
+    { name: "XL SLABS", slug: "xl-slabs", materials: ["Large Format Porcelain"], brand: "roca-tiles" },
+    { name: "ZELLIGE", slug: "zellige", materials: ["Ceramic Wall"], brand: "roca-tiles" },
+    { name: "ZEN", slug: "zen", materials: ["Porcelain"], brand: "roca-tiles" },
+    { name: "ZEN STONE", slug: "zen-stone", materials: ["Porcelain"], brand: "roca-tiles" },
+    // Dune
+    { name: "AGATHA", slug: "agatha", materials: ["Decorative Ceramic"], brand: "dune" },
+    { name: "SHAPES", slug: "shapes", materials: ["3D Ceramic"], brand: "dune" },
+    { name: "CLICK & FLOOR", slug: "click-floor", materials: ["SPC Flooring"], brand: "dune" },
+    { name: "DUNE MOSAICS", slug: "dune-mosaics", materials: ["Glass & Stone Mosaics"], brand: "dune" },
+    { name: "EXA", slug: "exa", materials: ["Hexagonal Ceramic"], brand: "dune" },
 ];
 
 // Official Roca USA Images Database
 const rocaImages: Record<string, string> = {
-    "abaco": "https://rocatileusa.com/uploads/2021/07/AMBIENTE_AbacoGrafito60x60-1-768x543.jpeg.webp",
+    "abaco": "https://rocatileusa.com/wp-content/uploads/2023/07/Roca-Tile-Collections-Header.jpg",
+    "alaska": "https://rocatileusa.com/wp-content/uploads/2021/01/Alaska-Header.jpg",
+    "agatha": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/azulejos-rosas-para-banos-1777290132PY6P3.jpg",
+    "shapes": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/reforma-de-bano-moderno-rosa-1777290135MHFbA.jpg",
+    // Brands high-res
+    "brand-roca-tiles": "https://rocatileusa.com/wp-content/uploads/2023/07/Roca-Tile-Collections-Header.jpg",
+    "brand-dune": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/azulejos-rosas-para-banos-1777290132PY6P3.jpg",
+    
     "abbey": "https://rocatileusa.com/uploads/2019/08/Abbey-400x400.jpg.webp",
-    "alaska": "https://rocatileusa.com/uploads/2021/07/ehz3-NTv-1-400x400.jpeg.webp",
     "artesano": "https://rocatileusa.com/uploads/2023/01/artesano-400x400.jpg.webp",
     "aura": "https://rocatileusa.com/uploads/2024/01/amb-08-AURA-SEASHELL-4x12.jpg-web-thumbnail.jpg",
     "avalon": "https://rocatileusa.com/uploads/2024/01/amb-04-AVALON-ARENA-web-thumbnail.jpg",
@@ -117,7 +134,8 @@ export const categories: Collection[] = collectionsList.map((c, i) => {
         slug: c.slug,
         count: Math.floor(Math.random() * 15) + 3,
         image: img || `https://picsum.photos/seed/castile_col_${i}/1000/1000`,
-        description: `Premium ${c.materials?.[0] || 'surfaces'} from the ${c.name} collection.`
+        description: `Premium ${c.materials?.[0] || 'surfaces'} from the ${c.name} collection.`,
+        brand: (c as any).brand as any
     };
 });
 
@@ -194,17 +212,32 @@ rawProductsData.forEach((raw, idx) => {
         image: `https://picsum.photos/seed/castile_var_${raw.id}_${i}/1000/1000`
     }));
 
+    // Derive advanced attributes for high-end filtering
+    const materialLower = (collectionInfo.materials?.[0] || "").toLowerCase();
+    const isLarge = raw.sizes.some(s => s.includes("48") || s.includes("110") || s.includes("126"));
+    const isMosaic = materialLower.includes("mosaic") || raw.sizes.some(s => s.includes("2X2") || s.includes("3X3"));
+    
+    let look = "Modern";
+    if (materialLower.includes("marble")) look = "Marble";
+    else if (materialLower.includes("wood")) look = "Wood";
+    else if (materialLower.includes("stone")) look = "Stone";
+    else if (materialLower.includes("concrete") || materialLower.includes("cement")) look = "Concrete";
+
     allProducts.push({
         id: raw.id,
         name: raw.col,
         category: collectionInfo.materials?.[0] || "Porcelain",
         collectionId: collectionInfo.slug,
+        brand: collectionInfo.brand,
         sizes: raw.sizes,
         colors: raw.colors,
         variations,
         image: baseImage,
         isNew: idx % 4 === 0,
-        description: `The ${raw.col} collection features premium ${collectionInfo.materials?.[0]?.toLowerCase() || 'surfaces'}. Available in beautiful ${raw.colors.slice(0, 3).join(", ")}${raw.colors.length > 3 ? ' and more' : ''}. Sizes include ${raw.sizes.slice(0, 3).join(", ")}.`
+        description: `The ${raw.col} collection features premium ${collectionInfo.materials?.[0]?.toLowerCase() || 'surfaces'}. Available in beautiful ${raw.colors.slice(0, 3).join(", ")}${raw.colors.length > 3 ? ' and more' : ''}. Sizes include ${raw.sizes.slice(0, 3).join(", ")}.`,
+        finish: ["Matte", "Polished", "Lappato"].slice(0, (idx % 3) + 1),
+        usage: ["Floor", "Wall", "Indoor", "Outdoor"].slice(0, (idx % 4) + 2),
+        look: look
     });
 });
 
@@ -223,12 +256,30 @@ export interface SearchItem {
 export function getSearchIndex(): SearchItem[] {
     const items: SearchItem[] = [];
 
+    // Add Brand entries to search
+    const brands = [
+        { name: "Roca Tiles", slug: "roca-tiles", image: "/brands/roca_tiles.png" },
+        { name: "Dune", slug: "dune", image: "/brands/dune.png" }
+    ];
+
+    brands.forEach(b => {
+        items.push({
+            type: "collection",
+            name: b.name,
+            category: "Brand",
+            slug: `?brand=${b.slug}`,
+            id: `brand-${b.slug}`,
+            image: b.image
+        });
+    });
+
     // Add all products (treating the collection main entry as the product here since UI maps collections -> products)
     allProducts.forEach((p) => {
+        const brandName = categories.find(c => c.slug === p.collectionId)?.brand || "roca-tiles";
         items.push({
             type: "product",
             name: p.name,
-            category: p.category,
+            category: `${brandName.replace('-', ' ')} • ${p.category}`,
             slug: p.collectionId,
             id: p.id,
             image: p.image,

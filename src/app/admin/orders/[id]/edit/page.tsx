@@ -158,7 +158,8 @@ export default function EditOrderPage({ params }: { params: Promise<{ id: string
                     &larr;
                 </Link>
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-zinc-900">Edit Quote <span className="text-amber-500">#{id}</span></h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-zinc-900">Edit Quote <span className="text-amber-500">Order : {existingOrder?.orderNumber?.toString().padStart(4, '0') || id.slice(0, 8)}</span></h1>
+
                     <p className="text-zinc-500 mt-1">Modify the client, line items, and discounts before marking as Paid.</p>
                 </div>
             </div>

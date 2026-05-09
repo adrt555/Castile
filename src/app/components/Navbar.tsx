@@ -22,10 +22,10 @@ export default function Navbar() {
     }, []);
 
     const navLinks = [
-        { href: "/products", label: "Collections" },
-        { href: "/about", label: "Our Story" },
-        { href: "/gallery", label: "Gallery" },
-        { href: "/contact", label: "Contact" },
+        { href: "/products?brand=roca-tiles", label: "Roca Tiles" },
+        { href: "/products?brand=dune", label: "Dune" },
+        { href: "/catalogs", label: "Catalogs" },
+        { href: "/products", label: "Shop" },
     ];
 
     return (
