@@ -183,30 +183,6 @@ export default function QuotePrintTemplate({
                     .terms-text { font-size: 14px; color: #666; line-height: 1.7; }
                     .sig-block { margin-top: 40px; display: flex; justify-content: flex-end; }
                     .sig-line { border-top: 1px solid #999; width: 220px; padding-top: 6px; text-align: center; font-size: 14px; color: #888; }
-                    .payment-qr-container {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        margin-top: 10px;
-                        padding: 10px;
-                        border: 1px solid #e5e7eb;
-                        border-radius: 8px;
-                        width: fit-content;
-                        background: white;
-                    }
-                    .payment-qr-label {
-                        font-size: 10px;
-                        font-weight: 700;
-                        text-transform: uppercase;
-                        letter-spacing: 0.05em;
-                        color: #2d7a6a;
-                        margin-bottom: 4px;
-                    }
-                    .payment-qr-help {
-                        font-size: 8px;
-                        color: #888;
-                        margin-top: 4px;
-                    }
                     @page { margin: 0; size: letter; }
                 }
             `}</style>
@@ -227,18 +203,15 @@ export default function QuotePrintTemplate({
                         <span style={{ color: "blue", textDecoration: "underline" }}>Adrian@castileusa.com</span> &middot;<br />
                         (786)-781-4383
                     </div>
-                    {/* QR Code in Header */}
+                    {/* QR Code in Header - Simplified for Max Compatibility */}
                     {checkoutUrl && (
-                        <div className="payment-qr-container" style={{ marginTop: '8px', marginLeft: 'auto' }}>
-                            <div className="payment-qr-label">Scan to Pay Online</div>
+                        <div style={{ marginTop: '10px', marginLeft: 'auto', background: 'white', padding: '10px' }}>
                             <QRCodeCanvas 
                                 value={checkoutUrl} 
-                                size={120} 
-                                level="Q"
+                                size={150} 
+                                level="L"
                                 includeMargin={true}
-                                style={{ display: 'block' }}
                             />
-                            <div className="payment-qr-help">Secure payment via Stripe</div>
                         </div>
                     )}
                 </div>
