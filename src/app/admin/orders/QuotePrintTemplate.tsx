@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { QRCodeCanvas } from 'qrcode.react';
+import { QRCodeSVG } from 'qrcode.react';
 
 interface PrintItem {
     productName: string;
@@ -203,14 +203,28 @@ export default function QuotePrintTemplate({
                         <span style={{ color: "blue", textDecoration: "underline" }}>Adrian@castileusa.com</span> &middot;<br />
                         (786)-781-4383
                     </div>
-                    {/* QR Code in Header - Simplified for Max Compatibility */}
+                    {/* QR Code in Header - Android/Apple Universal Compatibility */}
                     {checkoutUrl && (
-                        <div style={{ marginTop: '10px', marginLeft: 'auto', background: 'white', padding: '10px' }}>
-                            <QRCodeCanvas 
+                        <div style={{ 
+                            marginTop: '10px', 
+                            marginLeft: 'auto', 
+                            background: 'white', 
+                            padding: '20px', 
+                            border: '1px solid #eee',
+                            borderRadius: '8px' 
+                        }}>
+                            <div style={{ fontSize: '10px', fontWeight: 'bold', textAlign: 'center', marginBottom: '8px', color: '#666' }}>
+                                SCAN TO PAY
+                            </div>
+                            <QRCodeSVG 
                                 value={checkoutUrl} 
-                                size={150} 
-                                level="L"
-                                includeMargin={true}
+                                size={140} 
+                                level="M"
+                                includeMargin={false}
+                                style={{ 
+                                    display: 'block',
+                                    shapeRendering: 'crispEdges' 
+                                }}
                             />
                         </div>
                     )}
