@@ -105,6 +105,7 @@ export default function OrderPrintPage({ params }: { params: Promise<{ id: strin
                     freight={order.freight || 0}
                     tax={order.tax || 0}
                     total={order.total}
+                    dbOrderId={order.id}
                 />
             </div>
         </div>

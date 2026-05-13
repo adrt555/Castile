@@ -848,6 +848,7 @@ export default function OrdersTablePipeline() {
                     freight={eFreight}
                     tax={eTax}
                     total={eTotal}
+                    dbOrderId={selectedOrder.id}
                 />
             </div >
         );

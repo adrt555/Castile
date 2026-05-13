@@ -1,6 +1,7 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { QRCodeSVG } from 'qrcode.react';
 
 interface PrintItem {
     productName: string;
@@ -29,6 +30,7 @@ interface QuotePrintProps {
     freight: number;
     tax: number;
     total: number;
+    dbOrderId?: string;
     documentType?: 'QUOTE' | 'INVOICE' | 'PURCHASE ORDER';
 }
 
@@ -48,8 +50,39 @@ export default function QuotePrintTemplate({
     freight,
     tax,
     total,
+    dbOrderId,
     documentType,
 }: QuotePrintProps) {
+    const [checkoutUrl, setCheckoutUrl] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        // Only generate for Quotes or Invoices that are NOT paid
+        if (status !== 'Paid' && total > 0) {
+            const fetchCheckoutUrl = async () => {
+                setIsLoading(true);
+                try {
+                    const res = await fetch('/api/create-checkout', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            quoteId: dbOrderId || orderId,
+                            amount: total,
+                            clientName: clientName
+                        })
+                    });
+                    const data = await res.json();
+                    if (data.url) setCheckoutUrl(data.url);
+                } catch (err) {
+                    console.error('Error fetching checkout URL:', err);
+                } finally {
+                    setIsLoading(false);
+                }
+            };
+            fetchCheckoutUrl();
+        }
+    }, [orderId, total, status, clientName]);
+
     const orderDate = new Date(createdAt);
     const dueDate = new Date(createdAt);
     dueDate.setDate(dueDate.getDate() + 30);
@@ -150,6 +183,30 @@ export default function QuotePrintTemplate({
                     .terms-text { font-size: 14px; color: #666; line-height: 1.7; }
                     .sig-block { margin-top: 40px; display: flex; justify-content: flex-end; }
                     .sig-line { border-top: 1px solid #999; width: 220px; padding-top: 6px; text-align: center; font-size: 14px; color: #888; }
+                    .payment-qr-container {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        margin-top: 10px;
+                        padding: 8px;
+                        border: 1px solid #e5e7eb;
+                        border-radius: 8px;
+                        width: fit-content;
+                        background: white;
+                    }
+                    .payment-qr-label {
+                        font-size: 10px;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        letter-spacing: 0.05em;
+                        color: #2d7a6a;
+                        margin-bottom: 4px;
+                    }
+                    .payment-qr-help {
+                        font-size: 8px;
+                        color: #888;
+                        margin-top: 4px;
+                    }
                     @page { margin: 0; size: letter; }
                 }
             `}</style>
@@ -170,6 +227,14 @@ export default function QuotePrintTemplate({
                         <span style={{ color: "blue", textDecoration: "underline" }}>Adrian@castileusa.com</span> &middot;<br />
                         (786)-781-4383
                     </div>
+                    {/* QR Code in Header */}
+                    {checkoutUrl && (
+                        <div className="payment-qr-container" style={{ marginTop: '12px', marginLeft: 'auto' }}>
+                            <div className="payment-qr-label">Scan to Pay Online</div>
+                            <QRCodeSVG value={checkoutUrl} size={80} />
+                            <div className="payment-qr-help">Secure payment via Stripe</div>
+                        </div>
+                    )}
                 </div>
             </div>
 
@@ -295,7 +360,7 @@ export default function QuotePrintTemplate({
             </div>
 
             {/* Signature */}
-            <div className="sig-block">
+            <div className="sig-block" style={{ marginTop: '60px', display: 'flex', justifyContent: 'flex-end' }}>
                 <div className="sig-line">customer signature</div>
             </div>
         </div>
