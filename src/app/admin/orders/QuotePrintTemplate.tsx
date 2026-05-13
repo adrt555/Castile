@@ -189,7 +189,7 @@ export default function QuotePrintTemplate({
 
             {/* Header */}
             <div className="print-header">
-                <div className="logo-block">
+                <div className="logo-block" style={{ marginTop: '-15px' }}>
                     <img
                         src="/castile_white.png"
                         alt="Castile Logo"
@@ -203,31 +203,7 @@ export default function QuotePrintTemplate({
                         <span style={{ color: "blue", textDecoration: "underline" }}>Adrian@castileusa.com</span> &middot;<br />
                         (786)-781-4383
                     </div>
-                    {/* QR Code in Header - Android/Apple Universal Compatibility */}
-                    {checkoutUrl && (
-                        <div style={{ 
-                            marginTop: '10px', 
-                            marginLeft: 'auto', 
-                            background: 'white', 
-                            padding: '20px', 
-                            border: '1px solid #eee',
-                            borderRadius: '8px' 
-                        }}>
-                            <div style={{ fontSize: '10px', fontWeight: 'bold', textAlign: 'center', marginBottom: '8px', color: '#666' }}>
-                                SCAN TO PAY
-                            </div>
-                            <QRCodeSVG 
-                                value={checkoutUrl} 
-                                size={140} 
-                                level="M"
-                                includeMargin={false}
-                                style={{ 
-                                    display: 'block',
-                                    shapeRendering: 'crispEdges' 
-                                }}
-                            />
-                        </div>
-                    )}
+                    {/* QR Code removed from here */}
                 </div>
             </div>
 
@@ -309,32 +285,55 @@ export default function QuotePrintTemplate({
                 </tbody>
             </table>
 
-            {/* Financials */}
-            <div className="financials">
-                <div className="financials-box">
-                    <div className="fin-row">
-                        <span>Subtotal</span>
-                        <span>${subtotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
-                    </div>
-                    {discount > 0 && (
-                        <div className="fin-row discount">
-                            <span>Discount</span>
-                            <span>-${discount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+            {/* Financials & QR Section */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginTop: '20px', borderTop: '1px solid #e5e7eb' }}>
+                {/* QR Code in New Location (Bottom Left) */}
+                <div style={{ paddingTop: '20px' }}>
+                    {checkoutUrl && (
+                        <div style={{ background: 'white', padding: '0' }}>
+                            <div style={{ fontSize: '10px', fontWeight: 'bold', textAlign: 'left', marginBottom: '8px', color: '#666', letterSpacing: '0.05em' }}>
+                                SCAN TO PAY ONLINE
+                            </div>
+                            <QRCodeSVG 
+                                value={checkoutUrl} 
+                                size={110} 
+                                level="M"
+                                includeMargin={false}
+                                style={{ 
+                                    display: 'block',
+                                    shapeRendering: 'crispEdges' 
+                                }}
+                            />
                         </div>
                     )}
-                    {freight > 0 && (
+                </div>
+
+                <div className="financials" style={{ borderTop: 'none' }}>
+                    <div className="financials-box">
                         <div className="fin-row">
-                            <span>Freight</span>
-                            <span>${freight.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+                            <span>Subtotal</span>
+                            <span>${subtotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                         </div>
-                    )}
-                    <div className="fin-row">
-                        <span>Sales Tax (7%)</span>
-                        <span>${tax.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
-                    </div>
-                    <div className="fin-row total">
-                        <span>Total (USD)</span>
-                        <span>${total.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+                        {discount > 0 && (
+                            <div className="fin-row discount">
+                                <span>Discount</span>
+                                <span>-${discount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+                            </div>
+                        )}
+                        {freight > 0 && (
+                            <div className="fin-row">
+                                <span>Freight</span>
+                                <span>${freight.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+                            </div>
+                        )}
+                        <div className="fin-row">
+                            <span>Sales Tax (7%)</span>
+                            <span>${tax.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+                        </div>
+                        <div className="fin-row total">
+                            <span>Total (USD)</span>
+                            <span>${total.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+                        </div>
                     </div>
                 </div>
             </div>
