@@ -291,13 +291,18 @@ export default function QuotePrintTemplate({
                 {/* QR Code in New Location (Bottom Left) */}
                 <div style={{ paddingTop: '20px' }}>
                     {checkoutUrl && (
-                        <div style={{ background: 'white', padding: '0' }}>
-                            <div style={{ fontSize: '10px', fontWeight: 'bold', textAlign: 'left', marginBottom: '8px', color: '#666', letterSpacing: '0.05em' }}>
+                        <div style={{ 
+                            background: 'white', 
+                            padding: '15px', 
+                            border: '1px solid #eee',
+                            display: 'inline-block' 
+                        }}>
+                            <div style={{ fontSize: '10px', fontWeight: 'bold', textAlign: 'center', marginBottom: '8px', color: '#666', letterSpacing: '0.05em' }}>
                                 SCAN TO PAY ONLINE
                             </div>
                             <QRCodeSVG 
                                 value={checkoutUrl} 
-                                size={110} 
+                                size={140} 
                                 level="M"
                                 includeMargin={false}
                                 style={{ 
