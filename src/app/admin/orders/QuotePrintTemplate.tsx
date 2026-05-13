@@ -55,10 +55,21 @@ export default function QuotePrintTemplate({
 }: QuotePrintProps) {
     const [checkoutUrl, setCheckoutUrl] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [isPaidSuccess, setIsPaidSuccess] = useState(false);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('success') === 'true') {
+                setIsPaidSuccess(true);
+            }
+        }
+    }, []);
 
     useEffect(() => {
         // Only generate for Quotes or Invoices that are NOT paid
-        if (status !== 'Paid' && total > 0) {
+        const currentStatus = isPaidSuccess ? 'Paid' : status;
+        if (currentStatus !== 'Paid' && total > 0) {
             const fetchCheckoutUrl = async () => {
                 setIsLoading(true);
                 try {
@@ -92,7 +103,8 @@ export default function QuotePrintTemplate({
         d.toLocaleDateString("en-US", { year: "numeric", month: "2-digit", day: "2-digit" });
 
     // Fallback if not specifically provided
-    const isQuote = status === "Quote" || status === "Invoice Sent";
+    const displayStatus = isPaidSuccess ? 'Paid' : status;
+    const isQuote = displayStatus === "Quote" || displayStatus === "Invoice Sent";
     const headerTitle = documentType || (isQuote ? "QUOTE" : "INVOICE");
 
     return (
@@ -243,6 +255,12 @@ export default function QuotePrintTemplate({
                     <div className="meta-row">
                         <span className="meta-label">Due Date</span>
                         <span className="meta-value">{fmt(dueDate)}</span>
+                    </div>
+                    <div className="meta-row">
+                        <span className="meta-label">Status</span>
+                        <span className={`meta-value ${displayStatus === 'Paid' ? 'text-emerald-600' : ''}`}>
+                            {displayStatus.toUpperCase()}
+                        </span>
                     </div>
                 </div>
             </div>
