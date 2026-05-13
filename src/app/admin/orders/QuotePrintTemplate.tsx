@@ -188,7 +188,7 @@ export default function QuotePrintTemplate({
                         flex-direction: column;
                         align-items: center;
                         margin-top: 10px;
-                        padding: 16px;
+                        padding: 10px;
                         border: 1px solid #e5e7eb;
                         border-radius: 8px;
                         width: fit-content;
@@ -229,13 +229,13 @@ export default function QuotePrintTemplate({
                     </div>
                     {/* QR Code in Header */}
                     {checkoutUrl && (
-                        <div className="payment-qr-container" style={{ marginTop: '12px', marginLeft: 'auto' }}>
+                        <div className="payment-qr-container" style={{ marginTop: '8px', marginLeft: 'auto' }}>
                             <div className="payment-qr-label">Scan to Pay Online</div>
                             <QRCodeSVG 
                                 value={checkoutUrl} 
-                                size={140} 
-                                level="H"
-                                includeMargin={true}
+                                size={100} 
+                                level="M"
+                                includeMargin={false}
                             />
                             <div className="payment-qr-help">Secure payment via Stripe</div>
                         </div>
