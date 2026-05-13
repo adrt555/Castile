@@ -288,21 +288,21 @@ export default function QuotePrintTemplate({
 
             {/* Financials & QR Section */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginTop: '20px', borderTop: '1px solid #e5e7eb' }}>
-                {/* QR Code in New Location (Bottom Left) - Brute Force Compatibility */}
-                <div style={{ paddingTop: '20px' }}>
+                {/* QR Code in New Location (Bottom Left) - Balanced Aesthetics */}
+                <div style={{ paddingTop: '10px' }}>
                     {checkoutUrl && (
                         <div style={{ 
                             background: 'white', 
-                            padding: '20px', 
-                            border: '2px solid #000',
+                            padding: '10px', 
+                            border: '1px solid #e5e7eb',
                             display: 'inline-block' 
                         }}>
-                            <div style={{ fontSize: '11px', fontWeight: '900', textAlign: 'center', marginBottom: '10px', color: '#000', letterSpacing: '0.1em' }}>
-                                SCAN TO PAY
+                            <div style={{ fontSize: '9px', fontWeight: 'bold', textAlign: 'left', marginBottom: '6px', color: '#888', letterSpacing: '0.05em' }}>
+                                SCAN TO PAY ONLINE
                             </div>
                             <QRCodeSVG 
                                 value={checkoutUrl} 
-                                size={180} 
+                                size={130} 
                                 level="L"
                                 includeMargin={false}
                                 style={{ 
@@ -358,7 +358,7 @@ export default function QuotePrintTemplate({
             </div>
 
             {/* Signature */}
-            <div className="sig-block" style={{ marginTop: '60px', display: 'flex', justifyContent: 'flex-end' }}>
+            <div className="sig-block" style={{ marginTop: '40px', display: 'flex', justifyContent: 'flex-end' }}>
                 <div className="sig-line">customer signature</div>
             </div>
         </div>
