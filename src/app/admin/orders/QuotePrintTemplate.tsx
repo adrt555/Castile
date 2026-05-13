@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { QRCodeSVG } from 'qrcode.react';
+import { QRCodeCanvas } from 'qrcode.react';
 
 interface PrintItem {
     productName: string;
@@ -231,11 +231,12 @@ export default function QuotePrintTemplate({
                     {checkoutUrl && (
                         <div className="payment-qr-container" style={{ marginTop: '8px', marginLeft: 'auto' }}>
                             <div className="payment-qr-label">Scan to Pay Online</div>
-                            <QRCodeSVG 
+                            <QRCodeCanvas 
                                 value={checkoutUrl} 
-                                size={100} 
-                                level="M"
-                                includeMargin={false}
+                                size={120} 
+                                level="Q"
+                                includeMargin={true}
+                                style={{ display: 'block' }}
                             />
                             <div className="payment-qr-help">Secure payment via Stripe</div>
                         </div>
