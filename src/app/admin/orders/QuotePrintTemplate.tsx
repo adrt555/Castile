@@ -288,22 +288,22 @@ export default function QuotePrintTemplate({
 
             {/* Financials & QR Section */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginTop: '20px', borderTop: '1px solid #e5e7eb' }}>
-                {/* QR Code in New Location (Bottom Left) */}
+                {/* QR Code in New Location (Bottom Left) - Brute Force Compatibility */}
                 <div style={{ paddingTop: '20px' }}>
                     {checkoutUrl && (
                         <div style={{ 
                             background: 'white', 
-                            padding: '15px', 
-                            border: '1px solid #eee',
+                            padding: '20px', 
+                            border: '2px solid #000',
                             display: 'inline-block' 
                         }}>
-                            <div style={{ fontSize: '10px', fontWeight: 'bold', textAlign: 'center', marginBottom: '8px', color: '#666', letterSpacing: '0.05em' }}>
-                                SCAN TO PAY ONLINE
+                            <div style={{ fontSize: '11px', fontWeight: '900', textAlign: 'center', marginBottom: '10px', color: '#000', letterSpacing: '0.1em' }}>
+                                SCAN TO PAY
                             </div>
                             <QRCodeSVG 
                                 value={checkoutUrl} 
-                                size={140} 
-                                level="M"
+                                size={180} 
+                                level="L"
                                 includeMargin={false}
                                 style={{ 
                                     display: 'block',
