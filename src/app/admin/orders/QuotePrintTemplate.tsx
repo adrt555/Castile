@@ -201,7 +201,28 @@ export default function QuotePrintTemplate({
             `}</style>
 
             {/* Header */}
-            <div className="print-header">
+            <div className="print-header" style={{ position: 'relative' }}>
+                {/* PAID Watermark/Stamp */}
+                {displayStatus === 'Paid' && (
+                    <div style={{
+                        position: 'absolute',
+                        top: '50px',
+                        left: '50%',
+                        transform: 'translateX(-50%) rotate(-15deg)',
+                        border: '8px solid #10b981',
+                        color: '#10b981',
+                        fontSize: '64px',
+                        fontWeight: '900',
+                        padding: '10px 40px',
+                        borderRadius: '20px',
+                        opacity: '0.4',
+                        zIndex: 10,
+                        pointerEvents: 'none',
+                        textTransform: 'uppercase'
+                    }}>
+                        PAID
+                    </div>
+                )}
                 <div className="logo-block" style={{ marginTop: '-15px' }}>
                     <img
                         src="/castile_white.png"
@@ -308,7 +329,7 @@ export default function QuotePrintTemplate({
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginTop: '20px', borderTop: '1px solid #e5e7eb' }}>
                 {/* QR Code in New Location (Bottom Left) - Balanced Aesthetics */}
                 <div style={{ paddingTop: '10px' }}>
-                    {checkoutUrl && (
+                    {checkoutUrl && displayStatus !== 'Paid' && (
                         <div style={{ 
                             background: 'white', 
                             padding: '10px', 
