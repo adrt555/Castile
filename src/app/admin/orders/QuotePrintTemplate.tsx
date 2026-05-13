@@ -67,6 +67,7 @@ export default function QuotePrintTemplate({
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
                             quoteId: dbOrderId || orderId,
+                            displayId: orderId,
                             amount: total,
                             clientName: clientName
                         })

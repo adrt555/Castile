@@ -5,7 +5,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 export async function POST(req: Request) {
   try {
-    const { quoteId, amount, clientName } = await req.json();
+    const { quoteId, displayId, amount, clientName } = await req.json();
 
     if (!quoteId || !amount) {
       return NextResponse.json({ error: 'Missing parameters' }, { status: 400 });
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
           price_data: {
             currency: 'usd',
             product_data: {
-              name: `Payment for Quote #${quoteId}`,
+              name: `Payment for Quote #${displayId || quoteId}`,
               description: clientName ? `Client: ${clientName}` : undefined,
             },
             unit_amount: Math.round(amount * 100), // Convert to cents
