@@ -15,6 +15,8 @@ export default function ClientDirectory() {
     const [newClientType, setNewClientType] = useState("Homeowner");
     const [newClientAddress, setNewClientAddress] = useState("");
     const [newClientBilling, setNewClientBilling] = useState("");
+    const [addressSuggestions, setAddressSuggestions] = useState<any[]>([]);
+    const [showSuggestions, setShowSuggestions] = useState(false);
 
     const loadClients = () => {
         setIsLoading(true);
@@ -25,6 +27,36 @@ export default function ClientDirectory() {
     };
 
     useEffect(() => { loadClients(); }, []);
+
+    const handleAddressChange = async (val: string) => {
+        setNewClientAddress(val);
+        if (val.length > 3) {
+            try {
+                const res = await fetch(`https://photon.komoot.io/api/?q=${encodeURIComponent(val)}&limit=5`);
+                const data = await res.json();
+                setAddressSuggestions(data.features || []);
+                setShowSuggestions(true);
+            } catch (err) {
+                console.error("Error fetching addresses:", err);
+            }
+        } else {
+            setAddressSuggestions([]);
+            setShowSuggestions(false);
+        }
+    };
+
+    const selectAddress = (feature: any) => {
+        const props = feature.properties;
+        const street = props.name || "";
+        const city = props.city || props.town || "";
+        const state = props.state || "";
+        const postCode = props.postcode || "";
+        
+        // Format: Street, City, State Zip
+        const fullAddress = `${street}${city ? ', ' + city : ''}${state ? ', ' + state : ''}${postCode ? ' ' + postCode : ''}`;
+        setNewClientAddress(fullAddress);
+        setShowSuggestions(false);
+    };
 
     const handleCreateClient = async () => {
         const fullName = `${newClientFirstName} ${newClientLastName}`.trim() || 'New Client';
@@ -149,9 +181,33 @@ export default function ClientDirectory() {
                                     </select>
                                 </div>
                             </div>
-                            <div>
+                            <div className="relative">
                                 <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">Delivery Address</label>
-                                <textarea value={newClientAddress} onChange={(e) => setNewClientAddress(e.target.value)} placeholder="123 Main St, Miami FL 33101" rows={2} className="w-full bg-zinc-50 border border-zinc-200 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-3 outline-none resize-none" />
+                                <textarea 
+                                    value={newClientAddress} 
+                                    onChange={(e) => handleAddressChange(e.target.value)} 
+                                    onFocus={() => { if (addressSuggestions.length > 0) setShowSuggestions(true); }}
+                                    placeholder="Start typing an address (e.g. 123 Main St, Miami...)" 
+                                    rows={2} 
+                                    className="w-full bg-zinc-50 border border-zinc-200 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-3 outline-none resize-none" 
+                                />
+                                
+                                {showSuggestions && addressSuggestions.length > 0 && (
+                                    <div className="absolute z-[60] left-0 right-0 mt-1 bg-white border border-zinc-200 rounded-xl shadow-xl overflow-hidden max-h-60 overflow-y-auto">
+                                        {addressSuggestions.map((s, i) => (
+                                            <div 
+                                                key={i} 
+                                                onClick={() => selectAddress(s)}
+                                                className="p-3 hover:bg-zinc-50 cursor-pointer border-bottom border-zinc-100 last:border-0 transition-colors"
+                                            >
+                                                <div className="text-sm font-bold text-zinc-900">{s.properties.name}</div>
+                                                <div className="text-xs text-zinc-500">
+                                                    {[s.properties.city, s.properties.state, s.properties.postcode, s.properties.country].filter(Boolean).join(", ")}
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
                             </div>
                             <div>
                                 <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">Billing Address <span className="text-zinc-400 normal-case font-normal">(leave blank to use delivery)</span></label>

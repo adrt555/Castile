@@ -28,7 +28,10 @@ export async function POST(req: Request) {
         },
       ],
       mode: 'payment',
-      success_url: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/admin/orders/${quoteId}?success=true`,
+      invoice_creation: {
+        enabled: true,
+      },
+      success_url: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/invoice/${quoteId}?success=true&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/admin/orders/${quoteId}?canceled=true`,
       metadata: {
         quoteId: quoteId,

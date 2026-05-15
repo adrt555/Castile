@@ -1,7 +1,6 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
-import { QRCodeSVG } from 'qrcode.react';
 
 interface PrintItem {
     productName: string;
@@ -30,7 +29,6 @@ interface QuotePrintProps {
     freight: number;
     tax: number;
     total: number;
-    dbOrderId?: string;
     documentType?: 'QUOTE' | 'INVOICE' | 'PURCHASE ORDER';
 }
 
@@ -50,51 +48,8 @@ export default function QuotePrintTemplate({
     freight,
     tax,
     total,
-    dbOrderId,
     documentType,
 }: QuotePrintProps) {
-    const [checkoutUrl, setCheckoutUrl] = useState<string | null>(null);
-    const [isLoading, setIsLoading] = useState(false);
-    const [isPaidSuccess, setIsPaidSuccess] = useState(false);
-
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const params = new URLSearchParams(window.location.search);
-            if (params.get('success') === 'true') {
-                setIsPaidSuccess(true);
-            }
-        }
-    }, []);
-
-    useEffect(() => {
-        // Only generate for Quotes or Invoices that are NOT paid
-        const currentStatus = isPaidSuccess ? 'Paid' : status;
-        if (currentStatus !== 'Paid' && total > 0) {
-            const fetchCheckoutUrl = async () => {
-                setIsLoading(true);
-                try {
-                    const res = await fetch('/api/create-checkout', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            quoteId: dbOrderId || orderId,
-                            displayId: orderId,
-                            amount: total,
-                            clientName: clientName
-                        })
-                    });
-                    const data = await res.json();
-                    if (data.url) setCheckoutUrl(data.url);
-                } catch (err) {
-                    console.error('Error fetching checkout URL:', err);
-                } finally {
-                    setIsLoading(false);
-                }
-            };
-            fetchCheckoutUrl();
-        }
-    }, [orderId, total, status, clientName]);
-
     const orderDate = new Date(createdAt);
     const dueDate = new Date(createdAt);
     dueDate.setDate(dueDate.getDate() + 30);
@@ -103,8 +58,7 @@ export default function QuotePrintTemplate({
         d.toLocaleDateString("en-US", { year: "numeric", month: "2-digit", day: "2-digit" });
 
     // Fallback if not specifically provided
-    const displayStatus = isPaidSuccess ? 'Paid' : status;
-    const isQuote = displayStatus === "Quote" || displayStatus === "Invoice Sent";
+    const isQuote = status === "Quote" || status === "Invoice Sent";
     const headerTitle = documentType || (isQuote ? "QUOTE" : "INVOICE");
 
     return (
@@ -201,29 +155,8 @@ export default function QuotePrintTemplate({
             `}</style>
 
             {/* Header */}
-            <div className="print-header" style={{ position: 'relative' }}>
-                {/* PAID Watermark/Stamp */}
-                {displayStatus === 'Paid' && (
-                    <div style={{
-                        position: 'absolute',
-                        top: '50px',
-                        left: '50%',
-                        transform: 'translateX(-50%) rotate(-15deg)',
-                        border: '8px solid #10b981',
-                        color: '#10b981',
-                        fontSize: '64px',
-                        fontWeight: '900',
-                        padding: '10px 40px',
-                        borderRadius: '20px',
-                        opacity: '0.4',
-                        zIndex: 10,
-                        pointerEvents: 'none',
-                        textTransform: 'uppercase'
-                    }}>
-                        PAID
-                    </div>
-                )}
-                <div className="logo-block" style={{ marginTop: '-15px' }}>
+            <div className="print-header">
+                <div className="logo-block">
                     <img
                         src="/castile_white.png"
                         alt="Castile Logo"
@@ -237,7 +170,6 @@ export default function QuotePrintTemplate({
                         <span style={{ color: "blue", textDecoration: "underline" }}>Adrian@castileusa.com</span> &middot;<br />
                         (786)-781-4383
                     </div>
-                    {/* QR Code removed from here */}
                 </div>
             </div>
 
@@ -245,22 +177,24 @@ export default function QuotePrintTemplate({
             <div className="meta-grid">
                 <div style={{ display: 'flex', gap: '56px' }}>
                     <div>
-                        <div className="bill-to-label">Ship To</div>
+                        <div className="bill-to-label">{documentType === 'PURCHASE ORDER' ? "Vendor" : "Ship To"}</div>
                         <div className="bill-name">{clientName}</div>
                         <div className="bill-detail" style={{ whiteSpace: "pre-line" }}>
-                            {shippingAddress || billingAddress || "No shipping address provided"}
+                            {shippingAddress || billingAddress || (documentType === 'PURCHASE ORDER' ? "Factory Direct" : "No shipping address provided")}
                         </div>
                     </div>
-                    <div>
-                        <div className="bill-to-label">Bill To</div>
-                        <div className="bill-name">{clientName}</div>
-                        <div className="bill-detail">
-                            {clientCompany && <>{clientCompany}<br /></>}
-                            {billingAddress && <span style={{ whiteSpace: "pre-line" }}>{billingAddress}<br /></span>}
-                            {clientEmail && <>{clientEmail}<br /></>}
-                            {clientPhone && <>{clientPhone}</>}
+                    {documentType !== 'PURCHASE ORDER' && (
+                        <div>
+                            <div className="bill-to-label">Bill To</div>
+                            <div className="bill-name">{clientName}</div>
+                            <div className="bill-detail">
+                                {clientCompany && <>{clientCompany}<br /></>}
+                                {billingAddress && <span style={{ whiteSpace: "pre-line" }}>{billingAddress}<br /></span>}
+                                {clientEmail && <>{clientEmail}<br /></>}
+                                {clientPhone && <>{clientPhone}</>}
+                            </div>
                         </div>
-                    </div>
+                    )}
                 </div>
                 <div className="meta-table">
                     <div className="meta-row">
@@ -276,12 +210,6 @@ export default function QuotePrintTemplate({
                     <div className="meta-row">
                         <span className="meta-label">Due Date</span>
                         <span className="meta-value">{fmt(dueDate)}</span>
-                    </div>
-                    <div className="meta-row">
-                        <span className="meta-label">Status</span>
-                        <span className={`meta-value ${displayStatus === 'Paid' ? 'text-emerald-600' : ''}`}>
-                            {displayStatus.toUpperCase()}
-                        </span>
                     </div>
                 </div>
             </div>
@@ -325,60 +253,34 @@ export default function QuotePrintTemplate({
                 </tbody>
             </table>
 
-            {/* Financials & QR Section */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginTop: '20px', borderTop: '1px solid #e5e7eb' }}>
-                {/* QR Code in New Location (Bottom Left) - Balanced Aesthetics */}
-                <div style={{ paddingTop: '10px' }}>
-                    {checkoutUrl && displayStatus !== 'Paid' && (
-                        <div style={{ 
-                            background: 'white', 
-                            padding: '10px', 
-                            border: '1px solid #e5e7eb',
-                            display: 'inline-block' 
-                        }}>
-                            <div style={{ fontSize: '9px', fontWeight: 'bold', textAlign: 'left', marginBottom: '6px', color: '#888', letterSpacing: '0.05em' }}>
-                                SCAN TO PAY ONLINE
-                            </div>
-                            <QRCodeSVG 
-                                value={checkoutUrl} 
-                                size={130} 
-                                level="L"
-                                includeMargin={false}
-                                style={{ 
-                                    display: 'block',
-                                    shapeRendering: 'crispEdges' 
-                                }}
-                            />
+            {/* Financials */}
+            <div className="financials">
+                <div className="financials-box">
+                    <div className="fin-row">
+                        <span>Subtotal</span>
+                        <span>${subtotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+                    </div>
+                    {discount > 0 && (
+                        <div className="fin-row discount">
+                            <span>Discount</span>
+                            <span>-${discount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                         </div>
                     )}
-                </div>
-
-                <div className="financials" style={{ borderTop: 'none' }}>
-                    <div className="financials-box">
+                    {freight > 0 && (
                         <div className="fin-row">
-                            <span>Subtotal</span>
-                            <span>${subtotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+                            <span>Freight</span>
+                            <span>${freight.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                         </div>
-                        {discount > 0 && (
-                            <div className="fin-row discount">
-                                <span>Discount</span>
-                                <span>-${discount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
-                            </div>
-                        )}
-                        {freight > 0 && (
-                            <div className="fin-row">
-                                <span>Freight</span>
-                                <span>${freight.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
-                            </div>
-                        )}
+                    )}
+                    {tax > 0 && (
                         <div className="fin-row">
                             <span>Sales Tax (7%)</span>
                             <span>${tax.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                         </div>
-                        <div className="fin-row total">
-                            <span>Total (USD)</span>
-                            <span>${total.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
-                        </div>
+                    )}
+                    <div className="fin-row total">
+                        <span>Total (USD)</span>
+                        <span>${total.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                     </div>
                 </div>
             </div>
@@ -397,7 +299,7 @@ export default function QuotePrintTemplate({
             </div>
 
             {/* Signature */}
-            <div className="sig-block" style={{ marginTop: '40px', display: 'flex', justifyContent: 'flex-end' }}>
+            <div className="sig-block">
                 <div className="sig-line">customer signature</div>
             </div>
         </div>

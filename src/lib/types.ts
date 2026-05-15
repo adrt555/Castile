@@ -28,8 +28,6 @@ export interface OrderItem {
 
 export interface Order {
     id: string;
-    orderNumber: number;
-
     clientId: string;
     status: OrderStatus;
     items: OrderItem[];
@@ -42,6 +40,33 @@ export interface Order {
     updatedAt: string;
     shippingAddress?: string;
     billingAddress?: string;
+}
+
+export type POStatus = "Pending" | "Confirmed" | "In Production" | "Shipped" | "Received";
+
+export interface PurchaseOrderItem {
+    sku: string;
+    description: string;
+    boxes: number;
+    sqftPerBox: number;
+    quantitySqft: number;
+    unitCost: number;
+    totalLineCost: number;
+}
+
+export interface PurchaseOrder {
+    id: string;
+    poNumber: string;
+    manufacturer: string;
+    status: POStatus;
+    createdAt: string;
+    expectedDate: string;
+    items: PurchaseOrderItem[];
+    notes: string;
+    subtotal: number;
+    freight: number;
+    tax: number;
+    total: number;
 }
 
 // Extending our existing product type for the CRM/Accounting side
@@ -70,30 +95,4 @@ export interface FinanceSummary {
     totalCosts: number;
     netProfit: number;
     pendingInvoicesTotal: number;
-}
-
-export type POStatus = "Pending" | "Confirmed" | "In Production" | "Shipped" | "Received";
-
-export interface PurchaseOrderItem {
-    sku: string;
-    description: string;
-    boxes: number;
-    sqftPerBox: number;
-    unitCost: number;
-    totalLineCost: number;
-}
-
-export interface PurchaseOrder {
-    id: string;
-    poNumber: string;
-    manufacturer: string;
-    status: POStatus;
-    createdAt: string;
-    expectedDate: string;
-    items: PurchaseOrderItem[];
-    notes: string;
-    subtotal: number;
-    freight: number;
-    tax: number;
-    total: number;
 }
