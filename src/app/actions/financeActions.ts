@@ -37,10 +37,24 @@ export async function getFinanceSummary() {
         }
     });
 
+    // Deduct commissions/credits given to designers/clients
+    let totalCommissions = 0;
+    try {
+        const clientCredits = await prisma.client.aggregate({
+            _sum: {
+                commissionCredits: true
+            }
+        });
+        totalCommissions = clientCredits._sum.commissionCredits || 0;
+    } catch (e) {
+        console.error("Error fetching total commissions:", e);
+    }
+
     return {
         totalRevenue,
         totalCosts,
-        netProfit: totalRevenue - totalCosts,
+        totalCommissions,
+        netProfit: totalRevenue - totalCosts - totalCommissions,
         pendingInvoicesTotal
     };
 }

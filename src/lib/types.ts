@@ -95,6 +95,7 @@ export interface CRMProduct {
 export interface FinanceSummary {
     totalRevenue: number;
     totalCosts: number;
+    totalCommissions: number;
     netProfit: number;
     pendingInvoicesTotal: number;
 }
