@@ -1,11 +1,10 @@
 "use client";
-
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import QuotePrintTemplate from "../../../orders/QuotePrintTemplate";
+import { updatePurchaseOrder } from "@/app/actions/purchaseOrderActions";
 import { crmProducts } from "@/lib/crmProducts";
-import { createPurchaseOrder } from "@/app/actions/purchaseOrderActions";
-import QuotePrintTemplate from "../../orders/QuotePrintTemplate";
 
 interface NewItem {
     id: string;
@@ -28,33 +27,45 @@ const makeItem = (): NewItem => ({
     unitCost: 0, totalLineCost: 0,
 });
 
-export default function CreatePurchaseOrderPage() {
+export default function EditPurchaseOrderClient({ po }: { po: any }) {
     const router = useRouter();
+    const [isPending, startTransition] = useTransition();
 
-    const [manufacturer, setManufacturer] = useState('ROCA USA');
-    const [notes, setNotes] = useState('');
-    const [expectedDate, setExpectedDate] = useState('');
-    const [items, setItems] = useState<NewItem[]>([makeItem()]);
-    const [skuMap, setSkuMap] = useState<Record<string, { query: string; open: boolean }>>({});
-    const [freight, setFreight] = useState('0');
+    const [manufacturer, setManufacturer] = useState(po.manufacturer);
+    const [notes, setNotes] = useState(po.notes || '');
+    const [expectedDate, setExpectedDate] = useState(po.expectedDate || '');
+    const [status, setStatus] = useState<any>(po.status);
+    const [freight, setFreight] = useState(po.freight.toString());
     
-    // For printing
+    const [items, setItems] = useState<NewItem[]>(po.items.map((i: any) => ({
+        id: i.id,
+        productId: crmProducts.find(p => p.sku === i.sku)?.id || 'unknown',
+        sku: i.sku,
+        description: i.description,
+        size: crmProducts.find(p => p.sku === i.sku)?.size || '',
+        sqftPerBox: i.sqftPerBox,
+        boxesPerPallet: crmProducts.find(p => p.sku === i.sku)?.boxesPerPallet || 0,
+        boxes: i.boxes,
+        quantitySqft: i.boxes * i.sqftPerBox, // Assuming boxes * sqftPerBox if not explicitly stored
+        unitCost: i.unitCost,
+        totalLineCost: i.totalLineCost
+    })));
+
+    const [skuMap, setSkuMap] = useState<Record<string, { query: string; open: boolean }>>({});
     const [showPrint, setShowPrint] = useState(false);
-    const [savedPO, setSavedPO] = useState<any | null>(null);
 
     const products = crmProducts;
 
-    // ── item helpers ────────────────────────────────────────────────────────
-    const updateItem = (id: string, changes: Partial<NewItem>) => {
+    const updateItem = (itemId: string, changes: Partial<NewItem>) => {
         setItems(prev => prev.map(item => {
-            if (item.id !== id) return item;
+            if (item.id !== itemId) return item;
             const updated = { ...item, ...changes };
-            
-            // Recompute values when either qty or price changes
-            const boxes = updated.sqftPerBox ? Math.ceil((updated.quantitySqft || 0) / updated.sqftPerBox) : 0;
-            updated.boxes = boxes;
+            if (changes.quantitySqft !== undefined) {
+                updated.boxes = updated.sqftPerBox ? Math.ceil(updated.quantitySqft / updated.sqftPerBox) : 0;
+            } else if (changes.boxes !== undefined) {
+                updated.quantitySqft = updated.boxes * updated.sqftPerBox;
+            }
             updated.totalLineCost = (updated.quantitySqft || 0) * (updated.unitCost || 0);
-            
             return updated;
         }));
     };
@@ -74,27 +85,25 @@ export default function CreatePurchaseOrderPage() {
             size: p.size || '',
             sqftPerBox: p.sqftPerBox || 1,
             boxesPerPallet: p.boxesPerPallet || 0,
-            unitCost: p.costPricePerSqft || 0, // Using PRICE LIST ONE (cost)
+            unitCost: p.costPricePerSqft || 0,
         });
     };
 
-    // ── totals ───────────────────────────────────────────────────────────────
     const subtotal = items.reduce((s, i) => s + i.totalLineCost, 0);
     const parsedFreight = parseFloat(freight) || 0;
-    const tax = 0; // Usually no tax on wholesale POs, or handle if needed
+    const tax = 0;
     const total = subtotal + tax + parsedFreight;
 
-    // ── submit ───────────────────────────────────────────────────────────────
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!manufacturer.trim()) return alert('Please enter a manufacturer.');
-        const valid = items.filter(i => i.productId && i.boxes > 0);
-        if (!valid.length) return alert('Please add at least one line item with boxes.');
+        const valid = items.filter(i => i.productId && (i.boxes > 0 || i.quantitySqft > 0));
+        if (!valid.length) return alert('Please add at least one line item.');
 
-        try {
-            const created = await createPurchaseOrder({
+        startTransition(async () => {
+            await updatePurchaseOrder(po.id, {
                 manufacturer,
-                status: "Pending",
+                status,
                 expectedDate: expectedDate || "TBD",
                 notes,
                 items: valid.map(i => ({
@@ -110,42 +119,34 @@ export default function CreatePurchaseOrderPage() {
                 tax,
                 total,
             });
-
-            // Show print mode instead of immediately routing away
-            setSavedPO(created);
-            setShowPrint(true);
-        } catch (error) {
-            console.error("Error creating PO:", error);
-            alert("Failed to create purchase order. Please try again.");
-        }
+            router.push("/admin/purchase-orders");
+        });
     };
 
-    // If print mode is active, render the print layout wrapper
-    if (showPrint && savedPO) {
+    if (showPrint) {
         return (
             <div className="max-w-4xl mx-auto py-12">
                 <div className="flex items-center justify-between mb-8 border-b border-zinc-200 pb-4">
                     <div>
-                        <h1 className="text-2xl font-bold text-zinc-900">Purchase Order Created</h1>
-                        <p className="text-zinc-500">PO #{savedPO.poNumber} has been saved.</p>
+                        <h1 className="text-2xl font-bold text-zinc-900">Purchase Order: {po.poNumber}</h1>
+                        <p className="text-zinc-500">Ready for printing.</p>
                     </div>
                     <div className="flex gap-3">
                         <button onClick={() => window.print()} className="px-5 py-2.5 bg-zinc-900 hover:bg-zinc-800 text-white rounded-lg font-semibold flex items-center gap-2">
                             🖨️ Print / Save PDF
                         </button>
-                        <Link href="/admin/purchase-orders" className="px-5 py-2.5 bg-zinc-100 hover:bg-zinc-200 text-zinc-700 rounded-lg font-semibold">
-                            Back to POs
-                        </Link>
+                        <button onClick={() => setShowPrint(false)} className="px-5 py-2.5 bg-zinc-100 hover:bg-zinc-200 text-zinc-700 rounded-lg font-semibold">
+                            Back to Editing
+                        </button>
                     </div>
                 </div>
-                
                 <div className="bg-white border shadow-sm print:shadow-none print:border-none p-12 relative">
                     <QuotePrintTemplate
-                        orderId={savedPO.poNumber}
-                        status="Pending"
-                        createdAt={savedPO.createdAt.toISOString()}
-                        clientName={manufacturer} // Manufacturer effectively takes the "Bill To" spot on the PO
-                        items={items.filter(i => i.productId && i.boxes > 0).map(i => ({
+                        orderId={po.poNumber}
+                        status={status}
+                        createdAt={po.createdAt}
+                        clientName={manufacturer}
+                        items={items.filter(i => i.productId && (i.boxes > 0 || i.quantitySqft > 0)).map(i => ({
                             productName: i.description,
                             size: i.size,
                             quantitySqft: i.quantitySqft,
@@ -169,22 +170,24 @@ export default function CreatePurchaseOrderPage() {
             <div className="flex items-center justify-between border-b border-zinc-200 pb-6">
                 <div>
                     <Link href="/admin/purchase-orders" className="text-amber-600 hover:text-amber-700 font-medium text-sm mb-2 inline-block">← Back to Purchase Orders</Link>
-                    <h1 className="text-3xl font-bold tracking-tight text-zinc-900">New Purchase Order</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-zinc-900">Modify Purchase Order</h1>
+                    <p className="text-zinc-500 font-mono text-sm uppercase tracking-widest mt-1">PO: {po.poNumber}</p>
                 </div>
                 <div className="flex gap-3">
+                    <button type="button" onClick={() => setShowPrint(true)} className="px-5 py-2.5 border border-zinc-200 bg-white text-zinc-700 font-bold hover:bg-zinc-50 rounded-xl transition-colors flex items-center gap-2">
+                       🖨️ Print View
+                    </button>
                     <Link href="/admin/purchase-orders" className="px-5 py-2.5 text-zinc-600 font-bold hover:bg-zinc-100 rounded-xl transition-colors">Cancel</Link>
-                    <button type="submit" className="px-6 py-2.5 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl shadow-sm transition-colors">
-                        Generate PO
+                    <button type="submit" disabled={isPending} className="px-6 py-2.5 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl shadow-sm transition-colors disabled:bg-zinc-300">
+                        {isPending ? 'Saving...' : 'Save Changes'}
                     </button>
                 </div>
             </div>
 
             <div className="grid grid-cols-3 gap-8">
-                {/* Left Col: Manufacturer & Flow */}
                 <div className="col-span-1 space-y-6">
                     <div className="bg-white border border-zinc-200 rounded-2xl p-6 shadow-sm">
                         <h2 className="text-lg font-bold text-zinc-900 mb-4">Vendor Details</h2>
-                        
                         <div className="space-y-4">
                             <div>
                                 <label className="block text-xs font-bold text-zinc-500 uppercase tracking-wider mb-2">Manufacturer / Vendor</label>
@@ -196,7 +199,20 @@ export default function CreatePurchaseOrderPage() {
                                     required
                                 />
                             </div>
-
+                            <div>
+                                <label className="block text-xs font-bold text-zinc-500 uppercase tracking-wider mb-2">Order Status</label>
+                                <select
+                                    value={status}
+                                    onChange={e => setStatus(e.target.value as any)}
+                                    className="w-full bg-zinc-50 border border-zinc-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-amber-500 font-bold text-zinc-900 appearance-none"
+                                >
+                                    <option value="Pending">Pending</option>
+                                    <option value="Confirmed">Confirmed</option>
+                                    <option value="In Production">In Production</option>
+                                    <option value="Shipped">Shipped</option>
+                                    <option value="Received">Received</option>
+                                </select>
+                            </div>
                             <div>
                                 <label className="block text-xs font-bold text-zinc-500 uppercase tracking-wider mb-2">Expected Date</label>
                                 <input
@@ -206,7 +222,6 @@ export default function CreatePurchaseOrderPage() {
                                     className="w-full bg-zinc-50 border border-zinc-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-amber-500 font-medium"
                                 />
                             </div>
-
                             <div>
                                 <label className="block text-xs font-bold text-zinc-500 uppercase tracking-wider mb-2">Notes</label>
                                 <textarea
@@ -220,7 +235,6 @@ export default function CreatePurchaseOrderPage() {
                     </div>
                 </div>
 
-                {/* Right Col: Materials */}
                 <div className="col-span-2 space-y-6">
                     <div className="bg-white border border-zinc-200 rounded-2xl shadow-sm">
                         <div className="p-6 border-b border-zinc-100 flex justify-between items-center bg-zinc-50/50 rounded-t-2xl">
@@ -229,7 +243,6 @@ export default function CreatePurchaseOrderPage() {
                                 + Add Row
                             </button>
                         </div>
-                        
                         <div className="p-0 overflow-visible relative z-10 w-full min-h-[300px]">
                             <table className="w-full text-left text-sm relative">
                                 <thead className="bg-white text-xs uppercase tracking-wider text-zinc-400 border-b border-zinc-100">
@@ -292,7 +305,6 @@ export default function CreatePurchaseOrderPage() {
                                                     )}
                                                 </div>
                                             </td>
-                                            
                                             <td className="px-6 py-4">
                                                 <div className="flex flex-col items-center gap-2">
                                                     <input
@@ -304,15 +316,11 @@ export default function CreatePurchaseOrderPage() {
                                                         onChange={e => updateItem(item.id, { quantitySqft: parseFloat(e.target.value) || 0 })}
                                                         className="w-28 bg-white border border-zinc-200 rounded-lg px-3 py-2 text-center outline-none focus:border-amber-500 font-bold text-zinc-800"
                                                     />
-                                                    <button type="button"
-                                                        onClick={() => calcRound(item)}
-                                                        disabled={!item.sqftPerBox}
-                                                        className="text-[10px] font-bold text-white bg-amber-500 hover:bg-amber-600 disabled:bg-zinc-200 disabled:text-zinc-400 rounded transition-colors px-2 py-1 w-full max-w-[112px]">
+                                                    <button type="button" onClick={() => calcRound(item)} disabled={!item.sqftPerBox} className="text-[10px] font-bold text-white bg-amber-500 hover:bg-amber-600 disabled:bg-zinc-200 disabled:text-zinc-400 rounded transition-colors px-2 py-1 w-full max-w-[112px]">
                                                         🧮 Round up
                                                     </button>
                                                 </div>
                                             </td>
-
                                             <td className="px-2 py-4">
                                                 <div className="flex flex-col gap-1 items-center justify-center">
                                                     <div className={`text-xs font-bold px-2 py-1.5 rounded w-full max-w-[100px] text-center ${item.productId && item.boxes > 0 ? 'bg-blue-50 border border-blue-100 text-blue-700' : 'text-zinc-300'}`}>
@@ -323,7 +331,6 @@ export default function CreatePurchaseOrderPage() {
                                                     </div>
                                                 </div>
                                             </td>
-
                                             <td className="px-6 py-4">
                                                 <div className="relative">
                                                     <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400">$</span>
@@ -335,16 +342,12 @@ export default function CreatePurchaseOrderPage() {
                                                     />
                                                 </div>
                                             </td>
-
                                             <td className="px-6 py-4 text-right font-bold text-zinc-900">
                                                 ${item.totalLineCost.toLocaleString(undefined, { minimumFractionDigits: 2 })}
                                             </td>
-
                                             <td className="px-6 py-4">
                                                 {items.length > 1 && (
-                                                    <button type="button" onClick={() => setItems(items.filter(i => i.id !== item.id))} className="text-zinc-300 hover:text-red-500 p-1">
-                                                        ✖
-                                                    </button>
+                                                    <button type="button" onClick={() => setItems(items.filter(i => i.id !== item.id))} className="text-zinc-300 hover:text-red-500 p-1">✖</button>
                                                 )}
                                             </td>
                                         </tr>
@@ -352,11 +355,8 @@ export default function CreatePurchaseOrderPage() {
                                 </tbody>
                             </table>
                         </div>
-
-                        {/* Totals Section */}
                         <div className="p-6 bg-zinc-50/50 rounded-b-2xl border-t border-zinc-100 mt-12 grid grid-cols-2">
-                            <div>
-                            </div>
+                            <div></div>
                             <div className="space-y-3">
                                 <div className="flex justify-between text-zinc-500 font-medium">
                                     <span>Subtotal</span>
@@ -380,7 +380,6 @@ export default function CreatePurchaseOrderPage() {
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

@@ -113,7 +113,6 @@ export default function PublicInvoicePage({ params }: { params: Promise<{ id: st
                         freight={order.freight || 0}
                         tax={order.tax || 0}
                         total={order.total}
-                        dbOrderId={order.id}
                         documentType={isSuccess ? 'INVOICE' : 'QUOTE'}
                     />
                 </div>

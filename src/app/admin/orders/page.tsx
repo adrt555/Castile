@@ -16,6 +16,7 @@ interface TableOrder extends Order {
 export default function OrdersTablePipeline() {
     const [orders, setOrders] = useState<TableOrder[]>([]);
     const [searchQuery, setSearchQuery] = useState("");
+    const [sortBy, setSortBy] = useState<"updatedAt" | "createdAt" | "total">("updatedAt");
     const [selectedOrder, setSelectedOrder] = useState<TableOrder | null>(null);
     const [isEditingItems, setIsEditingItems] = useState(false);
     const [editableItems, setEditableItems] = useState<Array<{ id: string, productId: string, sku: string, productName: string, colorName: string, size: string, sqftPerBox: number, boxesPerPallet: number, quantitySqft: number, unitPrice: number, totalPrice: number, discount: string, discountType: '$' | '%' }>>([]);
@@ -69,7 +70,7 @@ export default function OrdersTablePipeline() {
         await updateOrderStatus(orderId, newStatus);
         
         // Optically update the UI
-        const updatedOrders = orders.map(o => o.id === orderId ? { ...o, status: newStatus } : o);
+        const updatedOrders = orders.map(o => o.id === orderId ? { ...o, status: newStatus, updatedAt: new Date().toISOString() } : o);
         setOrders(updatedOrders);
         if (selectedOrder && selectedOrder.id === orderId) {
             setSelectedOrder({ ...selectedOrder, status: newStatus });
@@ -227,7 +228,12 @@ export default function OrdersTablePipeline() {
             (order.shippingAddress && order.shippingAddress.toLowerCase().includes(query)) ||
             (order.billingAddress && order.billingAddress.toLowerCase().includes(query))
         );
-    }).sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+    }).sort((a, b) => {
+        if (sortBy === "updatedAt") return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
+        if (sortBy === "createdAt") return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+        if (sortBy === "total") return b.total - a.total;
+        return 0;
+    });
 
 
     // Render the Details View instead of the Table if an order is selected
@@ -848,7 +854,6 @@ export default function OrdersTablePipeline() {
                     freight={eFreight}
                     tax={eTax}
                     total={eTotal}
-                    dbOrderId={selectedOrder.id}
                 />
             </div >
         );
@@ -873,15 +878,26 @@ export default function OrdersTablePipeline() {
             <div className="bg-white border border-zinc-200 rounded-xl shadow-sm overflow-hidden flex flex-col mx-1 sm:mx-0">
                 {/* Search Bar */}
                 <div className="p-4 border-b border-zinc-200 bg-zinc-50 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
-                    <div className="relative w-full max-w-lg">
-                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-xs">🔍</div>
-                        <input
-                            type="text"
-                            placeholder="Search orders, clients, phone..."
-                            className="w-full pl-9 pr-4 py-2.5 text-sm border border-zinc-300 rounded-xl outline-none focus:ring-2 focus:ring-amber-500 text-zinc-900 bg-white shadow-sm"
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                        />
+                    <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center w-full max-w-2xl">
+                        <div className="relative flex-1">
+                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-xs">🔍</div>
+                            <input
+                                type="text"
+                                placeholder="Search orders, clients, phone..."
+                                className="w-full pl-9 pr-4 py-2.5 text-sm border border-zinc-300 rounded-xl outline-none focus:ring-2 focus:ring-amber-500 text-zinc-900 bg-white shadow-sm"
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                            />
+                        </div>
+                        <select
+                            value={sortBy}
+                            onChange={(e) => setSortBy(e.target.value as any)}
+                            className="bg-white border border-zinc-300 text-zinc-700 text-sm rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-amber-500 font-semibold shadow-sm cursor-pointer min-w-[160px]"
+                        >
+                            <option value="updatedAt">Latest Activity</option>
+                            <option value="createdAt">Date Created</option>
+                            <option value="total">Order Total</option>
+                        </select>
                     </div>
                     <span className="text-xs font-bold text-zinc-400 bg-zinc-200/50 px-3 py-1.5 rounded-full w-fit">
                         {filteredOrders.length} records
