@@ -251,7 +251,13 @@ function OrdersContent() {
             (order.billingAddress && order.billingAddress.toLowerCase().includes(query))
         );
     }).sort((a, b) => {
-        if (sortBy === "updatedAt") return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
+        if (sortBy === "updatedAt") {
+            // Priority 1: Paid orders always at the top
+            if (a.status === 'Paid' && b.status !== 'Paid') return -1;
+            if (a.status !== 'Paid' && b.status === 'Paid') return 1;
+            // Priority 2: Newest activity (updatedAt)
+            return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
+        }
         if (sortBy === "createdAt") return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
         if (sortBy === "total") return b.total - a.total;
         return 0;

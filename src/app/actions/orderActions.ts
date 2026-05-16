@@ -10,7 +10,7 @@ export async function getOrders() {
                 client: true,
                 items: true
             },
-            orderBy: { createdAt: 'desc' }
+            orderBy: { updatedAt: 'desc' }
         });
     } catch (e) {
         console.error("DB Error in getOrders:", e);
