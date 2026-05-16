@@ -25,6 +25,8 @@ export interface OrderItem {
     quantitySqft: number;
     unitPrice: number;
     totalPrice: number;
+    room?: string;
+    unit: "sqft" | "PC";
 }
 
 export interface Order {
@@ -90,6 +92,7 @@ export interface CRMProduct {
     inStockSqft: number;
     sqftPerBox: number;       // SQFT per carton from price book
     boxesPerPallet: number;   // BXS per pallet from price book
+    unit: "sqft" | "PC";      // Default unit
 }
 
 export interface FinanceSummary {

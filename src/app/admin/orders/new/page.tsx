@@ -18,7 +18,23 @@ export default function CreateOrderPage() {
     const [clientSearch, setClientSearch] = useState("");
     const [isClientDropdownOpen, setIsClientDropdownOpen] = useState(false);
     const [orderStatus, setOrderStatus] = useState<OrderStatus>('Quote');
-    const [editableItems, setEditableItems] = useState<Array<{ id: string, productId: string, sku: string, productName: string, colorName: string, size: string, sqftPerBox: number, boxesPerPallet: number, quantitySqft: number, unitPrice: number, totalPrice: number, discount: string, discountType: '$' | '%' }>>([]);
+    const [editableItems, setEditableItems] = useState<Array<{ 
+        id: string, 
+        productId: string, 
+        sku: string, 
+        productName: string, 
+        colorName: string, 
+        size: string, 
+        sqftPerBox: number, 
+        boxesPerPallet: number, 
+        quantitySqft: number, 
+        unitPrice: number, 
+        totalPrice: number, 
+        discount: string, 
+        discountType: '$' | '%',
+        room: string,
+        unit: 'sqft' | 'PC'
+    }>>([]);
     const [editableDiscount, setEditableDiscount] = useState<string>("0");
     const [globalDiscountType, setGlobalDiscountType] = useState<'$' | '%'>('$');
     const [editableFreight, setEditableFreight] = useState<string>("0");
@@ -108,6 +124,8 @@ export default function CreateOrderPage() {
             totalPrice: 0,
             discount: "0",
             discountType: '$',
+            room: 'General',
+            unit: 'sqft'
         }]);
         setSkuSearchMap(prev => ({ ...prev, [newId]: { query: '', open: false } }));
     };
@@ -134,7 +152,10 @@ export default function CreateOrderPage() {
                 }
             }
 
-            const gross = (updated.quantitySqft || 0) * (updated.unitPrice || 0);
+            const gross = updated.unit === 'PC' 
+                ? (updated.quantitySqft || 0) * (updated.unitPrice || 0)
+                : (updated.quantitySqft || 0) * (updated.unitPrice || 0);
+            
             const discAmt = updated.discountType === '%' ? gross * ((parseFloat(updated.discount) || 0) / 100) : (parseFloat(updated.discount) || 0);
             updated.totalPrice = Math.max(0, gross - discAmt);
             return updated;
@@ -163,6 +184,8 @@ export default function CreateOrderPage() {
                 quantitySqft: i.quantitySqft,
                 unitPrice: i.unitPrice,
                 totalPrice: i.totalPrice,
+                room: i.room,
+                unit: i.unit
             })),
             status: orderStatus,
             subtotal: eSubtotal,
@@ -336,208 +359,258 @@ export default function CreateOrderPage() {
                         </button>
                     </div>
                     
-                    <div className="p-6 space-y-4">
-                        {editableItems.map((item) => (
-                            <div key={item.id} className="bg-zinc-50 border border-zinc-200 rounded-xl p-4 flex flex-nowrap gap-3 items-start">
-                                {/* Product selector — split SKU / Description */}
-                                <div className="flex-1 min-w-[320px]">
-                                    <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">SKU / Description</label>
-                                    {/* Searchable SKU combobox */}
-                                    <div className="relative">
-                                        <input
-                                            type="text"
-                                            placeholder="Search SKU or product name…"
-                                            value={skuSearchMap[item.id]?.query ?? item.sku}
-                                            onChange={(e) => setSkuSearchMap(prev => ({
-                                                ...prev,
-                                                [item.id]: { query: e.target.value, open: true }
-                                            }))}
-                                            onFocus={() => setSkuSearchMap(prev => ({
-                                                ...prev,
-                                                [item.id]: { query: prev[item.id]?.query ?? '', open: true }
-                                            }))}
-                                            className="w-full bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-2.5 outline-none font-mono"
-                                        />
-                                        {skuSearchMap[item.id]?.open && skuSearchMap[item.id]?.query.length > 0 && (() => {
-                                            const q = skuSearchMap[item.id].query.toLowerCase();
-                                            const matches = (products as any[]).filter(p =>
-                                                p.sku?.toLowerCase().includes(q) ||
-                                                p.name?.toLowerCase().includes(q)
-                                            ).slice(0, 25);
-                                            if (matches.length === 0) return null;
-                                            return (
-                                                <div className="absolute z-50 top-full left-0 right-0 mt-1 bg-white border border-zinc-200 rounded-xl shadow-2xl overflow-hidden max-h-72 overflow-y-auto">
-                                                    {matches.map((p: any) => (
-                                                        <button
-                                                            key={p.id}
+                    <div className="p-6 space-y-8">
+                        {/* Group items by Room */}
+                        {Array.from(new Set(editableItems.map(i => i.room))).map((roomName) => (
+                            <div key={roomName} className="space-y-4">
+                                <div className="flex items-center gap-4">
+                                    <div className="h-px flex-1 bg-zinc-200"></div>
+                                    <div className="bg-zinc-100 px-3 py-1 rounded-full border border-zinc-200">
+                                        <span className="text-[10px] font-black uppercase tracking-widest text-zinc-500">Room: {roomName}</span>
+                                    </div>
+                                    <div className="h-px flex-1 bg-zinc-200"></div>
+                                </div>
+                                
+                                {editableItems.filter(i => i.room === roomName).map((item) => (
+                                    <div key={item.id} className="bg-zinc-50 border border-zinc-200 rounded-xl p-4 flex flex-nowrap gap-3 items-start relative group">
+                                        {/* Product selector — split SKU / Description */}
+                                        <div className="flex-1 min-w-[300px]">
+                                            <div className="flex gap-2 mb-1.5">
+                                                <div className="flex-1">
+                                                    <label className="block text-[10px] font-bold uppercase tracking-wide text-zinc-400 mb-1">Room/Area</label>
+                                                    <select 
+                                                        value={item.room}
+                                                        onChange={(e) => handleEItemChange(item.id, 'room', e.target.value)}
+                                                        className="w-full bg-white border border-zinc-200 text-zinc-900 text-[11px] font-bold rounded-lg px-2 py-1 outline-none focus:ring-1 focus:ring-amber-500"
+                                                    >
+                                                        <option value="General">Select Area...</option>
+                                                        <option value="main floor">main floor</option>
+                                                        <option value="Bathroom">Bathroom</option>
+                                                        <option value="Powder">Powder</option>
+                                                        <option value="Laundry">Laundry</option>
+                                                        <option value="Cabana">Cabana</option>
+                                                        <option value="Other">Other...</option>
+                                                    </select>
+                                                    {item.room === 'Other' && (
+                                                        <input 
+                                                            type="text"
+                                                            onChange={(e) => handleEItemChange(item.id, 'room', e.target.value)}
+                                                            className="mt-1 w-full bg-white border border-zinc-200 text-zinc-900 text-[11px] font-bold rounded-lg px-2 py-1 outline-none focus:ring-1 focus:ring-amber-500"
+                                                            placeholder="Type custom area..."
+                                                            autoFocus
+                                                        />
+                                                    )}
+                                                </div>
+                                                <div>
+                                                    <label className="block text-[10px] font-bold uppercase tracking-wide text-zinc-400 mb-1">Unit</label>
+                                                    <div className="flex bg-white border border-zinc-200 rounded-lg overflow-hidden">
+                                                        <button 
                                                             type="button"
-                                                            onMouseDown={(e) => {
-                                                                e.preventDefault();
-                                                                handleEItemChange(item.id, 'productId', p.id);
-                                                                setSkuSearchMap(prev => ({
-                                                                    ...prev,
-                                                                    [item.id]: { query: p.sku, open: false }
-                                                                }));
-                                                            }}
-                                                            className="w-full text-left px-3 py-2.5 hover:bg-amber-50 border-b border-zinc-100 last:border-0 transition-colors"
-                                                        >
-                                                            <div className="font-mono text-xs font-bold text-zinc-700">{p.sku}</div>
-                                                            <div className="text-sm text-zinc-800 leading-tight mt-0.5">{p.name}</div>
-                                                            <div className="text-xs text-zinc-400 mt-0.5 flex gap-2">
-                                                                <span>{p.size}</span>
-                                                                {p.sqftPerBox > 0 && <span>· {p.sqftPerBox} sqft/box</span>}
-                                                                <span className="text-amber-600 font-semibold">· ${p.sellingPricePerSqft?.toFixed(2)}/sqft</span>
-                                                            </div>
-                                                        </button>
-                                                    ))}
-                                                </div>
-                                            );
-                                        })()}
-                                    </div>
-                                    {/* Selected product details */}
-                                    {item.productName && (
-                                        <div className="mt-2 flex flex-wrap items-center gap-2">
-                                            <span className="text-sm font-semibold text-zinc-800 leading-tight">
-                                                {item.productName}
-                                            </span>
-                                            {item.size && (
-                                                <span className="text-xs bg-amber-50 text-amber-700 font-bold px-2 py-0.5 rounded border border-amber-100">
-                                                    {item.size}
-                                                </span>
-                                            )}
-                                            {item.sqftPerBox > 0 && (
-                                                <span className="text-xs text-zinc-400 font-medium">
-                                                    {item.sqftPerBox} sqft/box
-                                                </span>
-                                            )}
-                                            {/* Stock Button */}
-                                            <div className="ml-auto">
-                                                {itemStocks[item.id]?.loading ? (
-                                                    <span className="text-[10px] text-zinc-400 animate-pulse">Checking…</span>
-                                                ) : itemStocks[item.id]?.value !== undefined && itemStocks[item.id]?.value !== null ? (
-                                                    <button 
-                                                        type="button"
-                                                        onClick={() => handleCheckItemStock(item.id, item.sku)}
-                                                        className={`text-[10px] font-bold px-3 py-1.5 rounded-lg border shadow-sm transition-all hover:brightness-95 active:scale-95 ${itemStocks[item.id]!.value! > 0 ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-red-50 text-red-700 border-red-200'}`}
-                                                    >
-                                                        MIA: {itemStocks[item.id]!.value!.toLocaleString(undefined, { minimumFractionDigits: 2 })} SQFT
-                                                    </button>
-
-                                                ) : (
-                                                    <button 
-                                                        type="button"
-                                                        onClick={() => handleCheckItemStock(item.id, item.sku)}
-                                                        className="text-[10px] font-bold text-blue-700 hover:text-blue-900 bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-200 uppercase tracking-tighter shadow-sm transition-all hover:bg-blue-100 active:scale-95"
-                                                    >
-                                                        🔍 MIAMI STOCK
-                                                    </button>
-                                                )}
-
-
-
-
-                                            </div>
-                                        </div>
-                                    )}
-
-
-                                </div>
-                                <div className="w-32">
-                                    <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">Qty (sqft)</label>
-                                    <input
-                                        type="number" min="0" step="0.01"
-                                        value={item.quantitySqft}
-                                        onChange={(e) => handleEItemChange(item.id, 'quantitySqft', parseFloat(e.target.value) || 0)}
-                                        className="w-full bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-2.5 outline-none"
-                                    />
-                                    {item.sqftPerBox > 0 && item.quantitySqft > 0 && (() => {
-                                        const boxes = Math.ceil(item.quantitySqft / item.sqftPerBox);
-                                        const rounded = parseFloat((boxes * item.sqftPerBox).toFixed(4));
-                                        return (
-                                            <button
-                                                type="button"
-                                                onClick={() => handleEItemChange(item.id, 'quantitySqft', rounded)}
-                                                className="mt-1.5 w-full text-xs font-bold text-white bg-amber-500 hover:bg-amber-600 active:bg-amber-700 rounded-lg py-1.5 px-2 transition-colors"
-                                                title={`${boxes} boxes × ${item.sqftPerBox} sqft`}
-                                            >
-                                                🧮 Calculate! → {rounded} sqft
-                                            </button>
-                                        );
-                                    })()}
-                                </div>
-                                <div className="w-28">
-                                    <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">Unit Price ($)</label>
-                                    <input
-                                        type="number" min="0" step="0.01"
-                                        value={item.unitPrice}
-                                        onChange={(e) => handleEItemChange(item.id, 'unitPrice', parseFloat(e.target.value) || 0)}
-                                        className="w-full bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-2.5 outline-none"
-                                    />
-                                </div>
-                                <div className="w-36">
-                                    <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">Discount</label>
-                                    <div className="relative flex items-center">
-                                        <div className="absolute inset-y-0 left-0 flex items-center">
-                                            <select
-                                                value={item.discountType}
-                                                onChange={(e) => handleEItemChange(item.id, 'discountType', e.target.value)}
-                                                className="h-full py-0 pl-2 pr-6 border-transparent bg-transparent text-zinc-500 text-sm rounded-l-lg"
-                                            >
-                                                <option value="$">$</option>
-                                                <option value="%">%</option>
-                                            </select>
-                                        </div>
-                                        <input
-                                            type="number" min="0" step="0.01"
-                                            value={item.discount}
-                                            onChange={(e) => handleEItemChange(item.id, 'discount', e.target.value)}
-                                            className="w-full bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-2.5 pl-16 outline-none"
-                                            placeholder="0.00"
-                                        />
-                                    </div>
-                                    {/* Effective price/sqft after discount */}
-                                    {(() => {
-                                        const discVal = parseFloat(item.discount) || 0;
-                                        if (discVal <= 0 || item.quantitySqft <= 0) return null;
-                                        const effectivePricePerSqft = item.totalPrice / item.quantitySqft;
-                                        return (
-                                            <div className="mt-1.5 text-xs font-bold text-emerald-600">
-                                                ≈ ${effectivePricePerSqft.toFixed(2)}/sqft after disc.
-                                            </div>
-                                        );
-                                    })()}
-                                </div>
-                                <div className="w-28 text-right">
-                                    <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">Line Total</label>
-                                    <div className="p-2.5 bg-white border border-zinc-200 rounded-lg text-sm font-bold text-zinc-900">
-                                        ${item.totalPrice.toLocaleString(undefined, { minimumFractionDigits: 2 })}
-                                    </div>
-                                    {item.sqftPerBox > 0 && item.quantitySqft > 0 && (() => {
-                                        const boxes = Math.ceil(item.quantitySqft / item.sqftPerBox);
-                                        const pallets = item.boxesPerPallet > 0 ? Math.ceil(boxes / item.boxesPerPallet) : null;
-                                        return (
-                                            <>
-                                                <div className="mt-1.5 text-xs font-bold text-blue-600 flex justify-end gap-1 items-center">
-                                                    📦 {boxes} boxes
-                                                </div>
-                                                {pallets !== null && (
-                                                    <div className="mt-0.5 text-xs font-bold text-amber-600 flex justify-end gap-1 items-center">
-                                                        🏗️ {pallets} pallet{pallets !== 1 ? 's' : ''}
+                                                            onClick={() => handleEItemChange(item.id, 'unit', 'sqft')}
+                                                            className={`px-2 py-1 text-[10px] font-bold ${item.unit === 'sqft' ? 'bg-amber-500 text-white' : 'text-zinc-500 hover:bg-zinc-50'}`}
+                                                        >SQFT</button>
+                                                        <button 
+                                                            type="button"
+                                                            onClick={() => handleEItemChange(item.id, 'unit', 'PC')}
+                                                            className={`px-2 py-1 text-[10px] font-bold ${item.unit === 'PC' ? 'bg-amber-500 text-white' : 'text-zinc-500 hover:bg-zinc-50'}`}
+                                                        >PC</button>
                                                     </div>
-                                                )}
-                                            </>
-                                        );
-                                    })()}
-                                </div>
-                                {
-                                    editableItems.length > 1 && (
-                                        <button
-                                            type="button"
-                                            onClick={() => handleRemoveEItem(item.id)}
-                                            className="p-2 text-red-400 hover:bg-red-50 rounded-lg transition-colors self-end"
-                                        >✕</button>
-                                    )
-                                }
+                                                </div>
+                                            </div>
+
+                                            <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">SKU / Description</label>
+                                            {/* Searchable SKU combobox */}
+                                            <div className="relative">
+                                                <input
+                                                    type="text"
+                                                    placeholder="Search SKU or product name…"
+                                                    value={skuSearchMap[item.id]?.query ?? item.sku}
+                                                    onChange={(e) => setSkuSearchMap(prev => ({
+                                                        ...prev,
+                                                        [item.id]: { query: e.target.value, open: true }
+                                                    }))}
+                                                    onFocus={() => setSkuSearchMap(prev => ({
+                                                        ...prev,
+                                                        [item.id]: { query: prev[item.id]?.query ?? '', open: true }
+                                                    }))}
+                                                    className="w-full bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-2.5 outline-none font-mono"
+                                                />
+                                                {skuSearchMap[item.id]?.open && skuSearchMap[item.id]?.query.length > 0 && (() => {
+                                                    const q = skuSearchMap[item.id].query.toLowerCase();
+                                                    const matches = (products as any[]).filter(p =>
+                                                        p.sku?.toLowerCase().includes(q) ||
+                                                        p.name?.toLowerCase().includes(q)
+                                                    ).slice(0, 25);
+                                                    if (matches.length === 0) return null;
+                                                    return (
+                                                        <div className="absolute z-50 top-full left-0 right-0 mt-1 bg-white border border-zinc-200 rounded-xl shadow-2xl overflow-hidden max-h-72 overflow-y-auto">
+                                                            {matches.map((p: any) => (
+                                                                <button
+                                                                    key={p.id}
+                                                                    type="button"
+                                                                    onMouseDown={(e) => {
+                                                                        e.preventDefault();
+                                                                        handleEItemChange(item.id, 'productId', p.id);
+                                                                        setSkuSearchMap(prev => ({
+                                                                            ...prev,
+                                                                            [item.id]: { query: p.sku, open: false }
+                                                                        }));
+                                                                    }}
+                                                                    className="w-full text-left px-3 py-2.5 hover:bg-amber-50 border-b border-zinc-100 last:border-0 transition-colors"
+                                                                >
+                                                                    <div className="font-mono text-xs font-bold text-zinc-700">{p.sku}</div>
+                                                                    <div className="text-sm text-zinc-800 leading-tight mt-0.5">{p.name}</div>
+                                                                    <div className="text-xs text-zinc-400 mt-0.5 flex gap-2">
+                                                                        <span>{p.size}</span>
+                                                                        {p.sqftPerBox > 0 && <span>· {p.sqftPerBox} sqft/box</span>}
+                                                                        <span className="text-amber-600 font-semibold">· ${p.sellingPricePerSqft?.toFixed(2)}/sqft</span>
+                                                                    </div>
+                                                                </button>
+                                                            ))}
+                                                        </div>
+                                                    );
+                                                })()}
+                                            </div>
+                                            {/* Selected product details */}
+                                            {item.productName && (
+                                                <div className="mt-2 flex flex-wrap items-center gap-2">
+                                                    <span className="text-sm font-semibold text-zinc-800 leading-tight">
+                                                        {item.productName}
+                                                    </span>
+                                                    {item.size && (
+                                                        <span className="text-xs bg-amber-50 text-amber-700 font-bold px-2 py-0.5 rounded border border-amber-100">
+                                                            {item.size}
+                                                        </span>
+                                                    )}
+                                                    {item.sqftPerBox > 0 && (
+                                                        <span className="text-xs text-zinc-400 font-medium">
+                                                            {item.sqftPerBox} sqft/box
+                                                        </span>
+                                                    )}
+                                                    {/* Stock Button */}
+                                                    <div className="ml-auto">
+                                                        {itemStocks[item.id]?.loading ? (
+                                                            <span className="text-[10px] text-zinc-400 animate-pulse">Checking…</span>
+                                                        ) : itemStocks[item.id]?.value !== undefined && itemStocks[item.id]?.value !== null ? (
+                                                            <button 
+                                                                type="button"
+                                                                onClick={() => handleCheckItemStock(item.id, item.sku)}
+                                                                className={`text-[10px] font-bold px-3 py-1.5 rounded-lg border shadow-sm transition-all hover:brightness-95 active:scale-95 ${itemStocks[item.id]!.value! > 0 ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-red-50 text-red-700 border-red-200'}`}
+                                                            >
+                                                                MIA: {itemStocks[item.id]!.value!.toLocaleString(undefined, { minimumFractionDigits: 2 })} SQFT
+                                                            </button>
+
+                                                        ) : (
+                                                            <button 
+                                                                type="button"
+                                                                onClick={() => handleCheckItemStock(item.id, item.sku)}
+                                                                className="text-[10px] font-bold text-blue-700 hover:text-blue-900 bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-200 uppercase tracking-tighter shadow-sm transition-all hover:bg-blue-100 active:scale-95"
+                                                            >
+                                                                🔍 MIAMI STOCK
+                                                            </button>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
+                                        <div className="w-32">
+                                            <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">Qty ({item.unit})</label>
+                                            <input
+                                                type="number" min="0" step="0.01"
+                                                value={item.quantitySqft}
+                                                onChange={(e) => handleEItemChange(item.id, 'quantitySqft', parseFloat(e.target.value) || 0)}
+                                                className="w-full bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-2.5 outline-none"
+                                            />
+                                            {item.unit === 'sqft' && item.sqftPerBox > 0 && item.quantitySqft > 0 && (() => {
+                                                const boxes = Math.ceil(item.quantitySqft / item.sqftPerBox);
+                                                const rounded = parseFloat((boxes * item.sqftPerBox).toFixed(4));
+                                                return (
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => handleEItemChange(item.id, 'quantitySqft', rounded)}
+                                                        className="mt-1.5 w-full text-xs font-bold text-white bg-amber-500 hover:bg-amber-600 active:bg-amber-700 rounded-lg py-1.5 px-2 transition-colors"
+                                                        title={`${boxes} boxes × ${item.sqftPerBox} sqft`}
+                                                    >
+                                                        🧮 Calculate! → {rounded} sqft
+                                                    </button>
+                                                );
+                                            })()}
+                                        </div>
+                                        <div className="w-28">
+                                            <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">Unit Price ($)</label>
+                                            <input
+                                                type="number" min="0" step="0.01"
+                                                value={item.unitPrice}
+                                                onChange={(e) => handleEItemChange(item.id, 'unitPrice', parseFloat(e.target.value) || 0)}
+                                                className="w-full bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-2.5 outline-none"
+                                            />
+                                        </div>
+                                        <div className="w-36">
+                                            <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">Discount</label>
+                                            <div className="relative flex items-center">
+                                                <div className="absolute inset-y-0 left-0 flex items-center">
+                                                    <select
+                                                        value={item.discountType}
+                                                        onChange={(e) => handleEItemChange(item.id, 'discountType', e.target.value)}
+                                                        className="h-full py-0 pl-2 pr-6 border-transparent bg-transparent text-zinc-500 text-sm rounded-l-lg"
+                                                    >
+                                                        <option value="$">$</option>
+                                                        <option value="%">%</option>
+                                                    </select>
+                                                </div>
+                                                <input
+                                                    type="number" min="0" step="0.01"
+                                                    value={item.discount}
+                                                    onChange={(e) => handleEItemChange(item.id, 'discount', e.target.value)}
+                                                    className="w-full bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-2.5 pl-16 outline-none"
+                                                    placeholder="0.00"
+                                                />
+                                            </div>
+                                            {/* Effective price after discount */}
+                                            {(() => {
+                                                const discVal = parseFloat(item.discount) || 0;
+                                                if (discVal <= 0 || item.quantitySqft <= 0) return null;
+                                                const effectivePrice = item.totalPrice / item.quantitySqft;
+                                                return (
+                                                    <div className="mt-1.5 text-xs font-bold text-emerald-600">
+                                                        ≈ ${effectivePrice.toFixed(2)}/{item.unit} after disc.
+                                                    </div>
+                                                );
+                                            })()}
+                                        </div>
+                                        <div className="w-28 text-right">
+                                            <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">Line Total</label>
+                                            <div className="p-2.5 bg-white border border-zinc-200 rounded-lg text-sm font-bold text-zinc-900">
+                                                ${item.totalPrice.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+                                            </div>
+                                            {item.unit === 'sqft' && item.sqftPerBox > 0 && item.quantitySqft > 0 && (() => {
+                                                const boxes = Math.ceil(item.quantitySqft / item.sqftPerBox);
+                                                const pallets = item.boxesPerPallet > 0 ? Math.ceil(boxes / item.boxesPerPallet) : null;
+                                                return (
+                                                    <>
+                                                        <div className="mt-1.5 text-xs font-bold text-blue-600 flex justify-end gap-1 items-center">
+                                                            📦 {boxes} boxes
+                                                        </div>
+                                                        {pallets !== null && (
+                                                            <div className="mt-0.5 text-xs font-bold text-amber-600 flex justify-end gap-1 items-center">
+                                                                🏗️ {pallets} pallet{pallets !== 1 ? 's' : ''}
+                                                            </div>
+                                                        )}
+                                                    </>
+                                                );
+                                            })()}
+                                        </div>
+                                        {
+                                            editableItems.length > 1 && (
+                                                <button
+                                                    type="button"
+                                                    onClick={() => handleRemoveEItem(item.id)}
+                                                    className="p-2 text-red-400 hover:bg-red-50 rounded-lg transition-colors self-end"
+                                                >✕</button>
+                                            )
+                                        }
+                                    </div>
+                                ))}
                             </div>
                         ))}
                     </div>

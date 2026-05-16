@@ -64,6 +64,8 @@ model OrderItem {
   quantitySqft Float
   unitPrice    Float
   totalPrice   Float
+  room         String?
+  unit         String @default("sqft") // "sqft" or "PC"
 }
 
 model Admin {

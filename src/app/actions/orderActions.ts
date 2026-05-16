@@ -40,7 +40,17 @@ export async function createOrder(data: any) {
         data: {
             ...orderData,
             items: {
-                create: items
+                create: items.map((i: any) => ({
+                    productId: i.productId,
+                    productName: i.productName,
+                    colorName: i.colorName,
+                    size: i.size,
+                    quantitySqft: i.quantitySqft,
+                    unitPrice: i.unitPrice,
+                    totalPrice: i.totalPrice,
+                    room: i.room,
+                    unit: i.unit || 'sqft'
+                }))
             }
         },
         include: {
@@ -86,7 +96,17 @@ export async function updateOrder(id: string, data: any) {
             ...orderData,
             items: {
                 deleteMany: {},
-                create: items
+                create: items.map((i: any) => ({
+                    productId: i.productId,
+                    productName: i.productName,
+                    colorName: i.colorName,
+                    size: i.size,
+                    quantitySqft: i.quantitySqft,
+                    unitPrice: i.unitPrice,
+                    totalPrice: i.totalPrice,
+                    room: i.room,
+                    unit: i.unit || 'sqft'
+                }))
             }
         },
         include: {
