@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { getClients, createClient } from "@/app/actions/clientActions";
 import { Client } from "@/lib/types";
 
@@ -120,12 +121,25 @@ export default function ClientDirectory() {
                             </div>
                         </div>
 
-                        <div className="pt-4 border-t border-zinc-100 flex justify-between items-center">
+                        <div className="pt-4 border-t border-zinc-100 grid grid-cols-2 gap-4">
                             <div>
-                                <div className="text-xs text-zinc-500 font-medium">LIFETIME VALUE</div>
-                                <div className="font-bold text-zinc-900">${client.totalSpent.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
+                                <div className="text-[10px] text-zinc-400 font-bold uppercase tracking-wider">Lifetime Value</div>
+                                <div className="font-bold text-zinc-900 text-sm">${client.totalSpent.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
                             </div>
-                            <button className="text-sm font-medium text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-lg transition-colors">
+                            <div>
+                                <div className="text-[10px] text-amber-500 font-bold uppercase tracking-wider">Available Credit</div>
+                                <div className="font-bold text-amber-600 text-sm">${(client.commissionCredits || 0).toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
+                            </div>
+                        </div>
+
+                        <div className="mt-4 flex gap-2">
+                            <Link 
+                                href={`/admin/clients/${client.id}/commissions`}
+                                className="flex-1 text-center text-xs font-bold text-amber-700 bg-amber-50 hover:bg-amber-100 py-2 rounded-lg transition-colors border border-amber-100"
+                            >
+                                💰 Commission
+                            </Link>
+                            <button className="flex-1 text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 py-2 rounded-lg transition-colors border border-blue-100">
                                 View History
                             </button>
                         </div>

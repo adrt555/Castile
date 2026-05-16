@@ -17,9 +17,21 @@ model Client {
   type           String   // 'Architect' | 'Designer' | 'Contractor' | 'Homeowner'
   totalSpent     Float    @default(0.0)
   createdAt      DateTime @default(now())
-  address        String?
-  billingAddress String?
-  orders         Order[]
+  address           String?
+  billingAddress    String?
+  commissionCredits Float           @default(0.0)
+  orders            Order[]
+  creditHistory     CreditHistory[]
+}
+
+model CreditHistory {
+  id        String   @id @default(uuid())
+  clientId  String
+  client    Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  amount    Float
+  type      String   // 'ADD' | 'SUBTRACT'
+  reason    String?
+  createdAt DateTime @default(now())
 }
 
 model Order {

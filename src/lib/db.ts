@@ -13,7 +13,8 @@ let _clients: Client[] = [
         totalSpent: 12450.00,
         createdAt: "2026-01-15T08:00:00Z",
         address: "4500 Biscayne Blvd, Miami FL 33137",
-        billingAddress: "4500 Biscayne Blvd, Miami FL 33137"
+        billingAddress: "4500 Biscayne Blvd, Miami FL 33137",
+        commissionCredits: 0
     },
     {
         id: "cl_1002",
@@ -25,7 +26,8 @@ let _clients: Client[] = [
         totalSpent: 45000.00,
         createdAt: "2025-11-20T09:30:00Z",
         address: "1200 Brickell Ave, Miami FL 33131",
-        billingAddress: "PO Box 9800, Miami FL 33101"
+        billingAddress: "PO Box 9800, Miami FL 33101",
+        commissionCredits: 0
     },
     {
         id: "cl_1003",
@@ -37,7 +39,8 @@ let _clients: Client[] = [
         totalSpent: 0,
         createdAt: "2026-04-16T12:00:00Z",
         address: "",
-        billingAddress: ""
+        billingAddress: "",
+        commissionCredits: 0
     }
 ];
 

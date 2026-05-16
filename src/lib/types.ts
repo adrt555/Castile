@@ -13,6 +13,7 @@ export interface Client {
     createdAt: string;
     address?: string;
     billingAddress?: string;
+    commissionCredits: number;
 }
 
 export interface OrderItem {
