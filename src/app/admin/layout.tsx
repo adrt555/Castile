@@ -25,7 +25,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
         { href: "/admin/clients",        icon: "👥", label: "Clients" },
         { href: "/admin/products",       icon: "🗂️",  label: "Product Catalog" },
         { href: "/admin/finance",        icon: "💰", label: "Accounting" },
-        { href: "/admin/purchase-orders",icon: "🏭", label: "Purchase Orders", indent: true },
+        { href: "/admin/purchase-orders",icon: "🏭", label: "Purchase Orders" },
     ];
 
     const SidebarContent = () => (
@@ -41,19 +41,17 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             </div>
 
             <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
-                {navLinks.map(({ href, icon, label, indent }) => {
+                {navLinks.map(({ href, icon, label }) => {
                     const isActive = pathname === href;
                     return (
                         <Link
                             key={href}
                             href={href}
                             onClick={() => setIsSidebarOpen(false)}
-                            className={`flex items-center gap-2.5 ${indent ? "pl-7 pr-3" : "px-3"} py-2.5 rounded-md text-sm font-medium transition-colors ${
+                            className={`flex items-center gap-2.5 px-3 py-2.5 rounded-md text-sm font-medium transition-colors ${
                                 isActive
                                     ? "bg-amber-50 text-amber-700"
-                                    : indent
-                                        ? "text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900"
-                                        : "text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900"
+                                    : "text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900"
                             }`}
                         >
                             <span className="text-base leading-none">{icon}</span>

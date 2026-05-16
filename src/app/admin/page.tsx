@@ -59,10 +59,14 @@ export default async function AdminDashboard() {
                         {orders.filter(o => o.status !== 'Delivered').map(order => {
                             const client = (order as any).client;
                             return (
-                                <div key={order.id} className="p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-0 hover:bg-zinc-50 transition-colors">
+                                <Link 
+                                    key={order.id} 
+                                    href={`/admin/orders?id=${order.id}`}
+                                    className="p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-0 hover:bg-zinc-50 transition-colors"
+                                >
                                     <div>
                                         <div className="font-medium text-zinc-900">{client?.name} ({client?.company})</div>
-                                        <div className="text-sm text-zinc-500 mt-1">Order {order.id} &bull; {order.items.length} items</div>
+                                        <div className="text-sm text-zinc-500 mt-1">Order {order.orderNumber?.toString().padStart(4, '0') || order.id.slice(0, 8)} &bull; {order.items.length} items</div>
                                     </div>
                                     <div className="text-right">
                                         <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium uppercase tracking-wider
@@ -70,13 +74,13 @@ export default async function AdminDashboard() {
                       ${order.status === 'Invoice Sent' ? 'bg-blue-100 text-blue-800' : ''}
                       ${order.status === 'Paid' || order.status === 'Unfulfilled' ? 'bg-amber-100 text-amber-800' : ''}
                     `}>
-                                            {order.status}
+                                            {order.status === 'Paid' ? 'Paid / Unful.' : order.status}
                                         </span>
                                         <div className="text-sm font-medium text-zinc-900 mt-1">
                                             ${order.total.toLocaleString(undefined, { minimumFractionDigits: 2 })}
                                         </div>
                                     </div>
-                                </div>
+                                </Link>
                             )
                         })}
                         {unfulfilledOrders === 0 && pendingQuotes === 0 && (

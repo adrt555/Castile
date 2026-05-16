@@ -1,6 +1,7 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { getClients, createClient, updateClient } from "@/app/actions/clientActions";
 import { getProducts, checkRocaStock } from "@/app/actions/productActions";
 import { getOrders, updateOrderStatus, updateOrder, deleteOrder } from "@/app/actions/orderActions";
@@ -14,6 +15,17 @@ interface TableOrder extends Order {
 }
 
 export default function OrdersTablePipeline() {
+    return (
+        <Suspense fallback={<div className="p-12 text-center text-zinc-500">Loading pipeline...</div>}>
+            <OrdersContent />
+        </Suspense>
+    );
+}
+
+function OrdersContent() {
+    const searchParams = useSearchParams();
+    const orderIdToSelect = searchParams.get("id");
+
     const [orders, setOrders] = useState<TableOrder[]>([]);
     const [searchQuery, setSearchQuery] = useState("");
     const [sortBy, setSortBy] = useState<"updatedAt" | "createdAt" | "total">("updatedAt");
@@ -65,6 +77,16 @@ export default function OrdersTablePipeline() {
     useEffect(() => {
         loadData();
     }, []);
+
+    // Handle initial selection from URL
+    useEffect(() => {
+        if (orderIdToSelect && orders.length > 0 && !selectedOrder) {
+            const order = orders.find(o => o.id === orderIdToSelect);
+            if (order) {
+                handleSelectOrder(order);
+            }
+        }
+    }, [orderIdToSelect, orders, selectedOrder]);
 
     const handleStatusChange = async (orderId: string, newStatus: OrderStatus) => {
         await updateOrderStatus(orderId, newStatus);

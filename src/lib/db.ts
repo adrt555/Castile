@@ -33,7 +33,7 @@ let _clients: Client[] = [
         company: "",
         email: "jonyobregon82@hotmail.com",
         phone: "",
-        type: "Direct",
+        type: "Homeowner",
         totalSpent: 0,
         createdAt: "2026-04-16T12:00:00Z",
         address: "",
