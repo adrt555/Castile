@@ -1538,5 +1538,6 @@ export const crmProducts: CRMProductSKU[] = [
     {id:"dune_188483",sku:"188483",name:"THEIA 24X24",collection:"THEIA",size:"24X24 FIELD",costPricePerSqft:3.1522, sellingPricePerSqft:6.3,sqftPerBox:11.63,boxesPerPallet:40,category:"Porcelain & Ceramic",image:"/products/placeholder.jpg"},
     {id:"dune_188450",sku:"188450",name:"THEIA 35X35",collection:"THEIA",size:"35X35 FIELD",costPricePerSqft:4.5725, sellingPricePerSqft:9.14,sqftPerBox:8.72,boxesPerPallet:44,category:"Porcelain & Ceramic",image:"/products/placeholder.jpg"},
     {id:"dune_188464",sku:"188464",name:"THEIA SATIN 35X35",collection:"THEIA",size:"35X35 FIELD",costPricePerSqft:3.8658, sellingPricePerSqft:7.73,sqftPerBox:8.72,boxesPerPallet:44,category:"Porcelain & Ceramic",image:"/products/placeholder.jpg"},
+    {id:"roca_rpmarcr2448po",sku:"Rpmarcr2448po",name:"marmoris Cream 24x48 Polished",collection:"MARMORIS",size:"24X48 FIELD",costPricePerSqft:1.49,sellingPricePerSqft:2.98,sqftPerBox:15.5,boxesPerPallet:30,category:"Porcelain & Ceramic",image:"/products/placeholder.jpg"}
 ];
 export default crmProducts;
