@@ -68,130 +68,119 @@ export default function QuotePrintTemplate({
     return (
         <div id="quote-print-template" className="quote-print-only">
             <style>{`
-                @media screen {
-                    .quote-print-only { display: none; }
+                .quote-print-only {
+                    display: block;
+                    position: relative;
+                    width: 100%;
+                    background: white;
+                    padding: 0;
+                    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                    color: #1a1a1a;
+                    font-size: 13px;
+                    box-sizing: border-box;
                 }
-                @media print {
-                    body * { visibility: hidden; }
-                    .quote-print-only,
-                    .quote-print-only * { visibility: visible; }
-                    .quote-print-only {
-                        display: block !important;
-                        position: relative;
-                        width: 100%;
-                        background: white;
-                        padding: 0;
-                        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-                        color: #1a1a1a;
-                        font-size: 13px;
-                        box-sizing: border-box;
-                    }
-                    .print-container {
-                        padding: 40px;
-                    }
-                    tr {
-                        page-break-inside: avoid;
-                    }
-                    .page-footer-counter {
-                        position: fixed;
-                        bottom: 10px;
-                        right: 10px;
-                        font-size: 10px;
-                        color: #999;
-                    }
-                    .page-footer-counter:after {
-                        content: "Page " counter(page);
-                    }
-                    @page {
-                        margin: 1.5cm;
-                        counter-increment: page;
-                    }
-                    .print-header {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: flex-start;
-                        margin-bottom: 32px;
-                    }
-                    .company-block { text-align: right; }
-                    .company-name {
-                        font-size: 12px; color: #1a1a1a; margin-bottom: 2px;
-                    }
-                    .company-sub { font-size: 11px; color: #555; line-height: 1.5; }
-                    .logo-block { text-align: left; }
-                    .logo-img { width: 180px; height: auto; object-fit: contain; mix-blend-mode: multiply; }
-                    .doc-title {
-                        font-size: 28px; font-weight: 900; letter-spacing: 0.05em;
-                        color: #1a1a1a; text-align: right; margin-bottom: 12px; line-height: 1;
-                    }
-                    .meta-grid {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: flex-start;
-                        margin-bottom: 20px;
-                        padding-bottom: 15px;
-                        border-bottom: 1px solid #e5e7eb;
-                    }
-                    .bill-to-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
-                    .bill-name { font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 2px; }
-                    .bill-detail { font-size: 12px; color: #555; line-height: 1.5; }
-                    .meta-table { text-align: right; }
-                    .meta-row { display: flex; justify-content: flex-end; gap: 15px; margin-bottom: 3px; }
-                    .meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: #888; width: 80px; text-align: right; }
-                    .meta-value { font-size: 11px; font-weight: 600; color: #1a1a1a; width: 100px; text-align: right; }
-                    
-                    .room-header {
-                        background: #f8fafc;
-                        padding: 6px 12px;
-                        border-left: 4px solid #2d7a6a;
-                        margin: 20px 0 10px 0;
-                        font-size: 11px;
-                        font-weight: 800;
-                        text-transform: uppercase;
-                        letter-spacing: 0.05em;
-                        color: #475569;
-                    }
+                .print-container {
+                    padding: 40px;
+                }
+                tr {
+                    page-break-inside: avoid;
+                }
+                .page-footer-counter {
+                    position: fixed;
+                    bottom: 10px;
+                    right: 10px;
+                    font-size: 10px;
+                    color: #999;
+                }
+                .page-footer-counter:after {
+                    content: "Page " counter(page);
+                }
+                @page {
+                    margin: 0.5in;
+                    size: letter;
+                    counter-increment: page;
+                }
+                .print-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    margin-bottom: 32px;
+                }
+                .company-block { text-align: right; }
+                .company-name {
+                    font-size: 12px; color: #1a1a1a; margin-bottom: 2px;
+                }
+                .company-sub { font-size: 11px; color: #555; line-height: 1.5; }
+                .logo-block { text-align: left; }
+                .logo-img { width: 180px; height: auto; object-fit: contain; mix-blend-mode: multiply; }
+                .doc-title {
+                    font-size: 28px; font-weight: 900; letter-spacing: 0.05em;
+                    color: #1a1a1a; text-align: right; margin-bottom: 12px; line-height: 1;
+                }
+                .meta-grid {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    margin-bottom: 20px;
+                    padding-bottom: 15px;
+                    border-bottom: 1px solid #e5e7eb;
+                }
+                .bill-to-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+                .bill-name { font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 2px; }
+                .bill-detail { font-size: 12px; color: #555; line-height: 1.5; }
+                .meta-table { text-align: right; }
+                .meta-row { display: flex; justify-content: flex-end; gap: 15px; margin-bottom: 3px; }
+                .meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: #888; width: 80px; text-align: right; }
+                .meta-value { font-size: 11px; font-weight: 600; color: #1a1a1a; width: 100px; text-align: right; }
+                
+                .room-header {
+                    background: #f8fafc;
+                    padding: 6px 12px;
+                    border-left: 4px solid #2d7a6a;
+                    margin: 20px 0 10px 0;
+                    font-size: 11px;
+                    font-weight: 800;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                    color: #475569;
+                }
 
-                    .items-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; page-break-inside: auto; }
-                    .items-table thead { display: table-header-group; }
-                    .items-table thead tr {
-                        background: #2d7a6a; color: white;
-                    }
-                    .items-table thead th {
-                        padding: 8px 12px; font-size: 11px;
-                        font-weight: 700; text-transform: uppercase;
-                        letter-spacing: 0.06em; text-align: left;
-                    }
-                    .items-table thead th.right { text-align: right; }
-                    .items-table tbody tr { border-bottom: 1px solid #f0f0f0; page-break-inside: avoid; page-break-after: auto; }
-                    .items-table tbody tr:last-child { border-bottom: none; }
-                    .items-table tbody td {
-                        padding: 8px 12px; font-size: 11px; color: #333;
-                        vertical-align: top;
-                    }
-                    .items-table tbody td.right { text-align: right; }
-                    .item-name { font-weight: 600; margin-bottom: 1px; }
-                    .item-sub { font-size: 10px; color: #888; text-transform: uppercase; }
-                    
-                    .financials { display: flex; justify-content: flex-end; margin-top: 10px; border-top: 1px solid #e5e7eb; page-break-inside: avoid; }
-                    .financials-box { width: 280px; padding: 12px 0; }
-                    .fin-row { display: flex; justify-content: space-between; padding: 3px 12px; font-size: 12px; color: #444; }
-                    .fin-row.discount { color: #2d7a6a; font-weight: 600; }
-                    .fin-row.total {
-                        background: #2d7a6a; color: white;
-                        font-weight: 800; font-size: 14px;
-                        margin-top: 4px; border-radius: 4px;
-                        padding: 8px 12px;
-                    }
-                    .terms-block { margin-top: 30px; border-top: 1px solid #e5e7eb; padding-top: 15px; page-break-inside: avoid; }
-                    .terms-title { font-weight: 700; font-size: 12px; margin-bottom: 4px; }
-                    .terms-text { font-size: 11px; color: #666; line-height: 1.6; }
-                    .sig-block { margin-top: 40px; display: flex; justify-content: flex-end; page-break-inside: avoid; }
-                    .sig-line { border-top: 1px solid #999; width: 200px; padding-top: 6px; text-align: center; font-size: 11px; color: #888; }
-                    @page { 
-                        margin: 0.5in; 
-                        size: letter; 
-                    }
+                .items-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; page-break-inside: auto; }
+                .items-table thead { display: table-header-group; }
+                .items-table thead tr {
+                    background: #2d7a6a; color: white;
                 }
+                .items-table thead th {
+                    padding: 8px 12px; font-size: 11px;
+                    font-weight: 700; text-transform: uppercase;
+                    letter-spacing: 0.06em; text-align: left;
+                }
+                .items-table thead th.right { text-align: right; }
+                .items-table tbody tr { border-bottom: 1px solid #f0f0f0; page-break-inside: avoid; page-break-after: auto; }
+                .items-table tbody tr:last-child { border-bottom: none; }
+                .items-table tbody td {
+                    padding: 8px 12px; font-size: 11px; color: #333;
+                    vertical-align: top;
+                }
+                .items-table tbody td.right { text-align: right; }
+                .item-name { font-weight: 600; margin-bottom: 1px; }
+                .item-sub { font-size: 10px; color: #888; text-transform: uppercase; }
+                
+                .financials { display: flex; justify-content: flex-end; margin-top: 10px; border-top: 1px solid #e5e7eb; page-break-inside: avoid; }
+                .financials-box { width: 280px; padding: 12px 0; }
+                .fin-row { display: flex; justify-content: space-between; padding: 3px 12px; font-size: 12px; color: #444; }
+                .fin-row.discount { color: #2d7a6a; font-weight: 600; }
+                .fin-row.total {
+                    background: #2d7a6a; color: white;
+                    font-weight: 800; font-size: 14px;
+                    margin-top: 4px; border-radius: 4px;
+                    padding: 8px 12px;
+                }
+                .terms-block { margin-top: 30px; border-top: 1px solid #e5e7eb; padding-top: 15px; page-break-inside: avoid; }
+                .terms-title { font-weight: 700; font-size: 12px; margin-bottom: 4px; }
+                .terms-text { font-size: 11px; color: #666; line-height: 1.6; }
+                .sig-block { margin-top: 40px; display: flex; justify-content: flex-end; page-break-inside: avoid; }
+                .sig-line { border-top: 1px solid #999; width: 200px; padding-top: 6px; text-align: center; font-size: 11px; color: #888; }
             `}</style>
 
             {/* Header */}
