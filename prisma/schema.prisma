@@ -21,6 +21,7 @@ model Client {
   billingAddress    String?
   commissionCredits Float           @default(0.0)
   orders            Order[]
+  projects          Project[]
   creditHistory     CreditHistory[]
 }
 
@@ -104,4 +105,40 @@ model PurchaseOrderItem {
   sqftPerBox    Float
   unitCost      Float
   totalLineCost Float
+}
+
+model Project {
+  id            String        @id @default(uuid())
+  projectNumber Int           @unique @default(autoincrement())
+  clientId      String
+  client        Client        @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  name          String?
+  address       String?
+  status        String        @default("Draft") // 'Draft' | 'Sent' | 'Approved'
+  total         Float         @default(0.0)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  areas         ProjectArea[]
+}
+
+model ProjectArea {
+  id        String        @id @default(uuid())
+  projectId String
+  project   Project       @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  name      String
+  phase     String
+  items     ProjectItem[]
+}
+
+model ProjectItem {
+  id          String      @id @default(uuid())
+  areaId      String
+  area        ProjectArea @relation(fields: [areaId], references: [id], onDelete: Cascade)
+  code        String
+  description String
+  quantity    Float
+  unit        String      @default("SQFT")
+  unitPrice   Float
+  totalPrice  Float
+  imageUrl    String?
 }

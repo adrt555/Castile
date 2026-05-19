@@ -18,6 +18,7 @@ export default function CreateOrderPage() {
     const [clientSearch, setClientSearch] = useState("");
     const [isClientDropdownOpen, setIsClientDropdownOpen] = useState(false);
     const [orderStatus, setOrderStatus] = useState<OrderStatus>('Quote');
+    const [isPresentationMode, setIsPresentationMode] = useState(false);
     const [editableItems, setEditableItems] = useState<Array<{ 
         id: string, 
         productId: string, 
@@ -238,11 +239,24 @@ export default function CreateOrderPage() {
                         onClick={() => {
                             if (!selectedClientId) return alert('Please select a client first.');
                             if (editableItems.length === 0) return alert('Please add at least one line item.');
-                            window.print();
+                            setIsPresentationMode(false);
+                            setTimeout(() => window.print(), 100);
                         }}
                         className="px-4 py-2 border border-zinc-200 bg-white rounded-lg text-sm font-semibold text-zinc-700 hover:bg-zinc-50 transition-colors shadow-sm cursor-pointer flex items-center gap-1.5"
                     >
                         🖨️ Print
+                    </button>
+                    <button
+                        type="button"
+                        onClick={() => {
+                            if (!selectedClientId) return alert('Please select a client first.');
+                            if (editableItems.length === 0) return alert('Please add at least one line item.');
+                            setIsPresentationMode(true);
+                            setTimeout(() => window.print(), 100);
+                        }}
+                        className="px-4 py-2 border border-zinc-200 bg-white rounded-lg text-sm font-semibold text-zinc-700 hover:bg-zinc-50 transition-colors shadow-sm cursor-pointer flex items-center gap-1.5"
+                    >
+                        👁️ Print Presentation
                     </button>
                     <select
                         value={orderStatus}
@@ -731,6 +745,7 @@ export default function CreateOrderPage() {
                 freight={eFreight}
                 tax={eTax}
                 total={eTotal}
+                isPresentation={isPresentationMode}
             />
 
             {/* Create New Client Modal */}

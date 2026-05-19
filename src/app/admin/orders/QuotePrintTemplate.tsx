@@ -30,6 +30,7 @@ interface QuotePrintProps {
     tax: number;
     total: number;
     documentType?: 'QUOTE' | 'INVOICE' | 'PURCHASE ORDER';
+    isPresentation?: boolean;
 }
 
 export default function QuotePrintTemplate({
@@ -49,6 +50,7 @@ export default function QuotePrintTemplate({
     tax,
     total,
     documentType,
+    isPresentation = false,
 }: QuotePrintProps) {
     const orderDate = new Date(createdAt);
     const dueDate = new Date(createdAt);
@@ -261,9 +263,9 @@ export default function QuotePrintTemplate({
                                     <th style={{ width: 30 }}>#</th>
                                     <th>Description</th>
                                     <th className="right" style={{ width: 80 }}>Qty</th>
-                                    <th className="right" style={{ width: 80 }}>Unit Price</th>
-                                    {discount > 0 && <th className="right" style={{ width: 70 }}>Discount</th>}
-                                    <th className="right" style={{ width: 90 }}>Amount</th>
+                                    {!isPresentation && <th className="right" style={{ width: 80 }}>Unit Price</th>}
+                                    {!isPresentation && discount > 0 && <th className="right" style={{ width: 70 }}>Discount</th>}
+                                    {!isPresentation && <th className="right" style={{ width: 90 }}>Amount</th>}
                                 </tr>
                             </thead>
                             <tbody>
@@ -280,17 +282,19 @@ export default function QuotePrintTemplate({
                                             {item.quantitySqft.toLocaleString()}
                                             <span style={{ fontSize: '9px', marginLeft: '4px', fontWeight: 700, color: '#666' }}>{item.unit || 'sqft'}</span>
                                         </td>
-                                        <td className="right">${item.unitPrice.toFixed(2)}</td>
-                                        {discount > 0 && (
+                                        {!isPresentation && <td className="right">${item.unitPrice.toFixed(2)}</td>}
+                                        {!isPresentation && discount > 0 && (
                                             <td className="right" style={{ color: "#2d7a6a" }}>
                                                 {item.discount && parseFloat(item.discount) > 0
                                                     ? `${item.discountType}${item.discount}`
                                                     : "—"}
                                             </td>
                                         )}
+                                        {!isPresentation && (
                                         <td className="right" style={{ fontWeight: 600 }}>
                                             ${item.totalPrice.toLocaleString(undefined, { minimumFractionDigits: 2 })}
                                         </td>
+                                        )}
                                     </tr>
                                 ))}
                             </tbody>
@@ -300,6 +304,7 @@ export default function QuotePrintTemplate({
             </div>
 
             {/* Financials */}
+            {!isPresentation && (
             <div className="financials">
                 <div className="financials-box">
                     <div className="fin-row">
@@ -330,6 +335,7 @@ export default function QuotePrintTemplate({
                     </div>
                 </div>
             </div>
+            )}
 
             {/* Terms */}
             <div className="terms-block">
