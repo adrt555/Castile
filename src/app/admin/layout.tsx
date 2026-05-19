@@ -71,7 +71,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     );
 
     return (
-        <div className="flex h-screen bg-zinc-50 text-zinc-900 font-sans overflow-hidden">
+        <div className="flex h-screen bg-zinc-50 text-zinc-900 font-sans overflow-hidden print:overflow-visible print:h-auto print:block">
             {/* MOBILE SIDEBAR OVERLAY */}
             {isSidebarOpen && (
                 <div className="fixed inset-0 z-50 md:hidden">
@@ -88,7 +88,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             </aside>
 
             {/* Main Content Area */}
-            <main className="flex-1 flex flex-col min-w-0 h-full relative">
+            <main className="flex-1 flex flex-col min-w-0 h-full relative print:overflow-visible print:h-auto print:block">
                 <header className="h-16 bg-white border-b border-zinc-200 flex items-center justify-between px-4 sm:px-8 shrink-0 relative z-40">
                     <div className="flex items-center gap-3">
                         <button

@@ -69,62 +69,6 @@ export default function CreateOrderPage() {
     const [sendToEmail, setSendToEmail] = useState("");
     const [sendSuccess, setSendSuccess] = useState(false);
 
-    const handlePrint = (presentationMode: boolean) => {
-        setIsPresentationMode(presentationMode);
-        
-        setTimeout(() => {
-            const printContent = document.getElementById("quote-print-template");
-            if (!printContent) {
-                window.print();
-                return;
-            }
-
-            const iframe = document.createElement("iframe");
-            iframe.style.position = "absolute";
-            iframe.style.width = "0px";
-            iframe.style.height = "0px";
-            iframe.style.border = "none";
-            document.body.appendChild(iframe);
-
-            const iframeDoc = iframe.contentWindow?.document;
-            if (!iframeDoc) return;
-
-            const styles = Array.from(document.querySelectorAll('style, link[rel="stylesheet"]'))
-                .map(s => s.outerHTML)
-                .join('\n');
-
-            iframeDoc.open();
-            iframeDoc.write(`
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <title>Print Document</title>
-                    ${styles}
-                    <style>
-                        /* Force visible on screen inside iframe so browser measures it before print */
-                        @media screen {
-                            .quote-print-only { display: block !important; }
-                        }
-                    </style>
-                </head>
-                <body style="background: white !important;">
-                    ${printContent.outerHTML}
-                </body>
-                </html>
-            `);
-            iframeDoc.close();
-
-            setTimeout(() => {
-                iframe.contentWindow?.focus();
-                iframe.contentWindow?.print();
-                
-                setTimeout(() => {
-                    if (document.body.contains(iframe)) document.body.removeChild(iframe);
-                }, 1000);
-            }, 500);
-        }, 100);
-    };
-
     const [clients, setClients] = useState<any[]>([]);
     const [products, setProducts] = useState<any[]>([]);
 
@@ -295,7 +239,8 @@ export default function CreateOrderPage() {
                         onClick={() => {
                             if (!selectedClientId) return alert('Please select a client first.');
                             if (editableItems.length === 0) return alert('Please add at least one line item.');
-                            handlePrint(false);
+                            setIsPresentationMode(false);
+                            setTimeout(() => window.print(), 100);
                         }}
                         className="px-4 py-2 border border-zinc-200 bg-white rounded-lg text-sm font-semibold text-zinc-700 hover:bg-zinc-50 transition-colors shadow-sm cursor-pointer flex items-center gap-1.5"
                     >
@@ -306,7 +251,8 @@ export default function CreateOrderPage() {
                         onClick={() => {
                             if (!selectedClientId) return alert('Please select a client first.');
                             if (editableItems.length === 0) return alert('Please add at least one line item.');
-                            handlePrint(true);
+                            setIsPresentationMode(true);
+                            setTimeout(() => window.print(), 100);
                         }}
                         className="px-4 py-2 border border-zinc-200 bg-white rounded-lg text-sm font-semibold text-zinc-700 hover:bg-zinc-50 transition-colors shadow-sm cursor-pointer flex items-center gap-1.5"
                     >
