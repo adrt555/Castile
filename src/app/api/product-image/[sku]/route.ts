@@ -3,10 +3,10 @@ import prisma from "@/lib/prisma";
 
 export async function GET(
     req: NextRequest,
-    { params }: { params: { sku: string } }
+    context: { params: Promise<{ sku: string }> }
 ) {
     try {
-        const sku = params.sku;
+        const { sku } = await context.params;
         
         const image = await prisma.productImage.findUnique({
             where: { sku }

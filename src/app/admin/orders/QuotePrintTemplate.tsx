@@ -11,6 +11,8 @@ interface PrintItem {
     totalPrice: number;
     room?: string;
     unit?: 'sqft' | 'PC';
+    discount?: string;
+    discountType?: string;
 }
 
 interface QuotePrintProps {
