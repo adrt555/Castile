@@ -13,6 +13,57 @@ export default function OrderPrintPage({ params }: { params: Promise<{ id: strin
     const [client, setClient] = useState<any>(null);
     const [isPresentationMode, setIsPresentationMode] = useState(false);
 
+    const handlePrint = (presentationMode: boolean) => {
+        setIsPresentationMode(presentationMode);
+        
+        setTimeout(() => {
+            const printContent = document.getElementById("quote-print-template");
+            if (!printContent) {
+                // Fallback to normal print if template not found
+                window.print();
+                return;
+            }
+
+            const iframe = document.createElement("iframe");
+            iframe.style.position = "absolute";
+            iframe.style.width = "0px";
+            iframe.style.height = "0px";
+            iframe.style.border = "none";
+            document.body.appendChild(iframe);
+
+            const iframeDoc = iframe.contentWindow?.document;
+            if (!iframeDoc) return;
+
+            const styles = Array.from(document.querySelectorAll('style, link[rel="stylesheet"]'))
+                .map(s => s.outerHTML)
+                .join('\n');
+
+            iframeDoc.open();
+            iframeDoc.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Print Document</title>
+                    ${styles}
+                </head>
+                <body style="background: white !important;">
+                    ${printContent.outerHTML}
+                </body>
+                </html>
+            `);
+            iframeDoc.close();
+
+            setTimeout(() => {
+                iframe.contentWindow?.focus();
+                iframe.contentWindow?.print();
+                
+                setTimeout(() => {
+                    if (document.body.contains(iframe)) document.body.removeChild(iframe);
+                }, 1000);
+            }, 500);
+        }, 100);
+    };
+
     useEffect(() => {
         getOrderById(id).then(data => {
             if (data) {
@@ -20,7 +71,7 @@ export default function OrderPrintPage({ params }: { params: Promise<{ id: strin
                 setClient(data.client);
                 // Automatically trigger the native print dialog popup as requested
                 setTimeout(() => {
-                    window.print();
+                    handlePrint(false);
                 }, 500);
             }
         });
@@ -73,14 +124,14 @@ export default function OrderPrintPage({ params }: { params: Promise<{ id: strin
                         Back to Pipeline
                     </Link>
                     <button 
-                        onClick={() => { setIsPresentationMode(false); setTimeout(() => window.print(), 100); }}
+                        onClick={() => handlePrint(false)}
                         className="px-5 py-2.5 bg-zinc-900 text-white hover:bg-zinc-800 font-semibold rounded-lg transition-colors shadow-sm text-sm flex items-center gap-2"
                     >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
                         Print PDF
                     </button>
                     <button 
-                        onClick={() => { setIsPresentationMode(true); setTimeout(() => window.print(), 100); }}
+                        onClick={() => handlePrint(true)}
                         className="px-5 py-2.5 bg-white border border-zinc-200 text-zinc-700 hover:bg-zinc-50 font-semibold rounded-lg transition-colors shadow-sm text-sm flex items-center gap-2"
                     >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
