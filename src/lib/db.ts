@@ -58,7 +58,8 @@ let _orders: Order[] = [
                 size: "24x48",
                 quantitySqft: 500,
                 unitPrice: 5.50,
-                totalPrice: 2750.00
+                totalPrice: 2750.00,
+                unit: "sqft"
             }
         ],
         subtotal: 2750.00,
@@ -83,7 +84,8 @@ let _orders: Order[] = [
                 size: "12x24",
                 quantitySqft: 2000,
                 unitPrice: 3.20,
-                totalPrice: 6400.00
+                totalPrice: 6400.00,
+                unit: "sqft"
             }
         ],
         subtotal: 6400.00,
@@ -107,7 +109,8 @@ let _orders: Order[] = [
                 size: "24X24 FIELD",
                 quantitySqft: 971.65,
                 unitPrice: 1.69,
-                totalPrice: 1642.088
+                totalPrice: 1642.088,
+                unit: "sqft"
             }
         ],
         subtotal: 1642.088,
@@ -167,6 +170,7 @@ let _products: CRMProduct[] = crmProducts.map(p => ({
     description: p.name,
     // costPricePerSqft and sellingPricePerSqft come directly from crmProducts (price book)
     inStockSqft: 0,
+    unit: 'sqft' as const,
 }));
 
 
@@ -254,7 +258,8 @@ export const db = {
             totalRevenue,
             totalCosts,
             netProfit: totalRevenue - totalCosts,
-            pendingInvoicesTotal
+            pendingInvoicesTotal,
+            totalCommissions: 0
         };
     },
 
