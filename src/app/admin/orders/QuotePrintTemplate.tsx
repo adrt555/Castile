@@ -68,8 +68,9 @@ export default function QuotePrintTemplate({
     return (
         <div id="quote-print-template" className="quote-print-only">
             <style>{`
+                /* Print styles are always active because this component is only rendered inside the print iframe or hidden container */
                 .quote-print-only {
-                    display: block;
+                    display: block !important;
                     position: relative;
                     width: 100%;
                     background: white;
@@ -96,8 +97,7 @@ export default function QuotePrintTemplate({
                     content: "Page " counter(page);
                 }
                 @page {
-                    margin: 0.5in;
-                    size: letter;
+                    margin: 1.5cm;
                     counter-increment: page;
                 }
                 .print-header {
@@ -277,13 +277,13 @@ export default function QuotePrintTemplate({
                                         {!isPresentation && discount > 0 && (
                                             <td className="right" style={{ color: "#2d7a6a" }}>
                                                 {item.discount && parseFloat(item.discount) > 0
-                                                    ? `${item.discountType}${item.discount}`
+                                                    ? \`\${item.discountType}\${item.discount}\`
                                                     : "—"}
                                             </td>
                                         )}
                                         {!isPresentation && (
                                         <td className="right" style={{ fontWeight: 600 }}>
-                                            ${item.totalPrice.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+                                            \${item.totalPrice.toLocaleString(undefined, { minimumFractionDigits: 2 })}
                                         </td>
                                         )}
                                     </tr>
@@ -300,29 +300,29 @@ export default function QuotePrintTemplate({
                 <div className="financials-box">
                     <div className="fin-row">
                         <span>Subtotal</span>
-                        <span>${subtotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+                        <span>\${subtotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                     </div>
                     {discount > 0 && (
                         <div className="fin-row discount">
                             <span>Discount</span>
-                            <span>-${discount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+                            <span>-\${discount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                         </div>
                     )}
                     {freight > 0 && (
                         <div className="fin-row">
                             <span>Freight</span>
-                            <span>${freight.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+                            <span>\${freight.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                         </div>
                     )}
                     {tax > 0 && (
                         <div className="fin-row">
                             <span>Sales Tax (7%)</span>
-                            <span>${tax.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+                            <span>\${tax.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                         </div>
                     )}
                     <div className="fin-row total">
                         <span>Total (USD)</span>
-                        <span>${total.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+                        <span>\${total.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                     </div>
                 </div>
             </div>
