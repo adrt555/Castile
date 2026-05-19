@@ -100,6 +100,12 @@ export default function CreateOrderPage() {
                 <head>
                     <title>Print Document</title>
                     ${styles}
+                    <style>
+                        /* Force visible on screen inside iframe so browser measures it before print */
+                        @media screen {
+                            .quote-print-only { display: block !important; }
+                        }
+                    </style>
                 </head>
                 <body style="background: white !important;">
                     ${printContent.outerHTML}
