@@ -142,3 +142,10 @@ model ProjectItem {
   totalPrice  Float
   imageUrl    String?
 }
+
+model ProductImage {
+  sku       String   @id
+  base64    String
+  mimeType  String   @default("image/jpeg")
+  updatedAt DateTime @updatedAt
+}

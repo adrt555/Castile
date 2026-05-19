@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { writeFile, mkdir } from "fs/promises";
-import path from "path";
+import prisma from "@/lib/prisma";
 
 export async function POST(req: NextRequest) {
     try {
@@ -14,25 +13,20 @@ export async function POST(req: NextRequest) {
 
         const bytes = await file.arrayBuffer();
         const buffer = Buffer.from(bytes);
-
-        // Sanitize SKU for filename
-        const safeSku = sku.replace(/[^a-zA-Z0-9_-]/g, "");
-        const ext = path.extname(file.name) || '.jpg';
-        const filename = `${safeSku}${ext}`;
+        const base64 = buffer.toString('base64');
+        const mimeType = file.type || 'image/jpeg';
         
-        // Ensure directory exists
-        const uploadDir = path.join(process.cwd(), "public", "products");
-        try {
-            await mkdir(uploadDir, { recursive: true });
-        } catch (e) {
-            // ignore
-        }
+        // Sanitize SKU for database lookup
+        const safeSku = sku.replace(/[^a-zA-Z0-9_-]/g, "");
 
-        const filepath = path.join(uploadDir, filename);
-        await writeFile(filepath, buffer);
+        await prisma.productImage.upsert({
+            where: { sku: safeSku },
+            update: { base64, mimeType },
+            create: { sku: safeSku, base64, mimeType }
+        });
 
-        // Return the public URL
-        return NextResponse.json({ url: `/products/${filename}` });
+        // Return the API endpoint URL that serves the image
+        return NextResponse.json({ url: `/api/product-image/${safeSku}` });
     } catch (error) {
         console.error("Error uploading image:", error);
         return NextResponse.json({ error: "Failed to upload image" }, { status: 500 });

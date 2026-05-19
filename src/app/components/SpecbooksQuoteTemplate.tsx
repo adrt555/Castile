@@ -207,7 +207,7 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
       setProductSearch(null);
       // Optimistically guess the image path if they just typed a code
       const safeSku = query.replace(/[^a-zA-Z0-9_-]/g, "");
-      handleItemChange(areaId, itemId, "imageUrl", query ? `/products/${safeSku}.jpg` : "");
+      handleItemChange(areaId, itemId, "imageUrl", query ? `/api/product-image/${safeSku}` : "");
       return;
     }
 
@@ -229,7 +229,7 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
     
     // Guess image
     const safeSku = product.sku.replace(/[^a-zA-Z0-9_-]/g, "");
-    handleItemChange(areaId, itemId, "imageUrl", `/products/${safeSku}.jpg`);
+    handleItemChange(areaId, itemId, "imageUrl", `/api/product-image/${safeSku}`);
     
     setProductSearch(null);
   };
