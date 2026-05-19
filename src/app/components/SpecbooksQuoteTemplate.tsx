@@ -381,7 +381,7 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
               {/* Items Grid */}
               <div className="space-y-4 print:space-y-2">
                 {/* Headers */}
-                <div className="hidden lg:grid print:grid grid-cols-[80px_2fr_1fr_100px_80px_100px_120px_40px] print:grid-cols-[50px_2.5fr_1fr_50px_40px_60px_70px] gap-4 print:gap-2 px-4 print:px-2 text-[10px] print:text-[8px] font-black text-slate-400 uppercase tracking-widest">
+                <div className="hidden lg:grid print:grid grid-cols-[80px_2fr_1fr_100px_80px_100px_120px_40px] print:grid-cols-[50px_2fr_1.5fr_50px_40px_70px_80px] gap-4 print:gap-4 px-4 print:px-2 text-[10px] print:text-[10px] font-black text-slate-400 uppercase tracking-widest">
                   <div>Image</div>
                   <div>Specification</div>
                   <div>Code</div>
@@ -393,7 +393,7 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
                 </div>
 
                 {area.items.map((item) => (
-                  <div key={item.id} className="grid grid-cols-1 lg:grid-cols-[80px_2fr_1fr_100px_80px_100px_120px_40px] print:grid-cols-[50px_2.5fr_1fr_50px_40px_60px_70px] gap-4 print:gap-2 items-center bg-white border border-slate-200 rounded-lg p-4 transition-all hover:shadow-md hover:border-slate-300 group/item print:p-2 print:border-b print:border-slate-200 print:rounded-none">
+                  <div key={item.id} className="grid grid-cols-1 lg:grid-cols-[80px_2fr_1fr_100px_80px_100px_120px_40px] print:grid-cols-[50px_2fr_1.5fr_50px_40px_70px_80px] gap-4 print:gap-4 items-center bg-white border border-slate-200 rounded-lg p-4 transition-all hover:shadow-md hover:border-slate-300 group/item print:p-2 print:border-b print:border-slate-200 print:rounded-none">
                     {/* Image Spec */}
                     <label className="w-20 h-20 print:w-12 print:h-12 bg-slate-100 rounded border border-slate-200 flex items-center justify-center shrink-0 cursor-pointer overflow-hidden relative group/img">
                       {item.imageUrl ? (
@@ -430,7 +430,7 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
                         value={item.description}
                         onChange={(e) => handleItemChange(area.id, item.id, "description", e.target.value)}
                         rows={2}
-                        className="w-full bg-transparent text-sm print:text-xs font-semibold text-slate-800 outline-none placeholder:text-slate-300 resize-none overflow-hidden"
+                        className="w-full bg-transparent text-sm print:text-sm font-semibold text-slate-800 outline-none placeholder:text-slate-300 resize-none overflow-hidden"
                         placeholder="Item Description"
                       />
                     </div>
@@ -447,7 +447,7 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
                             if (e.target.value.length >= 2) handleItemSearch(area.id, item.id, e.target.value);
                           }}
                           onBlur={() => setTimeout(() => setProductSearch(null), 200)}
-                          className="w-full bg-transparent text-xs print:text-[10px] font-mono text-slate-500 outline-none placeholder:text-slate-300 uppercase pl-5 print:pl-0"
+                          className="w-full bg-transparent text-xs print:text-xs font-mono text-slate-500 outline-none placeholder:text-slate-300 uppercase pl-5 print:pl-0"
                           placeholder="SEARCH..."
                         />
                       </div>
@@ -479,7 +479,7 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
                         type="number"
                         value={item.quantity || ""}
                         onChange={(e) => handleItemChange(area.id, item.id, "quantity", parseFloat(e.target.value) || 0)}
-                        className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-1.5 text-sm print:text-xs font-semibold text-slate-800 text-right outline-none focus:border-slate-400 focus:bg-white transition-colors print:px-0"
+                        className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-1.5 text-sm print:text-sm font-semibold text-slate-800 text-right outline-none focus:border-slate-400 focus:bg-white transition-colors print:px-0"
                         placeholder="0"
                       />
                     </div>
@@ -490,7 +490,7 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
                       <input
                         value={item.unit}
                         onChange={(e) => handleItemChange(area.id, item.id, "unit", e.target.value.toUpperCase())}
-                        className="w-full bg-transparent text-xs print:text-[10px] font-bold text-slate-500 outline-none uppercase"
+                        className="w-full bg-transparent text-xs print:text-xs font-bold text-slate-500 outline-none uppercase"
                         placeholder="UNIT"
                       />
                     </div>
@@ -499,12 +499,12 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
                     <div>
                       <div className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1 lg:hidden print:hidden">Unit Price</div>
                       <div className="relative">
-                        <span className="absolute left-2 top-1/2 -translate-y-1/2 text-slate-400 text-sm print:text-xs print:left-0">$</span>
+                        <span className="absolute left-2 top-1/2 -translate-y-1/2 text-slate-400 text-sm print:text-sm print:left-0">$</span>
                         <input
                           type="number"
                           value={item.unitPrice || ""}
                           onChange={(e) => handleItemChange(area.id, item.id, "unitPrice", parseFloat(e.target.value) || 0)}
-                          className="w-full bg-slate-50 border border-slate-200 rounded pl-6 print:pl-3 pr-2 py-1.5 text-sm print:text-xs font-semibold text-slate-800 text-right outline-none focus:border-slate-400 focus:bg-white transition-colors print:px-0"
+                          className="w-full bg-slate-50 border border-slate-200 rounded pl-6 print:pl-3 pr-2 py-1.5 text-sm print:text-sm font-semibold text-slate-800 text-right outline-none focus:border-slate-400 focus:bg-white transition-colors print:px-0"
                           placeholder="0.00"
                         />
                       </div>
@@ -513,7 +513,7 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
                     {/* Line Total */}
                     <div className="text-right lg:pr-4">
                       <div className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1 lg:hidden print:hidden">Line Total</div>
-                      <div className="text-sm print:text-xs font-bold text-slate-900 bg-slate-50 py-1.5 px-3 rounded border border-slate-100 print:bg-transparent print:border-none print:px-0">
+                      <div className="text-sm print:text-sm font-bold text-slate-900 bg-slate-50 py-1.5 px-3 rounded border border-slate-100 print:bg-transparent print:border-none print:px-0">
                         ${(item.quantity * item.unitPrice).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                       </div>
                     </div>
