@@ -207,7 +207,7 @@ export default function OrderPrintPage({ params }: { params: Promise<{ id: strin
                         discount={order.discount || 0}
                         freight={order.freight || 0}
                         tax={order.tax || 0}
-                        total={order.totalAmount}
+                        total={order.total}
                         isPresentation={isPresentationMode}
                         templateType={templateType}
                     />
