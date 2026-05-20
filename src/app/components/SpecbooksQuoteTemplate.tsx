@@ -495,12 +495,14 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
                     {/* Unit */}
                     <div>
                       <div className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1 lg:hidden print:hidden">Unit</div>
-                      <input
+                      <select
                         value={item.unit}
-                        onChange={(e) => handleItemChange(area.id, item.id, "unit", e.target.value.toUpperCase())}
-                        className="w-full bg-transparent text-xs print:text-xs font-bold text-slate-500 outline-none uppercase"
-                        placeholder="UNIT"
-                      />
+                        onChange={(e) => handleItemChange(area.id, item.id, "unit", e.target.value)}
+                        className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-1.5 text-xs font-bold text-slate-700 outline-none focus:border-slate-400 focus:bg-white transition-colors cursor-pointer print:appearance-none print:bg-transparent print:border-none print:px-0"
+                      >
+                        <option value="SQFT">SQFT</option>
+                        <option value="PC">PC</option>
+                      </select>
                     </div>
 
                     {/* Price */}
