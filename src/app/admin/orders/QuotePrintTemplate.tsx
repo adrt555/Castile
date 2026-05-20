@@ -135,16 +135,28 @@ export default function QuotePrintTemplate({
                     align-items: flex-start;
                     margin-bottom: 32px;
                 }
-                .company-block { text-align: right; }
+                .company-block { text-align: right; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
                 .company-name {
-                    font-size: 12px; color: #1a1a1a; margin-bottom: 2px;
+                    font-size: 13px; font-weight: 700; color: #1a1a1a; margin-top: 15px; margin-bottom: 2px;
                 }
-                .company-sub { font-size: 11px; color: #555; line-height: 1.5; }
+                .company-sub { font-size: 11px; color: #555; line-height: 1.4; }
+                .email-link {
+                    color: #0066cc !important; text-decoration: underline; font-size: 11px; display: block; margin-bottom: 2px;
+                }
+                .phone-number {
+                    color: #555555; font-size: 11px;
+                }
                 .logo-block { text-align: left; }
-                .logo-img { width: 180px; height: auto; object-fit: contain; mix-blend-mode: multiply; }
+                .logo-img {
+                    width: 150px;
+                    height: auto;
+                    object-fit: contain;
+                    filter: invert(1);
+                    mix-blend-mode: multiply;
+                }
                 .doc-title {
-                    font-size: 28px; font-weight: 900; letter-spacing: 0.05em;
-                    color: #1a1a1a; text-align: right; margin-bottom: 12px; line-height: 1;
+                    font-size: 32px; font-weight: 800; letter-spacing: 0.05em;
+                    color: #000000; text-align: right; margin-bottom: 4px; line-height: 1;
                 }
                 .meta-grid {
                     display: flex;
@@ -352,8 +364,8 @@ export default function QuotePrintTemplate({
                             <div className="doc-title">{headerTitle}</div>
                             <div className="company-name">Castile Studio Inc</div>
                             <div className="company-sub">
-                                <span style={{ color: "blue", textDecoration: "underline" }}>Adrian@castileusa.com</span> &middot;<br />
-                                (786)-781-4383
+                                <a href="mailto:Adrian@castileusa.com" className="email-link">Adrian@castileusa.com</a>
+                                <div className="phone-number">(786)-781-4383</div>
                             </div>
                         </div>
                     </div>
