@@ -14,6 +14,7 @@ export interface CRMProductSKU {
     boxesPerPallet: number;      // BXS column from price book
     category: string;
     image: string;
+    description?: string;
 }
 
 export function calcBoxQuantity(requestedSqft: number, sqftPerBox: number): {

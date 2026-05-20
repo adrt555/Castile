@@ -1,10 +1,19 @@
 "use server";
 
 import { crmProducts } from "@/lib/crmProducts";
+import laufenProducts from "@/lib/laufenProducts.json";
 
 export async function getProducts() {
-    // For now, products are static to match the public catalog
-    return crmProducts;
+    // Combine ROCA tiles (default 'sqft') and Laufen products (default 'PC')
+    const roca = crmProducts.map(p => ({
+        ...p,
+        unit: 'sqft' as const
+    }));
+    const laufen = (laufenProducts as any[]).map(p => ({
+        ...p,
+        unit: 'PC' as const
+    }));
+    return [...roca, ...laufen];
 }
 
 export async function checkRocaStock(sku: string) {

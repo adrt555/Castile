@@ -233,6 +233,7 @@ function OrdersContent() {
                     updated.sqftPerBox = (p as any).sqftPerBox || 0;
                     updated.boxesPerPallet = (p as any).boxesPerPallet || 0;
                     updated.unitPrice = (p as any).sellingPricePerSqft || 0;
+                    updated.unit = (p as any).unit || 'sqft';
                 }
             }
 
@@ -674,7 +675,11 @@ function OrdersContent() {
                                     /* ── SKU search dropdown ── */
                                     const skuDropdown = skuSearchMap[item.id]?.open && (skuSearchMap[item.id]?.query?.length ?? 0) > 0 && (() => {
                                         const q = skuSearchMap[item.id].query.toLowerCase();
-                                        const matches = (products as any[]).filter(p => p.sku?.toLowerCase().includes(q) || p.name?.toLowerCase().includes(q)).slice(0, 25);
+                                        const words = q.split(/\s+/).filter(Boolean);
+                                        const matches = words.length === 0 ? [] : (products as any[]).filter(p => {
+                                            const searchStr = `${p.sku || ''} ${p.name || ''} ${p.collection || ''} ${p.category || ''} ${p.size || ''} ${p.description || ''}`.toLowerCase();
+                                            return words.every(word => searchStr.includes(word));
+                                        }).slice(0, 25);
                                         if (matches.length === 0) return null;
                                         return (
                                             <div className="absolute z-50 top-full left-0 right-0 mt-1 bg-white border border-zinc-200 rounded-xl shadow-2xl overflow-hidden max-h-64 overflow-y-auto">

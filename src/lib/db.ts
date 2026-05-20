@@ -1,5 +1,6 @@
 import { Client, Order, CRMProduct, FinanceSummary, PurchaseOrder } from './types';
 import { crmProducts } from './crmProducts';
+import laufenProducts from './laufenProducts.json';
 
 // Mock DB Storage
 let _clients: Client[] = [
@@ -161,17 +162,28 @@ let _purchaseOrders: PurchaseOrder[] = [
     }
 ];
 
-// Real CRM product catalog from ROCA 2026 Cost Price Book
-let _products: CRMProduct[] = crmProducts.map(p => ({
-    ...p,
-    collectionId: p.collection.toLowerCase().replace(/\s+/g, '-'),
-    colors: [],
-    sizes: [p.size],
-    description: p.name,
-    // costPricePerSqft and sellingPricePerSqft come directly from crmProducts (price book)
-    inStockSqft: 0,
-    unit: 'sqft' as const,
-}));
+// Real CRM product catalog from ROCA 2026 Cost Price Book & Laufen Catalogs
+let _products: CRMProduct[] = [
+    ...crmProducts.map(p => ({
+        ...p,
+        collectionId: p.collection.toLowerCase().replace(/\s+/g, '-'),
+        colors: [],
+        sizes: [p.size],
+        description: p.name,
+        // costPricePerSqft and sellingPricePerSqft come directly from crmProducts (price book)
+        inStockSqft: 0,
+        unit: 'sqft' as const,
+    })),
+    ...(laufenProducts as any[]).map(p => ({
+        ...p,
+        collectionId: p.collection.toLowerCase().replace(/\s+/g, '-'),
+        colors: p.colors || [],
+        sizes: [p.size],
+        description: p.description || p.name,
+        inStockSqft: 0,
+        unit: 'PC' as const,
+    }))
+];
 
 
 export const db = {
