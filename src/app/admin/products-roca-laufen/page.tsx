@@ -26,6 +26,7 @@ export default function LaufenCatalog() {
     const [products, setProducts] = useState<LaufenProduct[]>([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [collectionFilter, setCollectionFilter] = useState("ALL");
+    const [categoryFilter, setCategoryFilter] = useState("ALL");
     const [stocks, setStocks] = useState<Record<string, { value: string | number | null; type: "stock" | "special" | null; loading: boolean }>>({});
 
     useEffect(() => {
@@ -97,25 +98,31 @@ export default function LaufenCatalog() {
     };
 
     const collections = ["ALL", ...Array.from(new Set(products.map(p => p.collection))).sort()];
+    const categories = ["ALL", ...Array.from(new Set(products.map(p => p.category))).sort()];
 
     const filtered = products.filter(p => {
         const q = searchTerm.trim().toLowerCase();
-        if (!q && collectionFilter === "ALL") return true;
+        if (!q && collectionFilter === "ALL" && categoryFilter === "ALL") return true;
 
         const matchSearch = !q || (
             p.name.toLowerCase().includes(q) ||
             p.sku.toLowerCase().includes(q) ||
             p.collection.toLowerCase().includes(q) ||
             p.size.toLowerCase().includes(q) ||
-            (p.description || '').toLowerCase().includes(q)
+            (p.description || '').toLowerCase().includes(q) ||
+            (p.category || '').toLowerCase().includes(q)
         );
 
-        // When actively searching by text, bypass collection constraints so relevant items aren't hidden
+        // When actively searching by text, bypass dropdown constraints so relevant items aren't hidden
         const matchCollection = q
             ? true
             : (collectionFilter === "ALL" || p.collection === collectionFilter);
 
-        return matchSearch && matchCollection;
+        const matchCategory = q
+            ? true
+            : (categoryFilter === "ALL" || p.category === categoryFilter);
+
+        return matchSearch && matchCollection && matchCategory;
     });
 
     return (
@@ -158,7 +165,20 @@ export default function LaufenCatalog() {
                         disabled={!!searchTerm}
                         title={searchTerm ? "Collection filter paused while searching" : ""}
                     >
-                        {collections.map(c => (
+                        <option value="ALL">All Collections</option>
+                        {collections.filter(c => c !== "ALL").map(c => (
+                            <option key={c} value={c}>{c}</option>
+                        ))}
+                    </select>
+                    <select
+                        value={categoryFilter}
+                        onChange={(e) => setCategoryFilter(e.target.value)}
+                        className="px-3 py-2 text-sm border border-zinc-300 rounded-lg outline-none focus:ring-2 focus:ring-amber-500 text-zinc-900 bg-white"
+                        disabled={!!searchTerm}
+                        title={searchTerm ? "Category filter paused while searching" : ""}
+                    >
+                        <option value="ALL">All Categories</option>
+                        {categories.filter(c => c !== "ALL").map(c => (
                             <option key={c} value={c}>{c}</option>
                         ))}
                     </select>
@@ -171,7 +191,7 @@ export default function LaufenCatalog() {
                         </button>
                         <span className="text-sm font-medium text-zinc-500">
                             {filtered.length.toLocaleString()} results
-                            {searchTerm && <span className="text-amber-600 ml-1">(all collections)</span>}
+                            {searchTerm && <span className="text-amber-600 ml-1">(all collections/categories)</span>}
                         </span>
                     </div>
                 </div>
@@ -247,11 +267,20 @@ export default function LaufenCatalog() {
                                             )}
                                         </td>
                                         <td className="px-5 py-3 whitespace-nowrap">
-                                            {product.collection ? (
-                                                <span className="text-xs font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-100">
-                                                    {product.collection}
-                                                </span>
-                                            ) : "—"}
+                                            <div className="flex flex-col gap-1 items-start">
+                                                {product.collection ? (
+                                                    <span className="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-100 uppercase tracking-wider">
+                                                        {product.collection}
+                                                    </span>
+                                                ) : (
+                                                    <span className="text-xs text-zinc-400">—</span>
+                                                )}
+                                                {product.category && (
+                                                    <span className="text-[9px] font-medium text-zinc-500 bg-zinc-50 px-1.5 py-0.5 rounded border border-zinc-200 uppercase tracking-tight">
+                                                        {product.category}
+                                                    </span>
+                                                )}
+                                            </div>
                                         </td>
                                         <td className="px-5 py-3 text-xs text-zinc-500 font-medium whitespace-nowrap" title={product.size}>
                                             {product.size || "—"}
