@@ -25,6 +25,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
         { href: "/admin/projects",       icon: "📐", label: "Projects" },
         { href: "/admin/clients",        icon: "👥", label: "Clients" },
         { href: "/admin/products",       icon: "🗂️",  label: "Product Catalog" },
+        { href: "/admin/products-roca-laufen", icon: "📦", label: "Product Catalog Roca + Laufen" },
         { href: "/admin/finance",        icon: "💰", label: "Accounting" },
         { href: "/admin/purchase-orders",icon: "🏭", label: "Purchase Orders" },
     ];

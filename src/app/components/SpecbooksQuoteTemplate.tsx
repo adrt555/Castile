@@ -109,7 +109,9 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
     return area.items.reduce((sum, item) => sum + item.quantity * item.unitPrice, 0);
   };
 
-  const grandTotal = areas.reduce((sum, area) => sum + getAreaTotal(area), 0);
+  const subtotal = areas.reduce((sum, area) => sum + getAreaTotal(area), 0);
+  const tax = subtotal * 0.07;
+  const grandTotal = subtotal + tax;
 
   const handlePrint = () => {
     const printContent = document.getElementById("specbooks-template");
@@ -566,12 +568,18 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
             <div className="text-slate-400 text-sm max-w-md">
               <p>Prices are valid for 30 days. Please review all specifications carefully. Lead times vary by product and availability.</p>
             </div>
-            <div className="bg-white/10 rounded-xl p-6 min-w-[300px] border border-white/20">
-              <div className="flex items-center gap-2 text-slate-300 text-xs font-bold uppercase tracking-widest mb-2">
-                <DollarSign className="w-4 h-4" /> Grand Total Estimate
+            <div className="bg-white/10 rounded-xl p-6 min-w-[300px] border border-white/20 space-y-3">
+              <div className="flex justify-between items-center text-slate-300 text-xs font-bold uppercase tracking-widest">
+                <span>Subtotal</span>
+                <span className="font-semibold text-white">${subtotal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
               </div>
-              <div className="text-4xl font-black tracking-tight">
-                ${grandTotal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+              <div className="flex justify-between items-center text-slate-300 text-xs font-bold uppercase tracking-widest border-b border-white/10 pb-2">
+                <span>Sales Tax (7%)</span>
+                <span className="font-semibold text-white">${tax.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+              </div>
+              <div className="flex justify-between items-center text-slate-300 text-xs font-bold uppercase tracking-widest pt-1">
+                <span className="flex items-center gap-1.5"><DollarSign className="w-4 h-4" /> Total Estimate</span>
+                <span className="text-2xl font-black text-white">${grandTotal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
               </div>
             </div>
           </div>
