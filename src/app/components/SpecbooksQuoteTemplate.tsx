@@ -3,6 +3,12 @@
 import React, { useState } from "react";
 import { Plus, Trash2, Folder, Layers, DollarSign, Image as ImageIcon, MapPin, Calendar, FileText, Hash, Printer, Search } from "lucide-react";
 import { crmProducts } from "@/lib/crmProducts";
+import laufenProducts from "@/lib/laufenProducts.json";
+
+const allProducts = [
+  ...crmProducts.map(p => ({ ...p, unit: "SQFT" as const })),
+  ...(laufenProducts as any[]).map(p => ({ ...p, unit: "PC" as const }))
+];
 
 type Item = {
   id: string;
@@ -29,7 +35,7 @@ interface Props {
 
 export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSave }: Props = {}) {
   const [isSaving, setIsSaving] = useState(false);
-  const [productSearch, setProductSearch] = useState<{ areaId: string, itemId: string, query: string, results: typeof crmProducts } | null>(null);
+  const [productSearch, setProductSearch] = useState<{ areaId: string, itemId: string, query: string, results: typeof allProducts } | null>(null);
 
   const [areas, setAreas] = useState<Area[]>(initialData?.areas || [
     {
@@ -214,20 +220,20 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
     }
 
     const lowerQuery = query.toLowerCase();
-    const results = crmProducts.filter(p => 
-      p.sku.toLowerCase().includes(lowerQuery) || 
-      p.name.toLowerCase().includes(lowerQuery) ||
-      p.collection.toLowerCase().includes(lowerQuery)
-    ).slice(0, 8); // top 8 results
+    const words = lowerQuery.split(/\s+/).filter(Boolean);
+    const results = words.length === 0 ? [] : allProducts.filter(p => {
+      const searchStr = `${p.sku || ''} ${p.name || ''} ${p.collection || ''} ${p.category || ''} ${p.size || ''} ${p.description || ''}`.toLowerCase();
+      return words.every(word => searchStr.includes(word));
+    }).slice(0, 8); // top 8 results
 
     setProductSearch({ areaId, itemId, query, results });
   };
 
-  const selectProduct = (areaId: string, itemId: string, product: typeof crmProducts[0]) => {
+  const selectProduct = (areaId: string, itemId: string, product: typeof allProducts[0]) => {
     handleItemChange(areaId, itemId, "code", product.sku);
     handleItemChange(areaId, itemId, "description", product.name);
     handleItemChange(areaId, itemId, "unitPrice", product.sellingPricePerSqft);
-    handleItemChange(areaId, itemId, "unit", "SQFT");
+    handleItemChange(areaId, itemId, "unit", product.unit);
     
     // Guess image
     const safeSku = product.sku.replace(/[^a-zA-Z0-9_-]/g, "");
@@ -465,7 +471,7 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
                             >
                               <div className="flex justify-between items-center">
                                 <span className="text-xs font-bold text-slate-900">{product.sku}</span>
-                                <span className="text-[10px] font-bold text-amber-600">${product.sellingPricePerSqft.toFixed(2)}/sqft</span>
+                                <span className="text-[10px] font-bold text-amber-600">${product.sellingPricePerSqft.toFixed(2)}/{product.unit.toLowerCase()}</span>
                               </div>
                               <div className="text-[10px] text-slate-500 truncate">{product.name}</div>
                             </button>
