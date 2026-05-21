@@ -472,14 +472,14 @@ export default function QuotePrintTemplate({
                     <div className="financials" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginTop: "12px", borderTop: "1px solid #e5e7eb", paddingTop: "8px" }}>
                         {/* Stripe QR Code Block */}
                         {documentType !== 'PURCHASE ORDER' ? (
-                            <div className="qr-block" style={{ border: "1px solid #e5e7eb", borderRadius: "8px", padding: "10px", display: "flex", flexDirection: "column", alignItems: "center", background: "#ffffff", width: "172px", boxSizing: "border-box" }}>
+                            <div className="qr-block" style={{ border: "1px solid #e5e7eb", borderRadius: "8px", padding: "8px", display: "flex", flexDirection: "column", alignItems: "center", background: "#ffffff", width: "135px", boxSizing: "border-box" }}>
                                 <div style={{ fontSize: "9px", fontWeight: 800, letterSpacing: "0.06em", color: "#1a1a1a", marginBottom: "6px", textTransform: "uppercase", textAlign: "center" }}>
                                     Scan to Pay Online
                                 </div>
                                 {stripeUrl ? (
-                                    <QRCodeSVG value={stripeUrl} size={150} level="M" includeMargin={false} />
+                                    <QRCodeSVG value={stripeUrl} size={115} level="L" includeMargin={false} />
                                 ) : (
-                                    <div style={{ width: "150px", height: "150px", display: "flex", alignItems: "center", justifyContent: "center", border: "1px dashed #ccc", borderRadius: "4px" }}>
+                                    <div style={{ width: "115px", height: "115px", display: "flex", alignItems: "center", justifyContent: "center", border: "1px dashed #ccc", borderRadius: "4px" }}>
                                         <span style={{ fontSize: "9px", color: "#888", textAlign: "center" }}>Generating QR...</span>
                                     </div>
                                 )}
