@@ -333,8 +333,11 @@ export default function QuotePrintTemplate({
                     {/* Dark Footer Summary Block */}
                     {!isPresentation && (
                         <div style={{ backgroundColor: '#0f172a', borderRadius: '6px', padding: '12px', marginTop: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: 'white', pageBreakInside: 'avoid' }}>
-                            <div style={{ fontSize: '11px', color: '#94a3b8', maxWidth: '300px', lineHeight: '1.4' }}>
-                                Prices are valid for 30 days. Please review all specifications carefully. Lead times vary by product and availability.
+                            <div style={{ fontSize: '9px', color: '#94a3b8', maxWidth: '380px', lineHeight: '1.3' }}>
+                                Price valid for 30 days<br />
+                                Any case of brokerage or shortage must be informed within 5 business days from the date of delivery<br />
+                                Returns will have 25% restocking fee, the material must be sealed in box<br />
+                                Installation means acceptance
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', minWidth: '220px' }}>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#94a3b8' }}>
