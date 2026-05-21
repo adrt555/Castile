@@ -224,7 +224,10 @@ export default function QuotePrintTemplate({
                     margin-top: 4px;
                     padding: 6px 8px 0 8px;
                 }
-                .sig-block { margin-top: 20px; display: flex; justify-content: flex-end; page-break-inside: avoid; }
+                .terms-block { margin-top: 8px; border-top: 1px solid #e5e7eb; padding-top: 4px; page-break-inside: avoid; }
+                .terms-title { font-weight: 700; font-size: 9px; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.05em; color: #666; }
+                .terms-text { font-size: 8.5px; color: #777; line-height: 1.3; }
+                .sig-block { margin-top: 15px; display: flex; justify-content: flex-end; page-break-inside: avoid; }
                 .sig-line { border-top: 1px solid #999; width: 180px; padding-top: 4px; text-align: center; font-size: 10px; color: #888; }
             `}</style>
 
@@ -518,6 +521,17 @@ export default function QuotePrintTemplate({
                     )}
                 </div>
             )}
+
+            {/* Terms (Applies to both styles) */}
+            <div className="terms-block">
+                <div className="terms-title">Terms and Conditions</div>
+                <div className="terms-text">
+                    Price valid for 30 days<br />
+                    Any case of brokerage or shortage must be informed within 5 business days from the date of delivery<br />
+                    Returns will have 25% restocking fee, the material must be sealed in box<br />
+                    Installation means acceptance
+                </div>
+            </div>
 
             {/* Signature (Applies to both styles) */}
             <div className="sig-block">
