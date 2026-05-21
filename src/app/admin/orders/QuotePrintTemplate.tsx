@@ -108,6 +108,7 @@ export default function QuotePrintTemplate({
                     color: #1a1a1a;
                     font-size: 13px;
                     box-sizing: border-box;
+                    counter-increment: page;
                 }
                 .print-container {
                     padding: 0;
@@ -126,8 +127,11 @@ export default function QuotePrintTemplate({
                     content: "Page " counter(page);
                 }
                 @page {
-                    margin: 1.5cm;
-                    counter-increment: page;
+                    size: auto;
+                    margin: 0mm;
+                }
+                body {
+                    margin: 1.5cm !important;
                 }
                 .print-header {
                     display: flex;
@@ -151,8 +155,6 @@ export default function QuotePrintTemplate({
                     width: 150px;
                     height: auto;
                     object-fit: contain;
-                    filter: invert(1);
-                    mix-blend-mode: multiply;
                 }
                 .doc-title {
                     font-size: 32px; font-weight: 800; letter-spacing: 0.05em;
@@ -234,9 +236,11 @@ export default function QuotePrintTemplate({
                     {/* Brand Header */}
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', borderBottom: '2px solid #0f172a', paddingBottom: '20px', marginBottom: '24px' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                            <div style={{ width: '48px', height: '48px', backgroundColor: '#0f172a', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                <svg className="text-white w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                            </div>
+                            <img
+                                src="/castile_logo_new.png"
+                                alt="Castile Logo"
+                                style={{ height: '48px', width: 'auto', objectFit: 'contain' }}
+                            />
                             <div>
                                 <div style={{ fontSize: '18px', fontWeight: 900, color: '#0f172a', textTransform: 'uppercase', letterSpacing: '-0.02em' }}>Castile Studio Inc.</div>
                                 <div style={{ fontSize: '10px', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.15em', marginTop: '2px' }}>Architectural Surfaces</div>
@@ -355,7 +359,7 @@ export default function QuotePrintTemplate({
                     <div className="print-header">
                         <div className="logo-block">
                             <img
-                                src="/castile_black.png"
+                                src="/castile_logo_new.png"
                                 alt="Castile Logo"
                                 className="logo-img"
                             />

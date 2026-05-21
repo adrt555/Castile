@@ -247,12 +247,12 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
     setIsSaving(true);
     const data = {
       clientId: metadata.clientId,
+      clientName: metadata.clientName,
       name: metadata.projectName,
       address: metadata.projectAddress,
       total: grandTotal,
       areas: areas.map(a => ({
         ...a,
-        // Ensure items have correct fields before saving if needed
       })),
     };
     await onSave(data);

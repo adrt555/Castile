@@ -23,12 +23,37 @@ export async function getProjectById(id: string) {
 }
 
 export async function createProject(data: any) {
-    const { areas, clientId, ...projectData } = data;
+    const { areas, clientId, clientName, ...projectData } = data;
     
+    let resolvedClientId = clientId;
+    if (!resolvedClientId) {
+        const nameToUse = clientName || "Project Draft Client";
+        const safeName = nameToUse.toLowerCase().replace(/[^a-z0-9]/g, "");
+        const emailToUse = `guest-${safeName || "client"}@castileusa.com`;
+        
+        const existingClient = await prisma.client.findFirst({
+            where: { email: emailToUse }
+        });
+        if (existingClient) {
+            resolvedClientId = existingClient.id;
+        } else {
+            const newClient = await prisma.client.create({
+                data: {
+                    name: nameToUse,
+                    company: "Castile Guest",
+                    email: emailToUse,
+                    phone: "(786)-781-4383",
+                    type: "Homeowner"
+                }
+            });
+            resolvedClientId = newClient.id;
+        }
+    }
+
     const project = await prisma.project.create({
         data: {
             ...projectData,
-            clientId,
+            clientId: resolvedClientId,
             areas: {
                 create: areas.map((area: any) => ({
                     name: area.name,
@@ -54,7 +79,32 @@ export async function createProject(data: any) {
 }
 
 export async function updateProject(id: string, data: any) {
-    const { areas, clientId, ...projectData } = data;
+    const { areas, clientId, clientName, ...projectData } = data;
+
+    let resolvedClientId = clientId;
+    if (!resolvedClientId) {
+        const nameToUse = clientName || "Project Draft Client";
+        const safeName = nameToUse.toLowerCase().replace(/[^a-z0-9]/g, "");
+        const emailToUse = `guest-${safeName || "client"}@castileusa.com`;
+        
+        const existingClient = await prisma.client.findFirst({
+            where: { email: emailToUse }
+        });
+        if (existingClient) {
+            resolvedClientId = existingClient.id;
+        } else {
+            const newClient = await prisma.client.create({
+                data: {
+                    name: nameToUse,
+                    company: "Castile Guest",
+                    email: emailToUse,
+                    phone: "(786)-781-4383",
+                    type: "Homeowner"
+                }
+            });
+            resolvedClientId = newClient.id;
+        }
+    }
 
     // Delete existing areas/items and recreate them
     await prisma.projectArea.deleteMany({
@@ -65,7 +115,7 @@ export async function updateProject(id: string, data: any) {
         where: { id },
         data: {
             ...projectData,
-            clientId,
+            clientId: resolvedClientId,
             areas: {
                 create: areas.map((area: any) => ({
                     name: area.name,
