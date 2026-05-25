@@ -59,9 +59,14 @@ export default function QuotePrintTemplate({
     }: QuotePrintProps) {
     const [stripeUrl, setStripeUrl] = React.useState<string>("");
 
+    const isPaid = status === "Paid" || status === "Delivered";
+    const isInvoice = documentType === "INVOICE" || isPaid || status === "Invoice Sent";
+    const isQuote = !isInvoice && (status === "Quote");
+    const headerTitle = documentType || (isInvoice ? "INVOICE" : "QUOTE");
+
     React.useEffect(() => {
-        // Only fetch Stripe payment link if we have an orderId and we are not in presentation mode
-        if (orderId && !isPresentation && documentType !== 'PURCHASE ORDER' && templateType === 'order') {
+        // Only fetch Stripe payment link if we have an orderId, we are not in presentation mode, and order is not yet paid
+        if (orderId && !isPresentation && !isPaid && documentType !== 'PURCHASE ORDER' && templateType === 'order') {
             fetch("/api/create-checkout", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -80,7 +85,7 @@ export default function QuotePrintTemplate({
             })
             .catch(err => console.error("Error creating checkout session:", err));
         }
-    }, [orderId, total, clientName, isPresentation, documentType, templateType]);
+    }, [orderId, total, clientName, isPresentation, documentType, templateType, isPaid]);
 
     const orderDate = new Date(createdAt);
     const dueDate = new Date(createdAt);
@@ -88,9 +93,6 @@ export default function QuotePrintTemplate({
 
     const fmt = (d: Date) =>
         d.toLocaleDateString("en-US", { year: "numeric", month: "2-digit", day: "2-digit" });
-
-    const isQuote = status === "Quote" || status === "Invoice Sent";
-    const headerTitle = documentType || (isQuote ? "QUOTE" : "INVOICE");
 
     const uniqueRooms = Array.from(new Set(items.map(i => i.room || 'General')));
     const hasMultipleRooms = uniqueRooms.length > 1;
@@ -229,6 +231,24 @@ export default function QuotePrintTemplate({
                 .terms-text { font-size: 9.5px; color: #777; line-height: 1.3; }
                 .sig-block { margin-top: 15px; display: flex; justify-content: flex-end; page-break-inside: avoid; }
                 .sig-line { border-top: 1px solid #999; width: 180px; padding-top: 4px; text-align: center; font-size: 11px; color: #888; }
+                .paid-stamp {
+                    border: 3px double #10b981;
+                    color: #10b981;
+                    font-size: 14px;
+                    font-weight: 900;
+                    text-transform: uppercase;
+                    padding: 3px 10px;
+                    border-radius: 4px;
+                    transform: rotate(-10deg);
+                    opacity: 0.85;
+                    letter-spacing: 0.15em;
+                    font-family: 'Courier New', Courier, monospace;
+                    pointer-events: none;
+                    z-index: 10;
+                    background: rgba(255, 255, 255, 0.9);
+                    box-shadow: 0 0 4px rgba(16, 185, 129, 0.15);
+                    display: inline-block;
+                }
             `}</style>
 
             {templateType === 'project' ? (
@@ -247,9 +267,18 @@ export default function QuotePrintTemplate({
                                 <div style={{ fontSize: '10px', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.15em', marginTop: '1px' }}>Architectural Surfaces</div>
                             </div>
                         </div>
-                        <div style={{ textAlign: 'right' }}>
-                            <div style={{ fontSize: '19px', fontWeight: 955, color: '#0f172a', letterSpacing: '0.02em' }}>SPECIFICATION & ESTIMATE</div>
-                            <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px' }}>Date: {fmt(orderDate)} &middot; Quote Reference: {orderId}</div>
+                        <div style={{ textAlign: 'right', position: 'relative' }}>
+                            {isPaid && (
+                                <div className="paid-stamp" style={{ position: 'absolute', right: '0', top: '-25px' }}>
+                                    Paid in Full
+                                </div>
+                            )}
+                            <div style={{ fontSize: '19px', fontWeight: 955, color: '#0f172a', letterSpacing: '0.02em' }}>
+                                {isPaid ? "INVOICE & SPECIFICATION" : isInvoice ? "SPECIFICATION & INVOICE" : "SPECIFICATION & ESTIMATE"}
+                            </div>
+                            <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px' }}>
+                                Date: {fmt(orderDate)} &middot; {(isPaid || isInvoice) ? "Invoice Reference" : "Quote Reference"}: {orderId}
+                            </div>
                         </div>
                     </div>
 
@@ -360,7 +389,12 @@ export default function QuotePrintTemplate({
                 /* ==================== STANDARD BILLING / ORDER STYLE ==================== */
                 <div className="order-layout-view">
                     {/* Header */}
-                    <div className="print-header">
+                    <div className="print-header" style={{ position: "relative" }}>
+                        {isPaid && (
+                            <div className="paid-stamp" style={{ position: "absolute", left: "40%", top: "10px" }}>
+                                Paid in Full
+                            </div>
+                        )}
                         <div className="logo-block">
                             <img
                                 src="/castile_logo_new.png"
@@ -479,40 +513,58 @@ export default function QuotePrintTemplate({
                         {/* Stripe QR Code Block */}
                         {documentType !== 'PURCHASE ORDER' ? (
                             <div className="qr-block" style={{ border: "1px solid #e5e7eb", borderRadius: "8px", padding: "8px", display: "flex", flexDirection: "column", alignItems: "center", background: "#ffffff", width: "calc(3.8cm + 16px)", boxSizing: "border-box" }}>
-                                <div style={{ fontSize: "10px", fontWeight: 800, letterSpacing: "0.06em", color: "#1a1a1a", marginBottom: "6px", textTransform: "uppercase", textAlign: "center" }}>
-                                    Scan to Pay
-                                </div>
-                                {stripeUrl ? (
-                                    <>
-                                        <QRCodeSVG 
-                                            value={stripeUrl} 
-                                            size={380} 
-                                            level="M" 
-                                            includeMargin={true} 
-                                            shapeRendering="crispEdges"
-                                            style={{ width: "3.8cm", height: "3.8cm", display: "block", shapeRendering: "crispEdges" }} 
-                                        />
-                                        <a 
-                                            href={stripeUrl} 
-                                            target="_blank" 
-                                            rel="noopener noreferrer" 
-                                            style={{ 
-                                                fontSize: "11px", 
-                                                fontWeight: "bold", 
-                                                color: "#0066cc", 
-                                                textDecoration: "underline", 
-                                                marginTop: "8px", 
-                                                textAlign: "center",
-                                                display: "block" 
-                                            }}
-                                        >
-                                            Payment link here
-                                        </a>
-                                    </>
-                                ) : (
-                                    <div style={{ width: "3.8cm", height: "3.8cm", display: "flex", alignItems: "center", justifyContent: "center", border: "1px dashed #ccc", borderRadius: "4px" }}>
-                                        <span style={{ fontSize: "10px", color: "#888", textAlign: "center" }}>Generating QR...</span>
+                                {isPaid ? (
+                                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "calc(3.8cm + 28px)", textAlign: "center" }}>
+                                        <div style={{ width: "54px", height: "54px", borderRadius: "50%", backgroundColor: "#e6f4ea", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "8px" }}>
+                                            <svg style={{ width: "30px", height: "30px", color: "#137333" }} fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                            </svg>
+                                        </div>
+                                        <div style={{ fontSize: "12px", fontWeight: 800, color: "#137333", textTransform: "uppercase", letterSpacing: "0.06em" }}>
+                                            Paid in Full
+                                        </div>
+                                        <div style={{ fontSize: "9px", color: "#5f6368", marginTop: "4px" }}>
+                                            Thank you for your business!
+                                        </div>
                                     </div>
+                                ) : (
+                                    <>
+                                        <div style={{ fontSize: "10px", fontWeight: 800, letterSpacing: "0.06em", color: "#1a1a1a", marginBottom: "6px", textTransform: "uppercase", textAlign: "center" }}>
+                                            Scan to Pay
+                                        </div>
+                                        {stripeUrl ? (
+                                            <>
+                                                <QRCodeSVG 
+                                                    value={stripeUrl} 
+                                                    size={380} 
+                                                    level="M" 
+                                                    includeMargin={true} 
+                                                    shapeRendering="crispEdges"
+                                                    style={{ width: "3.8cm", height: "3.8cm", display: "block", shapeRendering: "crispEdges" }} 
+                                                />
+                                                <a 
+                                                    href={stripeUrl} 
+                                                    target="_blank" 
+                                                    rel="noopener noreferrer" 
+                                                    style={{ 
+                                                        fontSize: "11px", 
+                                                        fontWeight: "bold", 
+                                                        color: "#0066cc", 
+                                                        textDecoration: "underline", 
+                                                        marginTop: "8px", 
+                                                        textAlign: "center",
+                                                        display: "block" 
+                                                    }}
+                                                >
+                                                    Payment link here
+                                                </a>
+                                            </>
+                                        ) : (
+                                            <div style={{ width: "3.8cm", height: "3.8cm", display: "flex", alignItems: "center", justifyContent: "center", border: "1px dashed #ccc", borderRadius: "4px" }}>
+                                                <span style={{ fontSize: "10px", color: "#888", textAlign: "center" }}>Generating QR...</span>
+                                            </div>
+                                        )}
+                                    </>
                                 )}
                             </div>
                         ) : <div />}
