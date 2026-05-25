@@ -363,10 +363,16 @@ export default function QuotePrintTemplate({
                     {!isPresentation && (
                         <div style={{ backgroundColor: '#0f172a', borderRadius: '6px', padding: '12px', marginTop: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: 'white', pageBreakInside: 'avoid' }}>
                             <div style={{ fontSize: '10px', color: '#94a3b8', maxWidth: '380px', lineHeight: '1.3' }}>
-                                Price valid for 30 days<br />
-                                Any case of brokerage or shortage must be informed within 5 business days from the date of delivery<br />
-                                Returns will have 25% restocking fee, the material must be sealed in box<br />
-                                Installation means acceptance
+                                {documentType === 'PURCHASE ORDER' ? (
+                                    <>Please supply the materials specified above under agreed wholesale production terms.</>
+                                ) : (
+                                    <>
+                                        Price valid for 30 days<br />
+                                        Any case of brokerage or shortage must be informed within 5 business days from the date of delivery<br />
+                                        Returns will have 25% restocking fee, the material must be sealed in box<br />
+                                        Installation means acceptance
+                                    </>
+                                )}
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', minWidth: '220px' }}>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#94a3b8' }}>
@@ -378,7 +384,7 @@ export default function QuotePrintTemplate({
                                     <span style={{ color: 'white', fontWeight: 600 }}>${tax.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                                 </div>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800, paddingTop: '2px' }}>
-                                    <span>Total Estimate</span>
+                                    <span>{documentType === 'PURCHASE ORDER' ? "Total Cost" : "Total Estimate"}</span>
                                     <span style={{ fontSize: '17px', fontWeight: 900, color: '#38bdf8' }}>${total.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                                 </div>
                             </div>
@@ -415,24 +421,51 @@ export default function QuotePrintTemplate({
                     {/* Meta: Bill To + Order Info */}
                     <div className="meta-grid">
                         <div style={{ display: 'flex', gap: '48px' }}>
-                            <div>
-                                <div className="bill-to-label">{documentType === 'PURCHASE ORDER' ? "Vendor" : "Ship To"}</div>
-                                <div className="bill-name">{clientName}</div>
-                                <div className="bill-detail" style={{ whiteSpace: "pre-line" }}>
-                                    {shippingAddress || billingAddress || (documentType === 'PURCHASE ORDER' ? "Factory Direct" : "No shipping address provided")}
-                                </div>
-                            </div>
-                            {documentType !== 'PURCHASE ORDER' && (
-                                <div>
-                                    <div className="bill-to-label">Bill To</div>
-                                    <div className="bill-name">{clientName}</div>
-                                    <div className="bill-detail">
-                                        {clientCompany && <>{clientCompany}<br /></>}
-                                        {billingAddress && <span style={{ whiteSpace: "pre-line" }}>{billingAddress}<br /></span>}
-                                        {clientEmail && <>{clientEmail}<br /></>}
-                                        {clientPhone && <>{clientPhone}</>}
+                            {documentType === 'PURCHASE ORDER' ? (
+                                <>
+                                    <div>
+                                        <div className="bill-to-label">Vendor</div>
+                                        <div className="bill-name">{clientName}</div>
+                                        <div className="bill-detail">
+                                            Factory direct partner
+                                        </div>
                                     </div>
-                                </div>
+                                    <div>
+                                        <div className="bill-to-label">Ship To</div>
+                                        <div className="bill-name">Castile Studio Warehouse</div>
+                                        <div className="bill-detail" style={{ whiteSpace: "pre-line" }}>
+                                            {shippingAddress || "Factory Direct / Drop-Ship"}
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div className="bill-to-label">Bill To</div>
+                                        <div className="bill-name">Castile Studio Inc.</div>
+                                        <div className="bill-detail">
+                                            Adrian@castileusa.com<br />
+                                            (786)-781-4383
+                                        </div>
+                                    </div>
+                                </>
+                            ) : (
+                                <>
+                                    <div>
+                                        <div className="bill-to-label">Ship To</div>
+                                        <div className="bill-name">{clientName}</div>
+                                        <div className="bill-detail" style={{ whiteSpace: "pre-line" }}>
+                                            {shippingAddress || billingAddress || "No shipping address provided"}
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div className="bill-to-label">Bill To</div>
+                                        <div className="bill-name">{clientName}</div>
+                                        <div className="bill-detail">
+                                            {clientCompany && <>{clientCompany}<br /></>}
+                                            {billingAddress && <span style={{ whiteSpace: "pre-line" }}>{billingAddress}<br /></span>}
+                                            {clientEmail && <>{clientEmail}<br /></>}
+                                            {clientPhone && <>{clientPhone}</>}
+                                        </div>
+                                    </div>
+                                </>
                             )}
                         </div>
                         <div className="meta-table">
@@ -593,7 +626,7 @@ export default function QuotePrintTemplate({
                                 </div>
                             )}
                             <div className="fin-row total">
-                                <span>Total (USD)</span>
+                                <span>{documentType === 'PURCHASE ORDER' ? "Total Cost (USD)" : "Total (USD)"}</span>
                                 <span>${total.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                             </div>
                         </div>
@@ -602,20 +635,24 @@ export default function QuotePrintTemplate({
                 </div>
             )}
 
-            {/* Terms (Applies to both styles) */}
-            <div className="terms-block">
-                <div className="terms-title">Terms and Conditions</div>
-                <div className="terms-text">
-                    Price valid for 30 days<br />
-                    Any case of brokerage or shortage must be informed within 5 business days from the date of delivery<br />
-                    Returns will have 25% restocking fee, the material must be sealed in box<br />
-                    Installation means acceptance
+            {/* Terms (Applies to both styles, except PURCHASE ORDER) */}
+            {documentType !== 'PURCHASE ORDER' && (
+                <div className="terms-block">
+                    <div className="terms-title">Terms and Conditions</div>
+                    <div className="terms-text">
+                        Price valid for 30 days<br />
+                        Any case of brokerage or shortage must be informed within 5 business days from the date of delivery<br />
+                        Returns will have 25% restocking fee, the material must be sealed in box<br />
+                        Installation means acceptance
+                    </div>
                 </div>
-            </div>
+            )}
 
             {/* Signature (Applies to both styles) */}
             <div className="sig-block">
-                <div className="sig-line">customer signature</div>
+                <div className="sig-line">
+                    {documentType === 'PURCHASE ORDER' ? "authorized signature" : "customer signature"}
+                </div>
             </div>
 
             <div className="page-footer-counter" />
