@@ -483,14 +483,32 @@ export default function QuotePrintTemplate({
                                     Scan to Pay
                                 </div>
                                 {stripeUrl ? (
-                                    <QRCodeSVG 
-                                        value={stripeUrl} 
-                                        size={380} 
-                                        level="M" 
-                                        includeMargin={true} 
-                                        shapeRendering="crispEdges"
-                                        style={{ width: "3.8cm", height: "3.8cm", display: "block", shapeRendering: "crispEdges" }} 
-                                    />
+                                    <>
+                                        <QRCodeSVG 
+                                            value={stripeUrl} 
+                                            size={380} 
+                                            level="M" 
+                                            includeMargin={true} 
+                                            shapeRendering="crispEdges"
+                                            style={{ width: "3.8cm", height: "3.8cm", display: "block", shapeRendering: "crispEdges" }} 
+                                        />
+                                        <a 
+                                            href={stripeUrl} 
+                                            target="_blank" 
+                                            rel="noopener noreferrer" 
+                                            style={{ 
+                                                fontSize: "11px", 
+                                                fontWeight: "bold", 
+                                                color: "#0066cc", 
+                                                textDecoration: "underline", 
+                                                marginTop: "8px", 
+                                                textAlign: "center",
+                                                display: "block" 
+                                            }}
+                                        >
+                                            Payment link here
+                                        </a>
+                                    </>
                                 ) : (
                                     <div style={{ width: "3.8cm", height: "3.8cm", display: "flex", alignItems: "center", justifyContent: "center", border: "1px dashed #ccc", borderRadius: "4px" }}>
                                         <span style={{ fontSize: "10px", color: "#888", textAlign: "center" }}>Generating QR...</span>
