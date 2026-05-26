@@ -120,7 +120,7 @@ export default function PurchaseOrdersClient({ initialPOs }: { initialPOs: any[]
             iframeDoc.write(`
                 <html>
                     <head>
-                        \${styles}
+                        ${styles}
                         <style>
                             @media print {
                                 body { margin: 0; padding: 0; }
@@ -129,7 +129,7 @@ export default function PurchaseOrdersClient({ initialPOs }: { initialPOs: any[]
                         </style>
                     </head>
                     <body>
-                        \${printContent.outerHTML}
+                        ${printContent.outerHTML}
                     </body>
                 </html>
             `);
