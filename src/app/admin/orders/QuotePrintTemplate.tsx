@@ -163,7 +163,7 @@ export default function QuotePrintTemplate({
                     mix-blend-mode: multiply;
                 }
                 .doc-title {
-                    font-size: 29px; font-weight: 800; letter-spacing: 0.05em;
+                    font-size: 35px; font-weight: 800; letter-spacing: 0.05em;
                     color: #000000; text-align: right; margin-bottom: 4px; line-height: 1;
                 }
                 .meta-grid {
