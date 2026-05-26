@@ -125,8 +125,8 @@ export default function EditPurchaseOrderClient({ po }: { po: any }) {
 
     if (showPrint) {
         return (
-            <div className="max-w-4xl mx-auto py-12">
-                <div className="flex items-center justify-between mb-8 border-b border-zinc-200 pb-4">
+            <div className="max-w-4xl mx-auto py-12 print:py-0 print:my-0 print:max-w-full">
+                <div className="flex items-center justify-between mb-8 border-b border-zinc-200 pb-4 print:hidden">
                     <div>
                         <h1 className="text-2xl font-bold text-zinc-900">Purchase Order: {po.poNumber}</h1>
                         <p className="text-zinc-500">Ready for printing.</p>
@@ -140,7 +140,7 @@ export default function EditPurchaseOrderClient({ po }: { po: any }) {
                         </button>
                     </div>
                 </div>
-                <div className="bg-white border shadow-sm print:shadow-none print:border-none p-12 relative">
+                <div className="bg-white border shadow-sm print:shadow-none print:border-none p-12 print:p-0 relative">
                     <QuotePrintTemplate
                         orderId={po.poNumber}
                         status={status}

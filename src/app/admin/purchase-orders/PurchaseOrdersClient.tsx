@@ -90,8 +90,9 @@ export default function PurchaseOrdersClient({ initialPOs }: { initialPOs: any[]
     };
 
     return (
-        <div className="max-w-7xl mx-auto space-y-6">
-            {/* Header */}
+        <div className="max-w-7xl mx-auto space-y-6 print:max-w-full print:p-0 print:m-0 print:space-y-0">
+            <div className="print:hidden space-y-6">
+                {/* Header */}
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                 <div>
                     <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900">Purchase Orders</h1>
@@ -338,10 +339,11 @@ export default function PurchaseOrdersClient({ initialPOs }: { initialPOs: any[]
                     </table>
                 </div>
             </div>
+            </div>
 
             {/* Print Template Overlay */}
             {printingPO && (
-                <div className="fixed inset-0 z-[100] bg-white print:static print:z-auto">
+                <div className="fixed inset-0 z-[100] bg-white print:static print:z-auto print:p-0 print:m-0">
                      <QuotePrintTemplate
                         orderId={printingPO.poNumber}
                         status={printingPO.status}

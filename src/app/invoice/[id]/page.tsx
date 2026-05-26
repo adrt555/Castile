@@ -54,10 +54,10 @@ export default function PublicInvoicePage({ params }: { params: Promise<{ id: st
     }));
 
     return (
-        <div className="min-h-screen bg-zinc-50 pb-20">
+        <div className="min-h-screen bg-zinc-50 pb-20 print:bg-white print:pb-0">
             {/* Success Header */}
             {isSuccess && (
-                <div className="bg-emerald-600 text-white py-4 px-6 text-center animate-in fade-in slide-in-from-top duration-700">
+                <div className="bg-emerald-600 text-white py-4 px-6 text-center animate-in fade-in slide-in-from-top duration-700 print:hidden">
                     <div className="max-w-5xl mx-auto flex items-center justify-center gap-3">
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
                         <p className="font-bold tracking-wide">PAYMENT SUCCESSFUL! YOUR ORDER IS NOW BEING PROCESSED.</p>
@@ -65,9 +65,9 @@ export default function PublicInvoicePage({ params }: { params: Promise<{ id: st
                 </div>
             )}
 
-            <div className="max-w-5xl mx-auto px-6 pt-12">
+            <div className="max-w-5xl mx-auto px-6 pt-12 print:px-0 print:pt-0 print:max-w-full">
                 {/* Action Bar */}
-                <div className="mb-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 bg-white p-8 rounded-2xl border border-zinc-200 shadow-sm">
+                <div className="mb-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 bg-white p-8 rounded-2xl border border-zinc-200 shadow-sm print:hidden">
                     <div>
                         <h2 className="text-sm font-bold text-zinc-400 uppercase tracking-widest mb-1">
                             {isSuccess ? "Receipt" : "Invoice"} Details
@@ -89,8 +89,8 @@ export default function PublicInvoicePage({ params }: { params: Promise<{ id: st
                 </div>
 
                 {/* Invoice Preview */}
-                <div className="bg-white rounded-3xl border border-zinc-200 shadow-2xl overflow-hidden relative min-h-[800px] flex flex-col items-center justify-center p-12">
-                    <div className="text-center mb-8">
+                <div className="bg-white rounded-3xl border border-zinc-200 shadow-2xl overflow-hidden relative min-h-[800px] flex flex-col items-center justify-center p-12 print:p-0 print:border-none print:shadow-none print:rounded-none print:min-h-0">
+                    <div className="text-center mb-8 print:hidden">
                         <svg className="w-12 h-12 text-zinc-200 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                         <p className="text-zinc-400 font-medium">PREVIEWING YOUR {isSuccess ? 'RECEIPT' : 'INVOICE'}</p>
                         <p className="text-zinc-300 text-xs mt-1 italic">Click Download PDF to save or print a copy</p>
