@@ -408,6 +408,7 @@ export default function PurchaseOrdersClient({ initialPOs }: { initialPOs: any[]
                         tax={printingPO.tax}
                         total={printingPO.total}
                         documentType="PURCHASE ORDER"
+                        notes={printingPO.notes}
                     />
                 </div>
             )}

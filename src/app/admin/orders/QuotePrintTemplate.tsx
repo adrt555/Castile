@@ -35,6 +35,7 @@ interface QuotePrintProps {
     documentType?: 'QUOTE' | 'INVOICE' | 'PURCHASE ORDER';
     isPresentation?: boolean;
     templateType?: 'order' | 'project';
+    notes?: string;
 }
 
 export default function QuotePrintTemplate({
@@ -56,6 +57,7 @@ export default function QuotePrintTemplate({
     documentType,
     isPresentation = false,
     templateType = 'order',
+    notes,
     }: QuotePrintProps) {
     const [stripeUrl, setStripeUrl] = React.useState<string>("");
 
@@ -432,13 +434,6 @@ export default function QuotePrintTemplate({
                                         </div>
                                     </div>
                                     <div>
-                                        <div className="bill-to-label">Ship To</div>
-                                        <div className="bill-name">Castile Studio Warehouse</div>
-                                        <div className="bill-detail" style={{ whiteSpace: "pre-line" }}>
-                                            {shippingAddress || "Factory Direct / Drop-Ship"}
-                                        </div>
-                                    </div>
-                                    <div>
                                         <div className="bill-to-label">Bill To</div>
                                         <div className="bill-name">Castile Studio Inc.</div>
                                         <div className="bill-detail">
@@ -636,8 +631,17 @@ export default function QuotePrintTemplate({
                 </div>
             )}
 
-            {/* Terms (Applies to both styles, except PURCHASE ORDER) */}
-            {documentType !== 'PURCHASE ORDER' && (
+            {/* Terms & Notes (Applies to standard order style) */}
+            {documentType === 'PURCHASE ORDER' ? (
+                notes ? (
+                    <div className="terms-block">
+                        <div className="terms-title">Notes / Instructions</div>
+                        <div className="terms-text" style={{ whiteSpace: "pre-wrap" }}>
+                            {notes}
+                        </div>
+                    </div>
+                ) : null
+            ) : (
                 <div className="terms-block">
                     <div className="terms-title">Terms and Conditions</div>
                     <div className="terms-text">

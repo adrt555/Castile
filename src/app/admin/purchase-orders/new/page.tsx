@@ -209,6 +209,7 @@ export default function CreatePurchaseOrderPage() {
                         tax={tax}
                         total={total}
                         documentType="PURCHASE ORDER"
+                        notes={notes}
                     />
                 </div>
             </div>

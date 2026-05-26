@@ -210,6 +210,7 @@ export default function EditPurchaseOrderClient({ po }: { po: any }) {
                         tax={tax}
                         total={total}
                         documentType="PURCHASE ORDER"
+                        notes={notes}
                     />
                 </div>
             </div>
