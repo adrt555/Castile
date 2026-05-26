@@ -157,7 +157,7 @@ export default function QuotePrintTemplate({
                 }
                 .logo-block { text-align: left; }
                 .logo-img {
-                    width: 135px;
+                    width: 180px;
                     height: auto;
                     object-fit: contain;
                     mix-blend-mode: multiply;
@@ -175,12 +175,12 @@ export default function QuotePrintTemplate({
                     border-bottom: 1px solid #e5e7eb;
                 }
                 .bill-to-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 3px; }
-                .bill-name { font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 2px; }
+                .bill-name { font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 2px; }
                 .bill-detail { font-size: 12px; color: #555; line-height: 1.4; }
                 .meta-table { text-align: right; }
                 .meta-row { display: flex; justify-content: flex-end; gap: 12px; margin-bottom: 2px; }
                 .meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: #888; width: 80px; text-align: right; }
-                .meta-value { font-size: 11px; font-weight: 600; color: #1a1a1a; width: 100px; text-align: right; }
+                .meta-value { font-size: 12px; font-weight: 600; color: #1a1a1a; width: 100px; text-align: right; }
                 
                 .room-header {
                     background: #f8fafc;
@@ -215,7 +215,7 @@ export default function QuotePrintTemplate({
                     vertical-align: top;
                 }
                 .items-table tbody td.right { text-align: right; }
-                .item-name { font-weight: 700; margin-bottom: 1px; color: #1a1a1a; }
+                .item-name { font-size: 12px; font-weight: 700; margin-bottom: 1px; color: #1a1a1a; }
                 .item-sub { font-size: 10px; color: #888; text-transform: uppercase; margin-top: 2px; }
                 
                 .financials { display: flex; justify-content: space-between; margin-top: 8px; border-top: 1px solid #e5e7eb; page-break-inside: avoid; }
@@ -225,7 +225,7 @@ export default function QuotePrintTemplate({
                 .fin-row.total {
                     border-top: 1px solid #e5e7eb;
                     color: #1a1a1a;
-                    font-weight: 800; font-size: 14px;
+                    font-weight: 800; font-size: 15px;
                     margin-top: 4px;
                     padding: 6px 8px 0 8px;
                 }
@@ -653,12 +653,14 @@ export default function QuotePrintTemplate({
                 </div>
             )}
 
-            {/* Signature (Applies to both styles) */}
-            <div className="sig-block">
-                <div className="sig-line">
-                    {documentType === 'PURCHASE ORDER' ? "authorized signature" : "customer signature"}
+            {/* Signature (Applies to both styles, except PURCHASE ORDER) */}
+            {documentType !== 'PURCHASE ORDER' && (
+                <div className="sig-block">
+                    <div className="sig-line">
+                        customer signature
+                    </div>
                 </div>
-            </div>
+            )}
 
             <div className="page-footer-counter" />
         </div>
