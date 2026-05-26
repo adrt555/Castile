@@ -114,6 +114,7 @@ export default function QuotePrintTemplate({
                 }
                 .print-container {
                     padding: 0;
+                    min-height: 280px;
                 }
                 tr {
                     page-break-inside: avoid;
@@ -139,7 +140,7 @@ export default function QuotePrintTemplate({
                     display: flex;
                     justify-content: space-between;
                     align-items: flex-start;
-                    margin-bottom: 16px;
+                    margin-bottom: 24px;
                 }
                 .company-block { text-align: right; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
                 .company-name {
@@ -167,8 +168,8 @@ export default function QuotePrintTemplate({
                     display: flex;
                     justify-content: space-between;
                     align-items: flex-start;
-                    margin-bottom: 12px;
-                    padding-bottom: 8px;
+                    margin-bottom: 24px;
+                    padding-bottom: 12px;
                     border-bottom: 1px solid #e5e7eb;
                 }
                 .bill-to-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 3px; }
@@ -208,7 +209,7 @@ export default function QuotePrintTemplate({
                 .items-table tbody tr { border-bottom: 1px solid #f0f0f0; page-break-inside: avoid; page-break-after: auto; }
                 .items-table tbody tr:last-child { border-bottom: none; }
                 .items-table tbody td {
-                    padding: 6px 8px; font-size: 11px; color: #333;
+                    padding: 10px 8px; font-size: 11px; color: #333;
                     vertical-align: top;
                 }
                 .items-table tbody td.right { text-align: right; }
@@ -229,7 +230,7 @@ export default function QuotePrintTemplate({
                 .terms-block { margin-top: 8px; border-top: 1px solid #e5e7eb; padding-top: 4px; page-break-inside: avoid; }
                 .terms-title { font-weight: 700; font-size: 10px; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.05em; color: #666; }
                 .terms-text { font-size: 9.5px; color: #777; line-height: 1.3; }
-                .sig-block { margin-top: 15px; display: flex; justify-content: flex-end; page-break-inside: avoid; }
+                .sig-block { margin-top: 50px; display: flex; justify-content: flex-end; page-break-inside: avoid; }
                 .sig-line { border-top: 1px solid #999; width: 180px; padding-top: 4px; text-align: center; font-size: 11px; color: #888; }
                 .paid-stamp {
                     border: 3px double #10b981;
