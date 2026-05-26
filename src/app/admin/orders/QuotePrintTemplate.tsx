@@ -157,7 +157,7 @@ export default function QuotePrintTemplate({
                 }
                 .logo-block { text-align: left; }
                 .logo-img {
-                    width: 180px;
+                    width: 250px;
                     height: auto;
                     object-fit: contain;
                     mix-blend-mode: multiply;
@@ -175,12 +175,12 @@ export default function QuotePrintTemplate({
                     border-bottom: 1px solid #e5e7eb;
                 }
                 .bill-to-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 3px; }
-                .bill-name { font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 2px; }
+                .bill-name { font-size: 16px; font-weight: 700; color: #1a1a1a; margin-bottom: 2px; }
                 .bill-detail { font-size: 12px; color: #555; line-height: 1.4; }
                 .meta-table { text-align: right; }
                 .meta-row { display: flex; justify-content: flex-end; gap: 12px; margin-bottom: 2px; }
                 .meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: #888; width: 80px; text-align: right; }
-                .meta-value { font-size: 12px; font-weight: 600; color: #1a1a1a; width: 100px; text-align: right; }
+                .meta-value { font-size: 13px; font-weight: 600; color: #1a1a1a; width: 100px; text-align: right; }
                 
                 .room-header {
                     background: #f8fafc;
@@ -215,7 +215,7 @@ export default function QuotePrintTemplate({
                     vertical-align: top;
                 }
                 .items-table tbody td.right { text-align: right; }
-                .item-name { font-size: 12px; font-weight: 700; margin-bottom: 1px; color: #1a1a1a; }
+                .item-name { font-size: 13px; font-weight: 700; margin-bottom: 1px; color: #1a1a1a; }
                 .item-sub { font-size: 10px; color: #888; text-transform: uppercase; margin-top: 2px; }
                 
                 .financials { display: flex; justify-content: space-between; margin-top: 8px; border-top: 1px solid #e5e7eb; page-break-inside: avoid; }
@@ -225,7 +225,7 @@ export default function QuotePrintTemplate({
                 .fin-row.total {
                     border-top: 1px solid #e5e7eb;
                     color: #1a1a1a;
-                    font-weight: 800; font-size: 15px;
+                    font-weight: 800; font-size: 16px;
                     margin-top: 4px;
                     padding: 6px 8px 0 8px;
                 }
@@ -263,7 +263,7 @@ export default function QuotePrintTemplate({
                             <img
                                 src="/castile_logo_new.png"
                                 alt="Castile Logo"
-                                style={{ height: '40px', width: 'auto', objectFit: 'contain', mixBlendMode: 'multiply' }}
+                                style={{ height: '55px', width: 'auto', objectFit: 'contain', mixBlendMode: 'multiply' }}
                             />
                             <div>
                                 <div style={{ fontSize: '17px', fontWeight: 900, color: '#0f172a', textTransform: 'uppercase', letterSpacing: '-0.02em' }}>Castile Studio Inc.</div>
@@ -289,12 +289,12 @@ export default function QuotePrintTemplate({
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '14px', borderBottom: '1px solid #f1f5f9', paddingBottom: '8px' }}>
                         <div>
                             <div style={{ fontSize: '10px', fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '3px' }}>SHIP TO / CLIENT</div>
-                            <div style={{ fontSize: '13px', fontWeight: 700, color: '#0f172a' }}>{clientName}</div>
+                            <div style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>{clientName}</div>
                             <div style={{ fontSize: '12px', color: '#475569', marginTop: '2px', whiteSpace: 'pre-line' }}>{shippingAddress || billingAddress}</div>
                         </div>
                         <div style={{ textAlign: 'right' }}>
                             <div style={{ fontSize: '10px', fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '3px' }}>BILL TO</div>
-                            <div style={{ fontSize: '12px', color: '#475569', fontWeight: 600 }}>{clientName}</div>
+                            <div style={{ fontSize: '13px', color: '#475569', fontWeight: 600 }}>{clientName}</div>
                             {clientCompany && <div style={{ fontSize: '11px', color: '#64748b' }}>{clientCompany}</div>}
                             <div style={{ fontSize: '11px', color: '#64748b', marginTop: '1px' }}>{clientEmail}</div>
                             <div style={{ fontSize: '11px', color: '#64748b' }}>{clientPhone}</div>
@@ -309,7 +309,7 @@ export default function QuotePrintTemplate({
                                 {displayRoomHeader && (
                                     <div style={{ display: 'flex', alignItems: 'center', borderBottom: '2px solid #0f172a', paddingBottom: '4px', marginBottom: '8px' }}>
                                         <div style={{ width: '3px', height: '16px', backgroundColor: '#2d7a6a', marginRight: '8px' }} />
-                                        <span style={{ fontSize: '13px', fontWeight: 800, color: '#0f172a', textTransform: 'uppercase', letterSpacing: '0.04em' }}>Room: {roomName}</span>
+                                        <span style={{ fontSize: '14px', fontWeight: 800, color: '#0f172a', textTransform: 'uppercase', letterSpacing: '0.04em' }}>Room: {roomName}</span>
                                     </div>
                                 )}
                                 <table style={{ width: '100%', borderCollapse: 'collapse' }}>
@@ -336,7 +336,7 @@ export default function QuotePrintTemplate({
                                                     </div>
                                                 </td>
                                                 <td style={{ padding: '6px', verticalAlign: 'middle' }}>
-                                                    <div style={{ fontSize: '12px', fontWeight: 700, color: '#1e293b' }}>{item.productName}</div>
+                                                    <div style={{ fontSize: '13px', fontWeight: 700, color: '#1e293b' }}>{item.productName}</div>
                                                     {(item.colorName || item.size) && (
                                                         <div style={{ fontSize: '10px', color: '#64748b', marginTop: '1px', textTransform: 'uppercase' }}>{[item.colorName, item.size].filter(Boolean).join(" • ")}</div>
                                                     )}
@@ -344,13 +344,13 @@ export default function QuotePrintTemplate({
                                                 <td style={{ padding: '6px', fontSize: '11px', fontFamily: 'monospace', color: '#475569', verticalAlign: 'middle' }}>
                                                     {item.productName.toUpperCase().includes('BRICK') && !item.colorName ? '2 1/2X10 BRICK' : (item.colorName ? item.productName.split(' ')[0] : 'SPEC')}
                                                 </td>
-                                                <td style={{ padding: '6px', fontSize: '12px', fontWeight: 700, color: '#1e293b', textAlign: 'right', verticalAlign: 'middle' }}>
+                                                <td style={{ padding: '6px', fontSize: '13px', fontWeight: 700, color: '#1e293b', textAlign: 'right', verticalAlign: 'middle' }}>
                                                     {item.quantitySqft.toLocaleString()}
                                                     <span style={{ fontSize: '9px', fontWeight: 600, color: '#64748b', marginLeft: '3px' }}>{item.unit || 'sqft'}</span>
                                                 </td>
                                                 {!isPresentation && <td style={{ padding: '6px', fontSize: '12px', color: '#475569', textAlign: 'right', verticalAlign: 'middle' }}>${item.unitPrice.toFixed(2)}</td>}
                                                 {!isPresentation && (
-                                                    <td style={{ padding: '6px', fontSize: '12px', fontWeight: 700, color: '#1e293b', textAlign: 'right', verticalAlign: 'middle' }}>
+                                                    <td style={{ padding: '6px', fontSize: '13px', fontWeight: 700, color: '#1e293b', textAlign: 'right', verticalAlign: 'middle' }}>
                                                         ${item.totalPrice.toLocaleString(undefined, { minimumFractionDigits: 2 })}
                                                     </td>
                                                 )}
@@ -388,7 +388,7 @@ export default function QuotePrintTemplate({
                                 </div>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800, paddingTop: '2px' }}>
                                     <span>{documentType === 'PURCHASE ORDER' ? "Total Cost" : "Total Estimate"}</span>
-                                    <span style={{ fontSize: '17px', fontWeight: 900, color: '#38bdf8' }}>${total.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+                                    <span style={{ fontSize: '18px', fontWeight: 900, color: '#38bdf8' }}>${total.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                                 </div>
                             </div>
                         </div>
@@ -653,14 +653,7 @@ export default function QuotePrintTemplate({
                 </div>
             )}
 
-            {/* Signature (Applies to both styles, except PURCHASE ORDER) */}
-            {documentType !== 'PURCHASE ORDER' && (
-                <div className="sig-block">
-                    <div className="sig-line">
-                        customer signature
-                    </div>
-                </div>
-            )}
+            {/* Signature block completely removed per user request */}
 
             <div className="page-footer-counter" />
         </div>
