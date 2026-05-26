@@ -89,6 +89,65 @@ export default function PurchaseOrdersClient({ initialPOs }: { initialPOs: any[]
         });
     };
 
+    const handlePrintPO = (po: any) => {
+        setPrintingPO(po);
+        setTimeout(() => {
+            const printContent = document.getElementById("quote-print-template");
+            if (!printContent) {
+                window.print();
+                setPrintingPO(null);
+                return;
+            }
+
+            const iframe = document.createElement("iframe");
+            iframe.style.position = "absolute";
+            iframe.style.width = "0px";
+            iframe.style.height = "0px";
+            iframe.style.border = "none";
+            document.body.appendChild(iframe);
+
+            const iframeDoc = iframe.contentWindow?.document;
+            if (!iframeDoc) {
+                setPrintingPO(null);
+                return;
+            }
+
+            const styles = Array.from(document.querySelectorAll('style, link[rel="stylesheet"]'))
+                .map(s => s.outerHTML)
+                .join('\n');
+
+            iframeDoc.open();
+            iframeDoc.write(`
+                <html>
+                    <head>
+                        \${styles}
+                        <style>
+                            @media print {
+                                body { margin: 0; padding: 0; }
+                                #quote-print-template { display: block !important; }
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        \${printContent.outerHTML}
+                    </body>
+                </html>
+            `);
+            iframeDoc.close();
+
+            setTimeout(() => {
+                iframe.contentWindow?.focus();
+                iframe.contentWindow?.print();
+                setTimeout(() => {
+                    if (document.body.contains(iframe)) {
+                        document.body.removeChild(iframe);
+                    }
+                    setPrintingPO(null);
+                }, 1000);
+            }, 500);
+        }, 150);
+    };
+
     return (
         <div className="max-w-7xl mx-auto space-y-6 print:max-w-full print:p-0 print:m-0 print:space-y-0">
             <div className="print:hidden space-y-6">
@@ -190,13 +249,7 @@ export default function PurchaseOrdersClient({ initialPOs }: { initialPOs: any[]
                                             <td className="px-5 py-3 text-right">
                                                 <div className="flex items-center justify-end gap-2" onClick={e => e.stopPropagation()}>
                                                     <button
-                                                        onClick={() => {
-                                                            setPrintingPO(po);
-                                                            setTimeout(() => {
-                                                                window.print();
-                                                                setPrintingPO(null);
-                                                            }, 100);
-                                                        }}
+                                                        onClick={() => handlePrintPO(po)}
                                                         className="flex items-center gap-1.5 px-3 py-1.5 bg-zinc-900 hover:bg-zinc-800 text-white text-xs font-bold rounded-lg transition-colors shadow-sm"
                                                     >
                                                         🖨️ Print
@@ -313,13 +366,7 @@ export default function PurchaseOrdersClient({ initialPOs }: { initialPOs: any[]
                                                         <div className="flex justify-end items-center gap-4 pt-2">
                                                             {isPending && <span className="text-[10px] text-amber-600 font-bold animate-pulse">Updating...</span>}
                                                             <button
-                                                                onClick={() => {
-                                                                    setPrintingPO(po);
-                                                                    setTimeout(() => {
-                                                                        window.print();
-                                                                        setPrintingPO(null);
-                                                                    }, 100);
-                                                                }}
+                                                                onClick={() => handlePrintPO(po)}
                                                                 className="px-4 py-2 bg-zinc-900 text-white text-xs font-bold rounded-lg hover:bg-zinc-800 flex items-center gap-2 shadow-sm transition-all active:scale-95"
                                                             >
                                                                 🖨️ Print Purchase Order

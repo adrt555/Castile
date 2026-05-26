@@ -123,6 +123,57 @@ export default function EditPurchaseOrderClient({ po }: { po: any }) {
         });
     };
 
+    const handlePrint = () => {
+        const printContent = document.getElementById("quote-print-template");
+        if (!printContent) {
+            window.print();
+            return;
+        }
+
+        const iframe = document.createElement("iframe");
+        iframe.style.position = "absolute";
+        iframe.style.width = "0px";
+        iframe.style.height = "0px";
+        iframe.style.border = "none";
+        document.body.appendChild(iframe);
+
+        const iframeDoc = iframe.contentWindow?.document;
+        if (!iframeDoc) return;
+
+        const styles = Array.from(document.querySelectorAll('style, link[rel="stylesheet"]'))
+            .map(s => s.outerHTML)
+            .join('\n');
+
+        iframeDoc.open();
+        iframeDoc.write(`
+            <html>
+                <head>
+                    ${styles}
+                    <style>
+                        @media print {
+                            body { margin: 0; padding: 0; }
+                            #quote-print-template { display: block !important; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    ${printContent.outerHTML}
+                </body>
+            </html>
+        `);
+        iframeDoc.close();
+
+        setTimeout(() => {
+            iframe.contentWindow?.focus();
+            iframe.contentWindow?.print();
+            setTimeout(() => {
+                if (document.body.contains(iframe)) {
+                    document.body.removeChild(iframe);
+                }
+            }, 1000);
+        }, 500);
+    };
+
     if (showPrint) {
         return (
             <div className="max-w-4xl mx-auto py-12 print:py-0 print:my-0 print:max-w-full">
@@ -132,7 +183,7 @@ export default function EditPurchaseOrderClient({ po }: { po: any }) {
                         <p className="text-zinc-500">Ready for printing.</p>
                     </div>
                     <div className="flex gap-3">
-                        <button onClick={() => window.print()} className="px-5 py-2.5 bg-zinc-900 hover:bg-zinc-800 text-white rounded-lg font-semibold flex items-center gap-2">
+                        <button onClick={handlePrint} className="px-5 py-2.5 bg-zinc-900 hover:bg-zinc-800 text-white rounded-lg font-semibold flex items-center gap-2">
                             🖨️ Print / Save PDF
                         </button>
                         <button onClick={() => setShowPrint(false)} className="px-5 py-2.5 bg-zinc-100 hover:bg-zinc-200 text-zinc-700 rounded-lg font-semibold">

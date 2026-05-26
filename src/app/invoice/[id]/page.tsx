@@ -53,6 +53,57 @@ export default function PublicInvoicePage({ params }: { params: Promise<{ id: st
         discountType: item.discountType
     }));
 
+    const handlePrint = () => {
+        const printContent = document.getElementById("quote-print-template");
+        if (!printContent) {
+            window.print();
+            return;
+        }
+
+        const iframe = document.createElement("iframe");
+        iframe.style.position = "absolute";
+        iframe.style.width = "0px";
+        iframe.style.height = "0px";
+        iframe.style.border = "none";
+        document.body.appendChild(iframe);
+
+        const iframeDoc = iframe.contentWindow?.document;
+        if (!iframeDoc) return;
+
+        const styles = Array.from(document.querySelectorAll('style, link[rel="stylesheet"]'))
+            .map(s => s.outerHTML)
+            .join('\n');
+
+        iframeDoc.open();
+        iframeDoc.write(`
+            <html>
+                <head>
+                    ${styles}
+                    <style>
+                        @media print {
+                            body { margin: 0; padding: 0; }
+                            #quote-print-template { display: block !important; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    ${printContent.outerHTML}
+                </body>
+            </html>
+        `);
+        iframeDoc.close();
+
+        setTimeout(() => {
+            iframe.contentWindow?.focus();
+            iframe.contentWindow?.print();
+            setTimeout(() => {
+                if (document.body.contains(iframe)) {
+                    document.body.removeChild(iframe);
+                }
+            }, 1000);
+        }, 500);
+    };
+
     return (
         <div className="min-h-screen bg-zinc-50 pb-20 print:bg-white print:pb-0">
             {/* Success Header */}
@@ -79,7 +130,7 @@ export default function PublicInvoicePage({ params }: { params: Promise<{ id: st
 
                     <div className="flex gap-4 w-full sm:w-auto">
                         <button 
-                            onClick={() => window.print()}
+                            onClick={handlePrint}
                             className="flex-1 sm:flex-none px-8 py-4 bg-zinc-900 text-white hover:bg-zinc-800 font-black rounded-xl transition-all shadow-lg active:scale-95 flex items-center justify-center gap-3"
                         >
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
