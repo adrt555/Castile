@@ -17,10 +17,14 @@ export default function NewProjectPage() {
             .catch(console.error);
     }, []);
 
-    const handleSave = async (data: any) => {
+    const handleSave = async (data: any, redirectToProjects?: boolean) => {
         try {
             const project = await createProject(data);
-            router.push(`/admin/projects/${project.id}`);
+            if (redirectToProjects) {
+                router.push("/admin/projects");
+            } else {
+                router.push(`/admin/projects/${project.id}`);
+            }
         } catch (error) {
             console.error(error);
             alert("Failed to save project.");

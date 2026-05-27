@@ -4,10 +4,12 @@ import React, { useState } from "react";
 import { Plus, Trash2, Folder, Layers, DollarSign, Image as ImageIcon, MapPin, Calendar, FileText, Hash, Printer, Search } from "lucide-react";
 import { crmProducts } from "@/lib/crmProducts";
 import laufenProducts from "@/lib/laufenProducts.json";
+import bathonomyProducts from "@/lib/bathonomyProducts.json";
 
 const allProducts = [
   ...crmProducts.map(p => ({ ...p, unit: "SQFT" as const })),
-  ...(laufenProducts as any[]).map(p => ({ ...p, unit: "PC" as const }))
+  ...(laufenProducts as any[]).map(p => ({ ...p, unit: "PC" as const })),
+  ...(bathonomyProducts as any[]).map(p => ({ ...p, unit: "PC" as const }))
 ];
 
 type Item = {
@@ -30,7 +32,7 @@ type Area = {
 interface Props {
   initialData?: any;
   clients?: any[];
-  onSave?: (data: any) => Promise<void> | void;
+  onSave?: (data: any, redirectToProjects?: boolean) => Promise<void> | void;
 }
 
 export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSave }: Props = {}) {
@@ -242,7 +244,7 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
     setProductSearch(null);
   };
 
-  const handleSaveData = async () => {
+  const handleSaveData = async (redirectToProjects = false) => {
     if (!onSave) return;
     setIsSaving(true);
     const data = {
@@ -255,8 +257,13 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
         ...a,
       })),
     };
-    await onSave(data);
-    setIsSaving(false);
+    try {
+      await onSave(data, redirectToProjects);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   return (
@@ -598,13 +605,22 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
       {/* Floating Actions */}
       <div className="fixed bottom-8 right-8 flex gap-4 print:hidden z-50">
         {onSave && (
-          <button
-            onClick={handleSaveData}
-            disabled={isSaving}
-            className="bg-amber-600 text-white px-6 py-4 rounded-full shadow-xl hover:bg-amber-700 transition-colors flex items-center justify-center font-bold text-sm disabled:opacity-50"
-          >
-            {isSaving ? "Saving..." : "Save Project"}
-          </button>
+          <>
+            <button
+              onClick={() => handleSaveData(true)}
+              disabled={isSaving}
+              className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-4 rounded-full shadow-xl transition-all active:scale-95 flex items-center justify-center font-bold text-sm disabled:opacity-50 gap-2 border border-emerald-500/20"
+            >
+              {isSaving ? "Saving..." : "Save & Exit to Projects"}
+            </button>
+            <button
+              onClick={() => handleSaveData(false)}
+              disabled={isSaving}
+              className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-4 rounded-full shadow-xl transition-all active:scale-95 flex items-center justify-center font-bold text-sm disabled:opacity-50 border border-amber-500/20"
+            >
+              {isSaving ? "Saving..." : "Save Project"}
+            </button>
+          </>
         )}
         <button
           onClick={handlePrint}

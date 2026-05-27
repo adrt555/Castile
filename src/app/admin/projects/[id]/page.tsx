@@ -1,12 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { getProjectById, updateProject } from "@/app/actions/projectActions";
 import SpecbooksQuoteTemplate from "@/app/components/SpecbooksQuoteTemplate";
 
 export default function EditProjectPage() {
     const params = useParams();
+    const router = useRouter();
     const id = params.id as string;
     
     const [project, setProject] = useState<any>(null);
@@ -31,10 +32,13 @@ export default function EditProjectPage() {
         loadData();
     }, [id]);
 
-    const handleSave = async (data: any) => {
+    const handleSave = async (data: any, redirectToProjects?: boolean) => {
         try {
             await updateProject(id, data);
             alert("Project saved successfully!");
+            if (redirectToProjects) {
+                router.push("/admin/projects");
+            }
         } catch (error) {
             console.error(error);
             alert("Failed to save project.");
