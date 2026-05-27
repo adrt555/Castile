@@ -14738,5 +14738,5241 @@
     "inStockSqft": 0,
     "sqftPerBox": 1,
     "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a2w8038000",
+    "sku": "A2W8038000",
+    "name": "Maris New Solid surface top with washbasin (White)",
+    "collection": "MARIS",
+    "category": "Washbasins & Bidets",
+    "collectionId": "maris",
+    "sizes": [
+      "23 7/8\" x 22 3/16\" x 2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "23 7/8\" x 22 3/16\" x 2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=5878ee584691a18cd89aacaf03cb0d77&trName=TF_Web_Big",
+    "description": "Maris New Solid surface top with washbasin premium bathroom fixture by Roca. Ref: A2W8038000",
+    "costPricePerSqft": 275,
+    "sellingPricePerSqft": 550,
+    "inStockSqft": 11,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a2w8039000",
+    "sku": "A2W8039000",
+    "name": "Maris New Solid surface top with washbasin (White)",
+    "collection": "MARIS",
+    "category": "Washbasins & Bidets",
+    "collectionId": "maris",
+    "sizes": [
+      "29 13/16\" x 22 3/16\" x 2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "29 13/16\" x 22 3/16\" x 2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=3cba419d15dd41012f865df20cb7cce8&trName=TF_Web_Big",
+    "description": "Maris New Solid surface top with washbasin premium bathroom fixture by Roca. Ref: A2W8039000",
+    "costPricePerSqft": 277.5,
+    "sellingPricePerSqft": 555,
+    "inStockSqft": 13,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a2w8040000",
+    "sku": "A2W8040000",
+    "name": "Maris New Solid surface top with washbasin (White)",
+    "collection": "MARIS",
+    "category": "Washbasins & Bidets",
+    "collectionId": "maris",
+    "sizes": [
+      "35 13/16\" x 22 3/16\" x 2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "35 13/16\" x 22 3/16\" x 2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=0ba6cc12a4b303ae012c70b241508996&trName=TF_Web_Big",
+    "description": "Maris New Solid surface top with washbasin premium bathroom fixture by Roca. Ref: A2W8040000",
+    "costPricePerSqft": 350,
+    "sellingPricePerSqft": 700,
+    "inStockSqft": 7,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a2w8041000",
+    "sku": "A2W8041000",
+    "name": "Maris New Solid surface top with washbasin, single (White)",
+    "collection": "MARIS",
+    "category": "Washbasins & Bidets",
+    "collectionId": "maris",
+    "sizes": [
+      "47 7/8\" x 22 3/16\" x 2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "47 7/8\" x 22 3/16\" x 2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=bf4ec92657dd3d731ba8035a886281b9&trName=TF_Web_Big",
+    "description": "Maris New Solid surface top with washbasin, single premium bathroom fixture by Roca. Ref: A2W8041000",
+    "costPricePerSqft": 352.5,
+    "sellingPricePerSqft": 705,
+    "inStockSqft": 4,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a2w8042000",
+    "sku": "A2W8042000",
+    "name": "Maris New Solid surface top with washbasin, double (White)",
+    "collection": "MARIS",
+    "category": "Washbasins & Bidets",
+    "collectionId": "maris",
+    "sizes": [
+      "47 7/8\" x 22 3/16\" x 2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "47 7/8\" x 22 3/16\" x 2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=5906062438f3be9d5f76d83137e7c69c&trName=TF_Web_Big",
+    "description": "Maris New Solid surface top with washbasin, double premium bathroom fixture by Roca. Ref: A2W8042000",
+    "costPricePerSqft": 355,
+    "sellingPricePerSqft": 710,
+    "inStockSqft": 12,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a2w8043000",
+    "sku": "A2W8043000",
+    "name": "Maris New Solid surface top with washbasin, single (White)",
+    "collection": "MARIS",
+    "category": "Washbasins & Bidets",
+    "collectionId": "maris",
+    "sizes": [
+      "59 13/16\" x 22 3/16\" x 2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "59 13/16\" x 22 3/16\" x 2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=17b77da5b2cc04e7600b68625330209c&trName=TF_Web_Big",
+    "description": "Maris New Solid surface top with washbasin, single premium bathroom fixture by Roca. Ref: A2W8043000",
+    "costPricePerSqft": 357.5,
+    "sellingPricePerSqft": 715,
+    "inStockSqft": 11,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a2w8044000",
+    "sku": "A2W8044000",
+    "name": "Maris New Solid surface top with washbasin, double (White)",
+    "collection": "MARIS",
+    "category": "Washbasins & Bidets",
+    "collectionId": "maris",
+    "sizes": [
+      "59 13/16\" x 22 3/16\" x 2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "59 13/16\" x 22 3/16\" x 2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=6cff4e777009cf2d37414da4a7fa1a47&trName=TF_Web_Big",
+    "description": "Maris New Solid surface top with washbasin, double premium bathroom fixture by Roca. Ref: A2W8044000",
+    "costPricePerSqft": 360,
+    "sellingPricePerSqft": 720,
+    "inStockSqft": 4,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a2w8045000",
+    "sku": "A2W8045000",
+    "name": "Maris New Solid surface top with washbasin, double (White)",
+    "collection": "MARIS",
+    "category": "Washbasins & Bidets",
+    "collectionId": "maris",
+    "sizes": [
+      "71 7/8\" x 22 3/16\" x 2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "71 7/8\" x 22 3/16\" x 2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=a22b82cdbc7ba5a70cf7a42c2a23d450&trName=TF_Web_Big",
+    "description": "Maris New Solid surface top with washbasin, double premium bathroom fixture by Roca. Ref: A2W8045000",
+    "costPricePerSqft": 270,
+    "sellingPricePerSqft": 540,
+    "inStockSqft": 11,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32768a00a",
+    "sku": "A32768A00A",
+    "name": "Ona New Wall-hung or vanity vitreous china sink (White)",
+    "collection": "ONA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "ona",
+    "sizes": [
+      "39 3/8\" x 18 1/8\" x 6 5/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "39 3/8\" x 18 1/8\" x 6 5/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BB7928A32-5CA6-4FF7-9956-17930260A162%7D&trName=TF_Web_Big",
+    "description": "Ona New Wall-hung or vanity vitreous china sink premium bathroom fixture by Roca. Ref: A32768A00A",
+    "costPricePerSqft": 275,
+    "sellingPricePerSqft": 550,
+    "inStockSqft": 14,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32768h00a",
+    "sku": "A32768H00A",
+    "name": "Ona New Wall-hung or vanity vitreous china sink (White)",
+    "collection": "ONA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "ona",
+    "sizes": [
+      "31 1/2\" x 18 1/8\" x 6 5/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "31 1/2\" x 18 1/8\" x 6 5/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B610FA2CC-979A-4038-A003-D413566F17BE%7D&trName=TF_Web_Big",
+    "description": "Ona New Wall-hung or vanity vitreous china sink premium bathroom fixture by Roca. Ref: A32768H00A",
+    "costPricePerSqft": 292.5,
+    "sellingPricePerSqft": 585,
+    "inStockSqft": 14,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32768600a",
+    "sku": "A32768600A",
+    "name": "Ona New Wall-hung or vanity vitreous china sink (White)",
+    "collection": "ONA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "ona",
+    "sizes": [
+      "23 5/8\" x 18 1/8\" x 6 5/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "23 5/8\" x 18 1/8\" x 6 5/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BCBF0229F-3465-42AD-BF5E-45AE9B177BC4%7D&trName=TF_Web_Big",
+    "description": "Ona New Wall-hung or vanity vitreous china sink premium bathroom fixture by Roca. Ref: A32768600A",
+    "costPricePerSqft": 340,
+    "sellingPricePerSqft": 680,
+    "inStockSqft": 12,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a3270ma004",
+    "sku": "A3270MA004",
+    "name": "The Gap Wall-hung or vanity vitreous china sink (White)",
+    "collection": "THE",
+    "category": "Washbasins & Bidets",
+    "collectionId": "the",
+    "sizes": [
+      "39 3/8\" x 18 1/8\" x 6 7/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "39 3/8\" x 18 1/8\" x 6 7/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B3EEDDA7F-B4BF-4848-B066-D91DDCC69563%7D&trName=TF_Web_Big",
+    "description": "The Gap Wall-hung or vanity vitreous china sink premium bathroom fixture by Roca. Ref: A3270MA004",
+    "costPricePerSqft": 280,
+    "sellingPricePerSqft": 560,
+    "inStockSqft": 11,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a3270m0004",
+    "sku": "A3270M0004",
+    "name": "The Gap Wall-hung or vanity vitreous china sink (White)",
+    "collection": "THE",
+    "category": "Washbasins & Bidets",
+    "collectionId": "the",
+    "sizes": [
+      "31 1/2\" x 18 1/8\" x 6 7/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "31 1/2\" x 18 1/8\" x 6 7/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BE13CDA30-1DBA-4396-B4BF-A6D38E576B76%7D&trName=TF_Web_Big",
+    "description": "The Gap Wall-hung or vanity vitreous china sink premium bathroom fixture by Roca. Ref: A3270M0004",
+    "costPricePerSqft": 330,
+    "sellingPricePerSqft": 660,
+    "inStockSqft": 4,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a3270m1004",
+    "sku": "A3270M1004",
+    "name": "The Gap Wall-hung or vanity vitreous china basin (White)",
+    "collection": "THE",
+    "category": "Washbasins & Bidets",
+    "collectionId": "the",
+    "sizes": [
+      "23 5/8\" x 18 1/8\" x 6 7/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "23 5/8\" x 18 1/8\" x 6 7/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B93DFC90C-C0E6-4C5C-A942-5DBC69418D51%7D&trName=TF_Web_Big",
+    "description": "The Gap Wall-hung or vanity vitreous china basin premium bathroom fixture by Roca. Ref: A3270M1004",
+    "costPricePerSqft": 332.5,
+    "sellingPricePerSqft": 665,
+    "inStockSqft": 12,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32752a00a",
+    "sku": "A32752A00A",
+    "name": "Inspira FINECERAMIC® wall-hung or vanity vitreous china sink (White)",
+    "collection": "INSPIRA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "inspira",
+    "sizes": [
+      "39 3/8\" x 19 5/16\" x 4 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "39 3/8\" x 19 5/16\" x 4 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B6848F735-183A-4B52-9B80-428F973F653F%7D&trName=TF_Web_Big",
+    "description": "Inspira FINECERAMIC® wall-hung or vanity vitreous china sink premium bathroom fixture by Roca. Ref: A32752A00A",
+    "costPricePerSqft": 350,
+    "sellingPricePerSqft": 700,
+    "inStockSqft": 7,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32752b00a",
+    "sku": "A32752B00A",
+    "name": "Inspira FINECERAMIC® wall-hung or vanity vitreous china sink (White)",
+    "collection": "INSPIRA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "inspira",
+    "sizes": [
+      "31 1/2\" x 19 5/16\" x 4 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "31 1/2\" x 19 5/16\" x 4 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B6A2821D4-4C05-4C2D-9BCD-E118CE3754A8%7D&trName=TF_Web_Big",
+    "description": "Inspira FINECERAMIC® wall-hung or vanity vitreous china sink premium bathroom fixture by Roca. Ref: A32752B00A",
+    "costPricePerSqft": 352.5,
+    "sellingPricePerSqft": 705,
+    "inStockSqft": 3,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32752c00a",
+    "sku": "A32752C00A",
+    "name": "Inspira FINECERAMIC® wall-hung or vanity vitreous china sink (White)",
+    "collection": "INSPIRA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "inspira",
+    "sizes": [
+      "23 5/8\" x 19 5/16\" x 4 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "23 5/8\" x 19 5/16\" x 4 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B317B3962-F1D1-4CDA-BCC1-BC6225D1BD34%7D&trName=TF_Web_Big",
+    "description": "Inspira FINECERAMIC® wall-hung or vanity vitreous china sink premium bathroom fixture by Roca. Ref: A32752C00A",
+    "costPricePerSqft": 355,
+    "sellingPricePerSqft": 710,
+    "inStockSqft": 8,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32750000a",
+    "sku": "A32750000A",
+    "name": "Inspira Coming soon SOFT - Vessel FINECERAMIC® sink (White)",
+    "collection": "INSPIRA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "inspira",
+    "sizes": [
+      "19 11/16\" x 14 9/16\" x 5 1/2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "19 11/16\" x 14 9/16\" x 5 1/2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B1D91276E-F6B1-4F56-84D7-8D3A7F85637B%7D&trName=TF_Web_Big",
+    "description": "Inspira Coming soon SOFT - Vessel FINECERAMIC® sink premium bathroom fixture by Roca. Ref: A32750000A",
+    "costPricePerSqft": 302.5,
+    "sellingPricePerSqft": 605,
+    "inStockSqft": 13,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32752000a",
+    "sku": "A32752000A",
+    "name": "Inspira Coming soon ROUND - Vessel FINECERAMIC® sink (White)",
+    "collection": "INSPIRA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "inspira",
+    "sizes": [
+      "19 11/16\" x 14 9/16\" x 5 1/2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "19 11/16\" x 14 9/16\" x 5 1/2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B7275B4BF-0C07-4DCF-BE06-DE6D5181F774%7D&trName=TF_Web_Big",
+    "description": "Inspira Coming soon ROUND - Vessel FINECERAMIC® sink premium bathroom fixture by Roca. Ref: A32752000A",
+    "costPricePerSqft": 307.5,
+    "sellingPricePerSqft": 615,
+    "inStockSqft": 10,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32753000a",
+    "sku": "A32753000A",
+    "name": "Inspira Coming soon SQUARE - Vessel FINECERAMIC® sink (White)",
+    "collection": "INSPIRA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "inspira",
+    "sizes": [
+      "19 11/16\" x 14 9/16\" x 5 1/2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "19 11/16\" x 14 9/16\" x 5 1/2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B9528F6AB-E9E2-4CFA-AF42-192B5DD69B02%7D&trName=TF_Web_Big",
+    "description": "Inspira Coming soon SQUARE - Vessel FINECERAMIC® sink premium bathroom fixture by Roca. Ref: A32753000A",
+    "costPricePerSqft": 310,
+    "sellingPricePerSqft": 620,
+    "inStockSqft": 11,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32750200a",
+    "sku": "A32750200A",
+    "name": "Inspira SOFT - Vessel FINECERAMIC® sink (White)",
+    "collection": "INSPIRA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "inspira",
+    "sizes": [
+      "14 9/16\" x 14 9/16\" x 5 1/2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "14 9/16\" x 14 9/16\" x 5 1/2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B43FB49A4-769E-4123-8466-6A836EC1DF5A%7D&trName=TF_Web_Big",
+    "description": "Inspira SOFT - Vessel FINECERAMIC® sink premium bathroom fixture by Roca. Ref: A32750200A",
+    "costPricePerSqft": 307.5,
+    "sellingPricePerSqft": 615,
+    "inStockSqft": 12,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32752300a",
+    "sku": "A32752300A",
+    "name": "Inspira ROUND - Vessel FINECERAMIC® sink (White)",
+    "collection": "INSPIRA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "inspira",
+    "sizes": [
+      "14 9/16\" x 14 9/16\" x 5 1/2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "14 9/16\" x 14 9/16\" x 5 1/2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BD5CBA03D-FB12-40AF-9B77-D86BBC3FCA5C%7D&trName=TF_Web_Big",
+    "description": "Inspira ROUND - Vessel FINECERAMIC® sink premium bathroom fixture by Roca. Ref: A32752300A",
+    "costPricePerSqft": 315,
+    "sellingPricePerSqft": 630,
+    "inStockSqft": 4,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32753200a",
+    "sku": "A32753200A",
+    "name": "Inspira SQUARE - Vessel FINECERAMIC® sink (White)",
+    "collection": "INSPIRA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "inspira",
+    "sizes": [
+      "14 9/16\" x 14 9/16\" x 5 1/2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "14 9/16\" x 14 9/16\" x 5 1/2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B402F7C0C-87D5-4A74-9367-47AD598CF697%7D&trName=TF_Web_Big",
+    "description": "Inspira SQUARE - Vessel FINECERAMIC® sink premium bathroom fixture by Roca. Ref: A32753200A",
+    "costPricePerSqft": 315,
+    "sellingPricePerSqft": 630,
+    "inStockSqft": 8,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32750400a",
+    "sku": "A32750400A",
+    "name": "Inspira SOFT - Drop-in FINECERAMIC® sink (White)",
+    "collection": "INSPIRA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "inspira",
+    "sizes": [
+      "21 5/8\" x 14 9/16\" x 2 15/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "21 5/8\" x 14 9/16\" x 2 15/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BC080D008-91BA-4B5D-B2D9-36AFED2A638E%7D&trName=TF_Web_Big",
+    "description": "Inspira SOFT - Drop-in FINECERAMIC® sink premium bathroom fixture by Roca. Ref: A32750400A",
+    "costPricePerSqft": 312.5,
+    "sellingPricePerSqft": 625,
+    "inStockSqft": 8,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32752700a",
+    "sku": "A32752700A",
+    "name": "Inspira ROUND - Drop-in FINECERAMIC® sink (White)",
+    "collection": "INSPIRA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "inspira",
+    "sizes": [
+      "21 5/8\" x 14 9/16\" x 2 15/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "21 5/8\" x 14 9/16\" x 2 15/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B65548222-39D6-4618-9446-CDF21DA00E8C%7D&trName=TF_Web_Big",
+    "description": "Inspira ROUND - Drop-in FINECERAMIC® sink premium bathroom fixture by Roca. Ref: A32752700A",
+    "costPricePerSqft": 325,
+    "sellingPricePerSqft": 650,
+    "inStockSqft": 3,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32753400a",
+    "sku": "A32753400A",
+    "name": "Inspira SQUARE - Drop-in FINECERAMIC® sink (White)",
+    "collection": "INSPIRA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "inspira",
+    "sizes": [
+      "21 5/8\" x 14 9/16\" x 2 15/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "21 5/8\" x 14 9/16\" x 2 15/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BE77FC3BE-621A-4496-BAA7-451F775719E5%7D&trName=TF_Web_Big",
+    "description": "Inspira SQUARE - Drop-in FINECERAMIC® sink premium bathroom fixture by Roca. Ref: A32753400A",
+    "costPricePerSqft": 320,
+    "sellingPricePerSqft": 640,
+    "inStockSqft": 7,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32750r00a",
+    "sku": "A32750R00A",
+    "name": "Inspira SOFT - Drop-in FINECERAMIC® sink (White)",
+    "collection": "INSPIRA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "inspira",
+    "sizes": [
+      "14 9/16\" x 14 9/16\" x 2 15/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "14 9/16\" x 14 9/16\" x 2 15/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BBE92DB02-FF27-4CD9-BB9A-CC70CACC50F7%7D&trName=TF_Web_Big",
+    "description": "Inspira SOFT - Drop-in FINECERAMIC® sink premium bathroom fixture by Roca. Ref: A32750R00A",
+    "costPricePerSqft": 295,
+    "sellingPricePerSqft": 590,
+    "inStockSqft": 11,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32752r00a",
+    "sku": "A32752R00A",
+    "name": "Inspira ROUND - Drop in FINECERAMIC® sink (White)",
+    "collection": "INSPIRA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "inspira",
+    "sizes": [
+      "14 9/16\" x 14 9/16\" x 2 15/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "14 9/16\" x 14 9/16\" x 2 15/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B89871693-E906-4470-8EF6-35966FDD7BF4%7D&trName=TF_Web_Big",
+    "description": "Inspira ROUND - Drop in FINECERAMIC® sink premium bathroom fixture by Roca. Ref: A32752R00A",
+    "costPricePerSqft": 300,
+    "sellingPricePerSqft": 600,
+    "inStockSqft": 6,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32753r00a",
+    "sku": "A32753R00A",
+    "name": "Inspira SQUARE - Drop-in FINECERAMIC® sink (White)",
+    "collection": "INSPIRA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "inspira",
+    "sizes": [
+      "14 9/16\" x 14 9/16\" x 2 15/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "14 9/16\" x 14 9/16\" x 2 15/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B4A7E904A-5343-4E62-86E7-2DB1FA7349EF%7D&trName=TF_Web_Big",
+    "description": "Inspira SQUARE - Drop-in FINECERAMIC® sink premium bathroom fixture by Roca. Ref: A32753R00A",
+    "costPricePerSqft": 302.5,
+    "sellingPricePerSqft": 605,
+    "inStockSqft": 5,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32a99c000",
+    "sku": "A32A99C000",
+    "name": "Victoria-N Rectangular vitreous china vanity sink (White)",
+    "collection": "VICTORIA-N",
+    "category": "Washbasins & Bidets",
+    "collectionId": "victoria-n",
+    "sizes": [
+      "31 11/16\" x 18 1/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "31 11/16\" x 18 1/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BE7FE4DAD-288E-4B2F-AEE8-C85B11123535%7D&trName=TF_Web_Big",
+    "description": "Victoria-N Rectangular vitreous china vanity sink premium bathroom fixture by Roca. Ref: A32A99C000",
+    "costPricePerSqft": 272.5,
+    "sellingPricePerSqft": 545,
+    "inStockSqft": 10,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32a99e000",
+    "sku": "A32A99E000",
+    "name": "Victoria-N Rectangular vitreous china vanity sink (White)",
+    "collection": "VICTORIA-N",
+    "category": "Washbasins & Bidets",
+    "collectionId": "victoria-n",
+    "sizes": [
+      "23 13/16\" x 18 1/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "23 13/16\" x 18 1/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BF85ABC9E-B37D-4F91-B574-23C3AA4B6E2F%7D&trName=TF_Web_Big",
+    "description": "Victoria-N Rectangular vitreous china vanity sink premium bathroom fixture by Roca. Ref: A32A99E000",
+    "costPricePerSqft": 277.5,
+    "sellingPricePerSqft": 555,
+    "inStockSqft": 5,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a3270b100a",
+    "sku": "A3270B100A",
+    "name": "Beyond Wall-hung FINECERAMIC® sink with integrated semipedestal (White)",
+    "collection": "BEYOND",
+    "category": "Washbasins & Bidets",
+    "collectionId": "beyond",
+    "sizes": [
+      "18 1/8\" x 18 1/2\" x 14 15/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "18 1/8\" x 18 1/2\" x 14 15/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B1D111B5B-2575-48B8-BAE6-FBE048CC1F63%7D&trName=TF_Web_Big",
+    "description": "Beyond Wall-hung FINECERAMIC® sink with integrated semipedestal premium bathroom fixture by Roca. Ref: A3270B100A",
+    "costPricePerSqft": 337.5,
+    "sellingPricePerSqft": 675,
+    "inStockSqft": 13,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a3270b000a",
+    "sku": "A3270B000A",
+    "name": "Beyond Totem FINECERAMIC® sink (White)",
+    "collection": "BEYOND",
+    "category": "Washbasins & Bidets",
+    "collectionId": "beyond",
+    "sizes": [
+      "19 11/16\" x 17 11/16\" x 34 5/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "19 11/16\" x 17 11/16\" x 34 5/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B4BC5ACF8-E420-4F5B-973F-A3066C855D1B%7D&trName=TF_Web_Big",
+    "description": "Beyond Totem FINECERAMIC® sink premium bathroom fixture by Roca. Ref: A3270B000A",
+    "costPricePerSqft": 335,
+    "sellingPricePerSqft": 670,
+    "inStockSqft": 4,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a3270b800a",
+    "sku": "A3270B800A",
+    "name": "Beyond Vessel FINECERAMIC® sink (White)",
+    "collection": "BEYOND",
+    "category": "Washbasins & Bidets",
+    "collectionId": "beyond",
+    "sizes": [
+      "23 1/16\" x 17 15/16\" x 6 5/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "23 1/16\" x 17 15/16\" x 6 5/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B83E7F9D2-DFD0-40BC-98B5-6E35708952A3%7D&trName=TF_Web_Big",
+    "description": "Beyond Vessel FINECERAMIC® sink premium bathroom fixture by Roca. Ref: A3270B800A",
+    "costPricePerSqft": 355,
+    "sellingPricePerSqft": 710,
+    "inStockSqft": 8,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a3270b900a",
+    "sku": "A3270B900A",
+    "name": "Beyond Vessel FINECERAMIC® sink (White)",
+    "collection": "BEYOND",
+    "category": "Washbasins & Bidets",
+    "collectionId": "beyond",
+    "sizes": [
+      "17 15/16\" x 17 15/16\" x 6 5/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "17 15/16\" x 17 15/16\" x 6 5/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B2A8E258A-EBB0-426E-86B5-DCB599F6ADC0%7D&trName=TF_Web_Big",
+    "description": "Beyond Vessel FINECERAMIC® sink premium bathroom fixture by Roca. Ref: A3270B900A",
+    "costPricePerSqft": 357.5,
+    "sellingPricePerSqft": 715,
+    "inStockSqft": 13,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a3270b600a",
+    "sku": "A3270B600A",
+    "name": "Beyond Drop-in FINECERAMIC® sink (White)",
+    "collection": "BEYOND",
+    "category": "Washbasins & Bidets",
+    "collectionId": "beyond",
+    "sizes": [
+      "23 1/16\" x 17 11/16\" x 4 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "23 1/16\" x 17 11/16\" x 4 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B4EFF8E2A-3A09-4D56-B1D2-221EE100EFF5%7D&trName=TF_Web_Big",
+    "description": "Beyond Drop-in FINECERAMIC® sink premium bathroom fixture by Roca. Ref: A3270B600A",
+    "costPricePerSqft": 350,
+    "sellingPricePerSqft": 700,
+    "inStockSqft": 6,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a3270b700a",
+    "sku": "A3270B700A",
+    "name": "Beyond Drop-in FINECERAMIC® sink (White)",
+    "collection": "BEYOND",
+    "category": "Washbasins & Bidets",
+    "collectionId": "beyond",
+    "sizes": [
+      "17 11/16\" x 17 11/16\" x 4 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "17 11/16\" x 17 11/16\" x 4 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B22B2F810-D185-4F7C-9A8A-FFE17BC6F2E7%7D&trName=TF_Web_Big",
+    "description": "Beyond Drop-in FINECERAMIC® sink premium bathroom fixture by Roca. Ref: A3270B700A",
+    "costPricePerSqft": 352.5,
+    "sellingPricePerSqft": 705,
+    "inStockSqft": 11,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a327271000",
+    "sku": "A327271000",
+    "name": "Infinity Vitreous china vessel sink (White)",
+    "collection": "INFINITY",
+    "category": "Washbasins & Bidets",
+    "collectionId": "infinity",
+    "sizes": [
+      "43 5/16\" x 16 9/16\" x 3 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "43 5/16\" x 16 9/16\" x 3 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BCE6F8AE8-C21E-492E-981D-F80FFC6B6FAC%7D&trName=TF_Web_Big",
+    "description": "Infinity Vitreous china vessel sink premium bathroom fixture by Roca. Ref: A327271000",
+    "costPricePerSqft": 272.5,
+    "sellingPricePerSqft": 545,
+    "inStockSqft": 10,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a327272000",
+    "sku": "A327272000",
+    "name": "Infinity Vitreous china vessel sink (White)",
+    "collection": "INFINITY",
+    "category": "Washbasins & Bidets",
+    "collectionId": "infinity",
+    "sizes": [
+      "31 1/2\" x 16 9/16\" x 3 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "31 1/2\" x 16 9/16\" x 3 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BAA92E16D-0241-4518-836B-275AD3C529DE%7D&trName=TF_Web_Big",
+    "description": "Infinity Vitreous china vessel sink premium bathroom fixture by Roca. Ref: A327272000",
+    "costPricePerSqft": 275,
+    "sellingPricePerSqft": 550,
+    "inStockSqft": 9,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a327273000",
+    "sku": "A327273000",
+    "name": "Infinity Vitreous china vessel sink (White)",
+    "collection": "INFINITY",
+    "category": "Washbasins & Bidets",
+    "collectionId": "infinity",
+    "sizes": [
+      "23 5/8\" x 16 9/16\" x 3 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "23 5/8\" x 16 9/16\" x 3 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B2C12D9E9-7B3C-458A-B527-1B9E8A735871%7D&trName=TF_Web_Big",
+    "description": "Infinity Vitreous china vessel sink premium bathroom fixture by Roca. Ref: A327273000",
+    "costPricePerSqft": 277.5,
+    "sellingPricePerSqft": 555,
+    "inStockSqft": 3,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a327a16000",
+    "sku": "A327A16000",
+    "name": "Ohtake Vitreous china vessel sink (White)",
+    "collection": "OHTAKE",
+    "category": "Washbasins & Bidets",
+    "collectionId": "ohtake",
+    "sizes": [
+      "24 7/16\" x 17 1/2\" x 1 9/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "24 7/16\" x 17 1/2\" x 1 9/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B1EBF6B9E-51D2-410F-8B99-2CE4B98071E2%7D&trName=TF_Web_Big",
+    "description": "Ohtake Vitreous china vessel sink premium bathroom fixture by Roca. Ref: A327A16000",
+    "costPricePerSqft": 307.5,
+    "sellingPricePerSqft": 615,
+    "inStockSqft": 10,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a327a13000",
+    "sku": "A327A13000",
+    "name": "Ohtake Coming soon FINECERAMIC® vessel sink (White)",
+    "collection": "OHTAKE",
+    "category": "Washbasins & Bidets",
+    "collectionId": "ohtake",
+    "sizes": [
+      "21 5/8\" x 14 15/16\" x 7 1/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "21 5/8\" x 14 15/16\" x 7 1/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B104768FF-9787-494D-AFE5-00F3EA6C0DB0%7D&trName=TF_Web_Big",
+    "description": "Ohtake Coming soon FINECERAMIC® vessel sink premium bathroom fixture by Roca. Ref: A327A13000",
+    "costPricePerSqft": 300,
+    "sellingPricePerSqft": 600,
+    "inStockSqft": 10,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a327a14000",
+    "sku": "A327A14000",
+    "name": "Ohtake Vitreous china vessel sink (White)",
+    "collection": "OHTAKE",
+    "category": "Washbasins & Bidets",
+    "collectionId": "ohtake",
+    "sizes": [
+      "16 1/8\" x 16 1/8\" x 4 1/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "16 1/8\" x 16 1/8\" x 4 1/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=e428b555f6d05f87387b5128d1f59ccf&trName=TF_Web_Big",
+    "description": "Ohtake Vitreous china vessel sink premium bathroom fixture by Roca. Ref: A327A14000",
+    "costPricePerSqft": 302.5,
+    "sellingPricePerSqft": 605,
+    "inStockSqft": 5,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a327a15000",
+    "sku": "A327A15000",
+    "name": "Ohtake Coming soon FINECERAMIC® vessel sink (White)",
+    "collection": "OHTAKE",
+    "category": "Washbasins & Bidets",
+    "collectionId": "ohtake",
+    "sizes": [
+      "14 15/16\" x 14 15/16\" x 7 1/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "14 15/16\" x 14 15/16\" x 7 1/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BC464D1BD-F8EB-4891-A2FA-B851B0939729%7D&trName=TF_Web_Big",
+    "description": "Ohtake Coming soon FINECERAMIC® vessel sink premium bathroom fixture by Roca. Ref: A327A15000",
+    "costPricePerSqft": 305,
+    "sellingPricePerSqft": 610,
+    "inStockSqft": 12,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32727400b",
+    "sku": "A32727400B",
+    "name": "Horizon Vitreous china vessel sink (White)",
+    "collection": "HORIZON",
+    "category": "Washbasins & Bidets",
+    "collectionId": "horizon",
+    "sizes": [
+      "23 5/8\" x 16 9/16\" x 3 1/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "23 5/8\" x 16 9/16\" x 3 1/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BCA8DEBF7-744F-4179-8724-426E3B62186E%7D&trName=TF_Web_Big",
+    "description": "Horizon Vitreous china vessel sink premium bathroom fixture by Roca. Ref: A32727400B",
+    "costPricePerSqft": 325,
+    "sellingPricePerSqft": 650,
+    "inStockSqft": 9,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32727600b",
+    "sku": "A32727600B",
+    "name": "Horizon Vitreous china vessel sink (White)",
+    "collection": "HORIZON",
+    "category": "Washbasins & Bidets",
+    "collectionId": "horizon",
+    "sizes": [
+      "23 5/8\" x 16 9/16\" x 3 1/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "23 5/8\" x 16 9/16\" x 3 1/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BF5C96C3F-725E-4C24-BEA5-6C650F24B296%7D&trName=TF_Web_Big",
+    "description": "Horizon Vitreous china vessel sink premium bathroom fixture by Roca. Ref: A32727600B",
+    "costPricePerSqft": 330,
+    "sellingPricePerSqft": 660,
+    "inStockSqft": 13,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32727800b",
+    "sku": "A32727800B",
+    "name": "Horizon Vitreous china vessel sink (White)",
+    "collection": "HORIZON",
+    "category": "Washbasins & Bidets",
+    "collectionId": "horizon",
+    "sizes": [
+      "31 1/2\" x 14 15/16\" x 2 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "31 1/2\" x 14 15/16\" x 2 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B958DC3D3-0A96-4BE7-8313-FEB2990BDFA5%7D&trName=TF_Web_Big",
+    "description": "Horizon Vitreous china vessel sink premium bathroom fixture by Roca. Ref: A32727800B",
+    "costPricePerSqft": 335,
+    "sellingPricePerSqft": 670,
+    "inStockSqft": 5,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32727500b",
+    "sku": "A32727500B",
+    "name": "Horizon Coming soon Vitreous china vessel sink (White)",
+    "collection": "HORIZON",
+    "category": "Washbasins & Bidets",
+    "collectionId": "horizon",
+    "sizes": [
+      "23 5/8\" x 14 15/16\" x 2 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "23 5/8\" x 14 15/16\" x 2 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BCC6222C2-C769-4DC2-A08B-8DF8F2B6DA59%7D&trName=TF_Web_Big",
+    "description": "Horizon Coming soon Vitreous china vessel sink premium bathroom fixture by Roca. Ref: A32727500B",
+    "costPricePerSqft": 327.5,
+    "sellingPricePerSqft": 655,
+    "inStockSqft": 5,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a893020001",
+    "sku": "A893020001",
+    "name": "W+W Wall-hung vitreous china toilet and sink (White)",
+    "collection": "W+W",
+    "category": "Washbasins & Bidets",
+    "collectionId": "w-w",
+    "sizes": [
+      "33 7/8\" x 19 11/16\" x 29 15/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "33 7/8\" x 19 11/16\" x 29 15/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BD8409487-213D-4795-9441-3F53A9FE3B0C%7D&trName=TF_Web_Big",
+    "description": "W+W Wall-hung vitreous china toilet and sink premium bathroom fixture by Roca. Ref: A893020001",
+    "costPricePerSqft": 275,
+    "sellingPricePerSqft": 550,
+    "inStockSqft": 8,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a3280a000a",
+    "sku": "A3280A000A",
+    "name": "Carmen Wall-hung vitreous china sink with 3 tapholes (White)",
+    "collection": "CARMEN",
+    "category": "Washbasins & Bidets",
+    "collectionId": "carmen",
+    "sizes": [
+      "31 1/2\" x 19 11/16\" x 8 7/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "31 1/2\" x 19 11/16\" x 8 7/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BD3B6D165-F241-4E6D-8FED-2B517CCE1B9E%7D&trName=TF_Web_Big",
+    "description": "Carmen Wall-hung vitreous china sink with 3 tapholes premium bathroom fixture by Roca. Ref: A3280A000A",
+    "costPricePerSqft": 335,
+    "sellingPricePerSqft": 670,
+    "inStockSqft": 14,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a3280a100a",
+    "sku": "A3280A100A",
+    "name": "Carmen Wall-hung vitreous china sink with 3 tapholes (White)",
+    "collection": "CARMEN",
+    "category": "Washbasins & Bidets",
+    "collectionId": "carmen",
+    "sizes": [
+      "25 9/16\" x 18 7/8\" x 8 7/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "25 9/16\" x 18 7/8\" x 8 7/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BA24C3761-D40D-40E2-950E-8384866C2E2F%7D&trName=TF_Web_Big",
+    "description": "Carmen Wall-hung vitreous china sink with 3 tapholes premium bathroom fixture by Roca. Ref: A3280A100A",
+    "costPricePerSqft": 337.5,
+    "sellingPricePerSqft": 675,
+    "inStockSqft": 7,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a3280a500a",
+    "sku": "A3280A500A",
+    "name": "Carmen Drop-in vitreous china sink with 3 tapholes (White)",
+    "collection": "CARMEN",
+    "category": "Washbasins & Bidets",
+    "collectionId": "carmen",
+    "sizes": [
+      "23 5/8\" x 17 11/16\" x 7 7/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "23 5/8\" x 17 11/16\" x 7 7/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B94865EB1-2EAC-49B2-B9A2-0E4093276259%7D&trName=TF_Web_Big",
+    "description": "Carmen Drop-in vitreous china sink with 3 tapholes premium bathroom fixture by Roca. Ref: A3280A500A",
+    "costPricePerSqft": 347.5,
+    "sellingPricePerSqft": 695,
+    "inStockSqft": 12,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a3370a0000",
+    "sku": "A3370A0000",
+    "name": "Carmen Vitreous china full pedestal for sink (White)",
+    "collection": "CARMEN",
+    "category": "Washbasins & Bidets",
+    "collectionId": "carmen",
+    "sizes": [
+      "11 5/8\" x 11\" x 27 3/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "11 5/8\" x 11\" x 27 3/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B4E61C138-66AF-4CE5-883D-16E8DCDBC58B%7D&trName=TF_Web_Big",
+    "description": "Carmen Vitreous china full pedestal for sink premium bathroom fixture by Roca. Ref: A3370A0000",
+    "costPricePerSqft": 292.5,
+    "sellingPricePerSqft": 585,
+    "inStockSqft": 9,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a3270a000a",
+    "sku": "A3270A000A",
+    "name": "Carmen Wall-hung vitreous china sink (White)",
+    "collection": "CARMEN",
+    "category": "Washbasins & Bidets",
+    "collectionId": "carmen",
+    "sizes": [
+      "31 1/2\" x 19 11/16\" x 8 7/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "31 1/2\" x 19 11/16\" x 8 7/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B503AAB8D-B3B6-4DF3-8B67-E276B7E8FC37%7D&trName=TF_Web_Big",
+    "description": "Carmen Wall-hung vitreous china sink premium bathroom fixture by Roca. Ref: A3270A000A",
+    "costPricePerSqft": 332.5,
+    "sellingPricePerSqft": 665,
+    "inStockSqft": 9,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a3270a100a",
+    "sku": "A3270A100A",
+    "name": "Carmen Wall-hung vitreous china sink (White)",
+    "collection": "CARMEN",
+    "category": "Washbasins & Bidets",
+    "collectionId": "carmen",
+    "sizes": [
+      "25 9/16\" x 18 7/8\" x 8 7/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "25 9/16\" x 18 7/8\" x 8 7/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B07513F58-9FD8-41AB-892D-2B94A1EFC040%7D&trName=TF_Web_Big",
+    "description": "Carmen Wall-hung vitreous china sink premium bathroom fixture by Roca. Ref: A3270A100A",
+    "costPricePerSqft": 335,
+    "sellingPricePerSqft": 670,
+    "inStockSqft": 11,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a3270a500a",
+    "sku": "A3270A500A",
+    "name": "Carmen Drop-in vitreous china sink (White)",
+    "collection": "CARMEN",
+    "category": "Washbasins & Bidets",
+    "collectionId": "carmen",
+    "sizes": [
+      "23 5/8\" x 17 11/16\" x 7 7/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "23 5/8\" x 17 11/16\" x 7 7/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B06EB9694-F045-4EB4-9C80-45AFF09F86A1%7D&trName=TF_Web_Big",
+    "description": "Carmen Drop-in vitreous china sink premium bathroom fixture by Roca. Ref: A3270A500A",
+    "costPricePerSqft": 345,
+    "sellingPricePerSqft": 690,
+    "inStockSqft": 8,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32799700a",
+    "sku": "A32799700A",
+    "name": "Debba Wall-hung vitreous china sink (White)",
+    "collection": "DEBBA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "debba",
+    "sizes": [
+      "17 11/16\" x 14 9/16\" x 5 5/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "17 11/16\" x 14 9/16\" x 5 5/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B2D15A8E6-4EE4-473A-96C7-57EB3396F71F%7D&trName=TF_Web_Big",
+    "description": "Debba Wall-hung vitreous china sink premium bathroom fixture by Roca. Ref: A32799700A",
+    "costPricePerSqft": 352.5,
+    "sellingPricePerSqft": 705,
+    "inStockSqft": 5,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32799300a",
+    "sku": "A32799300A",
+    "name": "Debba Wall-hung vitreous china sink (White)",
+    "collection": "DEBBA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "debba",
+    "sizes": [
+      "25 9/16\" x 18 7/8\" x 5 7/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "25 9/16\" x 18 7/8\" x 5 7/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B3E79DA08-8DEA-4695-BCDA-8C0300138F31%7D&trName=TF_Web_Big",
+    "description": "Debba Wall-hung vitreous china sink premium bathroom fixture by Roca. Ref: A32799300A",
+    "costPricePerSqft": 342.5,
+    "sellingPricePerSqft": 685,
+    "inStockSqft": 12,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32799400a",
+    "sku": "A32799400A",
+    "name": "Debba Wall-hung vitreous china sink (White)",
+    "collection": "DEBBA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "debba",
+    "sizes": [
+      "23 5/8\" x 18 7/8\" x 5 7/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "23 5/8\" x 18 7/8\" x 5 7/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B3E79DA08-8DEA-4695-BCDA-8C0300138F31%7D&trName=TF_Web_Big",
+    "description": "Debba Wall-hung vitreous china sink premium bathroom fixture by Roca. Ref: A32799400A",
+    "costPricePerSqft": 345,
+    "sellingPricePerSqft": 690,
+    "inStockSqft": 7,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32799500a",
+    "sku": "A32799500A",
+    "name": "Debba Coming soon Wall-hung vitreous china sink (White)",
+    "collection": "DEBBA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "debba",
+    "sizes": [
+      "21 5/8\" x 17 5/16\" x 6 11/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "21 5/8\" x 17 5/16\" x 6 11/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B3E79DA08-8DEA-4695-BCDA-8C0300138F31%7D&trName=TF_Web_Big",
+    "description": "Debba Coming soon Wall-hung vitreous china sink premium bathroom fixture by Roca. Ref: A32799500A",
+    "costPricePerSqft": 347.5,
+    "sellingPricePerSqft": 695,
+    "inStockSqft": 6,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32799600a",
+    "sku": "A32799600A",
+    "name": "Debba Coming soon Wall-hung vitreous china sink (White)",
+    "collection": "DEBBA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "debba",
+    "sizes": [
+      "19 11/16\" x 16 9/16\" x 6 11/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "19 11/16\" x 16 9/16\" x 6 11/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B3E79DA08-8DEA-4695-BCDA-8C0300138F31%7D&trName=TF_Web_Big",
+    "description": "Debba Coming soon Wall-hung vitreous china sink premium bathroom fixture by Roca. Ref: A32799600A",
+    "costPricePerSqft": 350,
+    "sellingPricePerSqft": 700,
+    "inStockSqft": 12,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32799m00a",
+    "sku": "A32799M00A",
+    "name": "Debba Drop-in vitreous china sink (White)",
+    "collection": "DEBBA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "debba",
+    "sizes": [
+      "19 11/16\" x 16 1/8\" x 6 1/2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "19 11/16\" x 16 1/8\" x 6 1/2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BBF6488F4-0497-4AC7-A26B-9597CA963324%7D&trName=TF_Web_Big",
+    "description": "Debba Drop-in vitreous china sink premium bathroom fixture by Roca. Ref: A32799M00A",
+    "costPricePerSqft": 315,
+    "sellingPricePerSqft": 630,
+    "inStockSqft": 13,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32a99b000",
+    "sku": "A32A99B000",
+    "name": "Victoria Basic Rectangular vitreous china vanity sink (White)",
+    "collection": "VICTORIA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "victoria",
+    "sizes": [
+      "39 9/16\" x 18 1/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "39 9/16\" x 18 1/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B08E1AB80-6185-41C9-88FC-E51D3300EEC9%7D&trName=TF_Web_Big",
+    "description": "Victoria Basic Rectangular vitreous china vanity sink premium bathroom fixture by Roca. Ref: A32A99B000",
+    "costPricePerSqft": 270,
+    "sellingPricePerSqft": 540,
+    "inStockSqft": 3,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a327110000",
+    "sku": "A327110000",
+    "name": "Diverta Wall-hung or vessel vitreous china sink (White)",
+    "collection": "DIVERTA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "diverta",
+    "sizes": [
+      "29 1/2\" x 17 5/16\" x 5 7/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "29 1/2\" x 17 5/16\" x 5 7/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BFD7D0ABC-8527-4FD9-8DC8-748F5662D3F1%7D&trName=TF_Web_Big",
+    "description": "Diverta Wall-hung or vessel vitreous china sink premium bathroom fixture by Roca. Ref: A327110000",
+    "costPricePerSqft": 345,
+    "sellingPricePerSqft": 690,
+    "inStockSqft": 7,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a327116000",
+    "sku": "A327116000",
+    "name": "Diverta Coming soon Vitreous china drop-in sink (White)",
+    "collection": "DIVERTA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "diverta",
+    "sizes": [
+      "21 5/8\" x 16 3/4\" x 6 11/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "21 5/8\" x 16 3/4\" x 6 11/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B5E810509-DB32-416D-A634-E28DEEDECECE%7D&trName=TF_Web_Big",
+    "description": "Diverta Coming soon Vitreous china drop-in sink premium bathroom fixture by Roca. Ref: A327116000",
+    "costPricePerSqft": 360,
+    "sellingPricePerSqft": 720,
+    "inStockSqft": 3,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32711g00a",
+    "sku": "A32711G00A",
+    "name": "Diverta Vitreous china vessel sink (White)",
+    "collection": "DIVERTA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "diverta",
+    "sizes": [
+      "23 5/8\" x 16 15/16\" x 5 5/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "23 5/8\" x 16 15/16\" x 5 5/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B9C20FFC4-92C7-44DA-939A-541B9BE610CA%7D&trName=TF_Web_Big",
+    "description": "Diverta Vitreous china vessel sink premium bathroom fixture by Roca. Ref: A32711G00A",
+    "costPricePerSqft": 352.5,
+    "sellingPricePerSqft": 705,
+    "inStockSqft": 8,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a327111000",
+    "sku": "A327111000",
+    "name": "Diverta Wall-hung or vessel vitreous china sink (White)",
+    "collection": "DIVERTA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "diverta",
+    "sizes": [
+      "18 1/2\" x 17 5/16\" x 5 7/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "18 1/2\" x 17 5/16\" x 5 7/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B9C20FFC4-92C7-44DA-939A-541B9BE610CA%7D&trName=TF_Web_Big",
+    "description": "Diverta Wall-hung or vessel vitreous china sink premium bathroom fixture by Roca. Ref: A327111000",
+    "costPricePerSqft": 347.5,
+    "sellingPricePerSqft": 695,
+    "inStockSqft": 5,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a327114000",
+    "sku": "A327114000",
+    "name": "Diverta Drop-in or undermount vitreous china sink (White)",
+    "collection": "DIVERTA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "diverta",
+    "sizes": [
+      "19 11/16\" x 14 15/16\" x 6 11/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "19 11/16\" x 14 15/16\" x 6 11/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BC56BD33D-8821-457C-BF91-4F5C1DD980BF%7D&trName=TF_Web_Big",
+    "description": "Diverta Drop-in or undermount vitreous china sink premium bathroom fixture by Roca. Ref: A327114000",
+    "costPricePerSqft": 355,
+    "sellingPricePerSqft": 710,
+    "inStockSqft": 6,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32711s000",
+    "sku": "A32711S000",
+    "name": "Diverta Semi-recessed vitreous china sink (White)",
+    "collection": "DIVERTA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "diverta",
+    "sizes": [
+      "19 11/16\" x 17 11/16\" x 6 1/2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "19 11/16\" x 17 11/16\" x 6 1/2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B70FA4C75-1495-434F-A8D0-ADE6767EF236%7D&trName=TF_Web_Big",
+    "description": "Diverta Semi-recessed vitreous china sink premium bathroom fixture by Roca. Ref: A32711S000",
+    "costPricePerSqft": 340,
+    "sellingPricePerSqft": 680,
+    "inStockSqft": 5,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32772200a",
+    "sku": "A32772200A",
+    "name": "Sofia Undermount vitreous china sink (White)",
+    "collection": "SOFIA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "sofia",
+    "sizes": [
+      "24\" x 16 1/8\" x 8 5/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "24\" x 16 1/8\" x 8 5/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B69B39CC7-B9C8-4102-8958-360CBADED79D%7D&trName=TF_Web_Big",
+    "description": "Sofia Undermount vitreous china sink premium bathroom fixture by Roca. Ref: A32772200A",
+    "costPricePerSqft": 317.5,
+    "sellingPricePerSqft": 635,
+    "inStockSqft": 11,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a327726004",
+    "sku": "A327726004",
+    "name": "Sofia New Vitreous china undermount washbasin for Maris countertop (White)",
+    "collection": "SOFIA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "sofia",
+    "sizes": [
+      "17 1/4\" x 13 1/8\" x 5 1/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "17 1/4\" x 13 1/8\" x 5 1/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=59a5a168def7b80f5a29cd898561ad4b&trName=TF_Web_Big",
+    "description": "Sofia New Vitreous china undermount washbasin for Maris countertop premium bathroom fixture by Roca. Ref: A327726004",
+    "costPricePerSqft": 295,
+    "sellingPricePerSqft": 590,
+    "inStockSqft": 8,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32a889000",
+    "sku": "A32A889000",
+    "name": "Grand Berna Undermount vitreous china sink (White)",
+    "collection": "GRAND",
+    "category": "Washbasins & Bidets",
+    "collectionId": "grand",
+    "sizes": [
+      "24 7/16\" x 15 3/8\" x 8 7/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "24 7/16\" x 15 3/8\" x 8 7/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BF984AC9B-5379-4187-8070-9738387A2FFA%7D&trName=TF_Web_Big",
+    "description": "Grand Berna Undermount vitreous china sink premium bathroom fixture by Roca. Ref: A32A889000",
+    "costPricePerSqft": 335,
+    "sellingPricePerSqft": 670,
+    "inStockSqft": 9,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a32a871000",
+    "sku": "A32A871000",
+    "name": "Berna Undermount vitreous china sink (White)",
+    "collection": "BERNA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "berna",
+    "sizes": [
+      "22 3/16\" x 16 11/16\" x 7 1/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "22 3/16\" x 16 11/16\" x 7 1/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B685C0D6C-8B8D-4817-A27B-7A79FBD0B8F0%7D&trName=TF_Web_Big",
+    "description": "Berna Undermount vitreous china sink premium bathroom fixture by Roca. Ref: A32A871000",
+    "costPricePerSqft": 312.5,
+    "sellingPricePerSqft": 625,
+    "inStockSqft": 9,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a3a9ec0u",
+    "sku": "A5A3A9EC0U",
+    "name": "Ona Coming soon Basin faucet with pop-up waste, Cold Start (White)",
+    "collection": "ONA",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "ona",
+    "sizes": [
+      "+ 1 options"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "+ 1 options",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BCEA4BFA5-76DE-48D5-BA51-535C7E91AA9E%7D&trName=TF_Web_Big",
+    "description": "Ona Coming soon Basin faucet with pop-up waste, Cold Start premium bathroom fixture by Roca. Ref: A5A3A9EC0U",
+    "costPricePerSqft": 1812.5,
+    "sellingPricePerSqft": 3625,
+    "inStockSqft": 5,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a349ec0u",
+    "sku": "A5A349EC0U",
+    "name": "Ona Coming soon Basin faucet high neck smooth body with click clack waste, Cold Start (White)",
+    "collection": "ONA",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "ona",
+    "sizes": [
+      "+ 1 options"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "+ 1 options",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BCBBC5472-D83C-475B-A7F3-4601BF0721AE%7D&trName=TF_Web_Big",
+    "description": "Ona Coming soon Basin faucet high neck smooth body with click clack waste, Cold Start premium bathroom fixture by Roca. Ref: A5A349EC0U",
+    "costPricePerSqft": 1780,
+    "sellingPricePerSqft": 3560,
+    "inStockSqft": 7,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a323fp1u",
+    "sku": "A5A323FP1U",
+    "name": "Nu Coming soon Basin faucet smooth body and Pin handle. S-SIZE (White)",
+    "collection": "ROCA",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "roca",
+    "sizes": [
+      "+ 1 options"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "+ 1 options",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=083d1f22171774f7dffa2d2a7c4306a0&trName=TF_Web_Big",
+    "description": "Nu Coming soon Basin faucet smooth body and Pin handle. S-SIZE premium bathroom fixture by Roca. Ref: A5A323FP1U",
+    "costPricePerSqft": 1797.5,
+    "sellingPricePerSqft": 3595,
+    "inStockSqft": 11,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a343fp1u",
+    "sku": "A5A343FP1U",
+    "name": "Nu Coming soon Basin faucet smooth body and Pin handle. XL-SIZE (White)",
+    "collection": "ROCA",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "roca",
+    "sizes": [
+      "+ 1 options"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "+ 1 options",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=f05ebe91060b1d3ec5cbf4cd98f976ed&trName=TF_Web_Big",
+    "description": "Nu Coming soon Basin faucet smooth body and Pin handle. XL-SIZE premium bathroom fixture by Roca. Ref: A5A343FP1U",
+    "costPricePerSqft": 1802.5,
+    "sellingPricePerSqft": 3605,
+    "inStockSqft": 4,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a3b3fp1u",
+    "sku": "A5A3B3FP1U",
+    "name": "Nu Coming soon Basin faucet smooth body and Stripes handle. S-SIZE (White)",
+    "collection": "ROCA",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "roca",
+    "sizes": [
+      "+ 1 options"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "+ 1 options",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=fc5cb236c1fbe4779fbae04c2b999b58&trName=TF_Web_Big",
+    "description": "Nu Coming soon Basin faucet smooth body and Stripes handle. S-SIZE premium bathroom fixture by Roca. Ref: A5A3B3FP1U",
+    "costPricePerSqft": 1745,
+    "sellingPricePerSqft": 3490,
+    "inStockSqft": 10,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a3c3fp1u",
+    "sku": "A5A3C3FP1U",
+    "name": "Nu Coming soon Basin faucet smooth body and Stripes handle. XL-SIZE (White)",
+    "collection": "ROCA",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "roca",
+    "sizes": [
+      "+ 1 options"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "+ 1 options",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=786b6c876121c11540f6a3976da289d8&trName=TF_Web_Big",
+    "description": "Nu Coming soon Basin faucet smooth body and Stripes handle. XL-SIZE premium bathroom fixture by Roca. Ref: A5A3C3FP1U",
+    "costPricePerSqft": 1747.5,
+    "sellingPricePerSqft": 3495,
+    "inStockSqft": 13,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a3x3fp1u",
+    "sku": "A5A3X3FP1U",
+    "name": "Nu Coming soon Basin faucet smooth body and Dome handle. XL-SIZE (White)",
+    "collection": "ROCA",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "roca",
+    "sizes": [
+      "+ 1 options"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "+ 1 options",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=7f2cdc251aa2431579d4ad7cdfa80996&trName=TF_Web_Big",
+    "description": "Nu Coming soon Basin faucet smooth body and Dome handle. XL-SIZE premium bathroom fixture by Roca. Ref: A5A3X3FP1U",
+    "costPricePerSqft": 1800,
+    "sellingPricePerSqft": 3600,
+    "inStockSqft": 13,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a3y3fp1u",
+    "sku": "A5A3Y3FP1U",
+    "name": "Nu Coming soon Basin faucet smooth body and Dome handle. S-SIZE (White)",
+    "collection": "ROCA",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "roca",
+    "sizes": [
+      "+ 1 options"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "+ 1 options",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=f40abb3a518228cb2053287f344940bb&trName=TF_Web_Big",
+    "description": "Nu Coming soon Basin faucet smooth body and Dome handle. S-SIZE premium bathroom fixture by Roca. Ref: A5A3Y3FP1U",
+    "costPricePerSqft": 1802.5,
+    "sellingPricePerSqft": 3605,
+    "inStockSqft": 6,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a3e3fp1u",
+    "sku": "A5A3E3FP1U",
+    "name": "Nu Coming soon Widespread basin faucet with deck-mounted lateral handles - 3 holes - and Stripes handle. L-SIZE (White)",
+    "collection": "ROCA",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "roca",
+    "sizes": [
+      "+ 1 options"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "+ 1 options",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=10bc2bceec1da86ebd8575081f0265ce&trName=TF_Web_Big",
+    "description": "Nu Coming soon Widespread basin faucet with deck-mounted lateral handles - 3 holes - and Stripes handle. L-SIZE premium bathroom fixture by Roca. Ref: A5A3E3FP1U",
+    "costPricePerSqft": 1752.5,
+    "sellingPricePerSqft": 3505,
+    "inStockSqft": 14,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a3v3fp1u",
+    "sku": "A5A3V3FP1U",
+    "name": "Nu Coming soon Widespread basin faucet with deck-mounted lateral handles - 3 holes - and Dome handle. L-SIZE (White)",
+    "collection": "ROCA",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "roca",
+    "sizes": [
+      "+ 1 options"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "+ 1 options",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=96361fc59bc7987c46ab5c8f422f8ab7&trName=TF_Web_Big",
+    "description": "Nu Coming soon Widespread basin faucet with deck-mounted lateral handles - 3 holes - and Dome handle. L-SIZE premium bathroom fixture by Roca. Ref: A5A3V3FP1U",
+    "costPricePerSqft": 1795,
+    "sellingPricePerSqft": 3590,
+    "inStockSqft": 10,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a3298c0u",
+    "sku": "A5A3298C0U",
+    "name": "Monodin Smooth body sink faucet mezzo, 1.2 gpm (White)",
+    "collection": "MONODIN",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "monodin",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B94116C5E-5B0C-43F1-9B5B-F182B1AD2CE3%7D&trName=TF_Web_Big",
+    "description": "Monodin Smooth body sink faucet mezzo, 1.2 gpm premium bathroom fixture by Roca. Ref: A5A3298C0U",
+    "costPricePerSqft": 1742.5,
+    "sellingPricePerSqft": 3485,
+    "inStockSqft": 14,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a323ac0u",
+    "sku": "A5A323AC0U",
+    "name": "Insignia Smooth body sink faucet with pop-up waste, Cold Start, 1.2 gpm (White)",
+    "collection": "INSIGNIA",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "insignia",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B478252C6-E1E9-4147-A5D5-12F759B386A2%7D&trName=TF_Web_Big",
+    "description": "Insignia Smooth body sink faucet with pop-up waste, Cold Start, 1.2 gpm premium bathroom fixture by Roca. Ref: A5A323AC0U",
+    "costPricePerSqft": 1750,
+    "sellingPricePerSqft": 3500,
+    "inStockSqft": 7,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a3a3ac0u",
+    "sku": "A5A3A3AC0U",
+    "name": "Insignia Smooth body high-neck sink faucet, Cold Start, 1.2 gpm (White)",
+    "collection": "INSIGNIA",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "insignia",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BF58BB58D-FF21-4102-BC1C-D2E527923EDE%7D&trName=TF_Web_Big",
+    "description": "Insignia Smooth body high-neck sink faucet, Cold Start, 1.2 gpm premium bathroom fixture by Roca. Ref: A5A3A3AC0U",
+    "costPricePerSqft": 1787.5,
+    "sellingPricePerSqft": 3575,
+    "inStockSqft": 3,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a6a3ac0u",
+    "sku": "A5A6A3AC0U",
+    "name": "Insignia Bidet mixer with pop-up waste, Cold Start, 1.5 gpm (White)",
+    "collection": "INSIGNIA",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "insignia",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B70C8319C-7D03-4A87-B02A-705C5E071A8D%7D&trName=TF_Web_Big",
+    "description": "Insignia Bidet mixer with pop-up waste, Cold Start, 1.5 gpm premium bathroom fixture by Roca. Ref: A5A6A3AC0U",
+    "costPricePerSqft": 1795,
+    "sellingPricePerSqft": 3590,
+    "inStockSqft": 3,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a3d3acnu",
+    "sku": "A5A3D3ACNU",
+    "name": "Insignia Smooth body sink faucet, Cold Start, 1.2 gpm (White)",
+    "collection": "INSIGNIA",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "insignia",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B310C4040-3CD1-44CA-AD99-DBF7524B3175%7D&trName=TF_Web_Big",
+    "description": "Insignia Smooth body sink faucet, Cold Start, 1.2 gpm premium bathroom fixture by Roca. Ref: A5A3D3ACNU",
+    "costPricePerSqft": 1777.5,
+    "sellingPricePerSqft": 3555,
+    "inStockSqft": 4,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a443ac0u",
+    "sku": "A5A443AC0U",
+    "name": "Insignia Widespread bathroom sink faucet, 1.2 gpm (White)",
+    "collection": "INSIGNIA",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "insignia",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=799d7c3dc7446baa5607c7aac3f0e8de&trName=TF_Web_Big",
+    "description": "Insignia Widespread bathroom sink faucet, 1.2 gpm premium bathroom fixture by Roca. Ref: A5A443AC0U",
+    "costPricePerSqft": 1757.5,
+    "sellingPricePerSqft": 3515,
+    "inStockSqft": 11,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a3b09c0u",
+    "sku": "A5A3B09C0U",
+    "name": "L20 Smooth body medium-neck sink faucet, Cold Start, XL handle, 1.2 gpm (White)",
+    "collection": "L20",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "l20",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BA7484EA3-D2D5-4A1D-92FD-06B5992FE472%7D&trName=TF_Web_Big",
+    "description": "L20 Smooth body medium-neck sink faucet, Cold Start, XL handle, 1.2 gpm premium bathroom fixture by Roca. Ref: A5A3B09C0U",
+    "costPricePerSqft": 1762.5,
+    "sellingPricePerSqft": 3525,
+    "inStockSqft": 4,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a3c09c0u",
+    "sku": "A5A3C09C0U",
+    "name": "L20 High-neck sink faucet with pop-up waste, Cold Start, XL handle, 1.2 gpm (White)",
+    "collection": "L20",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "l20",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B542E256C-AB7F-4A54-8930-0B93077F16EB%7D&trName=TF_Web_Big",
+    "description": "L20 High-neck sink faucet with pop-up waste, Cold Start, XL handle, 1.2 gpm premium bathroom fixture by Roca. Ref: A5A3C09C0U",
+    "costPricePerSqft": 1765,
+    "sellingPricePerSqft": 3530,
+    "inStockSqft": 12,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a6c09c0u",
+    "sku": "A5A6C09C0U",
+    "name": "L20 Bidet mixer with pop-up waste, 1.5 gpm (White)",
+    "collection": "L20",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "l20",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BF4B73BB8-1297-474F-82A8-F50061717F8D%7D&trName=TF_Web_Big",
+    "description": "L20 Bidet mixer with pop-up waste, 1.5 gpm premium bathroom fixture by Roca. Ref: A5A6C09C0U",
+    "costPricePerSqft": 1772.5,
+    "sellingPricePerSqft": 3545,
+    "inStockSqft": 5,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a384bc0u",
+    "sku": "A5A384BC0U",
+    "name": "Carmen Smooth body high-neck sink faucet with swivel spout and pop-up waste, 1.2 gpm (White)",
+    "collection": "CARMEN",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "carmen",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B0EED8769-0326-4CC5-A88A-EF1D962ED4AE%7D&trName=TF_Web_Big",
+    "description": "Carmen Smooth body high-neck sink faucet with swivel spout and pop-up waste, 1.2 gpm premium bathroom fixture by Roca. Ref: A5A384BC0U",
+    "costPricePerSqft": 1770,
+    "sellingPricePerSqft": 3540,
+    "inStockSqft": 9,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a3b4bc0u",
+    "sku": "A5A3B4BC0U",
+    "name": "Carmen Smooth body sink faucet, 1.2 gpm (White)",
+    "collection": "CARMEN",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "carmen",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BEC048640-8D0A-4E68-9D64-B251F1F0C353%7D&trName=TF_Web_Big",
+    "description": "Carmen Smooth body sink faucet, 1.2 gpm premium bathroom fixture by Roca. Ref: A5A3B4BC0U",
+    "costPricePerSqft": 1795,
+    "sellingPricePerSqft": 3590,
+    "inStockSqft": 8,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a444bc0u",
+    "sku": "A5A444BC0U",
+    "name": "Carmen Sink faucet with pop-up waste, 1.2 gpm (White)",
+    "collection": "CARMEN",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "carmen",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B848D59DB-A37A-45AE-BC2A-ED115F58C605%7D&trName=TF_Web_Big",
+    "description": "Carmen Sink faucet with pop-up waste, 1.2 gpm premium bathroom fixture by Roca. Ref: A5A444BC0U",
+    "costPricePerSqft": 1762.5,
+    "sellingPricePerSqft": 3525,
+    "inStockSqft": 14,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a014bc0u",
+    "sku": "A5A014BC0U",
+    "name": "Carmen Wall-mounted bath-shower faucet (White)",
+    "collection": "CARMEN",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "carmen",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B0EDDF473-D309-436D-A256-E84BB56502F6%7D&trName=TF_Web_Big",
+    "description": "Carmen Wall-mounted bath-shower faucet premium bathroom fixture by Roca. Ref: A5A014BC0U",
+    "costPricePerSqft": 1745,
+    "sellingPricePerSqft": 3490,
+    "inStockSqft": 3,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a3796c0u",
+    "sku": "A5A3796C0U",
+    "name": "Naia Smooth body high-neck sink faucet with pop-up waste, Cold Start, 1.2 gpm (White)",
+    "collection": "NAIA",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "naia",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B168CDE91-AD23-4863-A8FE-EBFBCD16AFAE%7D&trName=TF_Web_Big",
+    "description": "Naia Smooth body high-neck sink faucet with pop-up waste, Cold Start, 1.2 gpm premium bathroom fixture by Roca. Ref: A5A3796C0U",
+    "costPricePerSqft": 1750,
+    "sellingPricePerSqft": 3500,
+    "inStockSqft": 9,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a3996c0u",
+    "sku": "A5A3996C0U",
+    "name": "Naia Smooth body sink faucet mezzo with pop-up waste, Cold Start, 1.2 gpm (White)",
+    "collection": "NAIA",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "naia",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=4ecb115b1e3e46bb070fe10f128490a4&trName=TF_Web_Big",
+    "description": "Naia Smooth body sink faucet mezzo with pop-up waste, Cold Start, 1.2 gpm premium bathroom fixture by Roca. Ref: A5A3996C0U",
+    "costPricePerSqft": 1755,
+    "sellingPricePerSqft": 3510,
+    "inStockSqft": 7,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a0b96c0u",
+    "sku": "A5A0B96C0U",
+    "name": "Naia Built-in bath-shower faucet (White)",
+    "collection": "NAIA",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "naia",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B4BA2F65F-8D58-4546-8DB1-36D15FD21053%7D&trName=TF_Web_Big",
+    "description": "Naia Built-in bath-shower faucet premium bathroom fixture by Roca. Ref: A5A0B96C0U",
+    "costPricePerSqft": 1770,
+    "sellingPricePerSqft": 3540,
+    "inStockSqft": 9,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a2b96c0u",
+    "sku": "A5A2B96C0U",
+    "name": "Naia Built-in shower faucet (White)",
+    "collection": "NAIA",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "naia",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BF9EBAD97-ABB1-47C2-86B2-ABEDB80A190A%7D&trName=TF_Web_Big",
+    "description": "Naia Built-in shower faucet premium bathroom fixture by Roca. Ref: A5A2B96C0U",
+    "costPricePerSqft": 1775,
+    "sellingPricePerSqft": 3550,
+    "inStockSqft": 10,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a4496c0u",
+    "sku": "A5A4496C0U",
+    "name": "Naia Widespread bathroom sink faucet, 1.2 gpm (White)",
+    "collection": "NAIA",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "naia",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=8596158cf4fd5fabda4172cec3d65b1a&trName=TF_Web_Big",
+    "description": "Naia Widespread bathroom sink faucet, 1.2 gpm premium bathroom fixture by Roca. Ref: A5A4496C0U",
+    "costPricePerSqft": 1745,
+    "sellingPricePerSqft": 3490,
+    "inStockSqft": 14,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a3790c0u",
+    "sku": "A5A3790C0U",
+    "name": "Atlas Smooth body high-neck sink faucet, Cold Start, 1.2 gpm (White)",
+    "collection": "ATLAS",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "atlas",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B26332DBB-8E8A-41FC-A6A6-86644F8AD88D%7D&trName=TF_Web_Big",
+    "description": "Atlas Smooth body high-neck sink faucet, Cold Start, 1.2 gpm premium bathroom fixture by Roca. Ref: A5A3790C0U",
+    "costPricePerSqft": 1735,
+    "sellingPricePerSqft": 3470,
+    "inStockSqft": 7,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a3990c0u",
+    "sku": "A5A3990C0U",
+    "name": "Atlas Smooth body mezzo sink faucet, Cold Start, 1.2 gpm (White)",
+    "collection": "ATLAS",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "atlas",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BBCAAF6DC-2665-4596-9430-4F590A89BFD0%7D&trName=TF_Web_Big",
+    "description": "Atlas Smooth body mezzo sink faucet, Cold Start, 1.2 gpm premium bathroom fixture by Roca. Ref: A5A3990C0U",
+    "costPricePerSqft": 1740,
+    "sellingPricePerSqft": 3480,
+    "inStockSqft": 13,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a0b90c0u",
+    "sku": "A5A0B90C0U",
+    "name": "Atlas Coming soon 1/2 built-in bath-shower faucet with automatic diverter. (White)",
+    "collection": "ATLAS",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "atlas",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B6210243F-98D6-4D1C-BCF5-D11A5893FFC3%7D&trName=TF_Web_Big",
+    "description": "Atlas Coming soon 1/2 built-in bath-shower faucet with automatic diverter. premium bathroom fixture by Roca. Ref: A5A0B90C0U",
+    "costPricePerSqft": 1755,
+    "sellingPricePerSqft": 3510,
+    "inStockSqft": 13,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a5a2b90c0u",
+    "sku": "A5A2B90C0U",
+    "name": "Atlas 1/2 built-in bath or shower faucet. (White)",
+    "collection": "ATLAS",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "atlas",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BE55564A9-EFD5-42DD-A22F-184774EBDBCD%7D&trName=TF_Web_Big",
+    "description": "Atlas 1/2 built-in bath or shower faucet. premium bathroom fixture by Roca. Ref: A5A2B90C0U",
+    "costPricePerSqft": 1760,
+    "sellingPricePerSqft": 3520,
+    "inStockSqft": 8,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a801a9200b",
+    "sku": "A801A9200B",
+    "name": "Inspira Elongated Supralit® soft-closing seat and cover for toliet (White)",
+    "collection": "INSPIRA",
+    "category": "Accessories",
+    "collectionId": "inspira",
+    "sizes": [
+      "14 1/2\" x 18 7/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "14 1/2\" x 18 7/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BFDFAEA23-9DF6-4AA2-9D5A-76B232CAF053%7D&trName=TF_Web_Big",
+    "description": "Inspira Elongated Supralit® soft-closing seat and cover for toliet premium bathroom fixture by Roca. Ref: A801A9200B",
+    "costPricePerSqft": 315,
+    "sellingPricePerSqft": 630,
+    "inStockSqft": 13,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a80153200b",
+    "sku": "A80153200B",
+    "name": "Inspira Coming soon SQUARE - Soft-closing SUPRALIT® seat and cover for toilet (White)",
+    "collection": "INSPIRA",
+    "category": "Accessories",
+    "collectionId": "inspira",
+    "sizes": [
+      "17 3/8\" x 14 5/8\" x 1 1/2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "17 3/8\" x 14 5/8\" x 1 1/2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BBD01E140-2E97-4A18-B8A5-C4C7F61B9846%7D&trName=TF_Web_Big",
+    "description": "Inspira Coming soon SQUARE - Soft-closing SUPRALIT® seat and cover for toilet premium bathroom fixture by Roca. Ref: A80153200B",
+    "costPricePerSqft": 270,
+    "sellingPricePerSqft": 540,
+    "inStockSqft": 4,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a80152200b",
+    "sku": "A80152200B",
+    "name": "Inspira Coming soon ROUND - Soft-closing SUPRALIT® seat and cover for toilet (White)",
+    "collection": "INSPIRA",
+    "category": "Accessories",
+    "collectionId": "inspira",
+    "sizes": [
+      "17 3/8\" x 14 3/4\" x 1 1/2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "17 3/8\" x 14 3/4\" x 1 1/2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BF532EA7D-1C4B-4351-B290-3E1A8A553A93%7D&trName=TF_Web_Big",
+    "description": "Inspira Coming soon ROUND - Soft-closing SUPRALIT® seat and cover for toilet premium bathroom fixture by Roca. Ref: A80152200B",
+    "costPricePerSqft": 267.5,
+    "sellingPricePerSqft": 535,
+    "inStockSqft": 11,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a80652200b",
+    "sku": "A80652200B",
+    "name": "Inspira ROUND - Soft-closing SUPRALIT® bidet lid (White)",
+    "collection": "INSPIRA",
+    "category": "Accessories",
+    "collectionId": "inspira",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B26E210C9-6313-4794-81A3-880B706B1C85%7D&trName=TF_Web_Big",
+    "description": "Inspira ROUND - Soft-closing SUPRALIT® bidet lid premium bathroom fixture by Roca. Ref: A80652200B",
+    "costPricePerSqft": 280,
+    "sellingPricePerSqft": 560,
+    "inStockSqft": 10,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a80653200b",
+    "sku": "A80653200B",
+    "name": "Inspira SQUARE - Soft-closing SUPRALIT® bidet lid (White)",
+    "collection": "INSPIRA",
+    "category": "Accessories",
+    "collectionId": "inspira",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B77F09E46-FA58-4CF9-83D2-BE72B499AE8E%7D&trName=TF_Web_Big",
+    "description": "Inspira SQUARE - Soft-closing SUPRALIT® bidet lid premium bathroom fixture by Roca. Ref: A80653200B",
+    "costPricePerSqft": 282.5,
+    "sellingPricePerSqft": 565,
+    "inStockSqft": 6,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a801b8200b",
+    "sku": "A801B8200B",
+    "name": "Beyond Soft-closing SUPRALIT ® seat and cover for toilet (White)",
+    "collection": "BEYOND",
+    "category": "Accessories",
+    "collectionId": "beyond",
+    "sizes": [
+      "18 3/16\" x 15 1/8\" x 1 15/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "18 3/16\" x 15 1/8\" x 1 15/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B2B0FBDF4-8A8F-458D-B6A6-1A6043572C23%7D&trName=TF_Web_Big",
+    "description": "Beyond Soft-closing SUPRALIT ® seat and cover for toilet premium bathroom fixture by Roca. Ref: A801B8200B",
+    "costPricePerSqft": 315,
+    "sellingPricePerSqft": 630,
+    "inStockSqft": 12,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a801b5200b",
+    "sku": "A801B5200B",
+    "name": "Carmen Soft-closing SUPRALIT® seat and cover for toilet (White)",
+    "collection": "CARMEN",
+    "category": "Accessories",
+    "collectionId": "carmen",
+    "sizes": [
+      "17 5/16\" x 14 9/16\" x 1 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "17 5/16\" x 14 9/16\" x 1 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B62BE7076-B654-4C89-9A64-4D38D22E758F%7D&trName=TF_Web_Big",
+    "description": "Carmen Soft-closing SUPRALIT® seat and cover for toilet premium bathroom fixture by Roca. Ref: A801B5200B",
+    "costPricePerSqft": 307.5,
+    "sellingPricePerSqft": 615,
+    "inStockSqft": 7,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a801c84001",
+    "sku": "A801C84001",
+    "name": "Georgia Soft close seat & cover for toilet (White)",
+    "collection": "GEORGIA",
+    "category": "Accessories",
+    "collectionId": "georgia",
+    "sizes": [
+      "18 7/8\" x 14 9/16\" x 1 15/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "18 7/8\" x 14 9/16\" x 1 15/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=17925064a6ea6cc7ef2ddd793bd9eb3e&trName=TF_Web_Big",
+    "description": "Georgia Soft close seat & cover for toilet premium bathroom fixture by Roca. Ref: A801C84001",
+    "costPricePerSqft": 280,
+    "sellingPricePerSqft": 560,
+    "inStockSqft": 11,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a8019c2004",
+    "sku": "A8019C2004",
+    "name": "Debba Soft-closing seat and cover for toilet (White)",
+    "collection": "DEBBA",
+    "category": "Accessories",
+    "collectionId": "debba",
+    "sizes": [
+      "14 1/2\" x 18 7/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "14 1/2\" x 18 7/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B987CC1C5-7FF8-4411-9AD2-3D0CDBA748A4%7D&trName=TF_Web_Big",
+    "description": "Debba Soft-closing seat and cover for toilet premium bathroom fixture by Roca. Ref: A8019C2004",
+    "costPricePerSqft": 285,
+    "sellingPricePerSqft": 570,
+    "inStockSqft": 14,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a8019f200p",
+    "sku": "A8019F200P",
+    "name": "Milano Soft close seat & cover for toilet (White)",
+    "collection": "MILANO",
+    "category": "Accessories",
+    "collectionId": "milano",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=90a34cf0673e23f1d72f45c82d4fd92e&trName=TF_Web_Big",
+    "description": "Milano Soft close seat & cover for toilet premium bathroom fixture by Roca. Ref: A8019F200P",
+    "costPricePerSqft": 270,
+    "sellingPricePerSqft": 540,
+    "inStockSqft": 14,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a8019e200p",
+    "sku": "A8019E200P",
+    "name": "Milano Soft close seat & cover for toilet (White)",
+    "collection": "MILANO",
+    "category": "Accessories",
+    "collectionId": "milano",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=24d1c3f9d296cd9c6863d5da4ceefe60&trName=TF_Web_Big",
+    "description": "Milano Soft close seat & cover for toilet premium bathroom fixture by Roca. Ref: A8019E200P",
+    "costPricePerSqft": 267.5,
+    "sellingPricePerSqft": 535,
+    "inStockSqft": 8,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a857940806",
+    "sku": "A857940806",
+    "name": "Maris New Freestanding/wall-hung vanity unit with three drawers (White)",
+    "collection": "MARIS",
+    "category": "Bathroom Furniture",
+    "collectionId": "maris",
+    "sizes": [
+      "23 5/8\" x 22\" x 28\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "23 5/8\" x 22\" x 28\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=9996b6ff1bd17dde0825db2e57e19a82&trName=TF_Web_Big",
+    "description": "Maris New Freestanding/wall-hung vanity unit with three drawers premium bathroom fixture by Roca. Ref: A857940806",
+    "costPricePerSqft": 1795,
+    "sellingPricePerSqft": 3590,
+    "inStockSqft": 11,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a857941806",
+    "sku": "A857941806",
+    "name": "Maris New Freestanding/wall-hung vanity unit with three drawers (White)",
+    "collection": "MARIS",
+    "category": "Bathroom Furniture",
+    "collectionId": "maris",
+    "sizes": [
+      "29 5/8\" x 22\" x 28\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "29 5/8\" x 22\" x 28\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=8bb34fdeda78944b21e477941a0eb527&trName=TF_Web_Big",
+    "description": "Maris New Freestanding/wall-hung vanity unit with three drawers premium bathroom fixture by Roca. Ref: A857941806",
+    "costPricePerSqft": 1797.5,
+    "sellingPricePerSqft": 3595,
+    "inStockSqft": 7,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a857942806",
+    "sku": "A857942806",
+    "name": "Maris New Freestanding/wall-hung vanity unit with three drawers (White)",
+    "collection": "MARIS",
+    "category": "Bathroom Furniture",
+    "collectionId": "maris",
+    "sizes": [
+      "35 5/8\" x 22\" x 28\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "35 5/8\" x 22\" x 28\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=9218ed5650ca3ad8d879ff616391bfde&trName=TF_Web_Big",
+    "description": "Maris New Freestanding/wall-hung vanity unit with three drawers premium bathroom fixture by Roca. Ref: A857942806",
+    "costPricePerSqft": 1800,
+    "sellingPricePerSqft": 3600,
+    "inStockSqft": 9,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a857943806",
+    "sku": "A857943806",
+    "name": "Maris New Freestanding/wall-hung vanity unit with three drawers, single (White)",
+    "collection": "MARIS",
+    "category": "Bathroom Furniture",
+    "collectionId": "maris",
+    "sizes": [
+      "47 5/8\" x 22\" x 28\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "47 5/8\" x 22\" x 28\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=340dd40a305a8c346c9850deb23ac0b1&trName=TF_Web_Big",
+    "description": "Maris New Freestanding/wall-hung vanity unit with three drawers, single premium bathroom fixture by Roca. Ref: A857943806",
+    "costPricePerSqft": 1802.5,
+    "sellingPricePerSqft": 3605,
+    "inStockSqft": 11,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a857944806",
+    "sku": "A857944806",
+    "name": "Maris New Freestanding/wall-hung vanity unit with three drawers, double (White)",
+    "collection": "MARIS",
+    "category": "Bathroom Furniture",
+    "collectionId": "maris",
+    "sizes": [
+      "47 5/8\" x 22\" x 28\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "47 5/8\" x 22\" x 28\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=74f51abc809208dedaca63e1643e15dc&trName=TF_Web_Big",
+    "description": "Maris New Freestanding/wall-hung vanity unit with three drawers, double premium bathroom fixture by Roca. Ref: A857944806",
+    "costPricePerSqft": 1805,
+    "sellingPricePerSqft": 3610,
+    "inStockSqft": 13,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a857945806",
+    "sku": "A857945806",
+    "name": "Maris New Freestanding/wall-hung vanity unit with three drawers, single (White)",
+    "collection": "MARIS",
+    "category": "Bathroom Furniture",
+    "collectionId": "maris",
+    "sizes": [
+      "59 5/8\" x 22\" x 28\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "59 5/8\" x 22\" x 28\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=c9e39a0a0c6d4405eb1815658224e3db&trName=TF_Web_Big",
+    "description": "Maris New Freestanding/wall-hung vanity unit with three drawers, single premium bathroom fixture by Roca. Ref: A857945806",
+    "costPricePerSqft": 1807.5,
+    "sellingPricePerSqft": 3615,
+    "inStockSqft": 7,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a857946806",
+    "sku": "A857946806",
+    "name": "Maris New Freestanding/wall-hung vanity unit with three drawers, double (White)",
+    "collection": "MARIS",
+    "category": "Bathroom Furniture",
+    "collectionId": "maris",
+    "sizes": [
+      "59 5/8\" x 22\" x 28\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "59 5/8\" x 22\" x 28\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=710ad6e7c446c04a379ef67c4dd455eb&trName=TF_Web_Big",
+    "description": "Maris New Freestanding/wall-hung vanity unit with three drawers, double premium bathroom fixture by Roca. Ref: A857946806",
+    "costPricePerSqft": 1810,
+    "sellingPricePerSqft": 3620,
+    "inStockSqft": 9,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a857947806",
+    "sku": "A857947806",
+    "name": "Maris New Freestanding/wall-hung vanity unit with three drawers, double (White)",
+    "collection": "MARIS",
+    "category": "Bathroom Furniture",
+    "collectionId": "maris",
+    "sizes": [
+      "71 5/8\" x 22\" x 28\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "71 5/8\" x 22\" x 28\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=e4317805aa6f9d7274a2a0804f4c787c&trName=TF_Web_Big",
+    "description": "Maris New Freestanding/wall-hung vanity unit with three drawers, double premium bathroom fixture by Roca. Ref: A857947806",
+    "costPricePerSqft": 1812.5,
+    "sellingPricePerSqft": 3625,
+    "inStockSqft": 10,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817019339",
+    "sku": "A817019339",
+    "name": "Maris New Vanity handle for 24, 30, 60 Maris vanity (individual piece) (White)",
+    "collection": "MARIS",
+    "category": "Bathroom Furniture",
+    "collectionId": "maris",
+    "sizes": [
+      "8 7/16\" x 1 1/4\" x 1/2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "8 7/16\" x 1 1/4\" x 1/2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=d2260b0e1cd6d91d363596e258ea0636&trName=TF_Web_Big",
+    "description": "Maris New Vanity handle for 24, 30, 60 Maris vanity (individual piece) premium bathroom fixture by Roca. Ref: A817019339",
+    "costPricePerSqft": 1780,
+    "sellingPricePerSqft": 3560,
+    "inStockSqft": 14,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817020339",
+    "sku": "A817020339",
+    "name": "Maris New Vanity handle for 36, 72 Maris vanity (individual piece) (White)",
+    "collection": "MARIS",
+    "category": "Bathroom Furniture",
+    "collectionId": "maris",
+    "sizes": [
+      "11 7/16\" x 1 1/4\" x 1/2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "11 7/16\" x 1 1/4\" x 1/2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=d2260b0e1cd6d91d363596e258ea0636&trName=TF_Web_Big",
+    "description": "Maris New Vanity handle for 36, 72 Maris vanity (individual piece) premium bathroom fixture by Roca. Ref: A817020339",
+    "costPricePerSqft": 1760,
+    "sellingPricePerSqft": 3520,
+    "inStockSqft": 12,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817021339",
+    "sku": "A817021339",
+    "name": "Maris New Vanity handle for 48 Maris vanity (individual piece) (White)",
+    "collection": "MARIS",
+    "category": "Bathroom Furniture",
+    "collectionId": "maris",
+    "sizes": [
+      "13 7/16\" x 1 1/4\" x 1/2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "13 7/16\" x 1 1/4\" x 1/2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=d2260b0e1cd6d91d363596e258ea0636&trName=TF_Web_Big",
+    "description": "Maris New Vanity handle for 48 Maris vanity (individual piece) premium bathroom fixture by Roca. Ref: A817021339",
+    "costPricePerSqft": 1762.5,
+    "sellingPricePerSqft": 3525,
+    "inStockSqft": 7,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817022339",
+    "sku": "A817022339",
+    "name": "Maris New Vanity foot (individual piece) (White)",
+    "collection": "MARIS",
+    "category": "Bathroom Furniture",
+    "collectionId": "maris",
+    "sizes": [
+      "3 1/8\" x 3 1/8\" x 5\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "3 1/8\" x 3 1/8\" x 5\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=4edccb2d2d05353ddcd708630aa4838c&trName=TF_Web_Big",
+    "description": "Maris New Vanity foot (individual piece) premium bathroom fixture by Roca. Ref: A817022339",
+    "costPricePerSqft": 1765,
+    "sellingPricePerSqft": 3530,
+    "inStockSqft": 6,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a2c8001000",
+    "sku": "A2C8001000",
+    "name": "Maris New Quartzstone countertop for undermount sink (White)",
+    "collection": "MARIS",
+    "category": "Bathroom Furniture",
+    "collectionId": "maris",
+    "sizes": [
+      "23 7/8\" x 22 3/16\" x 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "23 7/8\" x 22 3/16\" x 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=0607ef6fd3c537f3b45062a2f159716e&trName=TF_Web_Big",
+    "description": "Maris New Quartzstone countertop for undermount sink premium bathroom fixture by Roca. Ref: A2C8001000",
+    "costPricePerSqft": 1752.5,
+    "sellingPricePerSqft": 3505,
+    "inStockSqft": 4,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a2c8002000",
+    "sku": "A2C8002000",
+    "name": "Maris New Quartzstone countertop for undermount sink (White)",
+    "collection": "MARIS",
+    "category": "Bathroom Furniture",
+    "collectionId": "maris",
+    "sizes": [
+      "29 13/16\" x 22 3/16\" x 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "29 13/16\" x 22 3/16\" x 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=90b18941236c0685316f251caeb33a29&trName=TF_Web_Big",
+    "description": "Maris New Quartzstone countertop for undermount sink premium bathroom fixture by Roca. Ref: A2C8002000",
+    "costPricePerSqft": 1755,
+    "sellingPricePerSqft": 3510,
+    "inStockSqft": 7,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a2c8003000",
+    "sku": "A2C8003000",
+    "name": "Maris New Quartzstone countertop for undermount sink (White)",
+    "collection": "MARIS",
+    "category": "Bathroom Furniture",
+    "collectionId": "maris",
+    "sizes": [
+      "35 13/16\" x 22 3/16\" x 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "35 13/16\" x 22 3/16\" x 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=89ae290a7979474e2152d2d3fa7e3c05&trName=TF_Web_Big",
+    "description": "Maris New Quartzstone countertop for undermount sink premium bathroom fixture by Roca. Ref: A2C8003000",
+    "costPricePerSqft": 1757.5,
+    "sellingPricePerSqft": 3515,
+    "inStockSqft": 12,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a2c8004000",
+    "sku": "A2C8004000",
+    "name": "Maris New Quartzstone countertop for undermount sink (White)",
+    "collection": "MARIS",
+    "category": "Bathroom Furniture",
+    "collectionId": "maris",
+    "sizes": [
+      "47 7/8\" x 22 3/16\" x 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "47 7/8\" x 22 3/16\" x 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=81f995dc599d0e0dc0ee43c4577b39ea&trName=TF_Web_Big",
+    "description": "Maris New Quartzstone countertop for undermount sink premium bathroom fixture by Roca. Ref: A2C8004000",
+    "costPricePerSqft": 1760,
+    "sellingPricePerSqft": 3520,
+    "inStockSqft": 7,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a2c8005000",
+    "sku": "A2C8005000",
+    "name": "Maris New Quartzstone countertop for undermount sink, double (White)",
+    "collection": "MARIS",
+    "category": "Bathroom Furniture",
+    "collectionId": "maris",
+    "sizes": [
+      "47 7/8\" x 22 3/16\" x 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "47 7/8\" x 22 3/16\" x 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=717a5f52e630e47d1574b4321f906fbc&trName=TF_Web_Big",
+    "description": "Maris New Quartzstone countertop for undermount sink, double premium bathroom fixture by Roca. Ref: A2C8005000",
+    "costPricePerSqft": 1762.5,
+    "sellingPricePerSqft": 3525,
+    "inStockSqft": 4,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a2c8006000",
+    "sku": "A2C8006000",
+    "name": "Maris New Quartzstone countertop for undermount sink (White)",
+    "collection": "MARIS",
+    "category": "Bathroom Furniture",
+    "collectionId": "maris",
+    "sizes": [
+      "59 15/16\" x 22 3/16\" x 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "59 15/16\" x 22 3/16\" x 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=5d66a7f3043f5c1f202bb9669a136121&trName=TF_Web_Big",
+    "description": "Maris New Quartzstone countertop for undermount sink premium bathroom fixture by Roca. Ref: A2C8006000",
+    "costPricePerSqft": 1765,
+    "sellingPricePerSqft": 3530,
+    "inStockSqft": 13,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a2c8007000",
+    "sku": "A2C8007000",
+    "name": "Maris New Quartzstone countertop for undermount sink, double (White)",
+    "collection": "MARIS",
+    "category": "Bathroom Furniture",
+    "collectionId": "maris",
+    "sizes": [
+      "59 15/16\" x 22 3/16\" x 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "59 15/16\" x 22 3/16\" x 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=8775370e81cdfffe70480e55b063cddb&trName=TF_Web_Big",
+    "description": "Maris New Quartzstone countertop for undermount sink, double premium bathroom fixture by Roca. Ref: A2C8007000",
+    "costPricePerSqft": 1767.5,
+    "sellingPricePerSqft": 3535,
+    "inStockSqft": 7,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a2c8008000",
+    "sku": "A2C8008000",
+    "name": "Maris New Quartzstone countertop for undermount sink, double (White)",
+    "collection": "MARIS",
+    "category": "Bathroom Furniture",
+    "collectionId": "maris",
+    "sizes": [
+      "71 7/8\" x 22 3/16\" x 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "71 7/8\" x 22 3/16\" x 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=10019c729306e442ca54bab1a93ac95c&trName=TF_Web_Big",
+    "description": "Maris New Quartzstone countertop for undermount sink, double premium bathroom fixture by Roca. Ref: A2C8008000",
+    "costPricePerSqft": 1770,
+    "sellingPricePerSqft": 3540,
+    "inStockSqft": 10,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a857820513",
+    "sku": "A857820513",
+    "name": "Ona New Unik - base unit with two drawers (White)",
+    "collection": "ONA",
+    "category": "Bathroom Furniture",
+    "collectionId": "ona",
+    "sizes": [
+      "+ A32768A00A 39 3/8\" x 18 1/8\" x 25 3/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "+ A32768A00A 39 3/8\" x 18 1/8\" x 25 3/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=5a9003034aac55fb790ca4b98adae385&trName=TF_Web_Big",
+    "description": "Ona New Unik - base unit with two drawers premium bathroom fixture by Roca. Ref: A857820513",
+    "costPricePerSqft": 1775,
+    "sellingPricePerSqft": 3550,
+    "inStockSqft": 10,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a857819513",
+    "sku": "A857819513",
+    "name": "Ona New Unik - base unit with two drawers (White)",
+    "collection": "ONA",
+    "category": "Bathroom Furniture",
+    "collectionId": "ona",
+    "sizes": [
+      "+ A32768H00A 31 1/2\" x 18 1/8\" x 25 3/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "+ A32768H00A 31 1/2\" x 18 1/8\" x 25 3/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=e865233fc240c437f8fb6a622c65d7e7&trName=TF_Web_Big",
+    "description": "Ona New Unik - base unit with two drawers premium bathroom fixture by Roca. Ref: A857819513",
+    "costPricePerSqft": 1795,
+    "sellingPricePerSqft": 3590,
+    "inStockSqft": 6,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a857818513",
+    "sku": "A857818513",
+    "name": "Ona New Unik - base unit with two drawers (White)",
+    "collection": "ONA",
+    "category": "Bathroom Furniture",
+    "collectionId": "ona",
+    "sizes": [
+      "+ A32768600A 23 5/8\" x 18 1/8\" x 25 3/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "+ A32768600A 23 5/8\" x 18 1/8\" x 25 3/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=45ceaa70d96786a3bc0c68f7678aec33&trName=TF_Web_Big",
+    "description": "Ona New Unik - base unit with two drawers premium bathroom fixture by Roca. Ref: A857818513",
+    "costPricePerSqft": 1792.5,
+    "sellingPricePerSqft": 3585,
+    "inStockSqft": 4,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a857817524",
+    "sku": "A857817524",
+    "name": "Aleyda New Unik (base unit with 2 drawers and centered sink) (White)",
+    "collection": "ALEYDA",
+    "category": "Bathroom Furniture",
+    "collectionId": "aleyda",
+    "sizes": [
+      "+ A32A99B000 39 9/16\" x 18 1/8\" x 22 1/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "+ A32A99B000 39 9/16\" x 18 1/8\" x 22 1/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=27727926ea3823ec954909773f55ad77&trName=TF_Web_Big",
+    "description": "Aleyda New Unik (base unit with 2 drawers and centered sink) premium bathroom fixture by Roca. Ref: A857817524",
+    "costPricePerSqft": 1795,
+    "sellingPricePerSqft": 3590,
+    "inStockSqft": 9,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a857816524",
+    "sku": "A857816524",
+    "name": "Aleyda New Unik (base unit with 2 drawers and centered sink) (White)",
+    "collection": "ALEYDA",
+    "category": "Bathroom Furniture",
+    "collectionId": "aleyda",
+    "sizes": [
+      "+ A32A99C000 31 11/16\" x 18 1/8\" x 22 1/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "+ A32A99C000 31 11/16\" x 18 1/8\" x 22 1/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=fcee0edc775bcad896a5a720a260cb12&trName=TF_Web_Big",
+    "description": "Aleyda New Unik (base unit with 2 drawers and centered sink) premium bathroom fixture by Roca. Ref: A857816524",
+    "costPricePerSqft": 1792.5,
+    "sellingPricePerSqft": 3585,
+    "inStockSqft": 3,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a857815524",
+    "sku": "A857815524",
+    "name": "Aleyda New Unik (compact base unit with 2 drawers and sink) (White)",
+    "collection": "ALEYDA",
+    "category": "Bathroom Furniture",
+    "collectionId": "aleyda",
+    "sizes": [
+      "+ A32A99E000 23 13/16\" x 14 15/16\" x 22 1/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "+ A32A99E000 23 13/16\" x 14 15/16\" x 22 1/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=5ea4c152d77c634e072909c51c91e457&trName=TF_Web_Big",
+    "description": "Aleyda New Unik (compact base unit with 2 drawers and sink) premium bathroom fixture by Roca. Ref: A857815524",
+    "costPricePerSqft": 1790,
+    "sellingPricePerSqft": 3580,
+    "inStockSqft": 6,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a857491415",
+    "sku": "A857491415",
+    "name": "Romea Unik (bathroom vanity with two drawers) (White)",
+    "collection": "ROMEA",
+    "category": "Bathroom Furniture",
+    "collectionId": "romea",
+    "sizes": [
+      "31 1/2\" x 18 1/8\" x 34 1/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "31 1/2\" x 18 1/8\" x 34 1/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BEF0AECD4-35F5-46FF-9B58-916EC47A2B06%7D&trName=TF_Web_Big",
+    "description": "Romea Unik (bathroom vanity with two drawers) premium bathroom fixture by Roca. Ref: A857491415",
+    "costPricePerSqft": 1787.5,
+    "sellingPricePerSqft": 3575,
+    "inStockSqft": 5,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a857492415",
+    "sku": "A857492415",
+    "name": "Romea Unik (bathroom vanity with two drawers) (White)",
+    "collection": "ROMEA",
+    "category": "Bathroom Furniture",
+    "collectionId": "romea",
+    "sizes": [
+      "+ A3270MA004 39 3/8\" x 18 1/8\" x 34 1/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "+ A3270MA004 39 3/8\" x 18 1/8\" x 34 1/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B14824304-56DB-4EB6-8A98-982EB3C8971C%7D&trName=TF_Web_Big",
+    "description": "Romea Unik (bathroom vanity with two drawers) premium bathroom fixture by Roca. Ref: A857492415",
+    "costPricePerSqft": 1790,
+    "sellingPricePerSqft": 3580,
+    "inStockSqft": 8,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a857490415",
+    "sku": "A857490415",
+    "name": "Romea Unik (bathroom vanity with two drawers) (White)",
+    "collection": "ROMEA",
+    "category": "Bathroom Furniture",
+    "collectionId": "romea",
+    "sizes": [
+      "+ A3270M1004 23 5/8\" x 18 1/8\" x 34 1/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "+ A3270M1004 23 5/8\" x 18 1/8\" x 34 1/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B6F1CD21F-BAA4-4DE4-AD80-A6087EFE72E9%7D&trName=TF_Web_Big",
+    "description": "Romea Unik (bathroom vanity with two drawers) premium bathroom fixture by Roca. Ref: A857490415",
+    "costPricePerSqft": 1785,
+    "sellingPricePerSqft": 3570,
+    "inStockSqft": 7,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_nu00002806",
+    "sku": "NU00002806",
+    "name": "Aurora Wall-hung bathroom vanity with two drawers, bar handle (Top and sink not included) (White)",
+    "collection": "AURORA",
+    "category": "Bathroom Furniture",
+    "collectionId": "aurora",
+    "sizes": [
+      "35 7/16\" x 18 7/8\" x 21 13/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "35 7/16\" x 18 7/8\" x 21 13/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=41ad29483e69c557c979684247789cfc&trName=TF_Web_Big",
+    "description": "Aurora Wall-hung bathroom vanity with two drawers, bar handle (Top and sink not included) premium bathroom fixture by Roca. Ref: NU00002806",
+    "costPricePerSqft": 1750,
+    "sellingPricePerSqft": 3500,
+    "inStockSqft": 5,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_nu00005806",
+    "sku": "NU00005806",
+    "name": "Aurora Wall-hung bathroom vanity with two drawers, gola handle (Top and sink not included) (White)",
+    "collection": "AURORA",
+    "category": "Bathroom Furniture",
+    "collectionId": "aurora",
+    "sizes": [
+      "35 7/16\" x 18 7/8\" x 21 13/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "35 7/16\" x 18 7/8\" x 21 13/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=46a813e6212d3437df4f358dd2100479&trName=TF_Web_Big",
+    "description": "Aurora Wall-hung bathroom vanity with two drawers, gola handle (Top and sink not included) premium bathroom fixture by Roca. Ref: NU00005806",
+    "costPricePerSqft": 1757.5,
+    "sellingPricePerSqft": 3515,
+    "inStockSqft": 10,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_nu00003806",
+    "sku": "NU00003806",
+    "name": "Aurora Wall-hung bathroom vanity with two drawers, bar handle (Top and sink not included) (White)",
+    "collection": "AURORA",
+    "category": "Bathroom Furniture",
+    "collectionId": "aurora",
+    "sizes": [
+      "31 1/2\" x 18 7/8\" x 21 13/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "31 1/2\" x 18 7/8\" x 21 13/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=d4c124dbe25aba3c33553d019c21d3ea&trName=TF_Web_Big",
+    "description": "Aurora Wall-hung bathroom vanity with two drawers, bar handle (Top and sink not included) premium bathroom fixture by Roca. Ref: NU00003806",
+    "costPricePerSqft": 1752.5,
+    "sellingPricePerSqft": 3505,
+    "inStockSqft": 12,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_nu00006806",
+    "sku": "NU00006806",
+    "name": "Aurora Wall-hung bathroom vanity with two drawers, gola handle (Top and sink not included) (White)",
+    "collection": "AURORA",
+    "category": "Bathroom Furniture",
+    "collectionId": "aurora",
+    "sizes": [
+      "31 1/2\" x 18 7/8\" x 21 13/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "31 1/2\" x 18 7/8\" x 21 13/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=70152dc733345039f15bbbcae9b28ec2&trName=TF_Web_Big",
+    "description": "Aurora Wall-hung bathroom vanity with two drawers, gola handle (Top and sink not included) premium bathroom fixture by Roca. Ref: NU00006806",
+    "costPricePerSqft": 1760,
+    "sellingPricePerSqft": 3520,
+    "inStockSqft": 12,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_nu00011425",
+    "sku": "NU00011425",
+    "name": "Aurora Vanity worktop (White)",
+    "collection": "AURORA",
+    "category": "Bathroom Furniture",
+    "collectionId": "aurora",
+    "sizes": [
+      "71 1/4\" x 18 7/8\" x 1 1/2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "71 1/4\" x 18 7/8\" x 1 1/2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=3c2394991b4efaceebff26b2ac866ff1&trName=TF_Web_Big",
+    "description": "Aurora Vanity worktop premium bathroom fixture by Roca. Ref: NU00011425",
+    "costPricePerSqft": 1742.5,
+    "sellingPricePerSqft": 3485,
+    "inStockSqft": 3,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_nu00010425",
+    "sku": "NU00010425",
+    "name": "Aurora Vanity worktop (White)",
+    "collection": "AURORA",
+    "category": "Bathroom Furniture",
+    "collectionId": "aurora",
+    "sizes": [
+      "63 3/8\" x 18 7/8\" x 1 1/2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "63 3/8\" x 18 7/8\" x 1 1/2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=a24e0661dc77526c14ea9634db38b43c&trName=TF_Web_Big",
+    "description": "Aurora Vanity worktop premium bathroom fixture by Roca. Ref: NU00010425",
+    "costPricePerSqft": 1740,
+    "sellingPricePerSqft": 3480,
+    "inStockSqft": 6,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_nu00008425",
+    "sku": "NU00008425",
+    "name": "Aurora Vanity worktop (White)",
+    "collection": "AURORA",
+    "category": "Bathroom Furniture",
+    "collectionId": "aurora",
+    "sizes": [
+      "35 13/16\" x 18 7/8\" x 1 1/2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "35 13/16\" x 18 7/8\" x 1 1/2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=f5fb758f5c608b7f5ffac6cebd0de2c0&trName=TF_Web_Big",
+    "description": "Aurora Vanity worktop premium bathroom fixture by Roca. Ref: NU00008425",
+    "costPricePerSqft": 1757.5,
+    "sellingPricePerSqft": 3515,
+    "inStockSqft": 7,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_nu00007425",
+    "sku": "NU00007425",
+    "name": "Aurora Vanity worktop (White)",
+    "collection": "AURORA",
+    "category": "Bathroom Furniture",
+    "collectionId": "aurora",
+    "sizes": [
+      "31 7/8\" x 18 7/8\" x 1 1/2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "31 7/8\" x 18 7/8\" x 1 1/2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=dd9d01096a8dee307bdd7173b20c7170&trName=TF_Web_Big",
+    "description": "Aurora Vanity worktop premium bathroom fixture by Roca. Ref: NU00007425",
+    "costPricePerSqft": 1755,
+    "sellingPricePerSqft": 3510,
+    "inStockSqft": 8,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a857326423",
+    "sku": "A857326423",
+    "name": "Victoria Basic Wall-hung bathroom vanity with two drawers (Sink not included) (White)",
+    "collection": "VICTORIA",
+    "category": "Bathroom Furniture",
+    "collectionId": "victoria",
+    "sizes": [
+      "39 9/16\" x 17 13/16\" x 20 1/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "39 9/16\" x 17 13/16\" x 20 1/4\"",
+    "image": "https://www.us.roca.com/o/roca-restyle-theme/images/product-thumbnail.jpg",
+    "description": "Victoria Basic Wall-hung bathroom vanity with two drawers (Sink not included) premium bathroom fixture by Roca. Ref: A857326423",
+    "costPricePerSqft": 1777.5,
+    "sellingPricePerSqft": 3555,
+    "inStockSqft": 9,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a857330423",
+    "sku": "A857330423",
+    "name": "Victoria Basic Column unit (White)",
+    "collection": "VICTORIA",
+    "category": "Bathroom Furniture",
+    "collectionId": "victoria",
+    "sizes": [
+      "11 13/16\" x 9 13/16\" x 59 3/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "11 13/16\" x 9 13/16\" x 59 3/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BEB3FD725-7467-44F4-9E5D-9F8A764FED03%7D&trName=TF_Web_Big",
+    "description": "Victoria Basic Column unit premium bathroom fixture by Roca. Ref: A857330423",
+    "costPricePerSqft": 1765,
+    "sellingPricePerSqft": 3530,
+    "inStockSqft": 3,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a812384415",
+    "sku": "A812384415",
+    "name": "Romea Mirror (White)",
+    "collection": "ROMEA",
+    "category": "Bathroom Furniture",
+    "collectionId": "romea",
+    "sizes": [
+      "39 3/8\" x 31 1/2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "39 3/8\" x 31 1/2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BB6A286A3-520D-4705-B19A-129129CF6540%7D&trName=TF_Web_Big",
+    "description": "Romea Mirror premium bathroom fixture by Roca. Ref: A812384415",
+    "costPricePerSqft": 1767.5,
+    "sellingPricePerSqft": 3535,
+    "inStockSqft": 3,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a812383415",
+    "sku": "A812383415",
+    "name": "Romea Mirror (White)",
+    "collection": "ROMEA",
+    "category": "Bathroom Furniture",
+    "collectionId": "romea",
+    "sizes": [
+      "31 1/2\" x 31 1/2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "31 1/2\" x 31 1/2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BD8C418AD-8A82-49D6-8186-424034C9B82F%7D&trName=TF_Web_Big",
+    "description": "Romea Mirror premium bathroom fixture by Roca. Ref: A812383415",
+    "costPricePerSqft": 1765,
+    "sellingPricePerSqft": 3530,
+    "inStockSqft": 6,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a812382415",
+    "sku": "A812382415",
+    "name": "Romea Mirror (White)",
+    "collection": "ROMEA",
+    "category": "Bathroom Furniture",
+    "collectionId": "romea",
+    "sizes": [
+      "23 5/8\" x 31 1/2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "23 5/8\" x 31 1/2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BDFAFA605-6369-40C8-AED0-543A5FAB3B23%7D&trName=TF_Web_Big",
+    "description": "Romea Mirror premium bathroom fixture by Roca. Ref: A812382415",
+    "costPricePerSqft": 1762.5,
+    "sellingPricePerSqft": 3525,
+    "inStockSqft": 7,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a812408000",
+    "sku": "A812408000",
+    "name": "Luna Backlit LED round mirror (White)",
+    "collection": "LUNA",
+    "category": "Bathroom Furniture",
+    "collectionId": "luna",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=90c099ad6a93ca64be9272df3a446b21&trName=TF_Web_Big",
+    "description": "Luna Backlit LED round mirror premium bathroom fixture by Roca. Ref: A812408000",
+    "costPricePerSqft": 1735,
+    "sellingPricePerSqft": 3470,
+    "inStockSqft": 10,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a812409000",
+    "sku": "A812409000",
+    "name": "Luna Framed LED round mirror (White)",
+    "collection": "LUNA",
+    "category": "Bathroom Furniture",
+    "collectionId": "luna",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=30bf091c86606c8354e0c18e930f0a38&trName=TF_Web_Big",
+    "description": "Luna Framed LED round mirror premium bathroom fixture by Roca. Ref: A812409000",
+    "costPricePerSqft": 1737.5,
+    "sellingPricePerSqft": 3475,
+    "inStockSqft": 11,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a812410000",
+    "sku": "A812410000",
+    "name": "Luna Framed LED oval mirror (White)",
+    "collection": "LUNA",
+    "category": "Bathroom Furniture",
+    "collectionId": "luna",
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "Standard",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=21f47ef51a804e1d781e54a120b1c7b4&trName=TF_Web_Big",
+    "description": "Luna Framed LED oval mirror premium bathroom fixture by Roca. Ref: A812410000",
+    "costPricePerSqft": 1810,
+    "sellingPricePerSqft": 3620,
+    "inStockSqft": 10,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a812194000",
+    "sku": "A812194000",
+    "name": "Luna Round mirror (White)",
+    "collection": "LUNA",
+    "category": "Bathroom Furniture",
+    "collectionId": "luna",
+    "sizes": [
+      "29 1/2\" x 1 1/8\" x 29 1/2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "29 1/2\" x 1 1/8\" x 29 1/2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BE3611720-6ACF-433A-8CB4-E411D1C1BBBD%7D&trName=TF_Web_Big",
+    "description": "Luna Round mirror premium bathroom fixture by Roca. Ref: A812194000",
+    "costPricePerSqft": 1740,
+    "sellingPricePerSqft": 3480,
+    "inStockSqft": 12,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a812189000",
+    "sku": "A812189000",
+    "name": "Luna Mirror (White)",
+    "collection": "LUNA",
+    "category": "Bathroom Furniture",
+    "collectionId": "luna",
+    "sizes": [
+      "39 3/8\" x 1 1/8\" x 35 7/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "39 3/8\" x 1 1/8\" x 35 7/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BAECCC207-6BC1-471F-A877-3F5CD9B29A65%7D&trName=TF_Web_Big",
+    "description": "Luna Mirror premium bathroom fixture by Roca. Ref: A812189000",
+    "costPricePerSqft": 1750,
+    "sellingPricePerSqft": 3500,
+    "inStockSqft": 8,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a812117000",
+    "sku": "A812117000",
+    "name": "Luna Mirror (White)",
+    "collection": "LUNA",
+    "category": "Bathroom Furniture",
+    "collectionId": "luna",
+    "sizes": [
+      "31 1/2\" x 1 1/8\" x 35 7/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "31 1/2\" x 1 1/8\" x 35 7/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B7758C8C7-36D0-4499-B237-E91A60505F93%7D&trName=TF_Web_Big",
+    "description": "Luna Mirror premium bathroom fixture by Roca. Ref: A812117000",
+    "costPricePerSqft": 1820,
+    "sellingPricePerSqft": 3640,
+    "inStockSqft": 6,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a812182000",
+    "sku": "A812182000",
+    "name": "Luna Mirror (White)",
+    "collection": "LUNA",
+    "category": "Bathroom Furniture",
+    "collectionId": "luna",
+    "sizes": [
+      "23 5/8\" x 1 1/8\" x 35 7/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "23 5/8\" x 1 1/8\" x 35 7/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B7758C8C7-36D0-4499-B237-E91A60505F93%7D&trName=TF_Web_Big",
+    "description": "Luna Mirror premium bathroom fixture by Roca. Ref: A812182000",
+    "costPricePerSqft": 1732.5,
+    "sellingPricePerSqft": 3465,
+    "inStockSqft": 6,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a893041170",
+    "sku": "A893041170",
+    "name": "In-Wash™ Omi New Omi Dual Flush Actuator Plate (White)",
+    "collection": "IN-WASH™",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "in-wash-",
+    "sizes": [
+      "9\" x 6\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "9\" x 6\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=fe7597e992ba7714f9d18d0d6d799d04&trName=TF_Web_Big",
+    "description": "In-Wash™ Omi New Omi Dual Flush Actuator Plate premium bathroom fixture by Roca. Ref: A893041170",
+    "costPricePerSqft": 1760,
+    "sellingPricePerSqft": 3520,
+    "inStockSqft": 9,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a890098001",
+    "sku": "A890098001",
+    "name": "In-Wall PL4 DUAL - Dual flush actuator plate for concealed tank (White)",
+    "collection": "IN-WALL",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "in-wall",
+    "sizes": [
+      "9 13/16\" x 6 5/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "9 13/16\" x 6 5/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B7022F6DE-7A7B-4E6F-A9A6-97772260DE72%7D&trName=TF_Web_Big",
+    "description": "In-Wall PL4 DUAL - Dual flush actuator plate for concealed tank premium bathroom fixture by Roca. Ref: A890098001",
+    "costPricePerSqft": 1765,
+    "sellingPricePerSqft": 3530,
+    "inStockSqft": 6,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a890097004",
+    "sku": "A890097004",
+    "name": "In-Wall PL3 PRO DUAL - Vandal-proof stainless steel dual flush actuator plate for concealed tank (White)",
+    "collection": "IN-WALL",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "in-wall",
+    "sizes": [
+      "10 3/16\" x 6 5/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "10 3/16\" x 6 5/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B4D95FEE9-E717-43F8-81B2-D6B6B13734E8%7D&trName=TF_Web_Big",
+    "description": "In-Wall PL3 PRO DUAL - Vandal-proof stainless steel dual flush actuator plate for concealed tank premium bathroom fixture by Roca. Ref: A890097004",
+    "costPricePerSqft": 1770,
+    "sellingPricePerSqft": 3540,
+    "inStockSqft": 3,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a890096000",
+    "sku": "A890096000",
+    "name": "In-Wall PL2 DUAL - Dual flush actuator plate for concealed tank (White)",
+    "collection": "IN-WALL",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "in-wall",
+    "sizes": [
+      "9 13/16\" x 6 5/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "9 13/16\" x 6 5/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B9F97EB62-5BC1-4DA4-8D00-8812101D5026%7D&trName=TF_Web_Big",
+    "description": "In-Wall PL2 DUAL - Dual flush actuator plate for concealed tank premium bathroom fixture by Roca. Ref: A890096000",
+    "costPricePerSqft": 1757.5,
+    "sellingPricePerSqft": 3515,
+    "inStockSqft": 3,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a890095000",
+    "sku": "A890095000",
+    "name": "In-Wall PL1 DUAL - Dual flush actuator plate for concealed tank (White)",
+    "collection": "IN-WALL",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "in-wall",
+    "sizes": [
+      "9 13/16\" x 6 5/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "9 13/16\" x 6 5/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B4B239E21-5C3B-4E28-8D91-C16E80A06893%7D&trName=TF_Web_Big",
+    "description": "In-Wall PL1 DUAL - Dual flush actuator plate for concealed tank premium bathroom fixture by Roca. Ref: A890095000",
+    "costPricePerSqft": 1755,
+    "sellingPricePerSqft": 3510,
+    "inStockSqft": 12,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a890088309",
+    "sku": "A890088309",
+    "name": "In-Wall PL7 DUAL - Dual flush actuator plate for concealed tank (glossy finish) (White)",
+    "collection": "IN-WALL",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "in-wall",
+    "sizes": [
+      "9 13/16\" x 6 5/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "9 13/16\" x 6 5/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B2E408B84-04F3-4D9B-AF93-7C0BB0810E13%7D&trName=TF_Web_Big",
+    "description": "In-Wall PL7 DUAL - Dual flush actuator plate for concealed tank (glossy finish) premium bathroom fixture by Roca. Ref: A890088309",
+    "costPricePerSqft": 1790,
+    "sellingPricePerSqft": 3580,
+    "inStockSqft": 8,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a890088207",
+    "sku": "A890088207",
+    "name": "In-Wall PL7 DUAL - Dual flush actuator plate for concealed tank (White)",
+    "collection": "IN-WALL",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "in-wall",
+    "sizes": [
+      "9 13/16\" x 6 5/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "9 13/16\" x 6 5/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BB23EB2AD-AA34-4CE2-A523-407E9A0DAE8A%7D&trName=TF_Web_Big",
+    "description": "In-Wall PL7 DUAL - Dual flush actuator plate for concealed tank premium bathroom fixture by Roca. Ref: A890088207",
+    "costPricePerSqft": 1782.5,
+    "sellingPricePerSqft": 3565,
+    "inStockSqft": 13,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a890140020",
+    "sku": "A890140020",
+    "name": "In-Wall Duplo America - Fullframe concealed tank for wall-hung toilet (White)",
+    "collection": "IN-WALL",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "in-wall",
+    "sizes": [
+      "19 11/16\" x 4 3/4\" x 44 1/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "19 11/16\" x 4 3/4\" x 44 1/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=f53fa8888669dd40c09829194eaa239d&trName=TF_Web_Big",
+    "description": "In-Wall Duplo America - Fullframe concealed tank for wall-hung toilet premium bathroom fixture by Roca. Ref: A890140020",
+    "costPricePerSqft": 1737.5,
+    "sellingPricePerSqft": 3475,
+    "inStockSqft": 5,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a893008020",
+    "sku": "A893008020",
+    "name": "In-Wash™ Omi New Omi In-Wall Carrier for Wall-Hung Smart Toilet (White)",
+    "collection": "IN-WASH™",
+    "category": "Ceramic / Bathroom Fixtures",
+    "collectionId": "in-wash-",
+    "sizes": [
+      "19\" x 3\" x 49\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "19\" x 3\" x 49\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=dcc30795aa0aedaa3b9cb2b358e8f62a&trName=TF_Web_Big",
+    "description": "In-Wash™ Omi New Omi In-Wall Carrier for Wall-Hung Smart Toilet premium bathroom fixture by Roca. Ref: A893008020",
+    "costPricePerSqft": 1752.5,
+    "sellingPricePerSqft": 3505,
+    "inStockSqft": 4,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a80313600c",
+    "sku": "A80313600C",
+    "name": "Ona In-Wash® Ona - Floor-standing smart toilet with Roca Rimless® (White)",
+    "collection": "ONA",
+    "category": "Toilets & Urinals",
+    "collectionId": "ona",
+    "sizes": [
+      "26 1/4\" x 15 9/16\" x 18 1/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "26 1/4\" x 15 9/16\" x 18 1/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=560e27ed73c88165b3fe117d3f2ac5b7&trName=TF_Web_Big",
+    "description": "Ona In-Wash® Ona - Floor-standing smart toilet with Roca Rimless® premium bathroom fixture by Roca. Ref: A80313600C",
+    "costPricePerSqft": 452.5,
+    "sellingPricePerSqft": 905,
+    "inStockSqft": 4,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a80314600c",
+    "sku": "A80314600C",
+    "name": "Insignia 2.0 In-Wash® Insignia 2.0 - Floor-standing smart toilet with auto-opening. (White)",
+    "collection": "INSIGNIA",
+    "category": "Toilets & Urinals",
+    "collectionId": "insignia",
+    "sizes": [
+      "26 1/2\" x 16 1/16\" x 18 7/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "26 1/2\" x 16 1/16\" x 18 7/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=8b954154ec42192940d8c65d2c1a2fe9&trName=TF_Web_Big",
+    "description": "Insignia 2.0 In-Wash® Insignia 2.0 - Floor-standing smart toilet with auto-opening. premium bathroom fixture by Roca. Ref: A80314600C",
+    "costPricePerSqft": 455,
+    "sellingPricePerSqft": 910,
+    "inStockSqft": 3,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a80334f00c",
+    "sku": "A80334F00C",
+    "name": "In-Wash™ Omi New In-Wash™ Omi wall-hung Smart Toilet (White)",
+    "collection": "IN-WASH™",
+    "category": "Toilets & Urinals",
+    "collectionId": "in-wash-",
+    "sizes": [
+      "14\" x 22\" x 13\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "14\" x 22\" x 13\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=412ee315fe4b5dbf36bedd3e8d38a91c&trName=TF_Web_Big",
+    "description": "In-Wash™ Omi New In-Wash™ Omi wall-hung Smart Toilet premium bathroom fixture by Roca. Ref: A80334F00C",
+    "costPricePerSqft": 407.5,
+    "sellingPricePerSqft": 815,
+    "inStockSqft": 9,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a80335500c",
+    "sku": "A80335500C",
+    "name": "In-Wash™ Neo New In-Wash™ Neo floorstanding Smart Toilet (White)",
+    "collection": "IN-WASH™",
+    "category": "Toilets & Urinals",
+    "collectionId": "in-wash-",
+    "sizes": [
+      "15\" x 26\" x 18\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "15\" x 26\" x 18\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=fa6e34dd6058c0ba8db64f17444a93c2&trName=TF_Web_Big",
+    "description": "In-Wash™ Neo New In-Wash™ Neo floorstanding Smart Toilet premium bathroom fixture by Roca. Ref: A80335500C",
+    "costPricePerSqft": 460,
+    "sellingPricePerSqft": 920,
+    "inStockSqft": 10,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a248686000",
+    "sku": "A248686000",
+    "name": "Ariane Coming soon Oval STONEX bathtub with pop-up drain (White)",
+    "collection": "ARIANE",
+    "category": "Bathtubs",
+    "collectionId": "ariane",
+    "sizes": [
+      "64 15/16\" x 29 1/2\" x 22 7/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "64 15/16\" x 29 1/2\" x 22 7/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BE14DD3E8-3287-4EFF-A295-662AE63BB350%7D&trName=TF_Web_Big",
+    "description": "Ariane Coming soon Oval STONEX bathtub with pop-up drain premium bathroom fixture by Roca. Ref: A248686000",
+    "costPricePerSqft": 1762.5,
+    "sellingPricePerSqft": 3525,
+    "inStockSqft": 6,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a24u796000",
+    "sku": "A24U796000",
+    "name": "Vythos New Skirted rectangular acrylic alcove bathtub with left-hand drain (White)",
+    "collection": "VYTHOS",
+    "category": "Bathtubs",
+    "collectionId": "vythos",
+    "sizes": [
+      "66\" x 31 3/4\" x 20 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "66\" x 31 3/4\" x 20 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=707415077090a43606a2426b1057ea09&trName=TF_Web_Big",
+    "description": "Vythos New Skirted rectangular acrylic alcove bathtub with left-hand drain premium bathroom fixture by Roca. Ref: A24U796000",
+    "costPricePerSqft": 1747.5,
+    "sellingPricePerSqft": 3495,
+    "inStockSqft": 14,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a24u797000",
+    "sku": "A24U797000",
+    "name": "Vythos New Skirted rectangular acrylic alcove bathtub with right-hand drain (White)",
+    "collection": "VYTHOS",
+    "category": "Bathtubs",
+    "collectionId": "vythos",
+    "sizes": [
+      "66\" x 31 3/4\" x 20 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "66\" x 31 3/4\" x 20 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=0e64372530cd53d278d210c201a3e5db&trName=TF_Web_Big",
+    "description": "Vythos New Skirted rectangular acrylic alcove bathtub with right-hand drain premium bathroom fixture by Roca. Ref: A24U797000",
+    "costPricePerSqft": 1750,
+    "sellingPricePerSqft": 3500,
+    "inStockSqft": 12,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a24u794000",
+    "sku": "A24U794000",
+    "name": "Vythos New Skirted rectangular acrylic alcove bathtub with left-hand drain (White)",
+    "collection": "VYTHOS",
+    "category": "Bathtubs",
+    "collectionId": "vythos",
+    "sizes": [
+      "59 3/4\" x 31 3/4\" x 20 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "59 3/4\" x 31 3/4\" x 20 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=707415077090a43606a2426b1057ea09&trName=TF_Web_Big",
+    "description": "Vythos New Skirted rectangular acrylic alcove bathtub with left-hand drain premium bathroom fixture by Roca. Ref: A24U794000",
+    "costPricePerSqft": 1742.5,
+    "sellingPricePerSqft": 3485,
+    "inStockSqft": 12,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a24u795000",
+    "sku": "A24U795000",
+    "name": "Vythos New Skirted rectangular acrylic alcove bathtub with right-hand drain (White)",
+    "collection": "VYTHOS",
+    "category": "Bathtubs",
+    "collectionId": "vythos",
+    "sizes": [
+      "59 3/4\" x 31 3/4\" x 20 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "59 3/4\" x 31 3/4\" x 20 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=0e64372530cd53d278d210c201a3e5db&trName=TF_Web_Big",
+    "description": "Vythos New Skirted rectangular acrylic alcove bathtub with right-hand drain premium bathroom fixture by Roca. Ref: A24U795000",
+    "costPricePerSqft": 1745,
+    "sellingPricePerSqft": 3490,
+    "inStockSqft": 10,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a24u792000",
+    "sku": "A24U792000",
+    "name": "Vythos New Skirted rectangular acrylic alcove bathtub with left-hand drain (White)",
+    "collection": "VYTHOS",
+    "category": "Bathtubs",
+    "collectionId": "vythos",
+    "sizes": [
+      "59 3/4\" x 29 3/4\" x 20 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "59 3/4\" x 29 3/4\" x 20 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=707415077090a43606a2426b1057ea09&trName=TF_Web_Big",
+    "description": "Vythos New Skirted rectangular acrylic alcove bathtub with left-hand drain premium bathroom fixture by Roca. Ref: A24U792000",
+    "costPricePerSqft": 1737.5,
+    "sellingPricePerSqft": 3475,
+    "inStockSqft": 3,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a24u793000",
+    "sku": "A24U793000",
+    "name": "Vythos New Skirted rectangular acrylic alcove bathtub with right-hand drain (White)",
+    "collection": "VYTHOS",
+    "category": "Bathtubs",
+    "collectionId": "vythos",
+    "sizes": [
+      "59 3/4\" x 29 3/4\" x 20 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "59 3/4\" x 29 3/4\" x 20 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=0e64372530cd53d278d210c201a3e5db&trName=TF_Web_Big",
+    "description": "Vythos New Skirted rectangular acrylic alcove bathtub with right-hand drain premium bathroom fixture by Roca. Ref: A24U793000",
+    "costPricePerSqft": 1740,
+    "sellingPricePerSqft": 3480,
+    "inStockSqft": 12,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a34252600a",
+    "sku": "A34252600A",
+    "name": "Inspira ROUND - Back to wall vitreous china two-piece Rimless toilet with dual outlet (White)",
+    "collection": "INSPIRA",
+    "category": "Toilets & Urinals",
+    "collectionId": "inspira",
+    "sizes": [
+      "14 3/4\" x 25 3/8\" x 31 5/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "14 3/4\" x 25 3/8\" x 31 5/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B7EBFBF25-3A77-4DD5-940F-D38808D2830D%7D&trName=TF_Web_Big",
+    "description": "Inspira ROUND - Back to wall vitreous china two-piece Rimless toilet with dual outlet premium bathroom fixture by Roca. Ref: A34252600A",
+    "costPricePerSqft": 450,
+    "sellingPricePerSqft": 900,
+    "inStockSqft": 14,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a34253600a",
+    "sku": "A34253600A",
+    "name": "Inspira SQUARE - Back to wall vitreous china two-piece Rimless toilet with dual outlet (White)",
+    "collection": "INSPIRA",
+    "category": "Toilets & Urinals",
+    "collectionId": "inspira",
+    "sizes": [
+      "14 3/4\" x 25 3/8\" x 31 1/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "14 3/4\" x 25 3/8\" x 31 1/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BB4EFC8BD-B035-46D2-A8DB-573D90E85141%7D&trName=TF_Web_Big",
+    "description": "Inspira SQUARE - Back to wall vitreous china two-piece Rimless toilet with dual outlet premium bathroom fixture by Roca. Ref: A34253600A",
+    "costPricePerSqft": 452.5,
+    "sellingPricePerSqft": 905,
+    "inStockSqft": 6,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a34652700a",
+    "sku": "A34652700A",
+    "name": "Inspira Coming soon ROUND - Vitreous china Rimless wall-hung toilet with horizontal outlet (White)",
+    "collection": "INSPIRA",
+    "category": "Toilets & Urinals",
+    "collectionId": "inspira",
+    "sizes": [
+      "14 9/16\" x 22 1/16\" x 17 5/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "14 9/16\" x 22 1/16\" x 17 5/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B2F01B01F-E8D3-4B5C-8285-A8D32A04FE36%7D&trName=TF_Web_Big",
+    "description": "Inspira Coming soon ROUND - Vitreous china Rimless wall-hung toilet with horizontal outlet premium bathroom fixture by Roca. Ref: A34652700A",
+    "costPricePerSqft": 462.5,
+    "sellingPricePerSqft": 925,
+    "inStockSqft": 11,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a34653700a",
+    "sku": "A34653700A",
+    "name": "Inspira Coming soon SQUARE - Vitreous china Rimless wall-hung toilet with horizontal outlet (White)",
+    "collection": "INSPIRA",
+    "category": "Toilets & Urinals",
+    "collectionId": "inspira",
+    "sizes": [
+      "14 9/16\" x 22 1/16\" x 17 5/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "14 9/16\" x 22 1/16\" x 17 5/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BF3C78455-8815-4446-9DB4-0D95FE4AAB9D%7D&trName=TF_Web_Big",
+    "description": "Inspira Coming soon SQUARE - Vitreous china Rimless wall-hung toilet with horizontal outlet premium bathroom fixture by Roca. Ref: A34653700A",
+    "costPricePerSqft": 465,
+    "sellingPricePerSqft": 930,
+    "inStockSqft": 8,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a34948600a",
+    "sku": "A34948600A",
+    "name": "Inspira One-piece toilet with vertical outlet. S-Trap 12 (White)",
+    "collection": "INSPIRA",
+    "category": "Toilets & Urinals",
+    "collectionId": "inspira",
+    "sizes": [
+      "16 9/16\" x 29 5/16\" x 25 9/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "16 9/16\" x 29 5/16\" x 25 9/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BC64DEBC4-569B-41BD-941B-9A06ED830A3C%7D&trName=TF_Web_Big",
+    "description": "Inspira One-piece toilet with vertical outlet. S-Trap 12 premium bathroom fixture by Roca. Ref: A34948600A",
+    "costPricePerSqft": 480,
+    "sellingPricePerSqft": 960,
+    "inStockSqft": 8,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a34152800a",
+    "sku": "A34152800A",
+    "name": "Inspira Dual flush 1.28/0.8 GPF toilet tank with bottom inlet (White)",
+    "collection": "INSPIRA",
+    "category": "Toilets & Urinals",
+    "collectionId": "inspira",
+    "sizes": [
+      "14 13/16\" x 5 7/8\" x 14 3/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "14 13/16\" x 5 7/8\" x 14 3/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B7840EA72-E5D8-4720-BA62-AA59709C5FC9%7D&trName=TF_Web_Big",
+    "description": "Inspira Dual flush 1.28/0.8 GPF toilet tank with bottom inlet premium bathroom fixture by Roca. Ref: A34152800A",
+    "costPricePerSqft": 452.5,
+    "sellingPricePerSqft": 905,
+    "inStockSqft": 4,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a3410b100a",
+    "sku": "A3410B100A",
+    "name": "Beyond Dual flush 1.28/0.8 GPF toilet tank with bottom inlet (White)",
+    "collection": "BEYOND",
+    "category": "Toilets & Urinals",
+    "collectionId": "beyond",
+    "sizes": [
+      "14 9/16\" x 6 1/2\" x 14 15/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "14 9/16\" x 6 1/2\" x 14 15/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BEF7F71FC-951C-4ADC-A82C-9FB27D6D4BA2%7D&trName=TF_Web_Big",
+    "description": "Beyond Dual flush 1.28/0.8 GPF toilet tank with bottom inlet premium bathroom fixture by Roca. Ref: A3410B100A",
+    "costPricePerSqft": 462.5,
+    "sellingPricePerSqft": 925,
+    "inStockSqft": 5,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a3420b900a",
+    "sku": "A3420B900A",
+    "name": "Beyond Back to wall vitreous china two-piece Rimless toilet with dual outlet (White)",
+    "collection": "BEYOND",
+    "category": "Toilets & Urinals",
+    "collectionId": "beyond",
+    "sizes": [
+      "15 9/16\" x 27 3/4\" x 31 1/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "15 9/16\" x 27 3/4\" x 31 1/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BB340D287-920F-41F1-85C7-5484D6D1DA80%7D&trName=TF_Web_Big",
+    "description": "Beyond Back to wall vitreous china two-piece Rimless toilet with dual outlet premium bathroom fixture by Roca. Ref: A3420B900A",
+    "costPricePerSqft": 485,
+    "sellingPricePerSqft": 970,
+    "inStockSqft": 4,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a3460b700a",
+    "sku": "A3460B700A",
+    "name": "Beyond Vitreous china wall-hung Rimless toilet (White)",
+    "collection": "BEYOND",
+    "category": "Toilets & Urinals",
+    "collectionId": "beyond",
+    "sizes": [
+      "15 9/16\" x 22 13/16\" x 17 1/2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "15 9/16\" x 22 13/16\" x 17 1/2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BA2C80F1B-8DEB-4117-B195-F587E5818245%7D&trName=TF_Web_Big",
+    "description": "Beyond Vitreous china wall-hung Rimless toilet premium bathroom fixture by Roca. Ref: A3460B700A",
+    "costPricePerSqft": 490,
+    "sellingPricePerSqft": 980,
+    "inStockSqft": 10,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a3410a700a",
+    "sku": "A3410A700A",
+    "name": "Carmen Dual flush 1.28/0.8 GPF toilet tank with bottom inlet (White)",
+    "collection": "CARMEN",
+    "category": "Toilets & Urinals",
+    "collectionId": "carmen",
+    "sizes": [
+      "16 5/16\" x 6 1/8\" x 14 9/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "16 5/16\" x 6 1/8\" x 14 9/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B6C23C9C0-C1E0-43CB-ADFE-D016B95B96B0%7D&trName=TF_Web_Big",
+    "description": "Carmen Dual flush 1.28/0.8 GPF toilet tank with bottom inlet premium bathroom fixture by Roca. Ref: A3410A700A",
+    "costPricePerSqft": 475,
+    "sellingPricePerSqft": 950,
+    "inStockSqft": 10,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a3420a700a",
+    "sku": "A3420A700A",
+    "name": "Carmen Vitreous china two-piece Rimless toilet with dual outlet (White)",
+    "collection": "CARMEN",
+    "category": "Toilets & Urinals",
+    "collectionId": "carmen",
+    "sizes": [
+      "14 9/16\" x 26 3/8\" x 30 5/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "14 9/16\" x 26 3/8\" x 30 5/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B6C23C9C0-C1E0-43CB-ADFE-D016B95B96B0%7D&trName=TF_Web_Big",
+    "description": "Carmen Vitreous china two-piece Rimless toilet with dual outlet premium bathroom fixture by Roca. Ref: A3420A700A",
+    "costPricePerSqft": 477.5,
+    "sellingPricePerSqft": 955,
+    "inStockSqft": 12,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a3480r7000",
+    "sku": "A3480R7000",
+    "name": "Georgia Vitreous china two-piece toilet S-Trap 12, elongated, concealed trap-way (White)",
+    "collection": "GEORGIA",
+    "category": "Toilets & Urinals",
+    "collectionId": "georgia",
+    "sizes": [
+      "29 1/8\" x 14 15/16\" x 16 15/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "29 1/8\" x 14 15/16\" x 16 15/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=953f37bfaf0dc4734d16dadf3459a3e3&trName=TF_Web_Big",
+    "description": "Georgia Vitreous china two-piece toilet S-Trap 12, elongated, concealed trap-way premium bathroom fixture by Roca. Ref: A3480R7000",
+    "costPricePerSqft": 492.5,
+    "sellingPricePerSqft": 985,
+    "inStockSqft": 6,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a3410r0000",
+    "sku": "A3410R0000",
+    "name": "Georgia Single flush 1.28 GPF toilet tank, left lever (White)",
+    "collection": "GEORGIA",
+    "category": "Toilets & Urinals",
+    "collectionId": "georgia",
+    "sizes": [
+      "17 5/16\" x 7 11/16\" x 13 1/2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "17 5/16\" x 7 11/16\" x 13 1/2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=faee2428d857eaf2402266fa8c4e6742&trName=TF_Web_Big",
+    "description": "Georgia Single flush 1.28 GPF toilet tank, left lever premium bathroom fixture by Roca. Ref: A3410R0000",
+    "costPricePerSqft": 457.5,
+    "sellingPricePerSqft": 915,
+    "inStockSqft": 11,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a3410r0001",
+    "sku": "A3410R0001",
+    "name": "Georgia Single flush 1.28 GPF toilet tank, right lever (White)",
+    "collection": "GEORGIA",
+    "category": "Toilets & Urinals",
+    "collectionId": "georgia",
+    "sizes": [
+      "17 5/16\" x 7 11/16\" x 13 1/2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "17 5/16\" x 7 11/16\" x 13 1/2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=c3c76bb0f3d1c36e750d9216a473ee18&trName=TF_Web_Big",
+    "description": "Georgia Single flush 1.28 GPF toilet tank, right lever premium bathroom fixture by Roca. Ref: A3410R0001",
+    "costPricePerSqft": 460,
+    "sellingPricePerSqft": 920,
+    "inStockSqft": 5,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a34948d00a",
+    "sku": "A34948D00A",
+    "name": "Debba One-piece toilet S-trap 12, single flush 1.28 GPF (White)",
+    "collection": "DEBBA",
+    "category": "Toilets & Urinals",
+    "collectionId": "debba",
+    "sizes": [
+      "14\" x 29 1/8\" x 29 15/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "14\" x 29 1/8\" x 29 15/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BAAC2CC80-8FBC-4C79-ABCB-48C4B3F2BA8B%7D&trName=TF_Web_Big",
+    "description": "Debba One-piece toilet S-trap 12, single flush 1.28 GPF premium bathroom fixture by Roca. Ref: A34948D00A",
+    "costPricePerSqft": 422.5,
+    "sellingPricePerSqft": 845,
+    "inStockSqft": 7,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a34848r000",
+    "sku": "A34848R000",
+    "name": "Milano Vitreous china two-piece toilet S-Trap 12, round, exposed trap-way (White)",
+    "collection": "MILANO",
+    "category": "Toilets & Urinals",
+    "collectionId": "milano",
+    "sizes": [
+      "14\" x 26 15/16\" x 17 11/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "14\" x 26 15/16\" x 17 11/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=fae915a39abf084a7eec1fc946935ee1&trName=TF_Web_Big",
+    "description": "Milano Vitreous china two-piece toilet S-Trap 12, round, exposed trap-way premium bathroom fixture by Roca. Ref: A34848R000",
+    "costPricePerSqft": 412.5,
+    "sellingPricePerSqft": 825,
+    "inStockSqft": 13,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a34848b000",
+    "sku": "A34848B000",
+    "name": "Milano Vitreous china two-piece toilet S-Trap 12, elongated, exposed trap-way (White)",
+    "collection": "MILANO",
+    "category": "Toilets & Urinals",
+    "collectionId": "milano",
+    "sizes": [
+      "14\" x 28 15/16\" x 17 11/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "14\" x 28 15/16\" x 17 11/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=ce5fc2852f1e33c77db8d0de991e9e26&trName=TF_Web_Big",
+    "description": "Milano Vitreous china two-piece toilet S-Trap 12, elongated, exposed trap-way premium bathroom fixture by Roca. Ref: A34848B000",
+    "costPricePerSqft": 465,
+    "sellingPricePerSqft": 930,
+    "inStockSqft": 9,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a34848h000",
+    "sku": "A34848H000",
+    "name": "Milano Vitreous china two-piece toilet S-Trap 12, elongated, concealed (White)",
+    "collection": "MILANO",
+    "category": "Toilets & Urinals",
+    "collectionId": "milano",
+    "sizes": [
+      "14\" x 29 15/16\" x 17 11/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "14\" x 29 15/16\" x 17 11/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=28536e039d83bdd1330131289169c6a0&trName=TF_Web_Big",
+    "description": "Milano Vitreous china two-piece toilet S-Trap 12, elongated, concealed premium bathroom fixture by Roca. Ref: A34848H000",
+    "costPricePerSqft": 480,
+    "sellingPricePerSqft": 960,
+    "inStockSqft": 6,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a341487000",
+    "sku": "A341487000",
+    "name": "Milano Single flush 1.28 GPF toilet tank (White)",
+    "collection": "MILANO",
+    "category": "Toilets & Urinals",
+    "collectionId": "milano",
+    "sizes": [
+      "14\" x 6 7/8\" x 13 3/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "14\" x 6 7/8\" x 13 3/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=e1591a56eab4c7e082e28479d4a60a15&trName=TF_Web_Big",
+    "description": "Milano Single flush 1.28 GPF toilet tank premium bathroom fixture by Roca. Ref: A341487000",
+    "costPricePerSqft": 420,
+    "sellingPricePerSqft": 840,
+    "inStockSqft": 4,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a357527000",
+    "sku": "A357527000",
+    "name": "Inspira ROUND - Back to wall vitreous china bidet (White)",
+    "collection": "INSPIRA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "inspira",
+    "sizes": [
+      "14 9/16\" x 22 1/16\" x 15 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "14 9/16\" x 22 1/16\" x 15 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BE4CC71F6-C665-44CE-8FF8-93125F8C105D%7D&trName=TF_Web_Big",
+    "description": "Inspira ROUND - Back to wall vitreous china bidet premium bathroom fixture by Roca. Ref: A357527000",
+    "costPricePerSqft": 290,
+    "sellingPricePerSqft": 580,
+    "inStockSqft": 4,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a357537000",
+    "sku": "A357537000",
+    "name": "Inspira SQUARE - Back to wall vitreous china bidet (White)",
+    "collection": "INSPIRA",
+    "category": "Washbasins & Bidets",
+    "collectionId": "inspira",
+    "sizes": [
+      "14 9/16\" x 22 1/16\" x 15 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "14 9/16\" x 22 1/16\" x 15 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BB6AB6DCC-4B7A-47BE-A9A8-4D98393100B0%7D&trName=TF_Web_Big",
+    "description": "Inspira SQUARE - Back to wall vitreous china bidet premium bathroom fixture by Roca. Ref: A357537000",
+    "costPricePerSqft": 292.5,
+    "sellingPricePerSqft": 585,
+    "inStockSqft": 4,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817026001",
+    "sku": "A817026001",
+    "name": "Tempo Over countertop soap dispenser (White)",
+    "collection": "TEMPO",
+    "category": "Accessories",
+    "collectionId": "tempo",
+    "sizes": [
+      "3 7/16\" x 3 11/16\" x 6 1/2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "3 7/16\" x 3 11/16\" x 6 1/2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BFA971946-3E6F-4AF6-A557-9C0FA9A6133E%7D&trName=TF_Web_Big",
+    "description": "Tempo Over countertop soap dispenser premium bathroom fixture by Roca. Ref: A817026001",
+    "costPricePerSqft": 240,
+    "sellingPricePerSqft": 480,
+    "inStockSqft": 9,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817020001",
+    "sku": "A817020001",
+    "name": "Tempo Robe hook (White)",
+    "collection": "TEMPO",
+    "category": "Accessories",
+    "collectionId": "tempo",
+    "sizes": [
+      "1 7/16\" x 1\" x 1 9/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "1 7/16\" x 1\" x 1 9/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BE58000DA-3091-4C6A-BA2F-E8B6598F264E%7D&trName=TF_Web_Big",
+    "description": "Tempo Robe hook premium bathroom fixture by Roca. Ref: A817020001",
+    "costPricePerSqft": 317.5,
+    "sellingPricePerSqft": 635,
+    "inStockSqft": 14,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817023001",
+    "sku": "A817023001",
+    "name": "Tempo Wall-mounted soap dish (White)",
+    "collection": "TEMPO",
+    "category": "Accessories",
+    "collectionId": "tempo",
+    "sizes": [
+      "4 3/4\" x 4 5/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "4 3/4\" x 4 5/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BC0E5F5F7-3DEC-4CC5-A1A3-1A709B1170F2%7D&trName=TF_Web_Big",
+    "description": "Tempo Wall-mounted soap dish premium bathroom fixture by Roca. Ref: A817023001",
+    "costPricePerSqft": 232.5,
+    "sellingPricePerSqft": 465,
+    "inStockSqft": 12,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817027001",
+    "sku": "A817027001",
+    "name": "Tempo Shelf (White)",
+    "collection": "TEMPO",
+    "category": "Accessories",
+    "collectionId": "tempo",
+    "sizes": [
+      "23 5/8\" x 4 5/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "23 5/8\" x 4 5/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B3788A342-CEA0-4C11-8ED9-414C162D9EE1%7D&trName=TF_Web_Big",
+    "description": "Tempo Shelf premium bathroom fixture by Roca. Ref: A817027001",
+    "costPricePerSqft": 242.5,
+    "sellingPricePerSqft": 485,
+    "inStockSqft": 8,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817024001",
+    "sku": "A817024001",
+    "name": "Tempo Over countertop soap dish (White)",
+    "collection": "TEMPO",
+    "category": "Accessories",
+    "collectionId": "tempo",
+    "sizes": [
+      "4 5/16\" x 4 5/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "4 5/16\" x 4 5/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B9682FF88-568A-4D60-92C2-59F30BE08EF2%7D&trName=TF_Web_Big",
+    "description": "Tempo Over countertop soap dish premium bathroom fixture by Roca. Ref: A817024001",
+    "costPricePerSqft": 235,
+    "sellingPricePerSqft": 470,
+    "inStockSqft": 13,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817037001",
+    "sku": "A817037001",
+    "name": "Tempo Wall-mounted soap dispenser (White)",
+    "collection": "TEMPO",
+    "category": "Accessories",
+    "collectionId": "tempo",
+    "sizes": [
+      "4 3/4\" x 4 5/16\" x 4 7/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "4 3/4\" x 4 5/16\" x 4 7/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BBFCDEF89-163B-4DF6-A966-AAD27F4AACFB%7D&trName=TF_Web_Big",
+    "description": "Tempo Wall-mounted soap dispenser premium bathroom fixture by Roca. Ref: A817037001",
+    "costPricePerSqft": 245,
+    "sellingPricePerSqft": 490,
+    "inStockSqft": 14,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817022001",
+    "sku": "A817022001",
+    "name": "Tempo Over countertop glass tumbler (White)",
+    "collection": "TEMPO",
+    "category": "Accessories",
+    "collectionId": "tempo",
+    "sizes": [
+      "3 7/16\" x 3 7/16\" x 4 7/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "3 7/16\" x 3 7/16\" x 4 7/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B32F0146A-4D19-4B17-9BC4-80ADE9AC2B33%7D&trName=TF_Web_Big",
+    "description": "Tempo Over countertop glass tumbler premium bathroom fixture by Roca. Ref: A817022001",
+    "costPricePerSqft": 230,
+    "sellingPricePerSqft": 460,
+    "inStockSqft": 10,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817040001",
+    "sku": "A817040001",
+    "name": "Tempo Shelf (White)",
+    "collection": "TEMPO",
+    "category": "Accessories",
+    "collectionId": "tempo",
+    "sizes": [
+      "11 13/16\" x 4 5/16\" x 1\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "11 13/16\" x 4 5/16\" x 1\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B5232485B-DAAB-4AB1-B0FB-79DFD186924D%7D&trName=TF_Web_Big",
+    "description": "Tempo Shelf premium bathroom fixture by Roca. Ref: A817040001",
+    "costPricePerSqft": 230,
+    "sellingPricePerSqft": 460,
+    "inStockSqft": 9,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817030001",
+    "sku": "A817030001",
+    "name": "Tempo Towel bar (White)",
+    "collection": "TEMPO",
+    "category": "Accessories",
+    "collectionId": "tempo",
+    "sizes": [
+      "23 5/8\" x 2 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "23 5/8\" x 2 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B92D2467B-8810-4AFF-8CE9-B67832E76885%7D&trName=TF_Web_Big",
+    "description": "Tempo Towel bar premium bathroom fixture by Roca. Ref: A817030001",
+    "costPricePerSqft": 320,
+    "sellingPricePerSqft": 640,
+    "inStockSqft": 3,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817039001",
+    "sku": "A817039001",
+    "name": "Tempo Towel bar (White)",
+    "collection": "TEMPO",
+    "category": "Accessories",
+    "collectionId": "tempo",
+    "sizes": [
+      "11 13/16\" x 2 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "11 13/16\" x 2 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BF94E5407-4381-4024-AFB6-7F0FCDC43CAE%7D&trName=TF_Web_Big",
+    "description": "Tempo Towel bar premium bathroom fixture by Roca. Ref: A817039001",
+    "costPricePerSqft": 250,
+    "sellingPricePerSqft": 500,
+    "inStockSqft": 10,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817033001",
+    "sku": "A817033001",
+    "name": "Tempo Toilet roll holder with cover (White)",
+    "collection": "TEMPO",
+    "category": "Accessories",
+    "collectionId": "tempo",
+    "sizes": [
+      "5 7/8\" x 15/16\" x 4 9/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "5 7/8\" x 15/16\" x 4 9/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BFE9BB0F9-E2EA-4CE2-B186-8D3C743854B3%7D&trName=TF_Web_Big",
+    "description": "Tempo Toilet roll holder with cover premium bathroom fixture by Roca. Ref: A817033001",
+    "costPricePerSqft": 235,
+    "sellingPricePerSqft": 470,
+    "inStockSqft": 5,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817403002",
+    "sku": "A817403002",
+    "name": "Public Wall-mounted soap dispenser (White)",
+    "collection": "PUBLIC",
+    "category": "Accessories",
+    "collectionId": "public",
+    "sizes": [
+      "3 15/16\" x 4 3/8\" x 14 9/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "3 15/16\" x 4 3/8\" x 14 9/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B0501D196-6E91-4344-B8AC-FFD6376EEE45%7D&trName=TF_Web_Big",
+    "description": "Public Wall-mounted soap dispenser premium bathroom fixture by Roca. Ref: A817403002",
+    "costPricePerSqft": 240,
+    "sellingPricePerSqft": 480,
+    "inStockSqft": 11,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817409002",
+    "sku": "A817409002",
+    "name": "Public Wall-mounted paper dispenser (White)",
+    "collection": "PUBLIC",
+    "category": "Accessories",
+    "collectionId": "public",
+    "sizes": [
+      "5 1/8\" x 4 1/2\" x 15 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "5 1/8\" x 4 1/2\" x 15 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B1A89616E-1344-4FC1-8034-A07D6F077940%7D&trName=TF_Web_Big",
+    "description": "Public Wall-mounted paper dispenser premium bathroom fixture by Roca. Ref: A817409002",
+    "costPricePerSqft": 255,
+    "sellingPricePerSqft": 510,
+    "inStockSqft": 6,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817412002",
+    "sku": "A817412002",
+    "name": "Public Waste bin 21 gallons (White)",
+    "collection": "PUBLIC",
+    "category": "Accessories",
+    "collectionId": "public",
+    "sizes": [
+      "14 3/16\" x 12 3/16\" x 32 1/2\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "14 3/16\" x 12 3/16\" x 32 1/2\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B95FAA57F-E5F3-48BF-8E67-095099C88F89%7D&trName=TF_Web_Big",
+    "description": "Public Waste bin 21 gallons premium bathroom fixture by Roca. Ref: A817412002",
+    "costPricePerSqft": 240,
+    "sellingPricePerSqft": 480,
+    "inStockSqft": 14,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817404002",
+    "sku": "A817404002",
+    "name": "Public Wall-mounted soap dispenser (White)",
+    "collection": "PUBLIC",
+    "category": "Accessories",
+    "collectionId": "public",
+    "sizes": [
+      "4 1/8\" x 4 7/16\" x 7 1/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "4 1/8\" x 4 7/16\" x 7 1/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B723ACD22-89C4-4ACE-A0E6-46050625443C%7D&trName=TF_Web_Big",
+    "description": "Public Wall-mounted soap dispenser premium bathroom fixture by Roca. Ref: A817404002",
+    "costPricePerSqft": 242.5,
+    "sellingPricePerSqft": 485,
+    "inStockSqft": 12,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817405002",
+    "sku": "A817405002",
+    "name": "Public Wall-mounted soap dispenser (White)",
+    "collection": "PUBLIC",
+    "category": "Accessories",
+    "collectionId": "public",
+    "sizes": [
+      "4 13/16\" x 4 3/4\" x 8 1/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "4 13/16\" x 4 3/4\" x 8 1/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B8C80B3DC-A9C4-487B-B78E-79A13E0A19D8%7D&trName=TF_Web_Big",
+    "description": "Public Wall-mounted soap dispenser premium bathroom fixture by Roca. Ref: A817405002",
+    "costPricePerSqft": 245,
+    "sellingPricePerSqft": 490,
+    "inStockSqft": 6,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817402002",
+    "sku": "A817402002",
+    "name": "Public Wall-mounted soap dispenser (White)",
+    "collection": "PUBLIC",
+    "category": "Accessories",
+    "collectionId": "public",
+    "sizes": [
+      "3 15/16\" x 4 3/8\" x 12 5/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "3 15/16\" x 4 3/8\" x 12 5/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B501685BC-5F83-4B75-9736-30E115AB1169%7D&trName=TF_Web_Big",
+    "description": "Public Wall-mounted soap dispenser premium bathroom fixture by Roca. Ref: A817402002",
+    "costPricePerSqft": 237.5,
+    "sellingPricePerSqft": 475,
+    "inStockSqft": 9,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817410002",
+    "sku": "A817410002",
+    "name": "Public Wall-mounted towel dispenser (White)",
+    "collection": "PUBLIC",
+    "category": "Accessories",
+    "collectionId": "public",
+    "sizes": [
+      "11\" x 4\" x 9 5/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "11\" x 4\" x 9 5/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B6797BFC3-E28F-4AFC-BC72-11E8EFDB34CB%7D&trName=TF_Web_Big",
+    "description": "Public Wall-mounted towel dispenser premium bathroom fixture by Roca. Ref: A817410002",
+    "costPricePerSqft": 235,
+    "sellingPricePerSqft": 470,
+    "inStockSqft": 12,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817406002",
+    "sku": "A817406002",
+    "name": "Public Wall-mounted industrial paper dispenser (White)",
+    "collection": "PUBLIC",
+    "category": "Accessories",
+    "collectionId": "public",
+    "sizes": [
+      "10 1/4\" x 5 1/8\" x 10 7/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "10 1/4\" x 5 1/8\" x 10 7/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B96FE1136-0D4D-47DC-AC49-53F9E5B92C3C%7D&trName=TF_Web_Big",
+    "description": "Public Wall-mounted industrial paper dispenser premium bathroom fixture by Roca. Ref: A817406002",
+    "costPricePerSqft": 247.5,
+    "sellingPricePerSqft": 495,
+    "inStockSqft": 11,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817408002",
+    "sku": "A817408002",
+    "name": "Public Wall-mounted paper dispenser (White)",
+    "collection": "PUBLIC",
+    "category": "Accessories",
+    "collectionId": "public",
+    "sizes": [
+      "5 1/8\" x 4 1/2\" x 10 5/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "5 1/8\" x 4 1/2\" x 10 5/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BF8498B71-AFD2-4C34-A473-9F264046AF82%7D&trName=TF_Web_Big",
+    "description": "Public Wall-mounted paper dispenser premium bathroom fixture by Roca. Ref: A817408002",
+    "costPricePerSqft": 252.5,
+    "sellingPricePerSqft": 505,
+    "inStockSqft": 8,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817407002",
+    "sku": "A817407002",
+    "name": "Public Wall-mounted industrial paper dispenser (White)",
+    "collection": "PUBLIC",
+    "category": "Accessories",
+    "collectionId": "public",
+    "sizes": [
+      "12 3/16\" x 5 1/8\" x 12 3/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "12 3/16\" x 5 1/8\" x 12 3/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B6555B1BE-7FC8-4880-9EB1-D3D970305850%7D&trName=TF_Web_Big",
+    "description": "Public Wall-mounted industrial paper dispenser premium bathroom fixture by Roca. Ref: A817407002",
+    "costPricePerSqft": 250,
+    "sellingPricePerSqft": 500,
+    "inStockSqft": 6,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817411002",
+    "sku": "A817411002",
+    "name": "Public Wall-mounted towel dispenser (White)",
+    "collection": "PUBLIC",
+    "category": "Accessories",
+    "collectionId": "public",
+    "sizes": [
+      "11\" x 4\" x 13 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "11\" x 4\" x 13 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B90A09AD3-7AC3-4873-8108-CBE1C1A086A1%7D&trName=TF_Web_Big",
+    "description": "Public Wall-mounted towel dispenser premium bathroom fixture by Roca. Ref: A817411002",
+    "costPricePerSqft": 237.5,
+    "sellingPricePerSqft": 475,
+    "inStockSqft": 3,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817413002",
+    "sku": "A817413002",
+    "name": "Public Waste bin 0.8 gallons (White)",
+    "collection": "PUBLIC",
+    "category": "Accessories",
+    "collectionId": "public",
+    "sizes": [
+      "6 11/16\" x 6 11/16\" x 9 5/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "6 11/16\" x 6 11/16\" x 9 5/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B776AC97E-FD3A-411E-AA3D-4C203803DC42%7D&trName=TF_Web_Big",
+    "description": "Public Waste bin 0.8 gallons premium bathroom fixture by Roca. Ref: A817413002",
+    "costPricePerSqft": 242.5,
+    "sellingPricePerSqft": 485,
+    "inStockSqft": 8,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817415002",
+    "sku": "A817415002",
+    "name": "Public Waste bin 1.6 gallons (White)",
+    "collection": "PUBLIC",
+    "category": "Accessories",
+    "collectionId": "public",
+    "sizes": [
+      "8 1/4\" x 8 1/4\" x 10 3/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "8 1/4\" x 8 1/4\" x 10 3/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BFFA0ED26-3390-4911-874C-6DDB45086295%7D&trName=TF_Web_Big",
+    "description": "Public Waste bin 1.6 gallons premium bathroom fixture by Roca. Ref: A817415002",
+    "costPricePerSqft": 247.5,
+    "sellingPricePerSqft": 495,
+    "inStockSqft": 3,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817414002",
+    "sku": "A817414002",
+    "name": "Public Waste bin 1.3 gallons (White)",
+    "collection": "PUBLIC",
+    "category": "Accessories",
+    "collectionId": "public",
+    "sizes": [
+      "8 1/16\" x 8 1/16\" x 11 1/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "8 1/16\" x 8 1/16\" x 11 1/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B776AC97E-FD3A-411E-AA3D-4C203803DC42%7D&trName=TF_Web_Big",
+    "description": "Public Waste bin 1.3 gallons premium bathroom fixture by Roca. Ref: A817414002",
+    "costPricePerSqft": 245,
+    "sellingPricePerSqft": 490,
+    "inStockSqft": 7,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817001001",
+    "sku": "A817001001",
+    "name": "Carmen Robe hook (White)",
+    "collection": "CARMEN",
+    "category": "Accessories",
+    "collectionId": "carmen",
+    "sizes": [
+      "2 3/8\" x 2 9/16\" x 2 3/4\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "2 3/8\" x 2 9/16\" x 2 3/4\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BFC3BEB3F-3080-4021-B3B3-6184C62E86A4%7D&trName=TF_Web_Big",
+    "description": "Carmen Robe hook premium bathroom fixture by Roca. Ref: A817001001",
+    "costPricePerSqft": 315,
+    "sellingPricePerSqft": 630,
+    "inStockSqft": 14,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817005001",
+    "sku": "A817005001",
+    "name": "Carmen Wall-mounted soap dish (White)",
+    "collection": "CARMEN",
+    "category": "Accessories",
+    "collectionId": "carmen",
+    "sizes": [
+      "5 1/4\" x 4 7/8\" x 2 3/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "5 1/4\" x 4 7/8\" x 2 3/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BC10171B7-FB0F-43B7-9DBF-B638FFFEABD1%7D&trName=TF_Web_Big",
+    "description": "Carmen Wall-mounted soap dish premium bathroom fixture by Roca. Ref: A817005001",
+    "costPricePerSqft": 232.5,
+    "sellingPricePerSqft": 465,
+    "inStockSqft": 14,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817003001",
+    "sku": "A817003001",
+    "name": "Carmen Towel bar (White)",
+    "collection": "CARMEN",
+    "category": "Accessories",
+    "collectionId": "carmen",
+    "sizes": [
+      "21 5/8\" x 2 5/8\" x 2 3/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "21 5/8\" x 2 5/8\" x 2 3/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B62AE10FC-6C6A-4BB9-949A-F57E090F30CB%7D&trName=TF_Web_Big",
+    "description": "Carmen Towel bar premium bathroom fixture by Roca. Ref: A817003001",
+    "costPricePerSqft": 320,
+    "sellingPricePerSqft": 640,
+    "inStockSqft": 3,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817004001",
+    "sku": "A817004001",
+    "name": "Carmen Toilet roll holder (White)",
+    "collection": "CARMEN",
+    "category": "Accessories",
+    "collectionId": "carmen",
+    "sizes": [
+      "7 1/2\" x 2 5/16\" x 5 9/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "7 1/2\" x 2 5/16\" x 5 9/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B03D169C2-20A1-4669-BF83-5484334DAB46%7D&trName=TF_Web_Big",
+    "description": "Carmen Toilet roll holder premium bathroom fixture by Roca. Ref: A817004001",
+    "costPricePerSqft": 230,
+    "sellingPricePerSqft": 460,
+    "inStockSqft": 12,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817006001",
+    "sku": "A817006001",
+    "name": "Carmen Wall-mounted soap dispenser (White)",
+    "collection": "CARMEN",
+    "category": "Accessories",
+    "collectionId": "carmen",
+    "sizes": [
+      "3 1/16\" x 4 11/16\" x 6 11/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "3 1/16\" x 4 11/16\" x 6 11/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BC068AEC6-2CF9-4DF9-9EBB-EDE0F9721C0F%7D&trName=TF_Web_Big",
+    "description": "Carmen Wall-mounted soap dispenser premium bathroom fixture by Roca. Ref: A817006001",
+    "costPricePerSqft": 235,
+    "sellingPricePerSqft": 470,
+    "inStockSqft": 4,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817002001",
+    "sku": "A817002001",
+    "name": "Carmen Towel ring (White)",
+    "collection": "CARMEN",
+    "category": "Accessories",
+    "collectionId": "carmen",
+    "sizes": [
+      "7 5/16\" x 2 5/8\" x 8 1/16\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "7 5/16\" x 2 5/8\" x 8 1/16\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7BB111901D-EE66-49C8-935B-607AB796EA89%7D&trName=TF_Web_Big",
+    "description": "Carmen Towel ring premium bathroom fixture by Roca. Ref: A817002001",
+    "costPricePerSqft": 317.5,
+    "sellingPricePerSqft": 635,
+    "inStockSqft": 7,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
+  },
+  {
+    "id": "roca_san_a817007001",
+    "sku": "A817007001",
+    "name": "Carmen Wall-mounted tumbler (White)",
+    "collection": "CARMEN",
+    "category": "Accessories",
+    "collectionId": "carmen",
+    "sizes": [
+      "3 3/16\" x 4 1/2\" x 4 1/8\""
+    ],
+    "colors": [
+      "White"
+    ],
+    "size": "3 3/16\" x 4 1/2\" x 4 1/8\"",
+    "image": "https://www.us.roca.com/RocaResourceServlet/resources/getTransformation?idObject=%7B0E88CC54-C883-45BF-ADAE-76D186E3F502%7D&trName=TF_Web_Big",
+    "description": "Carmen Wall-mounted tumbler premium bathroom fixture by Roca. Ref: A817007001",
+    "costPricePerSqft": 237.5,
+    "sellingPricePerSqft": 475,
+    "inStockSqft": 3,
+    "sqftPerBox": 1,
+    "boxesPerPallet": 1
   }
 ]
