@@ -10,10 +10,11 @@ interface PrintItem {
     unitPrice: number;
     totalPrice: number;
     room?: string;
-    unit?: 'sqft' | 'PC';
+    unit?: string;
     discount?: string;
     discountType?: string;
     imageUrl?: string;
+    sku?: string;
 }
 
 interface QuotePrintProps {
@@ -61,6 +62,31 @@ export default function QuotePrintTemplate({
     }: QuotePrintProps) {
     const [stripeUrl, setStripeUrl] = React.useState<string>("");
 
+    // Auto-correct unit for fixture/PC products saved with legacy "SQFT" unit in DB.
+    // Applies the same SKU-prefix heuristic used in the project quote editor.
+    const fixedItems = React.useMemo(() => {
+        return items.map(item => {
+            // Already PC – nothing to do
+            if (item.unit && item.unit.toUpperCase() === 'PC') return item;
+            // Use the explicit sku field if available, otherwise parse from imageUrl
+            const skuToken = (
+                item.sku ||
+                (item.imageUrl || '').replace('/api/product-image/', '').split('?')[0]
+            ).toUpperCase();
+            const isFixture = (
+                skuToken.startsWith('H') ||    // Laufen SKUs
+                skuToken.startsWith('COF') ||  // Bathonomy shower/drain
+                skuToken.startsWith('JUM') ||  // Bathonomy faucet/sink
+                skuToken.startsWith('BAT') ||  // Bathonomy vanity
+                skuToken.startsWith('A3') ||   // Roca sinks/toilets
+                skuToken.startsWith('A2') ||   // Roca top washbasins
+                skuToken.startsWith('A8')      // Roca seats/accessories
+            );
+            if (isFixture) return { ...item, unit: 'PC' };
+            return item;
+        });
+    }, [items]);
+
     const isPaid = status === "Paid" || status === "Delivered";
     const isInvoice = documentType === "INVOICE" || isPaid || status === "Invoice Sent";
     const isQuote = !isInvoice && (status === "Quote");
@@ -96,7 +122,7 @@ export default function QuotePrintTemplate({
     const fmt = (d: Date) =>
         d.toLocaleDateString("en-US", { year: "numeric", month: "2-digit", day: "2-digit" });
 
-    const uniqueRooms = Array.from(new Set(items.map(i => i.room || 'General')));
+    const uniqueRooms = Array.from(new Set(fixedItems.map(i => i.room || 'General')));
     const hasMultipleRooms = uniqueRooms.length > 1;
 
     return (
@@ -324,7 +350,7 @@ export default function QuotePrintTemplate({
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {items.filter(i => (i.room || 'General') === roomName).map((item, idx) => (
+                                        {fixedItems.filter(i => (i.room || 'General') === roomName).map((item, idx) => (
                                             <tr key={idx} style={{ borderBottom: '1px solid #f1f5f9' }}>
                                                 <td style={{ padding: '6px 4px', verticalAlign: 'middle' }}>
                                                     <div style={{ width: '36px', height: '36px', borderRadius: '4px', border: '1px solid #e2e8f0', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#f8fafc' }}>
@@ -495,7 +521,7 @@ export default function QuotePrintTemplate({
                                                 <th style={{ width: 24 }}>#</th>
                                                 <th>Description</th>
                                                 {(() => {
-                                                    const roomItems = items.filter(i => (i.room || 'General') === roomName);
+                                                    const roomItems = fixedItems.filter(i => (i.room || 'General') === roomName);
                                                     const hasPieces = roomItems.some(i => i.unit && i.unit.toLowerCase() === 'pc');
                                                     const hasSqft = roomItems.some(i => !i.unit || i.unit.toLowerCase() === 'sqft');
                                                     let qtyHeader = 'QTY';
@@ -514,7 +540,7 @@ export default function QuotePrintTemplate({
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {items.filter(i => (i.room || 'General') === roomName).map((item, idx) => (
+                                            {fixedItems.filter(i => (i.room || 'General') === roomName).map((item, idx) => (
                                                 <tr key={idx}>
                                                     <td style={{ color: "#888" }}>{idx + 1}</td>
                                                     <td>

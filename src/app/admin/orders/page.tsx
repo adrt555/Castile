@@ -982,6 +982,7 @@ function OrdersContent() {
                                 totalPrice: item.totalPrice,
                                 room: item.room || 'General',
                                 unit: item.unit || 'sqft',
+                                sku: safeSku,
                                 imageUrl: item.imageUrl || (safeSku ? `/api/product-image/${safeSku}` : undefined)
                             };
                         })}
