@@ -346,7 +346,7 @@ export default function QuotePrintTemplate({
                                                 </td>
                                                 <td style={{ padding: '6px', fontSize: '13px', fontWeight: 700, color: '#1e293b', textAlign: 'right', verticalAlign: 'middle' }}>
                                                     {item.quantitySqft.toLocaleString()}
-                                                    <span style={{ fontSize: '9px', fontWeight: 600, color: '#64748b', marginLeft: '3px' }}>{item.unit || 'sqft'}</span>
+                                                    <span style={{ fontSize: '9px', fontWeight: 600, color: '#64748b', marginLeft: '3px' }}>{item.unit && item.unit.toLowerCase() === 'pc' ? 'pieces' : (item.unit || 'sqft')}</span>
                                                 </td>
                                                 {!isPresentation && <td style={{ padding: '6px', fontSize: '12px', color: '#475569', textAlign: 'right', verticalAlign: 'middle' }}>${item.unitPrice.toFixed(2)}</td>}
                                                 {!isPresentation && (
@@ -494,7 +494,20 @@ export default function QuotePrintTemplate({
                                             <tr>
                                                 <th style={{ width: 24 }}>#</th>
                                                 <th>Description</th>
-                                                <th className="right" style={{ width: 100 }}>QTY (SQFT)</th>
+                                                {(() => {
+                                                    const roomItems = items.filter(i => (i.room || 'General') === roomName);
+                                                    const hasPieces = roomItems.some(i => i.unit && i.unit.toLowerCase() === 'pc');
+                                                    const hasSqft = roomItems.some(i => !i.unit || i.unit.toLowerCase() === 'sqft');
+                                                    let qtyHeader = 'QTY';
+                                                    if (hasPieces && hasSqft) {
+                                                        qtyHeader = 'QTY (SQFT / pieces)';
+                                                    } else if (hasSqft) {
+                                                        qtyHeader = 'QTY (SQFT)';
+                                                    } else if (hasPieces) {
+                                                        qtyHeader = 'QTY (pieces)';
+                                                    }
+                                                    return <th className="right" style={{ width: 100 }}>{qtyHeader}</th>;
+                                                })()}
                                                 {!isPresentation && <th className="right" style={{ width: 90 }}>Unit Price</th>}
                                                 {!isPresentation && discount > 0 && <th className="right" style={{ width: 70 }}>Discount</th>}
                                                 {!isPresentation && <th className="right" style={{ width: 90 }}>Amount</th>}
@@ -512,7 +525,7 @@ export default function QuotePrintTemplate({
                                                     </td>
                                                     <td className="right">
                                                         {item.quantitySqft.toLocaleString()}
-                                                        <span style={{ fontSize: '9px', marginLeft: '3px', fontWeight: 700, color: '#666' }}>{item.unit || 'sqft'}</span>
+                                                        <span style={{ fontSize: '9px', marginLeft: '3px', fontWeight: 700, color: '#666' }}>{item.unit && item.unit.toLowerCase() === 'pc' ? 'pieces' : (item.unit || 'sqft')}</span>
                                                     </td>
                                                     {!isPresentation && <td className="right">${item.unitPrice.toFixed(2)}</td>}
                                                     {!isPresentation && discount > 0 && (
