@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { createProject } from "@/app/actions/projectActions";
+import { getClients } from "@/app/actions/clientActions";
 import SpecbooksQuoteTemplate from "@/app/components/SpecbooksQuoteTemplate";
 
 export default function NewProjectPage() {
@@ -11,8 +12,7 @@ export default function NewProjectPage() {
 
     useEffect(() => {
         // Fetch clients
-        fetch('/api/clients')
-            .then(res => res.json())
+        getClients()
             .then(data => setClients(data))
             .catch(console.error);
     }, []);

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { getProjectById, updateProject } from "@/app/actions/projectActions";
+import { getClients } from "@/app/actions/clientActions";
 import SpecbooksQuoteTemplate from "@/app/components/SpecbooksQuoteTemplate";
 
 export default function EditProjectPage() {
@@ -19,7 +20,7 @@ export default function EditProjectPage() {
             try {
                 const [projectData, clientsData] = await Promise.all([
                     getProjectById(id),
-                    fetch('/api/clients').then(r => r.json())
+                    getClients()
                 ]);
                 setProject(projectData);
                 setClients(clientsData);
