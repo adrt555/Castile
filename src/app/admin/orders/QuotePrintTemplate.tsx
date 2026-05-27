@@ -346,7 +346,7 @@ export default function QuotePrintTemplate({
                                                 </td>
                                                 <td style={{ padding: '6px', fontSize: '13px', fontWeight: 700, color: '#1e293b', textAlign: 'right', verticalAlign: 'middle' }}>
                                                     {item.quantitySqft.toLocaleString()}
-                                                    <span style={{ fontSize: '9px', fontWeight: 600, color: '#64748b', marginLeft: '3px' }}>{item.unit && item.unit.toLowerCase() === 'pc' ? 'pieces' : (item.unit || 'sqft')}</span>
+                                                    <span style={{ fontSize: '9px', fontWeight: 600, color: '#64748b', marginLeft: '3px' }}>{item.unit && item.unit.toLowerCase() === 'pc' ? 'PC' : (item.unit || 'sqft')}</span>
                                                 </td>
                                                 {!isPresentation && <td style={{ padding: '6px', fontSize: '12px', color: '#475569', textAlign: 'right', verticalAlign: 'middle' }}>${item.unitPrice.toFixed(2)}</td>}
                                                 {!isPresentation && (
@@ -500,11 +500,11 @@ export default function QuotePrintTemplate({
                                                     const hasSqft = roomItems.some(i => !i.unit || i.unit.toLowerCase() === 'sqft');
                                                     let qtyHeader = 'QTY';
                                                     if (hasPieces && hasSqft) {
-                                                        qtyHeader = 'QTY (SQFT / pieces)';
+                                                        qtyHeader = 'QTY (SQFT / PC)';
                                                     } else if (hasSqft) {
                                                         qtyHeader = 'QTY (SQFT)';
                                                     } else if (hasPieces) {
-                                                        qtyHeader = 'QTY (pieces)';
+                                                        qtyHeader = 'QTY (PC)';
                                                     }
                                                     return <th className="right" style={{ width: 100 }}>{qtyHeader}</th>;
                                                 })()}
@@ -525,7 +525,7 @@ export default function QuotePrintTemplate({
                                                     </td>
                                                     <td className="right">
                                                         {item.quantitySqft.toLocaleString()}
-                                                        <span style={{ fontSize: '9px', marginLeft: '3px', fontWeight: 700, color: '#666' }}>{item.unit && item.unit.toLowerCase() === 'pc' ? 'pieces' : (item.unit || 'sqft')}</span>
+                                                        <span style={{ fontSize: '9px', marginLeft: '3px', fontWeight: 700, color: '#666' }}>{item.unit && item.unit.toLowerCase() === 'pc' ? 'PC' : (item.unit || 'sqft')}</span>
                                                     </td>
                                                     {!isPresentation && <td className="right">${item.unitPrice.toFixed(2)}</td>}
                                                     {!isPresentation && discount > 0 && (

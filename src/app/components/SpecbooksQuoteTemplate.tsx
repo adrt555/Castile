@@ -539,7 +539,7 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
                         className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-1.5 text-xs font-bold text-slate-700 outline-none focus:border-slate-400 focus:bg-white transition-colors cursor-pointer print:appearance-none print:bg-transparent print:border-none print:px-0"
                       >
                         <option value="SQFT">SQFT</option>
-                        <option value="PC">pieces</option>
+                        <option value="PC">PC</option>
                       </select>
                     </div>
 
