@@ -194,6 +194,11 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
             
             /* Hide print controls */
             .print-hide, .print\\:hidden { display: none !important; }
+            
+            /* Select elements don't carry React state in outerHTML — hide them in print */
+            /* and show the adjacent .specbooks-unit-text span instead */
+            select { display: none !important; }
+            .specbooks-unit-text { display: inline !important; }
           </style>
         </head>
         <body>
@@ -567,10 +572,12 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
                     {/* Unit */}
                     <div>
                       <div className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1 lg:hidden print:hidden">Unit</div>
+                      {/* Print-only span — select outerHTML doesn't carry React's selected value */}
+                      <span className="specbooks-unit-text text-xs font-bold text-slate-700" style={{ display: 'none' }}>{item.unit}</span>
                       <select
                         value={item.unit}
                         onChange={(e) => handleItemChange(area.id, item.id, "unit", e.target.value)}
-                        className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-1.5 text-xs font-bold text-slate-700 outline-none focus:border-slate-400 focus:bg-white transition-colors cursor-pointer print:appearance-none print:bg-transparent print:border-none print:px-0"
+                        className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-1.5 text-xs font-bold text-slate-700 outline-none focus:border-slate-400 focus:bg-white transition-colors cursor-pointer"
                       >
                         <option value="SQFT">SQFT</option>
                         <option value="PC">PC</option>
