@@ -39,17 +39,51 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
   const [isSaving, setIsSaving] = useState(false);
   const [productSearch, setProductSearch] = useState<{ areaId: string, itemId: string, query: string, results: typeof allProducts } | null>(null);
 
-  const [areas, setAreas] = useState<Area[]>(initialData?.areas || [
-    {
-      id: "area-1",
-      name: "Master Bathroom",
-      phase: "Phase 1: Wet Areas",
-      items: [
-        { id: "item-1", code: "RPMARCR2448PO", description: "Marmoris Cream 24x48 Polished", quantity: 310, unit: "SQFT", unitPrice: 2.98 },
-        { id: "item-2", code: "DUNE-188464", description: "Theia Satin 35x35", quantity: 150, unit: "SQFT", unitPrice: 7.73 },
-      ],
-    },
-  ]);
+  const [areas, setAreas] = useState<Area[]>(() => {
+    if (!initialData?.areas) {
+      return [
+        {
+          id: "area-1",
+          name: "Master Bathroom",
+          phase: "Phase 1: Wet Areas",
+          items: [
+            { id: "item-1", code: "RPMARCR2448PO", description: "Marmoris Cream 24x48 Polished", quantity: 310, unit: "SQFT", unitPrice: 2.98 },
+            { id: "item-2", code: "DUNE-188464", description: "Theia Satin 35x35", quantity: 150, unit: "SQFT", unitPrice: 7.73 },
+          ],
+        },
+      ];
+    }
+
+    return initialData.areas.map((area: any) => ({
+      ...area,
+      items: (area.items || []).map((item: any) => {
+        // If code matches a Laufen, Roca sanitaryware, or Bathonomy product (which are PC products), auto-correct unit
+        const matchingProduct = allProducts.find(p => p.sku === item.code);
+        let resolvedUnit = item.unit || "SQFT";
+        if (matchingProduct) {
+          resolvedUnit = matchingProduct.unit;
+        } else {
+          // Fallback: check SKU pattern prefixes
+          const codeUpper = (item.code || '').toUpperCase();
+          if (
+            codeUpper.startsWith('H') || // Laufen SKUs start with H
+            codeUpper.startsWith('COF') || // Bathonomy shower/drain set SKUs
+            codeUpper.startsWith('JUM') || // Bathonomy faucet/sink SKUs
+            codeUpper.startsWith('BAT') || // Bathonomy vanity SKUs
+            codeUpper.startsWith('A3') || // Roca sanitaryware sinks/toilets
+            codeUpper.startsWith('A2') || // Roca sanitaryware top washbasins
+            codeUpper.startsWith('A8')    // Roca sanitaryware seats/accessories
+          ) {
+            resolvedUnit = "PC";
+          }
+        }
+        return {
+          ...item,
+          unit: resolvedUnit
+        };
+      })
+    }));
+  });
 
   const [metadata, setMetadata] = useState({
     clientId: initialData?.clientId || "",
