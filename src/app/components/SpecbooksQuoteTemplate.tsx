@@ -472,14 +472,11 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
                     {/* Description */}
                     <div>
                       <div className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1 lg:hidden print:hidden">Description</div>
-                      <span className="hidden print:inline text-sm font-semibold text-slate-800 whitespace-pre-wrap">
-                        {item.description}
-                      </span>
                       <textarea
                         value={item.description}
                         onChange={(e) => handleItemChange(area.id, item.id, "description", e.target.value)}
                         rows={2}
-                        className="w-full bg-transparent text-sm print:hidden font-semibold text-slate-800 outline-none placeholder:text-slate-300 resize-none overflow-hidden"
+                        className="w-full bg-transparent text-sm print:text-sm font-semibold text-slate-800 outline-none placeholder:text-slate-300 resize-none overflow-hidden"
                         placeholder="Item Description"
                       />
                     </div>
@@ -487,11 +484,8 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
                     {/* Code */}
                     <div className="relative">
                       <div className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1 lg:hidden print:hidden">Item Code</div>
-                      <span className="hidden print:inline text-xs font-mono text-slate-500 uppercase">
-                        {item.code}
-                      </span>
-                      <div className="relative flex items-center group/search print:hidden">
-                        <Search className="w-3.5 h-3.5 text-slate-400 absolute left-0" />
+                      <div className="relative flex items-center group/search">
+                        <Search className="w-3.5 h-3.5 text-slate-400 absolute left-0 print:hidden" />
                         <input
                           value={item.code}
                           onChange={(e) => handleItemSearch(area.id, item.id, e.target.value)}
@@ -499,7 +493,7 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
                             if (e.target.value.length >= 2) handleItemSearch(area.id, item.id, e.target.value);
                           }}
                           onBlur={() => setTimeout(() => setProductSearch(null), 200)}
-                          className="w-full bg-transparent text-xs font-mono text-slate-500 outline-none placeholder:text-slate-300 uppercase pl-5"
+                          className="w-full bg-transparent text-xs print:text-xs font-mono text-slate-500 outline-none placeholder:text-slate-300 uppercase pl-5 print:pl-0"
                           placeholder="SEARCH..."
                         />
                       </div>
@@ -527,14 +521,11 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
                     {/* Qty */}
                     <div>
                       <div className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1 lg:hidden print:hidden">Qty</div>
-                      <span className="hidden print:block text-sm font-semibold text-slate-800 text-right">
-                        {item.quantity}
-                      </span>
                       <input
                         type="number"
                         value={item.quantity || ""}
                         onChange={(e) => handleItemChange(area.id, item.id, "quantity", parseFloat(e.target.value) || 0)}
-                        className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-1.5 text-sm font-semibold text-slate-800 text-right outline-none focus:border-slate-400 focus:bg-white transition-colors print:hidden"
+                        className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-1.5 text-sm print:text-sm font-semibold text-slate-800 text-right outline-none focus:border-slate-400 focus:bg-white transition-colors print:px-0"
                         placeholder="0"
                       />
                     </div>
@@ -542,13 +533,10 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
                     {/* Unit */}
                     <div>
                       <div className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1 lg:hidden print:hidden">Unit</div>
-                      <span className="hidden print:inline text-xs font-bold text-slate-700 uppercase">
-                        {item.unit === "PC" ? "pieces" : item.unit}
-                      </span>
                       <select
                         value={item.unit}
                         onChange={(e) => handleItemChange(area.id, item.id, "unit", e.target.value)}
-                        className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-1.5 text-xs font-bold text-slate-700 outline-none focus:border-slate-400 focus:bg-white transition-colors cursor-pointer print:hidden"
+                        className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-1.5 text-xs font-bold text-slate-700 outline-none focus:border-slate-400 focus:bg-white transition-colors cursor-pointer print:appearance-none print:bg-transparent print:border-none print:px-0"
                       >
                         <option value="SQFT">SQFT</option>
                         <option value="PC">pieces</option>
@@ -558,16 +546,13 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
                     {/* Price */}
                     <div>
                       <div className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1 lg:hidden print:hidden">Unit Price</div>
-                      <span className="hidden print:block text-sm font-semibold text-slate-800 text-right">
-                        ${item.unitPrice ? item.unitPrice.toFixed(2) : "0.00"}
-                      </span>
-                      <div className="relative print:hidden">
-                        <span className="absolute left-2 top-1/2 -translate-y-1/2 text-slate-400 text-sm">$</span>
+                      <div className="relative">
+                        <span className="absolute left-2 top-1/2 -translate-y-1/2 text-slate-400 text-sm print:text-sm print:left-0">$</span>
                         <input
                           type="number"
                           value={item.unitPrice || ""}
                           onChange={(e) => handleItemChange(area.id, item.id, "unitPrice", parseFloat(e.target.value) || 0)}
-                          className="w-full bg-slate-50 border border-slate-200 rounded pl-6 pr-2 py-1.5 text-sm font-semibold text-slate-800 text-right outline-none focus:border-slate-400 focus:bg-white transition-colors"
+                          className="w-full bg-slate-50 border border-slate-200 rounded pl-6 print:pl-3 pr-2 py-1.5 text-sm print:text-sm font-semibold text-slate-800 text-right outline-none focus:border-slate-400 focus:bg-white transition-colors print:px-0"
                           placeholder="0.00"
                         />
                       </div>
