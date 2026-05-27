@@ -2,9 +2,10 @@
 
 import { crmProducts } from "@/lib/crmProducts";
 import laufenProducts from "@/lib/laufenProducts.json";
+import bathonomyProducts from "@/lib/bathonomyProducts.json";
 
 export async function getProducts() {
-    // Combine ROCA tiles (default 'sqft') and Laufen products (default 'PC')
+    // Combine ROCA tiles (default 'sqft'), Laufen (default 'PC'), and Bathonomy (default 'PC')
     const roca = crmProducts.map(p => ({
         ...p,
         unit: 'sqft' as const
@@ -13,7 +14,11 @@ export async function getProducts() {
         ...p,
         unit: 'PC' as const
     }));
-    return [...roca, ...laufen];
+    const bathonomy = (bathonomyProducts as any[]).map(p => ({
+        ...p,
+        unit: 'PC' as const
+    }));
+    return [...roca, ...laufen, ...bathonomy];
 }
 
 export async function checkRocaStock(sku: string) {

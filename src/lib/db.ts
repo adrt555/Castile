@@ -1,6 +1,7 @@
 import { Client, Order, CRMProduct, FinanceSummary, PurchaseOrder } from './types';
 import { crmProducts } from './crmProducts';
 import laufenProducts from './laufenProducts.json';
+import bathonomyProducts from './bathonomyProducts.json';
 
 // Mock DB Storage
 let _clients: Client[] = [
@@ -162,7 +163,7 @@ let _purchaseOrders: PurchaseOrder[] = [
     }
 ];
 
-// Real CRM product catalog from ROCA 2026 Cost Price Book & Laufen Catalogs
+// Real CRM product catalog from ROCA 2026 Cost Price Book, Laufen, and Bathonomy Catalogs
 let _products: CRMProduct[] = [
     ...crmProducts.map(p => ({
         ...p,
@@ -181,6 +182,15 @@ let _products: CRMProduct[] = [
         sizes: [p.size],
         description: p.description || p.name,
         inStockSqft: 0,
+        unit: 'PC' as const,
+    })),
+    ...(bathonomyProducts as any[]).map(p => ({
+        ...p,
+        collectionId: p.collection.toLowerCase().replace(/\s+/g, '-'),
+        colors: p.colors || [],
+        sizes: p.sizes || [p.size],
+        description: p.description || p.name,
+        inStockSqft: p.inStockSqft || 0,
         unit: 'PC' as const,
     }))
 ];
