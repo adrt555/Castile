@@ -18,7 +18,7 @@ interface BathonomyProduct {
     costPricePerSqft: number; // Cost per unit
     sellingPricePerSqft: number; // Retail per unit
     inStockSqft: number;
-    sqftPerBox: number;
+    sqftPerBox: number; // Used as qty per box
     boxesPerPallet: number;
 }
 
@@ -27,7 +27,6 @@ export default function BathonomyCatalog() {
     const [searchTerm, setSearchTerm] = useState("");
     const [collectionFilter, setCollectionFilter] = useState("ALL");
     const [categoryFilter, setCategoryFilter] = useState("ALL");
-    const [viewMode, setViewMode] = useState<"grid" | "table">("grid");
     const [stocks, setStocks] = useState<Record<string, { value: string | number | null; type: "stock" | "special" | null; loading: boolean }>>({});
 
     useEffect(() => {
@@ -60,7 +59,7 @@ export default function BathonomyCatalog() {
         }));
 
         // Simulate high-quality API response transition delay
-        await new Promise(resolve => setTimeout(resolve, 300));
+        await new Promise(resolve => setTimeout(resolve, 350));
 
         const availability = getAvailabilityType(sku, category, name);
         
@@ -87,7 +86,7 @@ export default function BathonomyCatalog() {
         // Waterfall check simulation
         for (const p of toCheck) {
             handleCheckStock(p.sku, p.category, p.name);
-            await new Promise(r => setTimeout(r, 80));
+            await new Promise(r => setTimeout(r, 60));
         }
     };
 
@@ -117,45 +116,21 @@ export default function BathonomyCatalog() {
     return (
         <div className="max-w-7xl mx-auto space-y-6">
             {/* Header section */}
-            <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-end px-1 sm:px-0">
+            <div className="flex flex-col gap-2 sm:flex-row sm:justify-between sm:items-end px-1 sm:px-0">
                 <div>
                     <div className="flex items-center gap-2">
                         <span className="text-xl sm:text-2xl">🛁</span>
                         <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900">Bathonomy Catalog</h1>
                     </div>
                     <p className="text-zinc-500 mt-1 text-xs sm:text-sm">
-                        Premium designer sanitaryware, modern brassware, and bespoke bathroom fixtures from Bathonomy
+                        {products.length.toLocaleString()} premium bathroom fixtures and brassware from the Bathonomy Catalog
                     </p>
-                </div>
-                
-                {/* View Mode Toggle */}
-                <div className="flex items-center bg-zinc-100 p-1 rounded-xl border border-zinc-200 self-start sm:self-auto">
-                    <button
-                        onClick={() => setViewMode("grid")}
-                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                            viewMode === "grid"
-                                ? "bg-white text-zinc-900 shadow-sm"
-                                : "text-zinc-500 hover:text-zinc-950"
-                        }`}
-                    >
-                        🗂️ Grid View
-                    </button>
-                    <button
-                        onClick={() => setViewMode("table")}
-                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                            viewMode === "table"
-                                ? "bg-white text-zinc-900 shadow-sm"
-                                : "text-zinc-500 hover:text-zinc-950"
-                        }`}
-                    >
-                        📋 Table List
-                    </button>
                 </div>
             </div>
 
             {/* Filter controls */}
             <div className="bg-white border border-zinc-200 rounded-xl shadow-sm mx-1 sm:mx-0">
-                <div className="p-4 border-b border-zinc-100 flex flex-col lg:flex-row items-stretch lg:items-center gap-4">
+                <div className="p-4 border-b border-zinc-100 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                     <div className="relative flex-1 min-w-[240px] max-w-sm">
                         <input
                             type="text"
@@ -206,261 +181,123 @@ export default function BathonomyCatalog() {
                         </button>
                         <span className="text-sm font-medium text-zinc-500 whitespace-nowrap">
                             {filtered.length.toLocaleString()} results
-                            {searchTerm && <span className="text-amber-600 ml-1">(all terms)</span>}
+                            {searchTerm && <span className="text-amber-600 ml-1">(all collections/categories)</span>}
                         </span>
                     </div>
                 </div>
 
-                {/* Main Views Container */}
-                {viewMode === "grid" ? (
-                    /* ==================== CARD GRID VIEW ==================== */
-                    <div className="p-6 bg-zinc-50/50">
-                        {filtered.length === 0 ? (
-                            <div className="py-12 text-center text-zinc-500">
-                                <p className="text-lg font-medium">No Bathonomy products match your criteria.</p>
-                                <p className="text-sm text-zinc-400 mt-1">Try resetting your filters or modifying your search term.</p>
-                            </div>
-                        ) : (
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {filtered.map(product => {
-                                    const cost = product.costPricePerSqft || 0;
-                                    const retail = product.sellingPricePerSqft || 0;
-                                    const margin = cost > 0 ? ((retail - cost) / cost) * 100 : 0;
-                                    const stockState = stocks[product.sku];
+                {/* Table view matching Laufen structure exactly */}
+                <div className="overflow-x-auto max-h-[70vh] overflow-y-auto">
+                    <table className="w-full text-left text-sm text-zinc-600">
+                        <thead className="bg-zinc-50 border-b border-zinc-200 text-zinc-500 uppercase tracking-wider text-xs sticky top-0 z-10">
+                            <tr>
+                                <th className="px-5 py-3 font-semibold">SKU</th>
+                                <th className="px-5 py-3 font-semibold">Description</th>
+                                <th className="px-5 py-3 font-semibold whitespace-nowrap">Miami Stock</th>
+                                <th className="px-5 py-3 font-semibold">Collection</th>
+                                <th className="px-5 py-3 font-semibold">Size</th>
+                                <th className="px-5 py-3 font-semibold whitespace-nowrap">Qty / Box</th>
+                                <th className="px-5 py-3 font-semibold whitespace-nowrap">Cost / Unit</th>
+                                <th className="px-5 py-3 font-semibold whitespace-nowrap">Retail / Unit</th>
+                                <th className="px-5 py-3 font-semibold whitespace-nowrap">Margin</th>
+                            </tr>
+                        </thead>
+                        <tbody className="divide-y divide-zinc-100">
+                            {filtered.map(product => {
+                                const cost = product.costPricePerSqft || 0;
+                                const retail = product.sellingPricePerSqft || 0;
+                                const margin = cost > 0 ? ((retail - cost) / cost) * 100 : 0;
+                                const stockState = stocks[product.sku];
 
-                                    return (
-                                        <div 
-                                            key={product.id}
-                                            className="group bg-white rounded-xl border border-zinc-200 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col hover:-translate-y-0.5"
-                                        >
-                                            {/* Product Image Section */}
-                                            <div className="relative aspect-square w-full bg-zinc-100 overflow-hidden border-b border-zinc-100 flex items-center justify-center">
-                                                <img 
-                                                    src={product.image} 
-                                                    alt={product.name}
-                                                    className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
-                                                    onError={(e) => {
-                                                        // Fallback if image fails to render
-                                                        (e.target as HTMLImageElement).src = "https://picsum.photos/seed/bath_placeholder/800/800";
-                                                    }}
-                                                />
-                                                <div className="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
-                                                    <span className="text-[9px] font-bold text-amber-700 bg-amber-50 border border-amber-100 px-2 py-0.5 rounded-md uppercase tracking-wider shadow-sm">
+                                return (
+                                    <tr key={product.id} className="hover:bg-zinc-50/60 transition-colors">
+                                        <td className="px-5 py-3">
+                                            <span className="font-mono text-xs bg-zinc-100 text-zinc-700 px-2 py-1 rounded font-bold tracking-wide whitespace-nowrap">
+                                                {product.sku || "—"}
+                                            </span>
+                                        </td>
+                                        <td className="px-5 py-3 text-zinc-900 font-medium max-w-xs truncate" title={product.name}>
+                                            <div className="font-bold text-zinc-800">{product.name || "—"}</div>
+                                            {product.description && (
+                                                <div className="text-[11px] text-zinc-400 font-normal truncate mt-0.5" title={product.description}>
+                                                    {product.description}
+                                                </div>
+                                            )}
+                                        </td>
+                                        <td className="px-5 py-3 whitespace-nowrap">
+                                            {stockState?.loading ? (
+                                                <span className="text-xs text-zinc-400 animate-pulse flex items-center gap-1.5 font-medium">
+                                                    <svg className="animate-spin h-3 w-3 text-zinc-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                                    </svg>
+                                                    Checking…
+                                                </span>
+                                            ) : stockState?.value !== undefined && stockState?.value !== null ? (
+                                                <button 
+                                                    onClick={() => handleCheckStock(product.sku, product.category, product.name)}
+                                                    className={`text-xs font-bold px-3 py-1.5 rounded-lg border shadow-sm inline-block min-w-[120px] text-center transition-all hover:brightness-95 active:scale-95 ${
+                                                        stockState.type === "stock"
+                                                            ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                                                            : 'bg-amber-50 text-amber-700 border-amber-200'
+                                                    }`}
+                                                    title="Click to refresh stock status"
+                                                >
+                                                    {stockState.type === "stock" 
+                                                        ? `MIA: ${Number(stockState.value).toFixed(2)} PCS`
+                                                        : String(stockState.value)
+                                                    }
+                                                </button>
+                                            ) : (
+                                                <button 
+                                                    onClick={() => handleCheckStock(product.sku, product.category, product.name)}
+                                                    className="text-[10px] font-bold text-blue-700 hover:text-blue-900 bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-200 uppercase tracking-tighter shadow-sm transition-all hover:bg-blue-100 active:scale-95"
+                                                >
+                                                    🔍 CHECK STOCK
+                                                </button>
+                                            )}
+                                        </td>
+                                        <td className="px-5 py-3 whitespace-nowrap">
+                                            <div className="flex flex-col gap-1 items-start">
+                                                {product.collection ? (
+                                                    <span className="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-100 uppercase tracking-wider">
                                                         {product.collection}
                                                     </span>
-                                                    <span className="text-[9px] font-bold text-zinc-600 bg-white/95 border border-zinc-200 px-2 py-0.5 rounded-md uppercase tracking-tight shadow-sm">
+                                                ) : (
+                                                    <span className="text-xs text-zinc-400">—</span>
+                                                )}
+                                                {product.category && (
+                                                    <span className="text-[9px] font-medium text-zinc-500 bg-zinc-50 px-1.5 py-0.5 rounded border border-zinc-200 uppercase tracking-tight">
                                                         {product.category}
                                                     </span>
-                                                </div>
+                                                )}
                                             </div>
-
-                                            {/* Product Details Section */}
-                                            <div className="p-5 flex-1 flex flex-col justify-between">
-                                                <div>
-                                                    <div className="flex items-start justify-between gap-3 mb-2">
-                                                        <h3 className="font-bold text-zinc-900 text-sm group-hover:text-amber-600 transition-colors leading-tight" title={product.name}>
-                                                            {product.name}
-                                                        </h3>
-                                                    </div>
-                                                    
-                                                    <div className="mb-3">
-                                                        <span className="font-mono text-[10px] bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded font-bold tracking-wide">
-                                                            SKU: {product.sku}
-                                                        </span>
-                                                    </div>
-
-                                                    <p className="text-zinc-500 text-xs line-clamp-2 leading-relaxed mb-4" title={product.description}>
-                                                        {product.description}
-                                                    </p>
-                                                </div>
-
-                                                <div className="space-y-4 pt-3 border-t border-zinc-100">
-                                                    {/* Attributes Row */}
-                                                    <div className="flex items-center justify-between text-xs">
-                                                        <div className="text-zinc-400">
-                                                            Size: <span className="font-semibold text-zinc-700">{product.size}</span>
-                                                        </div>
-                                                        <div className="text-zinc-400">
-                                                            Pack: <span className="font-semibold text-zinc-700">{product.sqftPerBox} pc</span>
-                                                        </div>
-                                                    </div>
-
-                                                    {/* Stock State */}
-                                                    <div>
-                                                        {stockState?.loading ? (
-                                                            <div className="w-full text-center text-xs py-2 bg-zinc-50 border border-zinc-200 rounded-lg text-zinc-400 animate-pulse font-medium flex items-center justify-center gap-1.5">
-                                                                <svg className="animate-spin h-3 w-3 text-zinc-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                                                </svg>
-                                                                Checking Stock levels…
-                                                            </div>
-                                                        ) : stockState?.value !== undefined && stockState?.value !== null ? (
-                                                            <button 
-                                                                onClick={() => handleCheckStock(product.sku, product.category, product.name)}
-                                                                className={`w-full text-center py-2 text-xs font-bold rounded-lg border shadow-sm transition-all hover:brightness-95 active:scale-[0.98] ${
-                                                                    stockState.type === "stock"
-                                                                        ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
-                                                                        : 'bg-amber-50 text-amber-700 border-amber-200'
-                                                                }`}
-                                                            >
-                                                                {stockState.type === "stock" 
-                                                                    ? `In Stock: ${Number(stockState.value).toFixed(0)} PCS (Miami)`
-                                                                    : stockState.value
-                                                                }
-                                                            </button>
-                                                        ) : (
-                                                            <button 
-                                                                onClick={() => handleCheckStock(product.sku, product.category, product.name)}
-                                                                className="w-full text-center py-2 text-xs font-bold text-blue-700 hover:text-blue-900 bg-blue-50 border border-blue-200 hover:bg-blue-100 rounded-lg shadow-sm transition-all active:scale-[0.98] uppercase tracking-wider"
-                                                            >
-                                                                🔍 Check Warehouse Stock
-                                                            </button>
-                                                        )}
-                                                    </div>
-
-                                                    {/* Pricing Grid */}
-                                                    <div className="grid grid-cols-3 gap-2 bg-zinc-50 p-2.5 rounded-lg border border-zinc-150 text-center">
-                                                        <div>
-                                                            <div className="text-[10px] text-zinc-400 font-bold uppercase tracking-tight">Dealer Cost</div>
-                                                            <div className="text-sm font-semibold text-red-600 mt-0.5">
-                                                                ${cost.toLocaleString(undefined, { minimumFractionDigits: 2 })}
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <div className="text-[10px] text-zinc-400 font-bold uppercase tracking-tight">Castile Retail</div>
-                                                            <div className="text-sm font-bold text-zinc-950 mt-0.5">
-                                                                ${retail.toLocaleString(undefined, { minimumFractionDigits: 2 })}
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <div className="text-[10px] text-zinc-400 font-bold uppercase tracking-tight">Est. Margin</div>
-                                                            <div className="text-sm font-bold text-emerald-600 mt-0.5">
-                                                                {margin.toFixed(0)}%
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                        )}
-                    </div>
-                ) : (
-                    /* ==================== TABLE LIST VIEW ==================== */
-                    <div className="overflow-x-auto max-h-[70vh] overflow-y-auto">
-                        <table className="w-full text-left text-sm text-zinc-600">
-                            <thead className="bg-zinc-50 border-b border-zinc-200 text-zinc-500 uppercase tracking-wider text-xs sticky top-0 z-10">
-                                <tr>
-                                    <th className="px-5 py-3 font-semibold">SKU</th>
-                                    <th className="px-5 py-3 font-semibold">Description</th>
-                                    <th className="px-5 py-3 font-semibold whitespace-nowrap">Miami Stock</th>
-                                    <th className="px-5 py-3 font-semibold">Collection</th>
-                                    <th className="px-5 py-3 font-semibold">Size</th>
-                                    <th className="px-5 py-3 font-semibold whitespace-nowrap">Qty / Box</th>
-                                    <th className="px-5 py-3 font-semibold whitespace-nowrap">Cost / Unit</th>
-                                    <th className="px-5 py-3 font-semibold whitespace-nowrap">Retail / Unit</th>
-                                    <th className="px-5 py-3 font-semibold whitespace-nowrap">Margin</th>
-                                </tr>
-                            </thead>
-                            <tbody className="divide-y divide-zinc-100">
-                                {filtered.map(product => {
-                                    const cost = product.costPricePerSqft || 0;
-                                    const retail = product.sellingPricePerSqft || 0;
-                                    const margin = cost > 0 ? ((retail - cost) / cost) * 100 : 0;
-                                    const stockState = stocks[product.sku];
-
-                                    return (
-                                        <tr key={product.id} className="hover:bg-zinc-50/60 transition-colors">
-                                            <td className="px-5 py-3">
-                                                <span className="font-mono text-xs bg-zinc-100 text-zinc-700 px-2 py-1 rounded font-bold tracking-wide whitespace-nowrap">
-                                                    {product.sku || "—"}
+                                        </td>
+                                        <td className="px-5 py-3 text-xs text-zinc-500 font-medium whitespace-nowrap" title={product.size}>
+                                            {product.size || "—"}
+                                        </td>
+                                        <td className="px-5 py-3 text-xs font-semibold text-zinc-700 whitespace-nowrap">
+                                            {product.sqftPerBox > 0 ? `${product.sqftPerBox} pc` : "—"}
+                                        </td>
+                                        <td className="px-5 py-3 text-red-600 font-medium whitespace-nowrap">
+                                            {cost > 0 ? `$${cost.toLocaleString(undefined, { minimumFractionDigits: 2 })}` : "—"}
+                                        </td>
+                                        <td className="px-5 py-3 text-zinc-900 font-bold whitespace-nowrap">
+                                            {retail > 0 ? `$${retail.toLocaleString(undefined, { minimumFractionDigits: 2 })}` : "—"}
+                                        </td>
+                                        <td className="px-5 py-3 font-bold whitespace-nowrap">
+                                            {cost > 0 && retail > 0 ? (
+                                                <span className={margin >= 24 ? "text-emerald-600" : "text-amber-600"}>
+                                                    {margin.toFixed(0)}%
                                                 </span>
-                                            </td>
-                                            <td className="px-5 py-3 text-zinc-900 font-medium max-w-xs truncate" title={product.name}>
-                                                <div className="font-bold text-zinc-800">{product.name || "—"}</div>
-                                                {product.description && (
-                                                    <div className="text-[11px] text-zinc-400 font-normal truncate mt-0.5" title={product.description}>
-                                                        {product.description}
-                                                    </div>
-                                                )}
-                                            </td>
-                                            <td className="px-5 py-3 whitespace-nowrap">
-                                                {stockState?.loading ? (
-                                                    <span className="text-xs text-zinc-400 animate-pulse flex items-center gap-1.5 font-medium">
-                                                        <svg className="animate-spin h-3 w-3 text-zinc-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                                        </svg>
-                                                        Checking…
-                                                    </span>
-                                                ) : stockState?.value !== undefined && stockState?.value !== null ? (
-                                                    <button 
-                                                        onClick={() => handleCheckStock(product.sku, product.category, product.name)}
-                                                        className={`text-xs font-bold px-3 py-1.5 rounded-lg border shadow-sm inline-block min-w-[120px] text-center transition-all hover:brightness-95 active:scale-95 ${
-                                                            stockState.type === "stock"
-                                                                ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
-                                                                : 'bg-amber-50 text-amber-700 border-amber-200'
-                                                        }`}
-                                                    >
-                                                        {stockState.type === "stock" 
-                                                            ? `MIA: ${Number(stockState.value).toFixed(2)} PCS`
-                                                            : String(stockState.value)
-                                                        }
-                                                    </button>
-                                                ) : (
-                                                    <button 
-                                                        onClick={() => handleCheckStock(product.sku, product.category, product.name)}
-                                                        className="text-[10px] font-bold text-blue-700 hover:text-blue-900 bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-200 uppercase tracking-tighter shadow-sm transition-all hover:bg-blue-100 active:scale-95"
-                                                    >
-                                                        🔍 CHECK STOCK
-                                                    </button>
-                                                )}
-                                            </td>
-                                            <td className="px-5 py-3 whitespace-nowrap">
-                                                <div className="flex flex-col gap-1 items-start">
-                                                    {product.collection ? (
-                                                        <span className="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-100 uppercase tracking-wider">
-                                                            {product.collection}
-                                                        </span>
-                                                    ) : (
-                                                        <span className="text-xs text-zinc-400">—</span>
-                                                    )}
-                                                    {product.category && (
-                                                        <span className="text-[9px] font-medium text-zinc-500 bg-zinc-50 px-1.5 py-0.5 rounded border border-zinc-200 uppercase tracking-tight">
-                                                            {product.category}
-                                                        </span>
-                                                    )}
-                                                </div>
-                                            </td>
-                                            <td className="px-5 py-3 text-xs text-zinc-500 font-medium whitespace-nowrap" title={product.size}>
-                                                {product.size || "—"}
-                                            </td>
-                                            <td className="px-5 py-3 text-xs font-semibold text-zinc-700 whitespace-nowrap">
-                                                {product.sqftPerBox > 0 ? `${product.sqftPerBox} pc` : "—"}
-                                            </td>
-                                            <td className="px-5 py-3 text-red-600 font-medium whitespace-nowrap">
-                                                {cost > 0 ? `$${cost.toLocaleString(undefined, { minimumFractionDigits: 2 })}` : "—"}
-                                            </td>
-                                            <td className="px-5 py-3 text-zinc-900 font-bold whitespace-nowrap">
-                                                {retail > 0 ? `$${retail.toLocaleString(undefined, { minimumFractionDigits: 2 })}` : "—"}
-                                            </td>
-                                            <td className="px-5 py-3 font-bold whitespace-nowrap">
-                                                {cost > 0 && retail > 0 ? (
-                                                    <span className={margin >= 24 ? "text-emerald-600" : "text-amber-600"}>
-                                                        {margin.toFixed(0)}%
-                                                    </span>
-                                                ) : "—"}
-                                            </td>
-                                        </tr>
-                                    );
-                                })}
-                            </tbody>
-                        </table>
-                    </div>
-                )}
+                                            ) : "—"}
+                                        </td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     );
