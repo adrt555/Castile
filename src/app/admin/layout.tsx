@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import Link from "next/link";
 import { ReactNode, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
@@ -20,15 +20,16 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     };
 
     const navLinks = [
-        { href: "/admin",               icon: "📊", label: "Dashboard" },
-        { href: "/admin/orders",         icon: "📋", label: "Sales Pipeline" },
-        { href: "/admin/projects",       icon: "📐", label: "Projects" },
-        { href: "/admin/clients",        icon: "👥", label: "Clients" },
-        { href: "/admin/products",       icon: "🗂️",  label: "Product Catalog" },
-        { href: "/admin/products-roca-laufen", icon: "📦", label: "Product Catalog Roca + Laufen" },
-        { href: "/admin/products-bathonomy", icon: "🛁", label: "Product Catalog Bathonomy" },
-        { href: "/admin/finance",        icon: "💰", label: "Accounting" },
-        { href: "/admin/purchase-orders",icon: "🏭", label: "Purchase Orders" },
+        { href: "/admin",               icon: "ðŸ“Š", label: "Dashboard" },
+        { href: "/admin/orders",         icon: "ðŸ“‹", label: "Sales Pipeline" },
+        { href: "/admin/projects",       icon: "ðŸ“", label: "Projects" },
+        { href: "/admin/kitchen-sales", icon: "🍳", label: "Kitchen Sales" },
+        { href: "/admin/clients",        icon: "ðŸ‘¥", label: "Clients" },
+        { href: "/admin/products",       icon: "ðŸ—‚ï¸",  label: "Product Catalog" },
+        { href: "/admin/products-roca-laufen", icon: "ðŸ“¦", label: "Product Catalog Roca + Laufen" },
+        { href: "/admin/products-bathonomy", icon: "ðŸ›", label: "Product Catalog Bathonomy" },
+        { href: "/admin/finance",        icon: "ðŸ’°", label: "Accounting" },
+        { href: "/admin/purchase-orders",icon: "ðŸ­", label: "Purchase Orders" },
     ];
 
     const SidebarContent = () => (
@@ -39,7 +40,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
                     <p className="text-xs text-zinc-500 mt-1 uppercase tracking-wider font-semibold">Admin Portal</p>
                 </div>
                 <button onClick={() => setIsSidebarOpen(false)} className="md:hidden text-zinc-400 p-1 hover:text-zinc-600 transition-colors">
-                    ✕
+                    âœ•
                 </button>
             </div>
 
@@ -97,7 +98,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
                             onClick={() => setIsSidebarOpen(true)}
                             className="md:hidden p-2 -ml-2 text-zinc-600 hover:bg-zinc-100 rounded-lg transition-colors"
                         >
-                            <span className="text-xl">☰</span>
+                            <span className="text-xl">â˜°</span>
                         </button>
                         <div className="text-sm text-zinc-500 font-medium hidden sm:block">Logged in as Administrator</div>
                         <div className="text-sm font-bold text-zinc-900 sm:hidden">Castile ERP</div>
@@ -138,3 +139,4 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
         </div>
     );
 }
+

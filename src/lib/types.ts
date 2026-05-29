@@ -102,3 +102,54 @@ export interface FinanceSummary {
     netProfit: number;
     pendingInvoicesTotal: number;
 }
+
+// Kitchen Sales Types
+export type KitchenQuoteStatus = 'Lead' | 'Measuring' | 'Design' | 'Quote Sent' | 'Approved' | 'In Production' | 'Installed' | 'Lost';
+
+export interface KitchenProduct {
+    id: string;
+    sku: string;
+    name: string;
+    brand: string;
+    category: 'Cabinet' | 'Countertop' | 'Hardware' | 'Appliance' | 'Accessory';
+    style: string;
+    finish: string;
+    unitPrice: number;
+    unit: 'each' | 'linear ft' | 'sq ft' | 'set';
+    description: string;
+    leadTimeDays: number;
+    inStock: boolean;
+}
+
+export interface KitchenQuoteItem {
+    id: string;
+    productId: string;
+    productName: string;
+    sku: string;
+    quantity: number;
+    unit: string;
+    unitPrice: number;
+    totalPrice: number;
+    notes?: string;
+}
+
+export interface KitchenQuote {
+    id: string;
+    clientName: string;
+    clientEmail: string;
+    clientPhone: string;
+    projectAddress: string;
+    status: KitchenQuoteStatus;
+    style: string;
+    items: KitchenQuoteItem[];
+    subtotal: number;
+    discount?: number;
+    tax: number;
+    installationFee: number;
+    total: number;
+    notes: string;
+    createdAt: string;
+    updatedAt: string;
+    estimatedInstallDate?: string;
+    salesRep: string;
+}
