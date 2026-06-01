@@ -918,7 +918,7 @@ export default function KitchenSalesPage() {
                         {/* Print Header */}
                         <div className="flex justify-between items-start pb-6 border-b-2 border-orange-600">
                             <div className="flex flex-col items-start">
-                                <img src="/castile_logo_new.png" alt="Castile Logo" className="w-80 h-auto object-contain" />
+                                <img src="/castile_logo_new.png" alt="Castile Logo" className="h-32 w-auto object-contain" />
                             </div>
                             <div className="text-right">
                                 <h1 className="text-3xl font-black text-zinc-900 uppercase tracking-tight">Estimate</h1>
