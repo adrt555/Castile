@@ -918,9 +918,7 @@ export default function KitchenSalesPage() {
                         {/* Print Header */}
                         <div className="flex justify-between items-start pb-6 border-b-2 border-orange-600">
                             <div className="flex flex-col items-start">
-                                <img src="/castile_logo_new.png" alt="Castile Logo" className="h-16 w-auto mb-3 object-contain" />
-                                <p className="text-xs text-zinc-500 uppercase tracking-widest font-black">Kitchen Design Studio</p>
-                                <p className="text-sm text-zinc-500 mt-1">123 Design Blvd, Suite 100<br/>City, ST 12345</p>
+                                <img src="/castile_logo_new.png" alt="Castile Logo" className="h-24 w-auto object-contain" />
                             </div>
                             <div className="text-right">
                                 <h1 className="text-3xl font-black text-zinc-900 uppercase tracking-tight">Estimate</h1>
