@@ -75,6 +75,14 @@ export default function KitchenSalesPage() {
     const [loading, setLoading] = useState(true);
     const [selectedQuote, setSelectedQuote] = useState<any | null>(null);
     const [showNewQuoteModal, setShowNewQuoteModal] = useState(false);
+    const [editingQuoteId, setEditingQuoteId] = useState<string | null>(null);
+
+    const handleCloseModal = () => {
+        setShowNewQuoteModal(false);
+        setEditingQuoteId(null);
+        setNewQuote(blankQuote());
+        setQuoteItems([]);
+    };
     const [pipelineSearch, setPipelineSearch] = useState("");
     const [catalogSearch, setCatalogSearch] = useState("");
     const [categoryFilter, setCategoryFilter] = useState<string>("All");
@@ -225,7 +233,7 @@ export default function KitchenSalesPage() {
         setNewQuote(q => ({ ...q, installationFee: val }));
     };
 
-    // Create quote on database
+    // Create or update quote on database
     const submitNewQuote = async () => {
         try {
             const dataToSave = {
@@ -244,13 +252,15 @@ export default function KitchenSalesPage() {
                 salesRep: newQuote.salesRep,
                 items: quoteItems
             };
-            await createKitchenQuote(dataToSave);
+            if (editingQuoteId) {
+                await updateKitchenQuote(editingQuoteId, dataToSave);
+            } else {
+                await createKitchenQuote(dataToSave);
+            }
             await loadQuotes();
-            setShowNewQuoteModal(false);
-            setNewQuote(blankQuote());
-            setQuoteItems([]);
+            handleCloseModal();
         } catch (e) {
-            console.error("Error creating quote:", e);
+            console.error("Error saving quote:", e);
         }
     };
 
@@ -319,7 +329,12 @@ export default function KitchenSalesPage() {
                 </div>
                 <div className="flex items-center gap-3">
                     <button 
-                        onClick={() => setShowNewQuoteModal(true)} 
+                        onClick={() => {
+                            setEditingQuoteId(null);
+                            setNewQuote(blankQuote());
+                            setQuoteItems([]);
+                            setShowNewQuoteModal(true);
+                        }} 
                         className="bg-orange-600 text-white px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-orange-700 transition-all shadow-md flex items-center gap-2"
                     >
                         <Plus className="h-4 w-4" /> New Kitchen Quote
@@ -624,8 +639,46 @@ export default function KitchenSalesPage() {
                             <button 
                                 onClick={() => handleDeleteQuote(selectedQuote.id)} 
                                 className="px-3.5 bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 rounded-xl flex items-center justify-center transition-colors"
+                                title="Delete Quote"
                             >
                                 <Trash className="h-4 w-4" />
+                            </button>
+                            <button 
+                                onClick={() => {
+                                    setEditingQuoteId(selectedQuote.id);
+                                    setNewQuote({
+                                        clientName: selectedQuote.clientName,
+                                        clientEmail: selectedQuote.clientEmail || "",
+                                        clientPhone: selectedQuote.clientPhone || "",
+                                        projectAddress: selectedQuote.projectAddress || "",
+                                        status: selectedQuote.status,
+                                        style: selectedQuote.style || "",
+                                        subtotal: selectedQuote.subtotal,
+                                        tax: selectedQuote.tax,
+                                        installationFee: selectedQuote.installationFee || 0,
+                                        total: selectedQuote.total,
+                                        notes: selectedQuote.notes || "",
+                                        salesRep: selectedQuote.salesRep || "Adrian",
+                                        discount: selectedQuote.discount || 0
+                                    });
+                                    setQuoteItems(selectedQuote.items.map((i: any) => ({
+                                        id: i.id,
+                                        productId: i.productId,
+                                        productName: i.productName,
+                                        sku: i.sku,
+                                        quantity: i.quantity,
+                                        unit: i.unit,
+                                        unitPrice: i.unitPrice,
+                                        totalPrice: i.totalPrice,
+                                        area: i.area,
+                                        notes: i.notes || ""
+                                    })));
+                                    setShowNewQuoteModal(true);
+                                    setSelectedQuote(null);
+                                }}
+                                className="px-5 bg-orange-600 hover:bg-orange-700 text-white rounded-xl text-xs font-bold transition-colors flex items-center gap-1.5 shadow-sm"
+                            >
+                                <Edit3 className="h-4 w-4" /> Edit Quote
                             </button>
                             <button 
                                 onClick={() => window.print()} 
@@ -647,14 +700,14 @@ export default function KitchenSalesPage() {
             {/* NEW QUOTE MODAL */}
             {showNewQuoteModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 print:hidden">
-                    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200" onClick={() => setShowNewQuoteModal(false)} />
+                    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200" onClick={() => handleCloseModal()} />
                     <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-5xl max-h-[90vh] flex flex-col animate-in scale-in duration-300">
                         <div className="flex items-center justify-between px-6 py-4 border-b border-zinc-200 bg-gradient-to-r from-orange-600 to-amber-500 rounded-t-2xl">
                             <div>
-                                <h2 className="text-lg font-bold text-white">Create Kitchen Quote</h2>
-                                <p className="text-orange-100 text-xs">Fill in client details and manage specifications</p>
+                                <h2 className="text-lg font-bold text-white">{editingQuoteId ? "Modify Kitchen Quote" : "Create Kitchen Quote"}</h2>
+                                <p className="text-orange-100 text-xs">{editingQuoteId ? "Modify client details and specifications" : "Fill in client details and manage specifications"}</p>
                             </div>
-                            <button onClick={() => setShowNewQuoteModal(false)} className="text-white/80 hover:text-white text-2xl leading-none font-bold w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/20 transition-colors">&#215;</button>
+                            <button onClick={() => handleCloseModal()} className="text-white/80 hover:text-white text-2xl leading-none font-bold w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/20 transition-colors">&#215;</button>
                         </div>
 
                         <div className="flex-1 overflow-y-auto p-6 space-y-6">
@@ -849,8 +902,10 @@ export default function KitchenSalesPage() {
                         </div>
 
                         <div className="p-5 border-t border-zinc-200 flex gap-3 rounded-b-2xl">
-                            <button onClick={() => setShowNewQuoteModal(false)} className="flex-1 px-4 py-3 bg-zinc-100 hover:bg-zinc-200 text-zinc-700 rounded-xl text-xs font-bold transition-colors">Cancel</button>
-                            <button id="btn-submit-kitchen-quote" onClick={submitNewQuote} disabled={!newQuote.clientName.trim()} className="flex-1 px-4 py-3 bg-orange-600 hover:bg-orange-700 disabled:opacity-40 text-white rounded-xl text-xs font-black shadow-md transition-all uppercase tracking-wider">Create Kitchen Quote</button>
+                            <button onClick={() => handleCloseModal()} className="flex-1 px-4 py-3 bg-zinc-100 hover:bg-zinc-200 text-zinc-700 rounded-xl text-xs font-bold transition-colors">Cancel</button>
+                            <button id="btn-submit-kitchen-quote" onClick={submitNewQuote} disabled={!newQuote.clientName.trim()} className="flex-1 px-4 py-3 bg-orange-600 hover:bg-orange-700 disabled:opacity-40 text-white rounded-xl text-xs font-black shadow-md transition-all uppercase tracking-wider">
+                                {editingQuoteId ? "Save Changes" : "Create Kitchen Quote"}
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -926,6 +981,14 @@ export default function KitchenSalesPage() {
                             })}
                         </div>
 
+                        {/* Notes block in print layout */}
+                        {selectedQuote.notes && (
+                            <div className="border border-zinc-250 bg-zinc-50/50 rounded-xl p-4 text-xs text-zinc-800 my-4">
+                                <h4 className="font-bold uppercase tracking-wider text-zinc-500 mb-1 text-[9px]">Special Estimate & Specifications Notes</h4>
+                                <p className="whitespace-pre-line leading-relaxed font-semibold">{selectedQuote.notes}</p>
+                            </div>
+                        )}
+
                         {/* Estimate Financial summary */}
                         <div className="border-t-2 border-zinc-200 pt-4 flex justify-between items-start gap-12">
                             <div className="flex-1 text-[10px] text-zinc-500 leading-relaxed pr-6">
@@ -949,9 +1012,14 @@ export default function KitchenSalesPage() {
             {/* Custom Print Styles Injection */}
             <style jsx global>{`
                 @media print {
+                    @page {
+                        size: auto;
+                        margin: 0mm; /* strips default browser header/footer titles and page urls */
+                    }
                     body {
                         background: white !important;
                         color: black !important;
+                        margin: 15mm 20mm 15mm 20mm !important; /* premium page spacing margins */
                     }
                     header, aside, main > header, main > div > .print\:hidden, .print\:hidden, #active-drawer {
                         display: none !important;
@@ -965,9 +1033,8 @@ export default function KitchenSalesPage() {
                     #print-template {
                         display: block !important;
                         visibility: visible !important;
-                        position: absolute !important;
-                        left: 0 !important;
-                        top: 0 !important;
+                        position: static !important; /* natural multi-page flows */
+                        width: 100% !important;
                     }
                 }
             `}</style>
