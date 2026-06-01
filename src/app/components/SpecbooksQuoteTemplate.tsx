@@ -95,6 +95,8 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
     revision: "Rev 1",
   });
 
+  const [status, setStatus] = useState(initialData?.status || "Draft");
+
   const handleMetadataChange = (field: keyof typeof metadata, value: string) => {
     setMetadata({ ...metadata, [field]: value });
   };
@@ -292,6 +294,7 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
       name: metadata.projectName,
       address: metadata.projectAddress,
       total: grandTotal,
+      status: status,
       areas: areas.map(a => ({
         ...a,
       })),
@@ -675,15 +678,41 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
       </div>
 
       {/* Floating Actions */}
-      <div className="fixed bottom-8 right-8 flex gap-4 print:hidden z-50">
+      <div className="fixed bottom-8 right-8 flex gap-4 items-center print:hidden z-50 text-white font-sans">
         {onSave && (
           <>
+            <div className="relative">
+              <select
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
+                className={`px-6 py-4 rounded-full shadow-xl border text-sm font-bold outline-none cursor-pointer appearance-none transition-all duration-200 text-center pr-10 pl-6 border-slate-200 text-white
+                  ${status === 'Approved' ? 'bg-emerald-600 hover:bg-emerald-700' : ''}
+                  ${status === 'Paid' ? 'bg-green-600 hover:bg-green-700' : ''}
+                  ${status === 'Sent' ? 'bg-blue-600 hover:bg-blue-700' : ''}
+                  ${status === 'In Production' ? 'bg-orange-600 hover:bg-orange-700' : ''}
+                  ${status === 'Installed' ? 'bg-teal-600 hover:bg-teal-700' : ''}
+                  ${status === 'Lost' ? 'bg-red-600 hover:bg-red-700' : ''}
+                  ${status === 'Draft' ? 'bg-zinc-800 hover:bg-zinc-700' : ''}
+                `}
+              >
+                <option value="Draft" className="bg-white text-zinc-900 font-semibold">Status: Draft</option>
+                <option value="Sent" className="bg-white text-zinc-900 font-semibold">Status: Sent</option>
+                <option value="Approved" className="bg-white text-zinc-900 font-semibold">Status: Approved</option>
+                <option value="Paid" className="bg-white text-zinc-900 font-semibold">Status: Paid</option>
+                <option value="In Production" className="bg-white text-zinc-900 font-semibold">Status: In Production</option>
+                <option value="Installed" className="bg-white text-zinc-900 font-semibold">Status: Installed</option>
+                <option value="Lost" className="bg-white text-zinc-900 font-semibold">Status: Lost</option>
+              </select>
+              <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-white font-bold">
+                ▼
+              </div>
+            </div>
             <button
               onClick={() => handleSaveData(true)}
               disabled={isSaving}
               className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-4 rounded-full shadow-xl transition-all active:scale-95 flex items-center justify-center font-bold text-sm disabled:opacity-50 gap-2 border border-emerald-500/20"
             >
-              {isSaving ? "Saving..." : "Save & Exit to Projects"}
+              {isSaving ? "Saving..." : "Save & Exit"}
             </button>
             <button
               onClick={() => handleSaveData(false)}

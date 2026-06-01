@@ -130,6 +130,7 @@ export interface KitchenQuoteItem {
     unit: string;
     unitPrice: number;
     totalPrice: number;
+    area?: string;
     notes?: string;
 }
 

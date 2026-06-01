@@ -2,11 +2,33 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { getProjects, deleteProject } from "@/app/actions/projectActions";
+import { getProjects, deleteProject, updateProjectStatus } from "@/app/actions/projectActions";
 
 export default function ProjectsPage() {
     const [projects, setProjects] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
+
+    const PROJECT_STATUSES = ["Draft", "Sent", "Approved", "Paid", "In Production", "Installed", "Lost"];
+
+    const STATUS_CONFIG = {
+        "Draft": "bg-zinc-50 text-zinc-600 border-zinc-200",
+        "Sent": "bg-blue-50 text-blue-700 border-blue-200",
+        "Approved": "bg-emerald-50 text-emerald-700 border-emerald-200",
+        "Paid": "bg-green-50 text-green-700 border-green-200",
+        "In Production": "bg-orange-50 text-orange-700 border-orange-200",
+        "Installed": "bg-teal-50 text-teal-700 border-teal-200",
+        "Lost": "bg-red-50 text-red-700 border-red-200"
+    };
+
+    const handleStatusChange = async (projectId: string, newStatus: string) => {
+        try {
+            await updateProjectStatus(projectId, newStatus);
+            setProjects(prev => prev.map(p => p.id === projectId ? { ...p, status: newStatus } : p));
+        } catch (error) {
+            console.error("Failed to update project status:", error);
+            alert("Error updating project status.");
+        }
+    };
 
     useEffect(() => {
         loadProjects();
@@ -74,14 +96,20 @@ export default function ProjectsPage() {
                                         <div className="font-semibold">{project.name || "Unnamed Project"}</div>
                                         <div className="text-xs text-zinc-400 truncate max-w-xs">{project.address}</div>
                                     </td>
-                                    <td className="px-6 py-4">
-                                        <span className={`px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-wider ${
-                                            project.status === 'Approved' ? 'bg-green-100 text-green-700' :
-                                            project.status === 'Sent' ? 'bg-blue-100 text-blue-700' :
-                                            'bg-zinc-100 text-zinc-600'
-                                        }`}>
-                                            {project.status}
-                                        </span>
+                                                                                                            <td className="px-6 py-4">
+                                        <select
+                                            value={project.status}
+                                            onChange={(e) => handleStatusChange(project.id, e.target.value)}
+                                            className={`px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-wider border outline-none cursor-pointer appearance-none transition-colors duration-200 ${
+                                                STATUS_CONFIG[project.status as keyof typeof STATUS_CONFIG] || 'bg-zinc-50 text-zinc-600 border-zinc-200'
+                                            }`}
+                                        >
+                                            {PROJECT_STATUSES.map((status: string) => (
+                                                <option key={status} value={status} className="bg-white text-zinc-800 font-semibold">
+                                                    {status}
+                                                </option>
+                                            ))}
+                                        </select>
                                     </td>
                                     <td className="px-6 py-4 text-zinc-500 font-medium">
                                         {new Date(project.createdAt).toLocaleDateString()}

@@ -149,3 +149,40 @@ model ProductImage {
   mimeType  String   @default("image/jpeg")
   updatedAt DateTime @updatedAt
 }
+
+model KitchenQuote {
+  id                    String             @id @default(uuid())
+  quoteNumber           Int                @unique @default(autoincrement())
+  clientName            String
+  clientEmail           String
+  clientPhone           String
+  projectAddress        String
+  status                String             // 'Lead' | 'Measuring' | 'Design' | 'Quote Sent' | 'Approved' | 'In Production' | 'Installed' | 'Lost'
+  style                 String?
+  subtotal              Float
+  discount              Float?             @default(0.0)
+  tax                   Float
+  installationFee       Float              @default(0.0)
+  total                 Float
+  notes                 String?
+  createdAt             DateTime           @default(now())
+  updatedAt             DateTime           @updatedAt
+  estimatedInstallDate  String?
+  salesRep              String             @default("Adrian")
+  items                 KitchenQuoteItem[]
+}
+
+model KitchenQuoteItem {
+  id           String       @id @default(uuid())
+  quoteId      String
+  quote        KitchenQuote @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+  productId    String
+  productName  String
+  sku          String
+  quantity     Float
+  unit         String       @default("each")
+  unitPrice    Float
+  totalPrice   Float
+  area         String?      // 'Kitchen' | 'Laundry' | 'Closet' | 'Bathroom'
+  notes        String?
+}

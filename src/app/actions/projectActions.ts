@@ -147,3 +147,18 @@ export async function deleteProject(id: string) {
     });
     revalidatePath("/admin/projects");
 }
+
+export async function updateProjectStatus(id: string, status: string) {
+    try {
+        const project = await prisma.project.update({
+            where: { id },
+            data: { status }
+        });
+        revalidatePath("/admin/projects");
+        revalidatePath("/admin");
+        return project;
+    } catch (e) {
+        console.error("DB Error in updateProjectStatus:", e);
+        throw e;
+    }
+}
