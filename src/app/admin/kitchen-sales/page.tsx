@@ -913,65 +913,72 @@ export default function KitchenSalesPage() {
 
             {/* HIGH-END PRINT-ONLY CLIENT ESTIMATE TEMPLATE */}
             {selectedQuote && (
-                <div id="print-template" className="hidden print:block p-8 bg-white text-zinc-900">
-                    <div className="space-y-6">
+                <div id="print-template" className="hidden print:block bg-white text-zinc-900 font-sans">
+                    <div className="space-y-8">
                         {/* Print Header */}
-                        <div className="flex justify-between items-start pb-6 border-b-2 border-zinc-200">
-                            <div>
-                                <img src="/castile_logo_new.png" alt="Castile Logo" className="h-12 w-auto mb-2" />
-                                <p className="text-[10px] text-zinc-500 uppercase tracking-widest font-black">Kitchen Design Studio</p>
+                        <div className="flex justify-between items-start pb-6 border-b-2 border-orange-600">
+                            <div className="flex flex-col">
+                                <img src="/castile_logo_new.png" alt="Castile Logo" className="h-20 w-auto mb-3" />
+                                <p className="text-xs text-zinc-500 uppercase tracking-widest font-black">Kitchen Design Studio</p>
+                                <p className="text-sm text-zinc-500 mt-1">123 Design Blvd, Suite 100<br/>City, ST 12345</p>
                             </div>
                             <div className="text-right">
-                                <h1 className="text-xl font-black text-zinc-900 uppercase tracking-wider">Kitchen Sales Quote</h1>
-                                <p className="text-xs text-zinc-500 mt-1">Estimate Date: {new Date(selectedQuote.createdAt).toLocaleDateString()}</p>
-                                <p className="text-xs font-bold text-zinc-700 mt-0.5">Quote #{selectedQuote.quoteNumber || "—"}</p>
+                                <h1 className="text-3xl font-black text-zinc-900 uppercase tracking-tight">Estimate</h1>
+                                <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-sm">
+                                    <span className="text-zinc-500 font-semibold text-right">Date:</span>
+                                    <span className="font-bold text-zinc-900">{new Date(selectedQuote.createdAt).toLocaleDateString()}</span>
+                                    <span className="text-zinc-500 font-semibold text-right">Quote #:</span>
+                                    <span className="font-bold text-zinc-900">{selectedQuote.quoteNumber || "—"}</span>
+                                    <span className="text-zinc-500 font-semibold text-right">Valid For:</span>
+                                    <span className="font-bold text-zinc-900">30 Days</span>
+                                </div>
                             </div>
                         </div>
 
                         {/* Client details & project info */}
-                        <div className="grid grid-cols-2 gap-6 text-xs bg-zinc-50 p-4 border border-zinc-200 rounded-xl">
-                            <div>
-                                <h3 className="font-bold text-zinc-400 uppercase tracking-wider mb-2 text-[9px]">Client Details</h3>
-                                <p className="font-black text-zinc-900 text-sm mb-1">{selectedQuote.clientName}</p>
-                                {selectedQuote.clientPhone && <p className="text-zinc-600 font-medium">{selectedQuote.clientPhone}</p>}
-                                {selectedQuote.clientEmail && <p className="text-zinc-500 font-medium">{selectedQuote.clientEmail}</p>}
+                        <div className="grid grid-cols-2 gap-8 text-sm break-inside-avoid">
+                            <div className="bg-zinc-50 p-5 rounded-xl border border-zinc-200">
+                                <h3 className="font-bold text-orange-700 uppercase tracking-widest mb-3 text-xs border-b border-orange-200 pb-2">Billed To</h3>
+                                <p className="font-black text-zinc-900 text-base mb-1">{selectedQuote.clientName}</p>
+                                {selectedQuote.clientPhone && <p className="text-zinc-700">{selectedQuote.clientPhone}</p>}
+                                {selectedQuote.clientEmail && <p className="text-zinc-700">{selectedQuote.clientEmail}</p>}
                             </div>
-                            <div>
-                                <h3 className="font-bold text-zinc-400 uppercase tracking-wider mb-2 text-[9px]">Project Address & Specs</h3>
-                                <p className="font-semibold text-zinc-800 text-xs mb-1">{selectedQuote.projectAddress}</p>
-                                {selectedQuote.style && <p className="text-zinc-600 font-bold">Kitchen Style: {selectedQuote.style}</p>}
-                                <p className="text-zinc-500 mt-0.5">Sales Rep: {selectedQuote.salesRep || "Adrian"}</p>
+                            <div className="bg-zinc-50 p-5 rounded-xl border border-zinc-200">
+                                <h3 className="font-bold text-orange-700 uppercase tracking-widest mb-3 text-xs border-b border-orange-200 pb-2">Project Details</h3>
+                                <p className="font-semibold text-zinc-900 mb-1">{selectedQuote.projectAddress}</p>
+                                {selectedQuote.style && <p className="text-zinc-700">Style: <span className="font-semibold">{selectedQuote.style}</span></p>}
+                                <p className="text-zinc-700 mt-0.5">Sales Rep: <span className="font-semibold">{selectedQuote.salesRep || "Adrian"}</span></p>
                             </div>
                         </div>
 
-                        {/* Line items grouped room by room (separated by space) */}
-                        <div className="space-y-6">
+                        {/* Line items grouped room by room */}
+                        <div className="space-y-8">
                             {AREA_OPTIONS.map(areaName => {
                                 const areaItems = selectedQuote.items.filter((item: any) => (item.area || "Kitchen") === areaName);
                                 if (areaItems.length === 0) return null;
                                 return (
-                                    <div key={areaName} className="space-y-2">
-                                        <h3 className="text-xs font-black uppercase tracking-widest text-amber-900 border-b border-zinc-300 pb-1 mt-4">
-                                            {areaName} Section
+                                    <div key={areaName} className="space-y-3 break-inside-avoid">
+                                        <h3 className="text-sm font-black uppercase tracking-widest text-white bg-zinc-800 px-4 py-2 rounded-t-lg">
+                                            {areaName}
                                         </h3>
-                                        <table className="w-full text-left text-xs">
-                                            <thead>
-                                                <tr className="text-zinc-400 font-bold border-b border-zinc-200">
-                                                    <th className="py-2" style={{ width: '120px' }}>SKU</th>
-                                                    <th className="py-2">Description</th>
-                                                    <th className="py-2 text-center" style={{ width: '50px' }}>Qty</th>
-                                                    <th className="py-2 text-right" style={{ width: '90px' }}>Unit Cost</th>
-                                                    <th className="py-2 text-right" style={{ width: '90px' }}>Line Cost</th>
+                                        <table className="w-full text-left text-sm border-x border-b border-zinc-200 rounded-b-lg overflow-hidden">
+                                            <thead className="bg-zinc-100">
+                                                <tr className="text-zinc-500 font-bold">
+                                                    <th className="py-3 px-4 w-28 uppercase text-xs tracking-wider">SKU</th>
+                                                    <th className="py-3 px-4 uppercase text-xs tracking-wider">Description</th>
+                                                    <th className="py-3 px-4 text-center w-16 uppercase text-xs tracking-wider">Qty</th>
+                                                    <th className="py-3 px-4 text-right w-28 uppercase text-xs tracking-wider">Price</th>
+                                                    <th className="py-3 px-4 text-right w-32 uppercase text-xs tracking-wider">Total</th>
                                                 </tr>
                                             </thead>
-                                            <tbody className="divide-y divide-zinc-150">
+                                            <tbody className="divide-y divide-zinc-200 bg-white">
                                                 {areaItems.map((item: any) => (
-                                                    <tr key={item.id} className="text-zinc-800">
-                                                        <td className="py-2.5 font-mono text-[10px]">{item.sku}</td>
-                                                        <td className="py-2.5 font-bold">{item.productName}</td>
-                                                        <td className="py-2.5 text-center">{item.quantity}</td>
-                                                        <td className="py-2.5 text-right">${item.unitPrice.toFixed(2)}</td>
-                                                        <td className="py-2.5 text-right font-black">${item.totalPrice.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
+                                                    <tr key={item.id} className="text-zinc-900 break-inside-avoid">
+                                                        <td className="py-3 px-4 font-mono text-xs text-zinc-500">{item.sku}</td>
+                                                        <td className="py-3 px-4 font-semibold">{item.productName}</td>
+                                                        <td className="py-3 px-4 text-center">{item.quantity}</td>
+                                                        <td className="py-3 px-4 text-right">${item.unitPrice.toFixed(2)}</td>
+                                                        <td className="py-3 px-4 text-right font-black">${item.totalPrice.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
                                                     </tr>
                                                 ))}
                                             </tbody>
@@ -983,26 +990,41 @@ export default function KitchenSalesPage() {
 
                         {/* Notes block in print layout */}
                         {selectedQuote.notes && (
-                            <div className="border border-zinc-250 bg-zinc-50/50 rounded-xl p-4 text-xs text-zinc-800 my-4">
-                                <h4 className="font-bold uppercase tracking-wider text-zinc-500 mb-1 text-[9px]">Special Estimate & Specifications Notes</h4>
-                                <p className="whitespace-pre-line leading-relaxed font-semibold">{selectedQuote.notes}</p>
+                            <div className="border border-amber-200 bg-amber-50 rounded-xl p-5 text-sm text-zinc-900 break-inside-avoid">
+                                <h4 className="font-bold uppercase tracking-widest text-amber-800 mb-2 text-xs">Special Notes & Specifications</h4>
+                                <p className="whitespace-pre-line leading-relaxed font-medium">{selectedQuote.notes}</p>
                             </div>
                         )}
 
                         {/* Estimate Financial summary */}
-                        <div className="border-t-2 border-zinc-200 pt-4 flex justify-between items-start gap-12">
-                            <div className="flex-1 text-[10px] text-zinc-500 leading-relaxed pr-6">
-                                <h4 className="font-bold uppercase tracking-wider mb-2">Terms & Conditions</h4>
-                                <p>1. This estimate is valid for 30 days from the date of issuance.</p>
-                                <p>2. Cabinetry and countertop custom materials require 50% deposit before production.</p>
-                                <p>3. Installation fees are subject to change based on actual on-site measurements.</p>
+                        <div className="flex justify-between items-start gap-12 mt-8 break-inside-avoid">
+                            <div className="flex-1 text-xs text-zinc-500 leading-relaxed pr-8">
+                                <h4 className="font-bold uppercase tracking-widest mb-3 text-zinc-700">Terms & Conditions</h4>
+                                <ol className="list-decimal list-inside space-y-1.5">
+                                    <li>This estimate is valid for 30 days from the date of issuance.</li>
+                                    <li>Custom cabinetry and countertop materials require a 50% deposit before production begins.</li>
+                                    <li>Installation fees are estimates and subject to change based on final on-site measurements and conditions.</li>
+                                    <li>Balance is due upon completion of installation.</li>
+                                </ol>
                             </div>
-                            <div className="bg-zinc-50 border border-zinc-200 rounded-xl p-4 space-y-1.5 w-64 shrink-0 text-xs text-zinc-700">
-                                <div className="flex justify-between"><span>Subtotal</span><span>${selectedQuote.subtotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span></div>
-                                {selectedQuote.discount ? <div className="flex justify-between text-emerald-700 font-semibold"><span>Discount</span><span>-${selectedQuote.discount.toFixed(2)}</span></div> : null}
-                                <div className="flex justify-between"><span>Installation Fee</span><span>${selectedQuote.installationFee.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span></div>
-                                <div className="flex justify-between"><span>Tax (7%)</span><span>${selectedQuote.tax.toFixed(2)}</span></div>
-                                <div className="border-t border-zinc-300 pt-2 flex justify-between font-black text-zinc-900 text-sm"><span>Grand Total</span><span>${selectedQuote.total.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span></div>
+                            <div className="bg-zinc-50 border border-zinc-200 rounded-xl p-5 space-y-3 w-80 shrink-0 text-sm text-zinc-700">
+                                <div className="flex justify-between"><span>Subtotal</span><span className="font-semibold">${selectedQuote.subtotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span></div>
+                                {selectedQuote.discount ? <div className="flex justify-between text-emerald-600 font-bold"><span>Discount</span><span>-${selectedQuote.discount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span></div> : null}
+                                <div className="flex justify-between"><span>Installation Fee</span><span className="font-semibold">${selectedQuote.installationFee.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span></div>
+                                <div className="flex justify-between"><span>Tax (7%)</span><span className="font-semibold">${selectedQuote.tax.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span></div>
+                                <div className="border-t border-zinc-300 pt-3 flex justify-between items-center font-black text-zinc-900 text-lg"><span>Total</span><span>${selectedQuote.total.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span></div>
+                            </div>
+                        </div>
+                        
+                        {/* Signature Block */}
+                        <div className="mt-16 pt-8 border-t border-zinc-200 flex justify-between gap-12 break-inside-avoid">
+                            <div className="flex-1">
+                                <div className="border-b border-zinc-400 h-8 mb-2"></div>
+                                <p className="text-xs text-zinc-500 font-semibold uppercase tracking-widest">Accepted By (Client Signature)</p>
+                            </div>
+                            <div className="w-48">
+                                <div className="border-b border-zinc-400 h-8 mb-2"></div>
+                                <p className="text-xs text-zinc-500 font-semibold uppercase tracking-widest text-center">Date</p>
                             </div>
                         </div>
                     </div>
@@ -1014,27 +1036,33 @@ export default function KitchenSalesPage() {
                 @media print {
                     @page {
                         size: auto;
-                        margin: 0mm; /* strips default browser header/footer titles and page urls */
+                        margin: 0mm;
                     }
                     body {
                         background: white !important;
                         color: black !important;
-                        margin: 15mm 20mm 15mm 20mm !important; /* premium page spacing margins */
+                        margin: 15mm !important;
                     }
                     header, aside, main > header, main > div > .print\:hidden, .print\:hidden, #active-drawer {
                         display: none !important;
                     }
-                    main {
+                    main, .max-w-\[1400px\] {
+                        max-width: none !important;
                         padding: 0 !important;
                         margin: 0 !important;
                         overflow: visible !important;
                         height: auto !important;
+                        min-height: 0 !important;
                     }
                     #print-template {
                         display: block !important;
                         visibility: visible !important;
-                        position: static !important; /* natural multi-page flows */
+                        position: static !important;
                         width: 100% !important;
+                    }
+                    .break-inside-avoid {
+                        page-break-inside: avoid;
+                        break-inside: avoid;
                     }
                 }
             `}</style>
