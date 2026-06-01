@@ -917,8 +917,8 @@ export default function KitchenSalesPage() {
                     <div className="space-y-8">
                         {/* Print Header */}
                         <div className="flex justify-between items-start pb-6 border-b-2 border-orange-600">
-                            <div className="flex flex-col">
-                                <img src="/castile_logo_new.png" alt="Castile Logo" className="h-20 w-auto mb-3" />
+                            <div className="flex flex-col items-start">
+                                <img src="/castile_logo_new.png" alt="Castile Logo" className="h-16 w-auto mb-3 object-contain" />
                                 <p className="text-xs text-zinc-500 uppercase tracking-widest font-black">Kitchen Design Studio</p>
                                 <p className="text-sm text-zinc-500 mt-1">123 Design Blvd, Suite 100<br/>City, ST 12345</p>
                             </div>
@@ -996,35 +996,35 @@ export default function KitchenSalesPage() {
                             </div>
                         )}
 
-                        {/* Estimate Financial summary */}
-                        <div className="flex justify-between items-start gap-12 mt-8 break-inside-avoid">
-                            <div className="flex-1 text-xs text-zinc-500 leading-relaxed pr-8">
-                                <h4 className="font-bold uppercase tracking-widest mb-3 text-zinc-700">Terms & Conditions</h4>
-                                <ol className="list-decimal list-inside space-y-1.5">
-                                    <li>This estimate is valid for 30 days from the date of issuance.</li>
-                                    <li>Custom cabinetry and countertop materials require a 50% deposit before production begins.</li>
-                                    <li>Installation fees are estimates and subject to change based on final on-site measurements and conditions.</li>
-                                    <li>Balance is due upon completion of installation.</li>
-                                </ol>
+                        {/* Final Block: Estimate Financial summary & Signature wrapped together */}
+                        <div className="break-inside-avoid pt-8">
+                            <div className="flex justify-between items-start gap-12">
+                                <div className="flex-1 text-xs text-zinc-500 leading-relaxed pr-8">
+                                    <h4 className="font-bold uppercase tracking-widest mb-3 text-zinc-700">Terms & Conditions</h4>
+                                    <ol className="list-decimal list-inside space-y-1.5">
+                                        <li>Custom cabinetry and countertop materials require a 50% deposit before production begins.</li>
+                                        <li>Installation fees are estimates and subject to change based on final on-site measurements and conditions.</li>
+                                    </ol>
+                                </div>
+                                <div className="bg-zinc-50 border border-zinc-200 rounded-xl p-5 space-y-3 w-80 shrink-0 text-sm text-zinc-700">
+                                    <div className="flex justify-between"><span>Subtotal</span><span className="font-semibold">${selectedQuote.subtotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span></div>
+                                    {selectedQuote.discount ? <div className="flex justify-between text-emerald-600 font-bold"><span>Discount</span><span>-${selectedQuote.discount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span></div> : null}
+                                    <div className="flex justify-between"><span>Installation Fee</span><span className="font-semibold">${selectedQuote.installationFee.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span></div>
+                                    <div className="flex justify-between"><span>Tax (7%)</span><span className="font-semibold">${selectedQuote.tax.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span></div>
+                                    <div className="border-t border-zinc-300 pt-3 flex justify-between items-center font-black text-zinc-900 text-lg"><span>Total</span><span>${selectedQuote.total.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span></div>
+                                </div>
                             </div>
-                            <div className="bg-zinc-50 border border-zinc-200 rounded-xl p-5 space-y-3 w-80 shrink-0 text-sm text-zinc-700">
-                                <div className="flex justify-between"><span>Subtotal</span><span className="font-semibold">${selectedQuote.subtotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span></div>
-                                {selectedQuote.discount ? <div className="flex justify-between text-emerald-600 font-bold"><span>Discount</span><span>-${selectedQuote.discount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span></div> : null}
-                                <div className="flex justify-between"><span>Installation Fee</span><span className="font-semibold">${selectedQuote.installationFee.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span></div>
-                                <div className="flex justify-between"><span>Tax (7%)</span><span className="font-semibold">${selectedQuote.tax.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span></div>
-                                <div className="border-t border-zinc-300 pt-3 flex justify-between items-center font-black text-zinc-900 text-lg"><span>Total</span><span>${selectedQuote.total.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span></div>
-                            </div>
-                        </div>
-                        
-                        {/* Signature Block */}
-                        <div className="mt-16 pt-8 border-t border-zinc-200 flex justify-between gap-12 break-inside-avoid">
-                            <div className="flex-1">
-                                <div className="border-b border-zinc-400 h-8 mb-2"></div>
-                                <p className="text-xs text-zinc-500 font-semibold uppercase tracking-widest">Accepted By (Client Signature)</p>
-                            </div>
-                            <div className="w-48">
-                                <div className="border-b border-zinc-400 h-8 mb-2"></div>
-                                <p className="text-xs text-zinc-500 font-semibold uppercase tracking-widest text-center">Date</p>
+                            
+                            {/* Signature Block */}
+                            <div className="mt-16 pt-8 border-t border-zinc-200 flex justify-between gap-12">
+                                <div className="flex-1">
+                                    <div className="border-b border-zinc-400 h-8 mb-2"></div>
+                                    <p className="text-xs text-zinc-500 font-semibold uppercase tracking-widest">Accepted By (Client Signature)</p>
+                                </div>
+                                <div className="w-48">
+                                    <div className="border-b border-zinc-400 h-8 mb-2"></div>
+                                    <p className="text-xs text-zinc-500 font-semibold uppercase tracking-widest text-center">Date</p>
+                                </div>
                             </div>
                         </div>
                     </div>
