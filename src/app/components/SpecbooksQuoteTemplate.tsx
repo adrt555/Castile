@@ -333,42 +333,41 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
                   <div className="flex items-center gap-1.5 text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">
                     <Folder className="w-3.5 h-3.5" /> Client Name
                   </div>
-                  {metadata.clientId ? (
-                    <>
-                      <span className="hidden print:inline text-sm font-semibold text-slate-800">
-                        {clients.find(c => c.id === metadata.clientId)?.name || metadata.clientName}
-                      </span>
-                      <select
-                        value={metadata.clientId}
-                        onChange={(e) => {
-                          const selectedClient = clients.find(c => c.id === e.target.value);
-                          if (selectedClient) {
-                            handleMetadataChange("clientId", selectedClient.id);
-                            handleMetadataChange("clientName", selectedClient.name);
-                          }
-                        }}
-                        className="w-full bg-transparent text-sm print:hidden font-semibold text-slate-800 outline-none cursor-pointer"
-                      >
-                        <option value="" disabled>Select a Client</option>
-                        {clients.map(c => (
-                          <option key={c.id} value={c.id}>{c.name}</option>
-                        ))}
-                      </select>
-                    </>
-                  ) : (
-                    <>
-                      <span className="hidden print:inline text-sm font-semibold text-slate-800 whitespace-pre-wrap">
-                        {metadata.clientName}
-                      </span>
-                      <textarea
-                        value={metadata.clientName}
-                        onChange={(e) => handleMetadataChange("clientName", e.target.value)}
-                        rows={2}
-                        className="w-full bg-transparent text-sm print:hidden font-semibold text-slate-800 outline-none placeholder:text-slate-300 resize-none overflow-hidden"
-                        placeholder="Enter Client Name"
-                      />
-                    </>
-                  )}
+                  {/* Client Info Textarea + CRM Select */}
+                  <div className="flex flex-col gap-2">
+                    <span className="hidden print:inline text-sm font-semibold text-slate-800 whitespace-pre-wrap">
+                      {metadata.clientName}
+                    </span>
+                    <textarea
+                      value={metadata.clientName}
+                      onChange={(e) => handleMetadataChange("clientName", e.target.value)}
+                      rows={3}
+                      className="w-full bg-transparent text-sm print:hidden font-semibold text-slate-800 outline-none placeholder:text-slate-300 resize-none overflow-hidden"
+                      placeholder="Enter Client Name & Info"
+                    />
+                    <select
+                      onChange={(e) => {
+                        const selectedClient = clients.find(c => c.id === e.target.value);
+                        if (selectedClient) {
+                          handleMetadataChange("clientId", selectedClient.id);
+                          const clientInfo = [
+                            selectedClient.name,
+                            selectedClient.company,
+                            selectedClient.email,
+                            selectedClient.phone,
+                          ].filter(Boolean).join('\n');
+                          handleMetadataChange("clientName", clientInfo);
+                        }
+                      }}
+                      className="w-full bg-slate-50 text-xs font-semibold text-slate-500 outline-none cursor-pointer p-1.5 rounded border border-slate-200 print:hidden"
+                      value=""
+                    >
+                      <option value="" disabled>Autofill from CRM...</option>
+                      {clients.map(c => (
+                        <option key={c.id} value={c.id}>{c.name} {c.company ? `- ${c.company}` : ''}</option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
                 <div className="group border-b border-transparent hover:border-slate-200 focus-within:border-slate-400 transition-colors">
                   <div className="flex items-center gap-1.5 text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">
