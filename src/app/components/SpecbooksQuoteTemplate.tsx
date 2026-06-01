@@ -318,8 +318,8 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
             <div className="space-y-6 flex-1">
               {/* Logo Placeholder */}
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-slate-900 rounded flex items-center justify-center">
-                  <Layers className="text-white w-6 h-6" />
+                <div className="w-12 h-12 bg-slate-900 rounded flex items-center justify-center p-1">
+                  <img src="/castile_logo_new.png" alt="Castile Logo" className="w-full h-full object-contain invert brightness-0" />
                 </div>
                 <div>
                   <h1 className="text-2xl font-black tracking-tight text-slate-900 uppercase">Castile Studio Inc.</h1>
