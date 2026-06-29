@@ -10,9 +10,17 @@ function ResetPasswordForm() {
     const [successMessage, setSuccessMessage] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
+    const searchParams = useSearchParams();
+    const token = searchParams.get('token');
+
     const handleReset = async (e: React.FormEvent) => {
         e.preventDefault();
         setError("");
+
+        if (!token) {
+            setError("Invalid reset link. Please request a new password reset.");
+            return;
+        }
         
         if (password.length < 8) {
             setError("Password must be at least 8 characters long.");
@@ -30,7 +38,7 @@ function ResetPasswordForm() {
             const res = await fetch('/api/auth/reset-password', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ password }),
+                body: JSON.stringify({ token, password }),
             });
 
             const data = await res.json();
