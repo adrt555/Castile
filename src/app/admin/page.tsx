@@ -30,10 +30,10 @@ export default async function AdminDashboard() {
     const unfulfilledOrders = orders.filter(o => o.status === 'Paid' || o.status === 'Unfulfilled').length;
     
     // Paid kitchen quotes are Approved, In Production, or Installed
-    const paidKitchenProjects = kitchenQuotes.filter(q => q.status === 'Approved' || q.status === 'In Production' || q.status === 'Installed');
+    const paidKitchenProjects = kitchenQuotes.filter((q: any) => q.status === 'Approved' || q.status === 'In Production' || q.status === 'Installed');
 
     // Paid specification projects represent paid/active projects (Approved, Paid, In Production, Installed)
-    const paidProjects = projects.filter(p => p.status === 'Approved' || p.status === 'Paid' || p.status === 'In Production' || p.status === 'Installed');
+    const paidProjects = projects.filter((p: any) => p.status === 'Approved' || p.status === 'Paid' || p.status === 'In Production' || p.status === 'Installed');
 
     return (
         <div className="max-w-6xl mx-auto space-y-8 animate-in fade-in duration-300">
