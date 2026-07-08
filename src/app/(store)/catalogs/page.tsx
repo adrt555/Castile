@@ -6,7 +6,7 @@ const catalogs = [
         title: "Roca Tile Book 2026",
         brand: "Roca Tiles",
         description: "The complete 2026 collection of porcelain, ceramic, and natural stone surfaces.",
-        image: "https://rocatileusa.com/wp-content/uploads/2023/07/Roca-Tile-Collections-Header.jpg",
+        image: "https://rocatileusa.com/uploads/2023/09/header_collections_list.png.webp",
         url: "https://rocatileusa.com/uploads/catalogs/18/ROCA%20Tile_Book_2026%20-%20WEB.pdf"
     },
     {
@@ -20,7 +20,7 @@ const catalogs = [
         title: "2026 DUNE Program (US)",
         brand: "Dune / Roca",
         description: "Specific program detailing US stock availability and architectural patterns.",
-        image: "https://rocatileusa.com/wp-content/uploads/2021/01/Alaska-Header.jpg",
+        image: "https://rocatileusa.com/uploads/2021/09/amb-01-CALACATTA-GOLD-1.jpg",
         url: "https://rocatileusa.com/uploads/catalogs/19/2026%20DUNE%20program%20JAN.pdf"
     }
 ];
@@ -77,7 +77,7 @@ export default function CatalogsPage() {
                 {/* Bottom CTA */}
                 <div className="mt-20 sm:mt-32 p-12 sm:p-20 bg-zinc-900 rounded-3xl text-center relative overflow-hidden">
                     <div className="absolute inset-0 opacity-20 pointer-events-none">
-                        <Image src="https://rocatileusa.com/wp-content/uploads/2021/01/Alaska-Header.jpg" alt="Background" fill className="object-cover" />
+                        <Image src="https://rocatileusa.com/uploads/2021/09/amb-01-CALACATTA-GOLD-1.jpg" alt="Background" fill className="object-cover" />
                     </div>
                     <div className="relative z-10">
                         <h2 className="text-2xl sm:text-4xl font-playfair text-white mb-6">Need Architectural Samples?</h2>

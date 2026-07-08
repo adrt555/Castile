@@ -4,7 +4,7 @@ import { allProducts, categories } from "../data/products";
 
 export default function Home() {
   // Select some premium categories for the homepage
-  const featuredCategories = categories.filter(c => ["calacata-gold", "abaco", "artesano", "agatha", "zellige", "avenue"].includes(c.slug));
+  const featuredCategories = categories.filter(c => ["calacata-gold", "abaco", "artesano", "atlas", "zellige", "avenue"].includes(c.slug));
   const newArrivals = allProducts.filter(p => p.isNew).slice(0, 4);
 
   return (
@@ -49,7 +49,7 @@ export default function Home() {
           <Link href="/products?brand=roca-tiles" className="group flex flex-col items-center">
             <div className="relative w-full aspect-[4/5] bg-zinc-100 rounded-xl overflow-hidden flex items-center justify-center transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2 border border-zinc-200">
               <Image
-                src="https://rocatileusa.com/wp-content/uploads/2023/07/Roca-Tile-Collections-Header.jpg"
+                src="https://rocatileusa.com/uploads/2023/09/header_collections_list.png.webp"
                 alt="Roca Tiles"
                 fill
                 className="object-cover transition-transform duration-1000 group-hover:scale-110"
