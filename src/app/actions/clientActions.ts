@@ -34,16 +34,32 @@ export async function createClient(data: {
     address?: string;
     billingAddress?: string;
 }) {
-    const client = await prisma.client.create({
-        data: {
-            ...data,
-            totalSpent: 0
+    try {
+        const trimmedEmail = data.email.trim().toLowerCase();
+
+        // Check if client with this email already exists
+        const existing = await prisma.client.findUnique({
+            where: { email: trimmedEmail }
+        });
+        if (existing) {
+            throw new Error(`A client with the email "${trimmedEmail}" already exists.`);
         }
-    });
-    
-    revalidatePath("/admin/clients");
-    revalidatePath("/admin/orders/new");
-    return client;
+
+        const client = await prisma.client.create({
+            data: {
+                ...data,
+                email: trimmedEmail,
+                totalSpent: 0
+            }
+        });
+        
+        revalidatePath("/admin/clients");
+        revalidatePath("/admin/orders/new");
+        return client;
+    } catch (e: any) {
+        console.error("DB Error in createClient:", e);
+        throw new Error(e.message || "Failed to create client.");
+    }
 }
 
 export async function updateClient(id: string, data: any) {

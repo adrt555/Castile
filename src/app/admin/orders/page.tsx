@@ -543,20 +543,36 @@ function OrdersContent() {
                                         </div>
                                     </div>
                                     <div className="flex justify-end">
-                                        <button type="button" onClick={async () => {
+                                        <button type="button" onClick={async (e) => {
+                                            const btn = e.currentTarget;
                                             if (!newClientDraft.name.trim() || !newClientDraft.email.trim()) return alert('Name and email are required.');
-                                            const created = await createClient({ ...newClientDraft, address: newClientDraft.address || undefined, billingAddress: newClientDraft.billingAddress || undefined });
-                                            const refreshedClients = await getClients();
-                                            setAllClients(refreshedClients as any);
-                                            setEditableClientId(created.id);
-                                            setClientSearch(`${created.name} — ${created.company}`);
-                                            setEditableShipping((created as any).address || '');
-                                            setEditableBilling((created as any).billingAddress || (created as any).address || '');
-                                            setShowCreateClient(false);
-                                            setNewClientDraft({ name: '', company: '', email: '', phone: '', type: 'Contractor', address: '', billingAddress: '' });
-                                            setIsDirty(true);
+                                            btn.disabled = true;
+                                            btn.textContent = 'Saving...';
+                                            try {
+                                                const created = await createClient({ 
+                                                    ...newClientDraft, 
+                                                    address: newClientDraft.address || undefined, 
+                                                    billingAddress: newClientDraft.billingAddress || undefined 
+                                                });
+                                                
+                                                const refreshedClients = await getClients();
+                                                setAllClients(refreshedClients as any);
+                                                setEditableClientId(created.id);
+                                                setClientSearch(`${created.name} — ${created.company}`);
+                                                setEditableShipping((created as any).address || '');
+                                                setEditableBilling((created as any).billingAddress || (created as any).address || '');
+                                                setShowCreateClient(false);
+                                                setNewClientDraft({ name: '', company: '', email: '', phone: '', type: 'Contractor', address: '', billingAddress: '' });
+                                                setIsDirty(true);
+                                            } catch (err: any) {
+                                                console.error("Error creating client from orders page:", err);
+                                                alert(err.message || "Failed to create client.");
+                                            } finally {
+                                                btn.disabled = false;
+                                                btn.textContent = '✓ Save & Select Client';
+                                            }
                                         }}
-                                            className="px-5 py-2.5 bg-amber-500 hover:bg-amber-600 text-white text-sm font-bold rounded-xl transition-colors shadow-sm">
+                                            className="px-5 py-2.5 bg-amber-500 hover:bg-amber-600 text-white text-sm font-bold rounded-xl transition-colors shadow-sm disabled:opacity-50">
                                             ✓ Save &amp; Select Client
                                         </button>
                                     </div>

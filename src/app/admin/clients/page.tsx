@@ -18,6 +18,8 @@ export default function ClientDirectory() {
     const [newClientBilling, setNewClientBilling] = useState("");
     const [addressSuggestions, setAddressSuggestions] = useState<any[]>([]);
     const [showSuggestions, setShowSuggestions] = useState(false);
+    const [createError, setCreateError] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const loadClients = () => {
         setIsLoading(true);
@@ -60,20 +62,35 @@ export default function ClientDirectory() {
     };
 
     const handleCreateClient = async () => {
-        const fullName = `${newClientFirstName} ${newClientLastName}`.trim() || 'New Client';
-        await createClient({
-            name: fullName,
-            company: newClientCompany || "",
-            email: newClientEmail || `client${Date.now()}@castileusa.com`,
-            phone: newClientPhone || "",
-            type: newClientType,
-            address: newClientAddress || undefined,
-            billingAddress: newClientBilling || undefined,
-        });
-        setShowCreateClient(false);
-        setNewClientFirstName(''); setNewClientLastName(''); setNewClientPhone('');
-        setNewClientCompany(''); setNewClientEmail(''); setNewClientAddress(''); setNewClientBilling('');
-        loadClients();
+        setCreateError("");
+        const fullName = `${newClientFirstName} ${newClientLastName}`.trim();
+        
+        if (!fullName) {
+            setCreateError("First name or last name is required.");
+            return;
+        }
+
+        setIsSubmitting(true);
+        try {
+            await createClient({
+                name: fullName,
+                company: newClientCompany || "",
+                email: newClientEmail || `client${Date.now()}@castileusa.com`,
+                phone: newClientPhone || "",
+                type: newClientType,
+                address: newClientAddress || undefined,
+                billingAddress: newClientBilling || undefined,
+            });
+            setShowCreateClient(false);
+            setNewClientFirstName(''); setNewClientLastName(''); setNewClientPhone('');
+            setNewClientCompany(''); setNewClientEmail(''); setNewClientAddress(''); setNewClientBilling('');
+            loadClients();
+        } catch (err: any) {
+            console.error("Error creating client:", err);
+            setCreateError(err.message || "Failed to create client. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     if (isLoading) {
@@ -160,6 +177,11 @@ export default function ClientDirectory() {
                             <button type="button" onClick={() => setShowCreateClient(false)} className="text-zinc-400 hover:text-white transition-colors text-xl leading-none">✕</button>
                         </div>
                         <div className="p-8 space-y-5">
+                            {createError && (
+                                <div className="p-3.5 bg-red-50 border border-red-200 text-red-700 text-xs font-bold rounded-lg">
+                                    ⚠️ {createError}
+                                </div>
+                            )}
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
                                     <label className="block text-xs font-bold uppercase tracking-wide text-zinc-500 mb-1.5">First Name</label>
@@ -229,8 +251,10 @@ export default function ClientDirectory() {
                             </div>
                         </div>
                         <div className="px-8 py-5 bg-zinc-50 border-t border-zinc-100 flex justify-end gap-3">
-                            <button type="button" onClick={() => setShowCreateClient(false)} className="px-5 py-2.5 border border-zinc-200 text-zinc-700 bg-white rounded-lg text-sm font-semibold hover:bg-zinc-50 transition-colors">Cancel</button>
-                            <button type="button" onClick={handleCreateClient} className="px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-amber-950 rounded-lg text-sm font-bold transition-colors shadow-sm">✓ Create Client</button>
+                            <button type="button" disabled={isSubmitting} onClick={() => { setShowCreateClient(false); setCreateError(""); }} className="px-5 py-2.5 border border-zinc-200 text-zinc-700 bg-white rounded-lg text-sm font-semibold hover:bg-zinc-50 transition-colors disabled:opacity-50">Cancel</button>
+                            <button type="button" disabled={isSubmitting} onClick={handleCreateClient} className="px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-amber-950 rounded-lg text-sm font-bold transition-colors shadow-sm disabled:opacity-50">
+                                {isSubmitting ? "Creating..." : "✓ Create Client"}
+                            </button>
                         </div>
                     </div>
                 </div>
