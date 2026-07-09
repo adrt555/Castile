@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { allProducts } from "../../../data/products";
 import rawData from "../../../data/extracted_products.json";
 import projectDataRaw from "../../../data/collection_projects.json";
-import VariationCards from "./VariationCards";
+import ShopSelector from "./ShopSelector";
 
 export default async function ProductDetails({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
@@ -21,8 +21,7 @@ export default async function ProductDetails({ params }: { params: Promise<{ id:
     const collectionSkus = rawData.filter((item: any) => item.collection === product.name);
 
     // Deduplicate logic to show unique color/size combos if necessary, or just show all
-    // For the UI, we'll try to match the screenshot showing large variation cards
-    const uniqueVariants = Array.from(new Map(collectionSkus.map((item: any) => [item.sku, item])).values()).slice(0, 6); // Limit to 6 for layout
+    const uniqueVariants = Array.from(new Map(collectionSkus.map((item: any) => [item.sku, item])).values()).slice(0, 6); // Limit to 6 for lifestyle gallery
 
     // Compile 3 distinct images for the top masonry gallery (Projects -> Main Image -> Top Variations)
     const collectionSlug = product.collectionId;
@@ -98,26 +97,17 @@ export default async function ProductDetails({ params }: { params: Promise<{ id:
                             </h1>
                         </div>
 
-                        <div className="prose prose-zinc dark:prose-invert max-w-none text-zinc-500 dark:text-white/60 font-light text-base sm:text-lg leading-relaxed mb-10 sm:mb-12">
+                        <div className="prose prose-zinc dark:prose-invert max-w-none text-zinc-500 dark:text-white/60 font-light text-base sm:text-lg leading-relaxed mb-10">
                             <p>{product.description}</p>
                         </div>
 
-                        {/* Available Options */}
-                        <div className="space-y-8 sm:space-y-12 mb-12">
-                            <VariationCards variants={uniqueVariants} product={product} />
+                        {/* Interactive Shop Selector Area */}
+                        <div className="mb-12">
+                            <ShopSelector variants={collectionSkus} product={product} />
+                        </div>
 
-                            {/* Sizes */}
-                            <div className="pb-8 border-b border-zinc-100 dark:border-white/10">
-                                <h3 className="text-[10px] sm:text-xs uppercase tracking-[0.2em] font-bold text-zinc-900 dark:text-white mb-6">Available Formats ({product.sizes.length})</h3>
-                                <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-3">
-                                    {product.sizes.map(size => (
-                                        <div key={size} className="px-4 py-3 sm:px-5 sm:py-2.5 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-white/10 rounded-sm text-[10px] sm:text-xs text-zinc-900 dark:text-white/90 font-bold tracking-widest text-center hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all cursor-pointer">
-                                            {size}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
+                        {/* Specs and documentation */}
+                        <div className="space-y-8 sm:space-y-12">
                             {/* Technical Specs Table */}
                             <div className="pt-4">
                                 <h3 className="text-[10px] sm:text-xs uppercase tracking-[0.2em] font-bold text-zinc-900 dark:text-white mb-6 border-b-2 border-zinc-900 dark:border-white pb-2 inline-block">Technical Specifications</h3>
@@ -163,12 +153,6 @@ export default async function ProductDetails({ params }: { params: Promise<{ id:
                                     </ul>
                                 </div>
                             </div>
-                        </div>
-
-                        <div className="mt-auto pt-8">
-                            <button className="w-full bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 py-5 px-8 text-[10px] sm:text-xs font-bold uppercase tracking-[0.3em] hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-all shadow-2xl active:scale-[0.98]">
-                                Order Sample Kit
-                            </button>
                         </div>
                     </div>
                 </div>
