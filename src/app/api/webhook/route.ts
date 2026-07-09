@@ -23,15 +23,25 @@ export async function POST(req: Request) {
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object as Stripe.Checkout.Session;
     const quoteId = session.metadata?.quoteId;
+    const docType = session.metadata?.documentType;
 
     if (quoteId) {
       try {
-        // Update order status in DB
-        await prisma.order.update({
-          where: { id: quoteId },
-          data: { status: 'Paid' },
-        });
-        console.log(`Order ${quoteId} updated to Paid via webhook`);
+        if (docType === 'PURCHASE ORDER') {
+          // Update Purchase Order status in DB
+          await prisma.purchaseOrder.update({
+            where: { poNumber: quoteId },
+            data: { status: 'Received' },
+          });
+          console.log(`Purchase Order ${quoteId} updated to Received via webhook`);
+        } else {
+          // Update order status in DB
+          await prisma.order.update({
+            where: { id: quoteId },
+            data: { status: 'Paid' },
+          });
+          console.log(`Order ${quoteId} updated to Paid via webhook`);
+        }
       } catch (dbErr) {
         console.error('Database update failed:', dbErr);
       }

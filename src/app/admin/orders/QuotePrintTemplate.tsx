@@ -94,7 +94,7 @@ export default function QuotePrintTemplate({
 
     React.useEffect(() => {
         // Only fetch Stripe payment link if we have an orderId, we are not in presentation mode, and order is not yet paid
-        if (orderId && !isPresentation && !isPaid && documentType !== 'PURCHASE ORDER' && templateType === 'order') {
+        if (orderId && !isPresentation && !isPaid && templateType === 'order') {
             fetch("/api/create-checkout", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -102,7 +102,8 @@ export default function QuotePrintTemplate({
                     quoteId: orderId,
                     displayId: orderId,
                     amount: total,
-                    clientName: clientName
+                    clientName: clientName,
+                    documentType: documentType
                 })
             })
             .then(res => res.json())

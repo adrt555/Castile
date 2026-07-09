@@ -158,3 +158,15 @@ export async function updatePurchaseOrderStatus(id: string, status: string) {
     revalidatePath("/admin/purchase-orders");
     return po;
 }
+
+export async function getPurchaseOrderByNumber(poNumber: string) {
+    try {
+        return await prisma.purchaseOrder.findUnique({
+            where: { poNumber },
+            include: { items: true }
+        });
+    } catch (e) {
+        console.error("DB Error in getPurchaseOrderByNumber:", e);
+        return null;
+    }
+}

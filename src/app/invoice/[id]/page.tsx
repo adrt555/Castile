@@ -1,8 +1,8 @@
 "use client";
-
 import { use, useEffect, useState } from "react";
 import Link from "next/link";
 import { getOrderById } from "@/app/actions/orderActions";
+import { getPurchaseOrderByNumber } from "@/app/actions/purchaseOrderActions";
 import QuotePrintTemplate from "../../admin/orders/QuotePrintTemplate";
 
 export default function PublicInvoicePage({ params }: { params: Promise<{ id: string }> }) {
@@ -10,6 +10,7 @@ export default function PublicInvoicePage({ params }: { params: Promise<{ id: st
     const [order, setOrder] = useState<any>(null);
     const [client, setClient] = useState<any>(null);
     const [isSuccess, setIsSuccess] = useState(false);
+    const [isPO, setIsPO] = useState(false);
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -21,6 +22,45 @@ export default function PublicInvoicePage({ params }: { params: Promise<{ id: st
             if (data) {
                 setOrder(data);
                 setClient(data.client);
+            } else {
+                // Try searching in Purchase Orders
+                getPurchaseOrderByNumber(id).then(poData => {
+                    if (poData) {
+                        setIsPO(true);
+                        // Map PurchaseOrder properties to Order-like structure for the template
+                        setOrder({
+                            id: poData.id,
+                            orderNumber: poData.poNumber as any, // use poNumber string for display
+                            status: poData.status,
+                            createdAt: poData.createdAt,
+                            subtotal: poData.subtotal,
+                            discount: 0,
+                            freight: poData.freight,
+                            tax: poData.tax,
+                            total: poData.total,
+                            notes: poData.notes,
+                            items: poData.items.map(item => ({
+                                productName: item.description,
+                                colorName: '',
+                                size: '',
+                                quantitySqft: item.boxes * item.sqftPerBox,
+                                unitPrice: item.unitCost,
+                                totalPrice: item.totalLineCost,
+                                sku: item.sku,
+                                unit: 'sqft',
+                                discount: '0',
+                                discountType: '%'
+                            }))
+                        });
+                        setClient({
+                            name: poData.manufacturer,
+                            company: "Manufacturer Partners",
+                            email: "Adrian@castileusa.com",
+                            phone: "",
+                            address: "",
+                        });
+                    }
+                });
             }
         });
     }, [id]);
@@ -121,13 +161,13 @@ export default function PublicInvoicePage({ params }: { params: Promise<{ id: st
                 <div className="mb-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 bg-white p-8 rounded-2xl border border-zinc-200 shadow-sm print:hidden">
                     <div>
                         <h2 className="text-sm font-bold text-zinc-400 uppercase tracking-widest mb-1">
-                            {isSuccess ? "Receipt" : "Invoice"} Details
+                            {isPO ? "Purchase Order" : (isSuccess ? "Receipt" : "Invoice")} Details
                         </h2>
                         <h1 className="text-3xl font-black text-zinc-900">
-                            #{order.orderNumber?.toString().padStart(4, '0') || order.id.slice(0, 8)}
+                            {isPO ? order.orderNumber : `#${order.orderNumber?.toString().padStart(4, '0') || order.id.slice(0, 8)}`}
                         </h1>
                     </div>
-
+ 
                     <div className="flex gap-4 w-full sm:w-auto">
                         <button 
                             onClick={handlePrint}
@@ -138,15 +178,15 @@ export default function PublicInvoicePage({ params }: { params: Promise<{ id: st
                         </button>
                     </div>
                 </div>
-
+ 
                 {/* Invoice Preview */}
                 <div className="bg-white rounded-3xl border border-zinc-200 shadow-2xl overflow-hidden relative min-h-[800px] flex flex-col items-center justify-center p-12 print:p-0 print:border-none print:shadow-none print:rounded-none print:min-h-0">
                     <div className="text-center mb-8 print:hidden">
                         <svg className="w-12 h-12 text-zinc-200 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-                        <p className="text-zinc-400 font-medium">PREVIEWING YOUR {isSuccess ? 'RECEIPT' : 'INVOICE'}</p>
+                        <p className="text-zinc-400 font-medium">PREVIEWING YOUR {isPO ? 'PURCHASE ORDER' : (isSuccess ? 'RECEIPT' : 'INVOICE')}</p>
                         <p className="text-zinc-300 text-xs mt-1 italic">Click Download PDF to save or print a copy</p>
                     </div>
-
+ 
                     {/* The Template - Hidden on screen via QuotePrintTemplate styles, but visible during print */}
                     <QuotePrintTemplate 
                         orderId={order.orderNumber?.toString().padStart(4, '0') || order.id}
@@ -164,7 +204,7 @@ export default function PublicInvoicePage({ params }: { params: Promise<{ id: st
                         freight={order.freight || 0}
                         tax={order.tax || 0}
                         total={order.total}
-                        documentType={isSuccess ? 'INVOICE' : 'QUOTE'}
+                        documentType={isPO ? 'PURCHASE ORDER' : (isSuccess ? 'INVOICE' : 'QUOTE')}
                     />
                 </div>
             </div>
