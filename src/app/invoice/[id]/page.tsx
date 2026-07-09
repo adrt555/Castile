@@ -150,7 +150,7 @@ export default function PublicInvoicePage({ params }: { params: Promise<{ id: st
                     {/* The Template - Hidden on screen via QuotePrintTemplate styles, but visible during print */}
                     <QuotePrintTemplate 
                         orderId={order.orderNumber?.toString().padStart(4, '0') || order.id}
-                        status={order.status}
+                        status={isSuccess ? 'Paid' : order.status}
                         createdAt={order.createdAt}
                         clientName={client.name}
                         clientCompany={client.company}
