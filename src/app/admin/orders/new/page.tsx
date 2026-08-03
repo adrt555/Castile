@@ -37,7 +37,8 @@ export default function CreateOrderPage() {
         discount: string, 
         discountType: '$' | '%',
         room: string,
-        unit: 'sqft' | 'PC'
+        unit: 'sqft' | 'PC',
+        imageUrl?: string
     }>>([]);
     const [editableDiscount, setEditableDiscount] = useState<string>("0");
     const [globalDiscountType, setGlobalDiscountType] = useState<'$' | '%'>('$');
@@ -218,6 +219,7 @@ export default function CreateOrderPage() {
                     updated.boxesPerPallet = (p as any).boxesPerPallet || 0;
                     updated.unitPrice = (p as any).sellingPricePerSqft || 0;
                     updated.unit = (p as any).unit || 'sqft';
+                    updated.imageUrl = (p as any).image || (p as any).imageUrl || '';
                 }
             }
 
@@ -798,6 +800,8 @@ export default function CreateOrderPage() {
                     billingAddress={editableBilling}
                     items={editableItems.map(item => {
                         const safeSku = item.sku?.replace(/[^a-zA-Z0-9_-]/g, "") || "";
+                        const matchingP = products.find(p => p.id === item.productId || (p as any).sku === item.sku);
+                        const fallbackImg = (matchingP as any)?.image || (matchingP as any)?.imageUrl;
                         return {
                             productName: item.productName,
                             colorName: item.colorName,
@@ -807,7 +811,7 @@ export default function CreateOrderPage() {
                             totalPrice: item.totalPrice,
                             room: item.room || 'General',
                             unit: item.unit || 'sqft',
-                            imageUrl: safeSku ? `/api/product-image/${safeSku}` : undefined
+                            imageUrl: item.imageUrl || fallbackImg || (safeSku ? `/api/product-image/${safeSku}` : undefined)
                         };
                     })}
                     subtotal={eSubtotal}

@@ -6,6 +6,16 @@ import { useRouter } from "next/navigation";
 import { getOrderById } from "@/app/actions/orderActions";
 import QuotePrintTemplate from "../QuotePrintTemplate";
 
+import { crmProducts } from "@/lib/crmProducts";
+import laufenProducts from "@/lib/laufenProducts.json";
+import bathonomyProducts from "@/lib/bathonomyProducts.json";
+
+const allCatalogProducts = [
+    ...crmProducts,
+    ...(laufenProducts as any[]),
+    ...(bathonomyProducts as any[])
+];
+
 export default function OrderPrintPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = use(params);
     const router = useRouter();
@@ -24,80 +34,85 @@ export default function OrderPrintPage({ params }: { params: Promise<{ id: strin
     };
 
     useEffect(() => {
-        if (printTrigger === 0) return;
-
-        const timer = setTimeout(() => {
-            const printContent = document.getElementById("quote-print-template");
-            if (!printContent) {
-                window.print();
-                return;
-            }
-
-            const iframe = document.createElement("iframe");
-            iframe.style.position = "absolute";
-            iframe.style.width = "0px";
-            iframe.style.height = "0px";
-            iframe.style.border = "none";
-            document.body.appendChild(iframe);
-
-            const iframeDoc = iframe.contentWindow?.document;
-            if (!iframeDoc) return;
-
-            const styles = Array.from(document.querySelectorAll('style, link[rel="stylesheet"]'))
-                .map(s => s.outerHTML)
-                .join('\n');
-
-            iframeDoc.open();
-            iframeDoc.write(`
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <title>Print Document</title>
-                    ${styles}
-                    <style>
-                        /* Force visible inside iframe since we wrap it in a hidden container on screen */
-                        #quote-print-template { display: block !important; }
-                    </style>
-                </head>
-                <body style="background: white !important;">
-                    ${printContent.outerHTML}
-                </body>
-                </html>
-            `);
-            iframeDoc.close();
-
-            setTimeout(() => {
-                iframe.contentWindow?.focus();
-                iframe.contentWindow?.print();
-                setTimeout(() => {
-                    if (document.body.contains(iframe)) {
-                        document.body.removeChild(iframe);
-                    }
-                }, 1000);
-            }, 250);
-        }, 150); // 150ms delay guarantees React has completely rendered the DOM with the new templateType prop
-
-        return () => clearTimeout(timer);
-    }, [printTrigger]);
-
-    useEffect(() => {
         getOrderById(id).then(data => {
             if (data) {
                 setOrder(data);
                 setClient(data.client);
-                setIsModalOpen(true);
             }
         });
     }, [id]);
 
+    useEffect(() => {
+        if (printTrigger > 0) {
+            // Give React 150ms to re-render the QuotePrintTemplate with updated props
+            const timer = setTimeout(() => {
+                const printContent = document.getElementById("quote-print-template");
+                if (!printContent) {
+                    window.print();
+                    return;
+                }
+
+                const iframe = document.createElement("iframe");
+                iframe.style.position = "absolute";
+                iframe.style.width = "0px";
+                iframe.style.height = "0px";
+                iframe.style.border = "none";
+                document.body.appendChild(iframe);
+
+                const iframeDoc = iframe.contentWindow?.document;
+                if (!iframeDoc) return;
+
+                const styles = Array.from(document.querySelectorAll('style, link[rel="stylesheet"]'))
+                    .map(s => s.outerHTML)
+                    .join('\n');
+
+                iframeDoc.open();
+                iframeDoc.write(`
+                    <html>
+                        <head>
+                            ${styles}
+                            <style>
+                                @media print {
+                                    body { margin: 0; padding: 0; }
+                                    #quote-print-template { display: block !important; }
+                                }
+                            </style>
+                        </head>
+                        <body>
+                            ${printContent.outerHTML}
+                        </body>
+                    </html>
+                `);
+                iframeDoc.close();
+
+                setTimeout(() => {
+                    iframe.contentWindow?.focus();
+                    iframe.contentWindow?.print();
+                    setTimeout(() => {
+                        if (document.body.contains(iframe)) {
+                            document.body.removeChild(iframe);
+                        }
+                    }, 1000);
+                }, 500);
+            }, 150);
+
+            return () => clearTimeout(timer);
+        }
+    }, [printTrigger]);
+
     if (!order || !client) {
         return (
-            <div className="p-12 text-center">
-                <h1 className="text-2xl font-bold text-zinc-900 mb-4">Quote Not Found</h1>
-                <p className="text-zinc-500 mb-8">The quote or order you are looking for does not exist in the database.</p>
-                <Link href="/admin/orders" className="text-amber-600 hover:text-amber-700 font-semibold underline">
-                    Return to Sales Pipeline
-                </Link>
+            <div className="min-h-screen bg-zinc-50 flex items-center justify-center p-6">
+                <div className="max-w-md w-full bg-white p-8 rounded-2xl shadow-sm border border-zinc-200 text-center">
+                    <div className="w-16 h-16 bg-zinc-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg className="w-8 h-8 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <h1 className="text-xl font-bold text-zinc-900 mb-2">Order Not Found</h1>
+                    <p className="text-zinc-500 mb-8">We couldn't find the order or quote you're looking for.</p>
+                    <Link href="/admin/orders" className="text-amber-600 hover:text-amber-700 font-semibold underline">
+                        Back to Orders
+                    </Link>
+                </div>
             </div>
         );
     }
@@ -105,6 +120,8 @@ export default function OrderPrintPage({ params }: { params: Promise<{ id: strin
     // Adapt db items to the PrintItem interface
     const printItems = order.items.map((item: any) => {
         const safeSku = item.productSku?.replace(/[^a-zA-Z0-9_-]/g, "") || "";
+        const matchingProduct = allCatalogProducts.find((p: any) => p.sku === item.productSku || p.name === item.productName);
+        const fallbackImg = (matchingProduct as any)?.image;
         return {
             productName: item.productName,
             colorName: item.colorName,
@@ -114,7 +131,7 @@ export default function OrderPrintPage({ params }: { params: Promise<{ id: strin
             totalPrice: item.totalPrice,
             room: item.room || 'General',
             unit: item.unit || 'sqft',
-            imageUrl: item.imageUrl || (safeSku ? `/api/product-image/${safeSku}` : undefined),
+            imageUrl: item.imageUrl || fallbackImg || (safeSku ? `/api/product-image/${safeSku}` : undefined),
         };
     });
 

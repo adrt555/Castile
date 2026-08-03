@@ -58,10 +58,17 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
       ...area,
       items: (area.items || []).map((item: any) => {
         // If code matches a Laufen, Roca sanitaryware, or Bathonomy product (which are PC products), auto-correct unit
-        const matchingProduct = allProducts.find(p => p.sku === item.code);
+        const matchingProduct = allProducts.find(p => p.sku === item.code || (p as any).id === item.code);
         let resolvedUnit = item.unit || "SQFT";
+        let resolvedImageUrl = item.imageUrl;
+
         if (matchingProduct) {
           resolvedUnit = matchingProduct.unit;
+          if (!resolvedImageUrl || resolvedImageUrl.startsWith('/api/product-image/')) {
+            if ((matchingProduct as any).image) {
+              resolvedImageUrl = (matchingProduct as any).image;
+            }
+          }
         } else {
           // Fallback: check SKU pattern prefixes
           const codeUpper = (item.code || '').toUpperCase();
@@ -79,7 +86,8 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
         }
         return {
           ...item,
-          unit: resolvedUnit
+          unit: resolvedUnit,
+          imageUrl: resolvedImageUrl
         };
       })
     }));
@@ -257,8 +265,10 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
     if (query.length < 2) {
       setProductSearch(null);
       // Optimistically guess the image path if they just typed a code
+      const matchingProduct = allProducts.find(p => p.sku === query);
       const safeSku = query.replace(/[^a-zA-Z0-9_-]/g, "");
-      handleItemChange(areaId, itemId, "imageUrl", query ? `/api/product-image/${safeSku}` : "");
+      const img = (matchingProduct as any)?.image || (query ? `/api/product-image/${safeSku}` : "");
+      handleItemChange(areaId, itemId, "imageUrl", img);
       return;
     }
 
@@ -278,9 +288,10 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
     handleItemChange(areaId, itemId, "unitPrice", product.sellingPricePerSqft);
     handleItemChange(areaId, itemId, "unit", product.unit);
     
-    // Guess image
-    const safeSku = product.sku.replace(/[^a-zA-Z0-9_-]/g, "");
-    handleItemChange(areaId, itemId, "imageUrl", `/api/product-image/${safeSku}`);
+    // Set product image URL from catalog or API fallback
+    const safeSku = (product.sku || "").replace(/[^a-zA-Z0-9_-]/g, "");
+    const img = (product as any).image || (safeSku ? `/api/product-image/${safeSku}` : "");
+    handleItemChange(areaId, itemId, "imageUrl", img);
     
     setProductSearch(null);
   };
@@ -541,18 +552,25 @@ export default function SpecbooksQuoteTemplate({ initialData, clients = [], onSa
 
                       {/* Dropdown Search Results */}
                       {productSearch?.areaId === area.id && productSearch?.itemId === item.id && productSearch.results.length > 0 && (
-                        <div className="absolute top-full left-0 mt-1 w-72 bg-white border border-slate-200 shadow-xl rounded-lg z-50 overflow-hidden print:hidden">
+                        <div className="absolute top-full left-0 mt-1 w-80 bg-white border border-slate-200 shadow-xl rounded-lg z-50 overflow-hidden print:hidden">
                           {productSearch.results.map(product => (
                             <button
                               key={product.id}
                               onClick={() => selectProduct(area.id, item.id, product)}
-                              className="w-full text-left px-4 py-2 hover:bg-slate-50 border-b border-slate-100 last:border-0 flex flex-col gap-0.5"
+                              className="w-full text-left px-3 py-2 hover:bg-slate-50 border-b border-slate-100 last:border-0 flex items-center gap-2.5 transition-colors"
                             >
-                              <div className="flex justify-between items-center">
-                                <span className="text-xs font-bold text-slate-900">{product.sku}</span>
-                                <span className="text-[10px] font-bold text-amber-600">${product.sellingPricePerSqft.toFixed(2)}/{product.unit.toLowerCase()}</span>
+                              {(product as any).image ? (
+                                <img src={(product as any).image} alt="" className="w-10 h-10 object-cover rounded border border-slate-200 shrink-0 bg-slate-50" />
+                              ) : (
+                                <div className="w-10 h-10 bg-slate-100 rounded border border-slate-200 shrink-0 flex items-center justify-center text-[10px] text-slate-400 font-bold">No Image</div>
+                              )}
+                              <div className="flex-1 min-w-0">
+                                <div className="flex justify-between items-center gap-1">
+                                  <span className="text-xs font-bold text-slate-900 truncate">{product.sku}</span>
+                                  <span className="text-[10px] font-bold text-amber-600 shrink-0">${product.sellingPricePerSqft.toFixed(2)}/{product.unit.toLowerCase()}</span>
+                                </div>
+                                <div className="text-[10px] text-slate-500 truncate">{product.name}</div>
                               </div>
-                              <div className="text-[10px] text-slate-500 truncate">{product.name}</div>
                             </button>
                           ))}
                         </div>
