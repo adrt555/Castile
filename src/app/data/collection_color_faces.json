@@ -1,0 +1,364 @@
+{
+  "abaco": {
+    "gris": "https://rocatileusa.com/uploads/2024/08/Abaco/web-ABACO_GRIS_60X120_PZ01_HD.jpg",
+    "gray": "https://rocatileusa.com/uploads/2024/08/Abaco/web-ABACO_GRIS_60X120_PZ01_HD.jpg",
+    "arena": "https://rocatileusa.com/uploads/2024/08/Abaco/web-ABACO_ARENA_60X120_PZ01_HD.jpg",
+    "sand": "https://rocatileusa.com/uploads/2024/08/Abaco/web-ABACO_ARENA_60X120_PZ01_HD.jpg",
+    "oxido": "https://rocatileusa.com/uploads/2021/07/AMBIENTE_AbacoOxidoModular-1.jpeg",
+    "grafito": "https://rocatileusa.com/uploads/2021/07/AMBIENTE_AbacoGrafito60x60-1.jpeg"
+  },
+  "abbey": {
+    "fresno": "https://rocatileusa.com/uploads/2021/06/Abbey-Fresno-ABS_HD_195x120-R_FN86TFP831.png",
+    "ash": "https://rocatileusa.com/uploads/2021/06/Abbey-Fresno-ABS_HD_195x120-R_FN86TFP831.png",
+    "roble": "https://rocatileusa.com/uploads/2021/06/Abbey-Roble-ABS_HD_195x120-R_FN86TFP741.png",
+    "oak": "https://rocatileusa.com/uploads/2021/06/Abbey-Roble-ABS_HD_195x120-R_FN86TFP741.png",
+    "gris": "https://rocatileusa.com/uploads/2021/06/Abbey-Gris-ABS_HD_195x120-R_FN86TFP021.png",
+    "gray": "https://rocatileusa.com/uploads/2021/06/Abbey-Gris-ABS_HD_195x120-R_FN86TFP021.png",
+    "vison": "https://rocatileusa.com/uploads/2021/06/Abbey-Vison-ABS_HD_195x120-R_FN86TFP141.png",
+    "suite-roble": "https://rocatileusa.com/uploads/2023/11/Abbey_Suite%20Roble%2030x90.2%20R_Roca_FOA3TAW741.jpg"
+  },
+  "alaska": {
+    "white": "https://rocatileusa.com/uploads/2021/08/ALASKA-WHITE.jpg",
+    "blanco": "https://rocatileusa.com/uploads/2021/08/ALASKA-WHITE.jpg"
+  },
+  "alba": {
+    "crema": "https://rocatileusa.com/uploads/2025/Roca Collections/Alba/web-alba_crema_02x08_matte_1158.png",
+    "cream": "https://rocatileusa.com/uploads/2025/Roca%20Collections/Alba/thumbnail-Amb-Alba_04-5000h.png",
+    "blanco": "https://rocatileusa.com/uploads/2025/Roca%20Collections/Alba/thumbnail-Amb-Alba_04-5000h.png",
+    "white": "https://rocatileusa.com/uploads/2025/Roca%20Collections/Alba/thumbnail-Amb-Alba_04-5000h.png",
+    "avorio": "https://rocatileusa.com/uploads/2025/Roca Collections/Alba/web-alba_avorio_02x08_matte_P1A6814.png",
+    "bianco": "https://rocatileusa.com/uploads/2025/Roca Collections/Alba/web-alba_bianco_02x08_matte_01.png",
+    "noite": "https://rocatileusa.com/uploads/2026/alba_noite_8x8_matte_02.jpg",
+    "nero": "https://rocatileusa.com/uploads/2026/alba_noite_2x8_gloss_01.jpg"
+  },
+  "artesano": {
+    "white": "https://rocatileusa.com/uploads/2023/01/White-Ice-Bright.jpg",
+    "white-ice": "https://rocatileusa.com/uploads/2023/01/White-Ice-Bright.jpg",
+    "biscuit": "https://rocatileusa.com/uploads/2023/01/Biscuit.jpg",
+    "gray": "https://rocatileusa.com/uploads/2023/01/Neu-Gray.jpg",
+    "black": "https://rocatileusa.com/uploads/2023/01/Black-Bright.jpg",
+    "green": "https://rocatileusa.com/uploads/2023/01/White-Ice-Bright.jpg",
+    "moss-green": "https://rocatileusa.com/uploads/2023/01/White-Ice-Bright.jpg",
+    "neu gray": "https://rocatileusa.com/uploads/2023/01/Neu-Gray.jpg",
+    "black bright": "https://rocatileusa.com/uploads/2023/01/Black-Bright.jpg",
+    "white ice bright": "https://rocatileusa.com/uploads/2023/01/White-Ice-Bright.jpg",
+    "white ice matte": "https://rocatileusa.com/uploads/2023/01/White-Ice-Matte.jpg"
+  },
+  "atlas": {
+    "gris": "https://rocatileusa.com/uploads/2024/08/Abaco/web-ABACO_GRIS_60X120_PZ01_HD.jpg",
+    "arena": "https://rocatileusa.com/uploads/2024/08/Abaco/web-ABACO_ARENA_60X120_PZ01_HD.jpg",
+    "grafito": "https://rocatileusa.com/uploads/2021/07/AMBIENTE_AbacoGrafito60x60-1.jpeg"
+  },
+  "aura": {
+    "seashell": "https://rocatileusa.com/uploads/2024/01/AURA SEASHELL LOW.jpg",
+    "white": "https://rocatileusa.com/uploads/2021/07/AURA-WHITE.jpg.webp",
+    "cloud": "https://rocatileusa.com/uploads/2021/07/AURA-WHITE.jpg.webp",
+    "mint": "https://rocatileusa.com/uploads/2021/07/AURA-WHITE.jpg.webp",
+    "aquamarine": "https://rocatileusa.com/uploads/2024/01/AURA AQUAMARINE LOW.jpg",
+    "ocean blue": "https://rocatileusa.com/uploads/2024/01/AURA OCEAN_BLUE LOW.jpg"
+  },
+  "avalon": {
+    "arena": "https://rocatileusa.com/uploads/2024/01/30X60_7_AVALON_ARENA_CARA01_RGB.png",
+    "blanco": "https://rocatileusa.com/uploads/2024/01/30X60_7_AVALON_BLANCO_CARA01_RGB.png",
+    "gris": "https://rocatileusa.com/uploads/2021/07/AVALON-ARENA.jpg.webp",
+    "suite blanco": "https://rocatileusa.com/uploads/2024/01/30X90_SUITE_AVALON_BLANCO_CARA01_RGB.jpg",
+    "suite arena": "https://rocatileusa.com/uploads/2024/01/30X90_SUITE_AVALON_ARENA_CARA01_RGB.jpg"
+  },
+  "avenue": {
+    "gold": "https://rocatileusa.com/uploads/2024/04/Avenue/AVENUE-GOLD-21X21-F1-web.jpg",
+    "white": "https://rocatileusa.com/uploads/2024/04/Avenue/amb-02-AVENUE-GOLD-scaled.jpg.webp",
+    "silver": "https://rocatileusa.com/uploads/2024/04/Avenue/amb-02-AVENUE-GOLD-scaled.jpg.webp",
+    "gray": "https://rocatileusa.com/uploads/2024/04/Avenue/AVENUE-GRAY-21X21-F1-web.jpg"
+  },
+  "baltic": {
+    "granite": "https://rocatileusa.com/uploads/2025/Roca Collections/Baltic/web-BALTIC-GRANITE-12X24_01.png",
+    "sand": "https://rocatileusa.com/uploads/2025/Roca Collections/Baltic/web-BALTIC-SAND-12X24-F_01.png",
+    "tan": "https://rocatileusa.com/uploads/2025/Roca Collections/Baltic/web-BALTIC-TAN-12X24R_01.png",
+    "suite sand": "https://rocatileusa.com/uploads/2025/Roca Collections/Baltic/web-BALTIC-SAND.png",
+    "suite granite": "https://rocatileusa.com/uploads/2025/Roca Collections/Baltic/web-BALTIC-GRANITE.png",
+    "suite tan": "https://rocatileusa.com/uploads/2025/Roca Collections/Baltic/web-1-BALTIC-tan.png"
+  },
+  "bar-tile": {
+    "black": "https://rocatileusa.com/uploads/2023/03/amb-21-BARTILE-400x400.jpg.webp",
+    "gray": "https://rocatileusa.com/uploads/2023/03/amb-21-BARTILE-400x400.jpg.webp"
+  },
+  "block": {
+    "blanco": "https://rocatileusa.com/uploads/2021/07/block-1-400x400.jpg.webp",
+    "gris": "https://rocatileusa.com/uploads/2021/07/block-1-400x400.jpg.webp",
+    "azul": "https://rocatileusa.com/uploads/2021/07/block-1-400x400.jpg.webp"
+  },
+  "boheme": {
+    "walnut": "https://rocatileusa.com/uploads/2024/01/BOHEME WALNUT 8X35 F1.jpg",
+    "oak": "https://rocatileusa.com/uploads/2024/01/amb-03-BOHEME-WALNUT-400x400.jpg.webp",
+    "natural": "https://rocatileusa.com/uploads/2024/01/BOHEME NATURAL 8X35 F1.jpg",
+    "white": "https://rocatileusa.com/uploads/2024/01/BOHEME WHITE 8X35 F1.jpg",
+    "ivory": "https://rocatileusa.com/uploads/2024/01/BOHEME IVORY 8X35 F1.jpg"
+  },
+  "brickell": {
+    "burn": "https://rocatileusa.com/uploads/2024/01/amb-12-BRICKELL-BURN-400x400.jpg.webp",
+    "white": "https://rocatileusa.com/uploads/2024/01/amb-12-BRICKELL-BURN-400x400.jpg.webp",
+    "gray": "https://rocatileusa.com/uploads/2024/01/amb-12-BRICKELL-BURN-400x400.jpg.webp",
+    "taupe": "https://rocatileusa.com/uploads/2021/09/Brickell_Taupe-1.jpg",
+    "blanco": "https://rocatileusa.com/uploads/2021/07/BRICKELL-BLANCO-2-scaled-1.jpg",
+    "gris": "https://rocatileusa.com/uploads/2021/09/Brickell_Gris-1.jpg",
+    "antracita": "https://rocatileusa.com/uploads/2021/07/BRICKELL-ANTRACITA-1-scaled-1.jpg"
+  },
+  "calacata-gold": {
+    "gold": "https://rocatileusa.com/uploads/2021/09/PP_CALACATA_GOLD_MATE_24X48_F1_P1.jpg",
+    "white": "https://rocatileusa.com/uploads/2021/09/CALACATA_GOLD_MATE_12x24_F01_L3_P0.jpg",
+    "mosaic": "https://rocatileusa.com/uploads/2023/11/CALACATA_GOLD_MOSAIC_33X33_RGB.jpg"
+  },
+  "calypso": {
+    "white": "https://rocatileusa.com/uploads/2021/07/CALYPSO-WHITE-400x400.jpg",
+    "gray": "https://rocatileusa.com/uploads/2021/07/CALYPSO-WHITE-400x400.jpg",
+    "beige": "https://rocatileusa.com/uploads/2021/07/CALYPSO-WHITE-400x400.jpg"
+  },
+  "carve": {
+    "pearl": "https://rocatileusa.com/uploads/2021/06/CARVE-400x400.jpg",
+    "graphite": "https://rocatileusa.com/uploads/2021/06/CARVE-400x400.jpg",
+    "steel": "https://rocatileusa.com/uploads/2021/07/FPM015702-PP-CARVE-STEEL-30X60-R-1.jpg"
+  },
+  "casablanca": {
+    "spice": "https://rocatileusa.com/uploads/2021/07/CASABLANCA-SPICE-ROOMSCENE-400x400.jpg",
+    "white": "https://rocatileusa.com/uploads/2021/07/CASABLANCA-SPICE-ROOMSCENE-400x400.jpg",
+    "blue": "https://rocatileusa.com/uploads/2021/07/CASABLANCA-SPICE-ROOMSCENE-400x400.jpg"
+  },
+  "cc-cosmos": {
+    "gray": "https://rocatileusa.com/uploads/2023/01/Cosmos-Neu-Gray_3x12_V2.jpg.webp",
+    "white": "https://rocatileusa.com/uploads/2023/01/Cosmos-Neu-Gray_3x12_V2.jpg.webp"
+  },
+  "frames": {
+    "teal": "https://rocatileusa.com/uploads/2026/cc%20frames/CC%20Frames%20Teal%204x12.jpg",
+    "white": "https://rocatileusa.com/uploads/2023/01/amb-10-CC-FRAMES.jpg"
+  },
+  "mosaics": {
+    "lantern": "https://rocatileusa.com/uploads/2021/07/CC-MOSAICS-LANTERN-1-1.jpg",
+    "gray": "https://rocatileusa.com/uploads/2021/07/Hex-1x1-Gray-scaled-1.jpg",
+    "white": "https://rocatileusa.com/uploads/2021/07/Bright-White-Dot-1.jpg"
+  },
+  "color-collection": {
+    "tender-gray": "https://rocatileusa.com/uploads/2025/Roca%20Collections/Color%20Collection/thumbnail-Tender-gray-bright-3X6.png",
+    "yellow": "https://rocatileusa.com/uploads/2021/07/Yellow-Bright-1.jpg",
+    "white": "https://rocatileusa.com/uploads/2021/07/Yellow-Bright-1.jpg"
+  },
+  "crystal": {
+    "crystal": "https://rocatileusa.com/uploads/2021/07/Crystal-e1607114996370.jpg",
+    "white": "https://rocatileusa.com/uploads/2021/07/Crystal-e1607114996370.jpg"
+  },
+  "derby": {
+    "gris": "https://rocatileusa.com/uploads/2023/02/derby-gris.jpg",
+    "gray": "https://rocatileusa.com/uploads/2023/02/derby-gris.jpg",
+    "beige": "https://rocatileusa.com/uploads/2021/07/derby-4.jpg"
+  },
+  "downtown": {
+    "gray": "https://rocatileusa.com/uploads/2021/07/32x32_Gray-1.jpg",
+    "gris": "https://rocatileusa.com/uploads/2021/07/32x32_Gray-1.jpg",
+    "blanco": "https://rocatileusa.com/uploads/2021/09/Flow_Living-Green-1.jpg.webp"
+  },
+  "essence": {
+    "maple": "https://rocatileusa.com/uploads/2023/04/amb-17-ESSENCE-MAPLE.jpg",
+    "honey": "https://rocatileusa.com/uploads/2021/09/Flow_Living-Green-1.jpg.webp",
+    "walnut": "https://rocatileusa.com/uploads/2021/09/Flow_Living-Green-1.jpg.webp"
+  },
+  "everglade": {
+    "nogales": "https://rocatileusa.com/uploads/2021/07/Everglade-Nogales.jpg",
+    "oak": "https://rocatileusa.com/uploads/2021/09/Flow_Living-Green-1.jpg.webp"
+  },
+  "flow": {
+    "white": "https://rocatileusa.com/uploads/2021/09/Flow_White.jpg.webp",
+    "lavender": "https://rocatileusa.com/uploads/2021/07/Flow-Lavender.jpg.webp",
+    "velvet-pink": "https://rocatileusa.com/uploads/2021/07/Velvet-Pink.jpg.webp",
+    "tender-gray": "https://rocatileusa.com/uploads/2021/07/Flow-Tender-Gray-3x12-1-scaled-1.jpg.webp",
+    "dark-gray": "https://rocatileusa.com/uploads/2021/07/Dark-Gray.jpg.webp",
+    "atoll-blue": "https://rocatileusa.com/uploads/2021/07/Flow-Atoll-Blue-01.jpg.webp",
+    "peacock-green": "https://rocatileusa.com/uploads/2021/07/Peacock-Green-2_.jpg.webp",
+    "frost": "https://rocatileusa.com/uploads/2021/07/Flow-Frost-1.jpg.webp",
+    "cosmic-sapphire": "https://rocatileusa.com/uploads/2021/09/Flow_Cosmic-Sapphire-1.jpg.webp",
+    "living-green": "https://rocatileusa.com/uploads/2021/09/Flow_Living-Green-1.jpg.webp"
+  },
+  "joy": {
+    "burgundy": "https://rocatileusa.com/uploads/2021/09/Flow_Living-Green-1.jpg.webp",
+    "white": "https://rocatileusa.com/uploads/2021/07/joy.jpg"
+  },
+  "havana": {
+    "spice": "https://rocatileusa.com/uploads/2021/07/CASABLANCA-SPICE-ROOMSCENE.jpg",
+    "white": "https://rocatileusa.com/uploads/2021/09/Flow_Living-Green-1.jpg.webp",
+    "blue": "https://rocatileusa.com/uploads/2021/09/Flow_Living-Green-1.jpg.webp"
+  },
+  "jewels": {
+    "black": "https://rocatileusa.com/uploads/2023/04/amb-15-MAURICE-BLACK-24x48-1.jpg",
+    "cream": "https://rocatileusa.com/uploads/2023/04/THERRY-12X24R-CREAM-F1.jpg",
+    "calacatta": "https://rocatileusa.com/uploads/2021/09/Flow_Living-Green-1.jpg.webp"
+  },
+  "june": {
+    "grafito": "https://rocatileusa.com/uploads/2025/June/web-JUNE_GRAFITO_1.png",
+    "caliza": "https://rocatileusa.com/uploads/2025/June/web-JUNE_STONE_1.png",
+    "blanco": "https://rocatileusa.com/uploads/2021/09/Flow_Living-Green-1.jpg.webp",
+    "gris": "https://rocatileusa.com/uploads/2025/June/web-JUNE_GRIS_1.png",
+    "suite caliza": "https://rocatileusa.com/uploads/2025/June/Suite June Caliza 1.jpg",
+    "suite gris": "https://rocatileusa.com/uploads/2025/June/suite june gris 2.jpg"
+  },
+  "lagom": {
+    "natural": "https://rocatileusa.com/uploads/2024/08/Lagom/LAGOM-NATURAL.jpg",
+    "almond": "https://rocatileusa.com/uploads/2024/08/Lagom/LAGOM-ALMOND.jpg",
+    "oak": "https://rocatileusa.com/uploads/2021/09/Flow_Living-Green-1.jpg.webp",
+    "roble": "https://rocatileusa.com/uploads/2024/08/Lagom/LAGOM-ROBLE.jpg"
+  },
+  "lassa": {
+    "white": "https://rocatileusa.com/uploads/2021/09/amb-03-MARBLE-LASS-A.jpg",
+    "blanco": "https://rocatileusa.com/uploads/2021/09/amb-03-MARBLE-LASS-A.jpg"
+  },
+  "nordico": {
+    "blanco": "https://rocatileusa.com/uploads/2021/07/I66220070A-PE-NORDICO-POL-12X24-R-scaled.jpg",
+    "white": "https://rocatileusa.com/uploads/2021/09/Flow_Living-Green-1.jpg.webp",
+    "snow": "https://rocatileusa.com/uploads/2021/07/I66220070A-PE-NORDICO-POL-12X24-R-scaled.jpg"
+  },
+  "onyx": {
+    "white": "https://rocatileusa.com/uploads/2021/07/ZiCGIJWp-1.jpeg",
+    "supreme": "https://rocatileusa.com/uploads/2021/09/Flow_Living-Green-1.jpg.webp"
+  },
+  "lithology-edition": {
+    "sand": "https://rocatileusa.com/uploads/2021/09/Flow_Living-Green-1.jpg.webp",
+    "grey": "https://rocatileusa.com/uploads/2021/09/Flow_Living-Green-1.jpg.webp"
+  },
+  "liverpool": {
+    "cinza": "https://rocatileusa.com/uploads/2021/09/Liverpool_Cinza-UP-1-1.jpg",
+    "gray": "https://rocatileusa.com/uploads/2021/09/Liverpool_Cinza-UP-1-1.jpg",
+    "blanco": "https://rocatileusa.com/uploads/2021/07/liverpool-3.jpg"
+  },
+  "maiolica": {
+    "white": "https://rocatileusa.com/uploads/2023/02/Maiolica-Crackled-White-@n.y.k.b.jpg",
+    "gray": "https://rocatileusa.com/uploads/2021/07/RoomScene-maiolica_gray-1.jpg"
+  },
+  "nolita": {
+    "blanco": "https://rocatileusa.com/uploads/2021/07/nolita-blanco-mosaic.jpg",
+    "grey": "https://rocatileusa.com/uploads/2021/09/Flow_Living-Green-1.jpg.webp",
+    "gris": "https://rocatileusa.com/uploads/2021/09/Flow_Living-Green-1.jpg.webp"
+  },
+  "pavers": {
+    "bone": "https://rocatileusa.com/uploads/2021/09/Flow_Living-Green-1.jpg.webp",
+    "evolve": "https://rocatileusa.com/uploads/2023/01/amb-14-EVOLVE-60x60-1.jpg"
+  },
+  "20mm": {
+    "bone": "https://rocatileusa.com/uploads/2021/09/Flow_Living-Green-1.jpg.webp",
+    "evolve": "https://rocatileusa.com/uploads/2023/01/amb-14-EVOLVE-60x60-1.jpg"
+  },
+  "pro": {
+    "sand": "https://rocatileusa.com/uploads/2021/09/Pro_Sand-1.jpg",
+    "grey": "https://rocatileusa.com/uploads/2021/09/Flow_Living-Green-1.jpg.webp"
+  },
+  "pro-max": {
+    "nude": "https://rocatileusa.com/uploads/2021/07/PROMAX_NUDE_31x61_FC2_L2_P0.png",
+    "gray": "https://rocatileusa.com/uploads/2021/09/Flow_Living-Green-1.jpg.webp"
+  },
+  "slabs": {
+    "carrara": "https://rocatileusa.com/uploads/2024/02/CARRARA 48X48.jpg",
+    "calacatta": "https://rocatileusa.com/uploads/2021/09/Flow_Living-Green-1.jpg.webp",
+    "calacata light": "https://rocatileusa.com/uploads/2024/02/Calacata-Light.jpg",
+    "marble parana": "https://rocatileusa.com/uploads/2024/02/LM-MARMORE-PARANA-MC-120x120.jpg",
+    "marble nouveau": "https://rocatileusa.com/uploads/2024/02/F3701E815_LM-MARBLE-NOUVEAU-MC-120X120-R.jpg",
+    "sahara noir": "https://rocatileusa.com/uploads/2024/02/Sahara-noir tile.jpg",
+    "concrete off white": "https://rocatileusa.com/uploads/2024/02/ROCA_FOK00E8011_CONCRETE-OFF-WHITE-ABS-120X120--(1)R.jpg",
+    "concrete gray": "https://rocatileusa.com/uploads/2024/02/concrete-gray.jpg",
+    "koronis": "https://rocatileusa.com/uploads/2024/02/KORONIS-48X48.jpg",
+    "marble lassa": "https://rocatileusa.com/uploads/2024/02/FL601E8011---LM-MARBLE-LASSA-POL-120X120-RET---FL602E8011----LM-MARBLE-LASSA-MATE-120X120-RET_2.jpg",
+    "athea": "https://rocatileusa.com/uploads/2024/02/FRV01E804---LM-ATHEA-MC-120X120-R-e-FRV02E804---LM-ATHEA-ST-120X120-R.jpg",
+    "calacata gold": "https://rocatileusa.com/uploads/2024/02/Calacata-Gold.jpg",
+    "agata": "https://rocatileusa.com/uploads/2024/02/ROCA_FZN025404_LM-AGATA-MT-60X120R-e-FZN015404_LM-AGATA-MC-60X120R-(1)-web.jpg",
+    "sorrento": "https://rocatileusa.com/uploads/2025/Roca Collections/Slabs/web-FNJ01E8251---LM-MARBLE-SORRENTO-MR-POL-120X120R_4.png"
+  },
+  "statuary": {
+    "blanco": "https://rocatileusa.com/uploads/2021/07/STATUARY_BLANCO_90x90_L4_P1_F2_POL.png",
+    "white": "https://rocatileusa.com/uploads/2021/06/Statuary.png"
+  },
+  "xl-slabs": {
+    "carrara": "https://rocatileusa.com/uploads/2024/02/CARRARA%2048X48.jpg"
+  },
+  "zellige": {
+    "light-gray": "https://rocatileusa.com/uploads/2021/10/amb-01-ZELLIGE-LIGHT-GRAY.jpg",
+    "blanco": "https://rocatileusa.com/uploads/2021/10/TRIM-ZELLIGE-BLANCO.jpg",
+    "white": "https://rocatileusa.com/uploads/2021/09/Flow_Living-Green-1.jpg.webp"
+  },
+  "zen": {
+    "white": "https://rocatileusa.com/uploads/2024/04/Zen/Bath%204.jpg"
+  },
+  "zen-stone": {
+    "silver": "https://rocatileusa.com/uploads/2023/04/amb-19-ZEN-STONE-SILVER.jpg",
+    "gray": "https://rocatileusa.com/uploads/2023/04/ZEN-STONE-12X24-GRAY-F16.jpg"
+  },
+  "agadir": {
+    "default": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/serie-agadir-1-1642584123X4lYc.jpg"
+  },
+  "tabarca": {
+    "default": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/ambiente-tabarca-turquesa-verde-miel-blanco-75x23-1633283602XjdYR.jpg"
+  },
+  "selene": {
+    "default": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/selene-capuccino-1697793602h2dAN.jpg"
+  },
+  "riad": {
+    "default": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/riad-revestimiento-ceramico-para-interiores-dune-ceramica-1761125230H1ApD.jpg"
+  },
+  "atelier": {
+    "default": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/ambiente-atelier-white-french-blue-brillo-75x15-75x30-16332824267nSd7.jpg"
+  },
+  "atlantique": {
+    "default": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/azulejos-atlantique-dune-ceramica-1741613008DpPzz.jpg"
+  },
+  "pietrasanta": {
+    "default": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/series-pietrasanta-1684158336WeST2.jpg"
+  },
+  "terraluz": {
+    "default": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/terraluz-azulejo-porcelanico-dune-ceramica-1761220167h4c1I.jpg"
+  },
+  "granadella": {
+    "default": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/serie-azulejos-granadella-dune-ceramica-1741614760fmrir.jpg"
+  },
+  "fancy": {
+    "default": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/ambiente-fancy-grey-30x60-60x120-fancy-white-grey-30x90-malhia-15x15-1-1632999205hvgWn.jpg"
+  },
+  "altea": {
+    "default": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/altea-16690242224pvzL.jpg"
+  },
+  "chicago": {
+    "default": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/ambiente-chicago-ocean-terrazo-1633282660eE80I.jpg"
+  },
+  "bali": {
+    "default": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/bali-azulejos-porcelanicos-piscina-17259698104FOxJ.jpg"
+  },
+  "berlin": {
+    "default": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/ambiente-berlin-bambu-lotus-white-aquamar-grey-163299199470xEg.jpg"
+  },
+  "crackle": {
+    "default": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/ambiente-crackle-laguna-nieve-16332827644JTeS.jpg"
+  },
+  "kit-kat": {
+    "default": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/amb-exterior-tienda-kit-kat-anise-agadir-cotto-oscuro-2000x.jpg"
+  },
+  "calacatta-lux": {
+    "default": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/selene-capuccino-1697793602h2dAN.jpg"
+  },
+  "cremabella": {
+    "default": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/series-pietrasanta-1684158336WeST2.jpg"
+  },
+  "cristal": {
+    "default": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/azulejos-rosas-para-banos-1777290132PY6P3.jpg"
+  },
+  "greenland": {
+    "default": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/ambiente-tabarca-turquesa-verde-miel-blanco-75x23-1633283602XjdYR.jpg"
+  },
+  "milano": {
+    "default": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/selene-capuccino-1697793602h2dAN.jpg"
+  },
+  "nova": {
+    "default": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/ambiente-fancy-grey-30x60-60x120-fancy-white-grey-30x90-malhia-15x15-1-1632999205hvgWn.jpg"
+  },
+  "stripes": {
+    "default": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/terraluz-azulejo-porcelanico-dune-ceramica-1761220167h4c1I.jpg"
+  },
+  "tahiti": {
+    "default": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/azulejos-rosas-para-banos-1777290132PY6P3.jpg"
+  },
+  "theia": {
+    "default": "https://website-duneceramics.s3.eu-central-1.amazonaws.com/Dune/public/altea-16690242224pvzL.jpg"
+  }
+}
