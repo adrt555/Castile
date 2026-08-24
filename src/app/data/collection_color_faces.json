@@ -51,23 +51,23 @@
   },
   "aura": {
     "seashell": "https://rocatileusa.com/uploads/2024/01/AURA SEASHELL LOW.jpg",
-    "white": "https://rocatileusa.com/uploads/2021/07/AURA-WHITE.jpg.webp",
-    "cloud": "https://rocatileusa.com/uploads/2021/07/AURA-WHITE.jpg.webp",
-    "mint": "https://rocatileusa.com/uploads/2021/07/AURA-WHITE.jpg.webp",
+    "white": "https://rocatileusa.com/uploads/2024/01/AURA SEASHELL LOW.jpg",
+    "cloud": "https://rocatileusa.com/uploads/2024/01/AURA SEASHELL LOW.jpg",
+    "mint": "https://rocatileusa.com/uploads/2024/01/AURA AQUAMARINE LOW.jpg",
     "aquamarine": "https://rocatileusa.com/uploads/2024/01/AURA AQUAMARINE LOW.jpg",
     "ocean blue": "https://rocatileusa.com/uploads/2024/01/AURA OCEAN_BLUE LOW.jpg"
   },
   "avalon": {
     "arena": "https://rocatileusa.com/uploads/2024/01/30X60_7_AVALON_ARENA_CARA01_RGB.png",
     "blanco": "https://rocatileusa.com/uploads/2024/01/30X60_7_AVALON_BLANCO_CARA01_RGB.png",
-    "gris": "https://rocatileusa.com/uploads/2021/07/AVALON-ARENA.jpg.webp",
+    "gris": "https://rocatileusa.com/uploads/2024/01/30X60_7_AVALON_BLANCO_CARA01_RGB.png",
     "suite blanco": "https://rocatileusa.com/uploads/2024/01/30X90_SUITE_AVALON_BLANCO_CARA01_RGB.jpg",
     "suite arena": "https://rocatileusa.com/uploads/2024/01/30X90_SUITE_AVALON_ARENA_CARA01_RGB.jpg"
   },
   "avenue": {
     "gold": "https://rocatileusa.com/uploads/2024/04/Avenue/AVENUE-GOLD-21X21-F1-web.jpg",
-    "white": "https://rocatileusa.com/uploads/2024/04/Avenue/amb-02-AVENUE-GOLD-scaled.jpg.webp",
-    "silver": "https://rocatileusa.com/uploads/2024/04/Avenue/amb-02-AVENUE-GOLD-scaled.jpg.webp",
+    "white": "https://rocatileusa.com/uploads/2024/04/Avenue/AVENUE-GOLD-21X21-F1-web.jpg",
+    "silver": "https://rocatileusa.com/uploads/2024/04/Avenue/AVENUE-GRAY-21X21-F1-web.jpg",
     "gray": "https://rocatileusa.com/uploads/2024/04/Avenue/AVENUE-GRAY-21X21-F1-web.jpg"
   },
   "baltic": {
@@ -79,8 +79,8 @@
     "suite tan": "https://rocatileusa.com/uploads/2025/Roca Collections/Baltic/web-1-BALTIC-tan.png"
   },
   "bar-tile": {
-    "black": "https://rocatileusa.com/uploads/2023/03/amb-21-BARTILE-400x400.jpg.webp",
-    "gray": "https://rocatileusa.com/uploads/2023/03/amb-21-BARTILE-400x400.jpg.webp"
+    "black": "https://rocatileusa.com/uploads/2023/03/amb-20-BARTILE.jpg",
+    "gray": "https://rocatileusa.com/uploads/2023/03/amb-20-BARTILE.jpg"
   },
   "block": {
     "blanco": "https://rocatileusa.com/uploads/2021/07/block-1-400x400.jpg.webp",
@@ -89,15 +89,15 @@
   },
   "boheme": {
     "walnut": "https://rocatileusa.com/uploads/2024/01/BOHEME WALNUT 8X35 F1.jpg",
-    "oak": "https://rocatileusa.com/uploads/2024/01/amb-03-BOHEME-WALNUT-400x400.jpg.webp",
+    "oak": "https://rocatileusa.com/uploads/2024/01/BOHEME NATURAL 8X35 F1.jpg",
     "natural": "https://rocatileusa.com/uploads/2024/01/BOHEME NATURAL 8X35 F1.jpg",
     "white": "https://rocatileusa.com/uploads/2024/01/BOHEME WHITE 8X35 F1.jpg",
     "ivory": "https://rocatileusa.com/uploads/2024/01/BOHEME IVORY 8X35 F1.jpg"
   },
   "brickell": {
-    "burn": "https://rocatileusa.com/uploads/2024/01/amb-12-BRICKELL-BURN-400x400.jpg.webp",
-    "white": "https://rocatileusa.com/uploads/2024/01/amb-12-BRICKELL-BURN-400x400.jpg.webp",
-    "gray": "https://rocatileusa.com/uploads/2024/01/amb-12-BRICKELL-BURN-400x400.jpg.webp",
+    "burn": "https://rocatileusa.com/uploads/2021/07/BRICKELL-BLANCO-2-scaled-1.jpg",
+    "white": "https://rocatileusa.com/uploads/2021/07/BRICKELL-BLANCO-2-scaled-1.jpg",
+    "gray": "https://rocatileusa.com/uploads/2021/09/Brickell_Gris-1.jpg",
     "taupe": "https://rocatileusa.com/uploads/2021/09/Brickell_Taupe-1.jpg",
     "blanco": "https://rocatileusa.com/uploads/2021/07/BRICKELL-BLANCO-2-scaled-1.jpg",
     "gris": "https://rocatileusa.com/uploads/2021/09/Brickell_Gris-1.jpg",
@@ -109,13 +109,13 @@
     "mosaic": "https://rocatileusa.com/uploads/2023/11/CALACATA_GOLD_MOSAIC_33X33_RGB.jpg"
   },
   "calypso": {
-    "white": "https://rocatileusa.com/uploads/2021/07/CALYPSO-WHITE-400x400.jpg",
-    "gray": "https://rocatileusa.com/uploads/2021/07/CALYPSO-WHITE-400x400.jpg",
-    "beige": "https://rocatileusa.com/uploads/2021/07/CALYPSO-WHITE-400x400.jpg"
+    "white": "https://rocatileusa.com/uploads/2021/07/PLAN-WHITE-4.jpg",
+    "gray": "https://rocatileusa.com/uploads/2021/07/PLAN-WHITE-4.jpg",
+    "beige": "https://rocatileusa.com/uploads/2021/07/PLAN-WHITE-4.jpg"
   },
   "carve": {
-    "pearl": "https://rocatileusa.com/uploads/2021/06/CARVE-400x400.jpg",
-    "graphite": "https://rocatileusa.com/uploads/2021/06/CARVE-400x400.jpg",
+    "pearl": "https://rocatileusa.com/uploads/2021/07/FPM015702-PP-CARVE-STEEL-30X60-R-1.jpg",
+    "graphite": "https://rocatileusa.com/uploads/2021/07/FPM015702-PP-CARVE-STEEL-30X60-R-1.jpg",
     "steel": "https://rocatileusa.com/uploads/2021/07/FPM015702-PP-CARVE-STEEL-30X60-R-1.jpg"
   },
   "casablanca": {
