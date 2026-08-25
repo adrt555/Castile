@@ -1,5 +1,5 @@
-// Centralized product, collection, and category database for Castile
 // Officially curated for Roca Tiles (Collections) and Dune Ceramics (Luxury Accents)
+// Updated: 2026-08-25T19:47:00Z
 
 export interface Variation {
     color: string;
